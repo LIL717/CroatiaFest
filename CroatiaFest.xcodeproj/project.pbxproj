@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		705B96BA13A275D000346007 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96B913A275D000346007 /* UIKit.framework */; };
+		705B96BC13A275D000346007 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BB13A275D000346007 /* Foundation.framework */; };
+		705B96BE13A275D000346007 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BD13A275D000346007 /* CoreGraphics.framework */; };
+		705B96C413A275D000346007 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 705B96C213A275D000346007 /* InfoPlist.strings */; };
+		705B96C713A275D000346007 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B96C613A275D000346007 /* main.m */; };
+		705B96CA13A275D000346007 /* CroatiaFestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B96C913A275D000346007 /* CroatiaFestAppDelegate.m */; };
+		705B96CD13A275D000346007 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705B96CB13A275D000346007 /* MainWindow.xib */; };
+		705B96D013A275D000346007 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B96CF13A275D000346007 /* RootViewController.m */; };
+		705B96D313A275D000346007 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705B96D113A275D000346007 /* RootViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		705B96B513A275D000346007 /* CroatiaFest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CroatiaFest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		705B96B913A275D000346007 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		705B96BB13A275D000346007 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		705B96BD13A275D000346007 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		705B96C113A275D000346007 /* CroatiaFest-Info.plist */ = {isa = PBXFileReference; path = "CroatiaFest-Info.plist"; sourceTree = "<group>"; };
+		705B96C313A275D000346007 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		705B96C513A275D000346007 /* CroatiaFest-Prefix.pch */ = {isa = PBXFileReference; path = "CroatiaFest-Prefix.pch"; sourceTree = "<group>"; };
+		705B96C613A275D000346007 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		705B96C813A275D000346007 /* CroatiaFestAppDelegate.h */ = {isa = PBXFileReference; path = CroatiaFestAppDelegate.h; sourceTree = "<group>"; };
+		705B96C913A275D000346007 /* CroatiaFestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CroatiaFestAppDelegate.m; sourceTree = "<group>"; };
+		705B96CC13A275D000346007 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		705B96CE13A275D000346007 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		705B96CF13A275D000346007 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		705B96D213A275D000346007 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		705B96B213A275D000346007 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				705B96BA13A275D000346007 /* UIKit.framework in Frameworks */,
+				705B96BC13A275D000346007 /* Foundation.framework in Frameworks */,
+				705B96BE13A275D000346007 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		705B96AA13A275D000346007 = {
+			isa = PBXGroup;
+			children = (
+				705B96BF13A275D000346007 /* CroatiaFest */,
+				705B96B813A275D000346007 /* Frameworks */,
+				705B96B613A275D000346007 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		705B96B613A275D000346007 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				705B96B513A275D000346007 /* CroatiaFest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		705B96B813A275D000346007 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				705B96B913A275D000346007 /* UIKit.framework */,
+				705B96BB13A275D000346007 /* Foundation.framework */,
+				705B96BD13A275D000346007 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		705B96BF13A275D000346007 /* CroatiaFest */ = {
+			isa = PBXGroup;
+			children = (
+				705B96C813A275D000346007 /* CroatiaFestAppDelegate.h */,
+				705B96C913A275D000346007 /* CroatiaFestAppDelegate.m */,
+				705B96CB13A275D000346007 /* MainWindow.xib */,
+				705B96CE13A275D000346007 /* RootViewController.h */,
+				705B96CF13A275D000346007 /* RootViewController.m */,
+				705B96D113A275D000346007 /* RootViewController.xib */,
+				705B96C013A275D000346007 /* Supporting Files */,
+			);
+			path = CroatiaFest;
+			sourceTree = "<group>";
+		};
+		705B96C013A275D000346007 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				705B96C113A275D000346007 /* CroatiaFest-Info.plist */,
+				705B96C213A275D000346007 /* InfoPlist.strings */,
+				705B96C513A275D000346007 /* CroatiaFest-Prefix.pch */,
+				705B96C613A275D000346007 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		705B96B413A275D000346007 /* CroatiaFest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 705B96D613A275D000346007 /* Build configuration list for PBXNativeTarget "CroatiaFest" */;
+			buildPhases = (
+				705B96B113A275D000346007 /* Sources */,
+				705B96B213A275D000346007 /* Frameworks */,
+				705B96B313A275D000346007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CroatiaFest;
+			productName = CroatiaFest;
+			productReference = 705B96B513A275D000346007 /* CroatiaFest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		705B96AC13A275D000346007 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 705B96AF13A275D000346007 /* Build configuration list for PBXProject "CroatiaFest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 705B96AA13A275D000346007;
+			productRefGroup = 705B96B613A275D000346007 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				705B96B413A275D000346007 /* CroatiaFest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		705B96B313A275D000346007 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				705B96C413A275D000346007 /* InfoPlist.strings in Resources */,
+				705B96CD13A275D000346007 /* MainWindow.xib in Resources */,
+				705B96D313A275D000346007 /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		705B96B113A275D000346007 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				705B96C713A275D000346007 /* main.m in Sources */,
+				705B96CA13A275D000346007 /* CroatiaFestAppDelegate.m in Sources */,
+				705B96D013A275D000346007 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		705B96C213A275D000346007 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				705B96C313A275D000346007 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		705B96CB13A275D000346007 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				705B96CC13A275D000346007 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		705B96D113A275D000346007 /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				705B96D213A275D000346007 /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		705B96D413A275D000346007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		705B96D513A275D000346007 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		705B96D713A275D000346007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CroatiaFest/CroatiaFest-Prefix.pch";
+				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		705B96D813A275D000346007 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CroatiaFest/CroatiaFest-Prefix.pch";
+				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		705B96AF13A275D000346007 /* Build configuration list for PBXProject "CroatiaFest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				705B96D413A275D000346007 /* Debug */,
+				705B96D513A275D000346007 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		705B96D613A275D000346007 /* Build configuration list for PBXNativeTarget "CroatiaFest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				705B96D713A275D000346007 /* Debug */,
+				705B96D813A275D000346007 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 705B96AC13A275D000346007 /* Project object */;
+}
