@@ -7,10 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
-@interface RootViewController : UITableViewController {
 
+@interface RootViewController : UIViewController <NSFetchedResultsControllerDelegate> {
+
+
+@private 
+//    NSFetchedResultsController *fetchedResultsController_;
+//    NSManagedObjectContext *managedObjectContext_;
+    
 }
+@property (nonatomic, retain) IBOutlet UIAlertView *savedAlert;
+//@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+//@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+
+- (void) supportAlert;
+- (void) applicationWillResignActive: (NSNotification *) note;
 
 
 @end

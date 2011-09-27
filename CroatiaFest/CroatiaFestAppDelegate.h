@@ -7,13 +7,40 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import "RootViewController.h"
+//@class Performer, PerformerViewController;
+@class Performer;
 
-@interface CroatiaFestAppDelegate : NSObject <UIApplicationDelegate> {
+@interface CroatiaFestAppDelegate : NSObject <UIApplicationDelegate, NSXMLParserDelegate> {
+
+    Performer *performer_;
+    
+@private    
+    NSManagedObjectContext *managedObjectContext_;
+    NSManagedObjectModel *managedObjectModel_;
+    NSPersistentStoreCoordinator *persistentStoreCoordinator_;
+    //    PerformerViewController *performerViewController;
+    
+
+    // for downloading the xml data
+    NSURLConnection *webConnection;
+    NSMutableData *festivalData;
+    NSOperationQueue *parseQueue;  
+    
 
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+//@property (nonatomic, retain) PerformerViewController *performerViewController;
+@property (nonatomic, retain) Performer *performer;
+@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+- (void)saveContext;
+- (NSURL *)applicationDocumentsDirectory;
+
 
 @end

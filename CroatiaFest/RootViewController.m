@@ -9,12 +9,53 @@
 #import "RootViewController.h"
 
 @implementation RootViewController
+@synthesize savedAlert;
+//@synthesize managedObjectContext = managedObjectContext_;
+//@synthesize fetchedResultsController = fetchedResultsController_;
 
-- (void)viewDidLoad
+-(id)init
 {
-    [super viewDidLoad];
+    LogMethod();
+    //Call the superclass's designated initializer
+    [super initWithNibName: nil
+                    bundle:nil];
+    //Get the tab bar item
+    UITabBarItem *tbi = [self tabBarItem];
+    
+    //Give it a label
+    [tbi setTitle:@"Festival"]; 
+    
+    //Create a UIImage from a file
+    UIImage *i = [UIImage imageNamed:@"20px-Coat_of_arms_of_Croatia.png"];
+    
+    //Put that image on the tab bar item
+    [tbi setImage:i];
+    
+    //Make a bar button for an alert
+    UIBarButtonItem * button = [[UIBarButtonItem alloc] initWithTitle:@"Support" 
+                                                                style:(UIBarButtonItemStyleBordered) 
+                                                               target:self 
+                                                               action:@selector(supportAlert)];
+    [[self navigationItem] setRightBarButtonItem: button];
+    [button release];
+    
+    [[self navigationItem] setTitle: @"Welcome"];
+    
+    //become observer for application going to background
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector (applicationWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:[UIApplication sharedApplication]];
+    
+    return self;
 }
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [managedObjectContext_ release];
+//    [fetchedResultsController_ release];
+    [super dealloc];
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -35,89 +76,11 @@
 	[super viewDidDisappear:animated];
 }
 
-/*
+
  // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
- */
-
-// Customize the number of sections in the table view.
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 0;
-}
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-
-    // Configure the cell.
-    return cell;
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert)
-    {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-	*/
+    return (interfaceOrientation ==  UIInterfaceOrientationPortrait) || UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,18 +90,60 @@
     
     // Relinquish ownership any cached data, images, etc that aren't in use.
 }
-
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    // autoresizing for autorotating
+    self.view.autoresizesSubviews = YES;
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];
 
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
+    self.savedAlert = nil;
+
 }
 
-- (void)dealloc
+
+- (void)supportAlert
 {
-    [super dealloc];
+    NSLog (@"myAlert");
+    UIAlertView* alertView =
+    [[UIAlertView alloc] initWithTitle:@"Please Donate" 
+                               message:@"CroatiaFest needs your donations.  Please remember to drop your contribution in the donation box at the information booth." 
+                              delegate:self 
+                     cancelButtonTitle:@"OK" 
+                     otherButtonTitles: nil];
+    self.savedAlert = alertView;
+    [alertView show];
+    [alertView release];
+    
+}
+#pragma mark -
+#pragma mark UIAlertViewDelegate Methods
+
+- (void) alertView: (UIAlertView *) alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView == self.savedAlert) {
+        self.savedAlert = nil;
+        if (buttonIndex == [alertView cancelButtonIndex]) {
+            NSLog(@"alert cancel button pressed!");
+        }
+        else {
+            NSLog(@"alert action button pressed open webpage to support page!");
+        }
+    }
+}
+- (void) applicationWillResignActive: (NSNotification *) note
+{
+    NSLog(@"in applicationWillResignActive in RootViewController");
+    [self.savedAlert dismissWithClickedButtonIndex: self.savedAlert.cancelButtonIndex animated:NO];
+    self.savedAlert = nil;
 }
 
 @end

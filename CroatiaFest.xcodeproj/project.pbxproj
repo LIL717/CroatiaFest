@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		703219201428088B002BF16A /* PerformerDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7032191F1428088B002BF16A /* PerformerDataModel.m */; };
 		705B96BA13A275D000346007 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96B913A275D000346007 /* UIKit.framework */; };
 		705B96BC13A275D000346007 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BB13A275D000346007 /* Foundation.framework */; };
 		705B96BE13A275D000346007 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BD13A275D000346007 /* CoreGraphics.framework */; };
@@ -16,23 +17,73 @@
 		705B96CD13A275D000346007 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705B96CB13A275D000346007 /* MainWindow.xib */; };
 		705B96D013A275D000346007 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B96CF13A275D000346007 /* RootViewController.m */; };
 		705B96D313A275D000346007 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705B96D113A275D000346007 /* RootViewController.xib */; };
+		705B9BFC13A30A4400346007 /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9BFA13A30A4400346007 /* EventViewController.m */; };
+		705B9BFD13A30A4400346007 /* EventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705B9BFB13A30A4400346007 /* EventViewController.xib */; };
+		705B9C0E13A6D83700346007 /* croatiafestws.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 705B9C0D13A6D83700346007 /* croatiafestws.jpg */; };
+		705B9C1A13A8715100346007 /* MarketplaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C1813A8715000346007 /* MarketplaceViewController.m */; };
+		705B9C1B13A8715100346007 /* MarketplaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705B9C1913A8715100346007 /* MarketplaceViewController.xib */; };
+		705B9C1D13A8742500346007 /* croatiafestwos.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 705B9C1C13A8742500346007 /* croatiafestwos.jpg */; };
+		705B9C1F13A876B400346007 /* Red and White Checkered Flag Liverpool - Version 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 705B9C1E13A876B400346007 /* Red and White Checkered Flag Liverpool - Version 2.jpg */; };
+		705B9C2D13A8F76500346007 /* Performer.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C2C13A8F76400346007 /* Performer.m */; };
+		705B9C3113A8FB6F00346007 /* PerformerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C2F13A8FB6F00346007 /* PerformerViewController.m */; };
+		705B9C3213A8FB6F00346007 /* PerformerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705B9C3013A8FB6F00346007 /* PerformerViewController.xib */; };
+		705B9C3513A907D200346007 /* ParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C3413A907D100346007 /* ParseOperation.m */; };
+		705B9C6013BA742B00346007 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C5F13BA742900346007 /* DataModel.m */; };
+		7085B6C4142FB884006AEFF3 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6C3142FB884006AEFF3 /* Version.m */; };
+		70AE05C513C69AE8005F8303 /* ExhibitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AE05C313C69AE8005F8303 /* ExhibitViewController.m */; };
+		70AE05C613C69AE8005F8303 /* ExhibitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */; };
+		70AE05D913C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */; };
+		70AE05DC13C77460005F8303 /* cart_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05DB13C77460005F8303 /* cart_24.png */; };
+		70AE05DE13C7746B005F8303 /* mic_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05DD13C7746B005F8303 /* mic_24.png */; };
+		70B2AADD13CCDE09004C7D51 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70B2AADC13CCDE09004C7D51 /* CoreData.framework */; };
+		70B2AAE113CCF771004C7D51 /* CroatiaFest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70B2AADF13CCF771004C7D51 /* CroatiaFest.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7032191E1428088B002BF16A /* PerformerDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformerDataModel.h; sourceTree = "<group>"; };
+		7032191F1428088B002BF16A /* PerformerDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformerDataModel.m; sourceTree = "<group>"; };
 		705B96B513A275D000346007 /* CroatiaFest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CroatiaFest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		705B96B913A275D000346007 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		705B96BB13A275D000346007 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		705B96BD13A275D000346007 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		705B96C113A275D000346007 /* CroatiaFest-Info.plist */ = {isa = PBXFileReference; path = "CroatiaFest-Info.plist"; sourceTree = "<group>"; };
+		705B96C113A275D000346007 /* CroatiaFest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CroatiaFest-Info.plist"; sourceTree = "<group>"; };
 		705B96C313A275D000346007 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		705B96C513A275D000346007 /* CroatiaFest-Prefix.pch */ = {isa = PBXFileReference; path = "CroatiaFest-Prefix.pch"; sourceTree = "<group>"; };
+		705B96C513A275D000346007 /* CroatiaFest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CroatiaFest-Prefix.pch"; sourceTree = "<group>"; };
 		705B96C613A275D000346007 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		705B96C813A275D000346007 /* CroatiaFestAppDelegate.h */ = {isa = PBXFileReference; path = CroatiaFestAppDelegate.h; sourceTree = "<group>"; };
+		705B96C813A275D000346007 /* CroatiaFestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CroatiaFestAppDelegate.h; sourceTree = "<group>"; };
 		705B96C913A275D000346007 /* CroatiaFestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CroatiaFestAppDelegate.m; sourceTree = "<group>"; };
 		705B96CC13A275D000346007 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		705B96CE13A275D000346007 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		705B96CE13A275D000346007 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		705B96CF13A275D000346007 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		705B96D213A275D000346007 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		705B9BF913A30A4400346007 /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
+		705B9BFA13A30A4400346007 /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
+		705B9BFB13A30A4400346007 /* EventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventViewController.xib; sourceTree = "<group>"; };
+		705B9C0D13A6D83700346007 /* croatiafestws.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = croatiafestws.jpg; path = ../croatiafestws.jpg; sourceTree = "<group>"; };
+		705B9C1713A8715000346007 /* MarketplaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketplaceViewController.h; sourceTree = "<group>"; };
+		705B9C1813A8715000346007 /* MarketplaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketplaceViewController.m; sourceTree = "<group>"; };
+		705B9C1913A8715100346007 /* MarketplaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketplaceViewController.xib; sourceTree = "<group>"; };
+		705B9C1C13A8742500346007 /* croatiafestwos.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = croatiafestwos.jpg; sourceTree = "<group>"; };
+		705B9C1E13A876B400346007 /* Red and White Checkered Flag Liverpool - Version 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Red and White Checkered Flag Liverpool - Version 2.jpg"; sourceTree = "<group>"; };
+		705B9C2B13A8F76400346007 /* Performer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Performer.h; sourceTree = "<group>"; };
+		705B9C2C13A8F76400346007 /* Performer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Performer.m; sourceTree = "<group>"; };
+		705B9C2E13A8FB6E00346007 /* PerformerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformerViewController.h; sourceTree = "<group>"; };
+		705B9C2F13A8FB6F00346007 /* PerformerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformerViewController.m; sourceTree = "<group>"; };
+		705B9C3013A8FB6F00346007 /* PerformerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PerformerViewController.xib; sourceTree = "<group>"; };
+		705B9C3313A907D100346007 /* ParseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseOperation.h; sourceTree = "<group>"; };
+		705B9C3413A907D100346007 /* ParseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseOperation.m; sourceTree = "<group>"; };
+		705B9C5E13BA742800346007 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		705B9C5F13BA742900346007 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
+		7085B6C2142FB884006AEFF3 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		7085B6C3142FB884006AEFF3 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
+		70AE05C213C69AE8005F8303 /* ExhibitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExhibitViewController.h; sourceTree = "<group>"; };
+		70AE05C313C69AE8005F8303 /* ExhibitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExhibitViewController.m; sourceTree = "<group>"; };
+		70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExhibitViewController.xib; sourceTree = "<group>"; };
+		70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20px-Coat_of_arms_of_Croatia.png"; sourceTree = "<group>"; };
+		70AE05DB13C77460005F8303 /* cart_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart_24.png; sourceTree = "<group>"; };
+		70AE05DD13C7746B005F8303 /* mic_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic_24.png; sourceTree = "<group>"; };
+		70B2AADC13CCDE09004C7D51 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		70B2AAE013CCF771004C7D51 /* CroatiaFest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CroatiaFest.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70B2AADD13CCDE09004C7D51 /* CoreData.framework in Frameworks */,
 				705B96BA13A275D000346007 /* UIKit.framework in Frameworks */,
 				705B96BC13A275D000346007 /* Foundation.framework in Frameworks */,
 				705B96BE13A275D000346007 /* CoreGraphics.framework in Frameworks */,
@@ -69,6 +121,7 @@
 		705B96B813A275D000346007 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				70B2AADC13CCDE09004C7D51 /* CoreData.framework */,
 				705B96B913A275D000346007 /* UIKit.framework */,
 				705B96BB13A275D000346007 /* Foundation.framework */,
 				705B96BD13A275D000346007 /* CoreGraphics.framework */,
@@ -79,12 +132,14 @@
 		705B96BF13A275D000346007 /* CroatiaFest */ = {
 			isa = PBXGroup;
 			children = (
+				70B2AAE413CD0540004C7D51 /* Model */,
+				70B2AAE313CD053D004C7D51 /* View */,
+				70B2AAE213CD0534004C7D51 /* Controller */,
 				705B96C813A275D000346007 /* CroatiaFestAppDelegate.h */,
 				705B96C913A275D000346007 /* CroatiaFestAppDelegate.m */,
+				705B9C3313A907D100346007 /* ParseOperation.h */,
+				705B9C3413A907D100346007 /* ParseOperation.m */,
 				705B96CB13A275D000346007 /* MainWindow.xib */,
-				705B96CE13A275D000346007 /* RootViewController.h */,
-				705B96CF13A275D000346007 /* RootViewController.m */,
-				705B96D113A275D000346007 /* RootViewController.xib */,
 				705B96C013A275D000346007 /* Supporting Files */,
 			);
 			path = CroatiaFest;
@@ -93,12 +148,63 @@
 		705B96C013A275D000346007 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				70B2AADF13CCF771004C7D51 /* CroatiaFest.xcdatamodeld */,
+				70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */,
+				70AE05DB13C77460005F8303 /* cart_24.png */,
+				70AE05DD13C7746B005F8303 /* mic_24.png */,
+				705B9C1E13A876B400346007 /* Red and White Checkered Flag Liverpool - Version 2.jpg */,
+				705B9C0D13A6D83700346007 /* croatiafestws.jpg */,
+				705B9C1C13A8742500346007 /* croatiafestwos.jpg */,
 				705B96C113A275D000346007 /* CroatiaFest-Info.plist */,
 				705B96C213A275D000346007 /* InfoPlist.strings */,
 				705B96C513A275D000346007 /* CroatiaFest-Prefix.pch */,
 				705B96C613A275D000346007 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		70B2AAE213CD0534004C7D51 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				705B96CE13A275D000346007 /* RootViewController.h */,
+				705B96CF13A275D000346007 /* RootViewController.m */,
+				705B9BF913A30A4400346007 /* EventViewController.h */,
+				705B9BFA13A30A4400346007 /* EventViewController.m */,
+				705B9C2E13A8FB6E00346007 /* PerformerViewController.h */,
+				705B9C2F13A8FB6F00346007 /* PerformerViewController.m */,
+				705B9C1713A8715000346007 /* MarketplaceViewController.h */,
+				705B9C1813A8715000346007 /* MarketplaceViewController.m */,
+				70AE05C213C69AE8005F8303 /* ExhibitViewController.h */,
+				70AE05C313C69AE8005F8303 /* ExhibitViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		70B2AAE313CD053D004C7D51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				705B9C1913A8715100346007 /* MarketplaceViewController.xib */,
+				705B9C3013A8FB6F00346007 /* PerformerViewController.xib */,
+				705B9BFB13A30A4400346007 /* EventViewController.xib */,
+				705B96D113A275D000346007 /* RootViewController.xib */,
+				70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		70B2AAE413CD0540004C7D51 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				705B9C2B13A8F76400346007 /* Performer.h */,
+				705B9C2C13A8F76400346007 /* Performer.m */,
+				705B9C5E13BA742800346007 /* DataModel.h */,
+				705B9C5F13BA742900346007 /* DataModel.m */,
+				7032191E1428088B002BF16A /* PerformerDataModel.h */,
+				7032191F1428088B002BF16A /* PerformerDataModel.m */,
+				7085B6C2142FB884006AEFF3 /* Version.h */,
+				7085B6C3142FB884006AEFF3 /* Version.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +257,16 @@
 				705B96C413A275D000346007 /* InfoPlist.strings in Resources */,
 				705B96CD13A275D000346007 /* MainWindow.xib in Resources */,
 				705B96D313A275D000346007 /* RootViewController.xib in Resources */,
+				705B9BFD13A30A4400346007 /* EventViewController.xib in Resources */,
+				705B9C0E13A6D83700346007 /* croatiafestws.jpg in Resources */,
+				705B9C1B13A8715100346007 /* MarketplaceViewController.xib in Resources */,
+				705B9C1D13A8742500346007 /* croatiafestwos.jpg in Resources */,
+				705B9C1F13A876B400346007 /* Red and White Checkered Flag Liverpool - Version 2.jpg in Resources */,
+				705B9C3213A8FB6F00346007 /* PerformerViewController.xib in Resources */,
+				70AE05C613C69AE8005F8303 /* ExhibitViewController.xib in Resources */,
+				70AE05D913C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png in Resources */,
+				70AE05DC13C77460005F8303 /* cart_24.png in Resources */,
+				70AE05DE13C7746B005F8303 /* mic_24.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +280,16 @@
 				705B96C713A275D000346007 /* main.m in Sources */,
 				705B96CA13A275D000346007 /* CroatiaFestAppDelegate.m in Sources */,
 				705B96D013A275D000346007 /* RootViewController.m in Sources */,
+				705B9BFC13A30A4400346007 /* EventViewController.m in Sources */,
+				705B9C1A13A8715100346007 /* MarketplaceViewController.m in Sources */,
+				705B9C2D13A8F76500346007 /* Performer.m in Sources */,
+				705B9C3113A8FB6F00346007 /* PerformerViewController.m in Sources */,
+				705B9C3513A907D200346007 /* ParseOperation.m in Sources */,
+				705B9C6013BA742B00346007 /* DataModel.m in Sources */,
+				70AE05C513C69AE8005F8303 /* ExhibitViewController.m in Sources */,
+				70B2AAE113CCF771004C7D51 /* CroatiaFest.xcdatamodeld in Sources */,
+				703219201428088B002BF16A /* PerformerDataModel.m in Sources */,
+				7085B6C4142FB884006AEFF3 /* Version.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +365,7 @@
 				GCC_PREFIX_HEADER = "CroatiaFest/CroatiaFest-Prefix.pch";
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -252,6 +379,7 @@
 				GCC_PREFIX_HEADER = "CroatiaFest/CroatiaFest-Prefix.pch";
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -276,8 +404,23 @@
 				705B96D813A275D000346007 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		70B2AADF13CCF771004C7D51 /* CroatiaFest.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				70B2AAE013CCF771004C7D51 /* CroatiaFest.xcdatamodel */,
+			);
+			currentVersion = 70B2AAE013CCF771004C7D51 /* CroatiaFest.xcdatamodel */;
+			name = CroatiaFest.xcdatamodeld;
+			path = ../CroatiaFest.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 705B96AC13A275D000346007 /* Project object */;
 }
