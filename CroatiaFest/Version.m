@@ -12,13 +12,12 @@
 
 @dynamic number;
 
-- (id)init {
-    
-    if ((self = [super init])) {
-        self.number = 0;
-    }
-    
-    return self;
-}
+//- (id)init {
+//    
+//    if ((self = [super init])) {
+//    }
+//    
+//    return self;
+//}
 
 @end

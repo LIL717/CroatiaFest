@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		703219201428088B002BF16A /* PerformerDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7032191F1428088B002BF16A /* PerformerDataModel.m */; };
+		703C4203143A3B2E004EBB9F /* PerformerDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4201143A3B2E004EBB9F /* PerformerDetailController.m */; };
+		703C4204143A3B2E004EBB9F /* PerformerDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 703C4202143A3B2E004EBB9F /* PerformerDetailController.xib */; };
 		705B96BA13A275D000346007 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96B913A275D000346007 /* UIKit.framework */; };
 		705B96BC13A275D000346007 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BB13A275D000346007 /* Foundation.framework */; };
 		705B96BE13A275D000346007 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BD13A275D000346007 /* CoreGraphics.framework */; };
@@ -30,6 +32,7 @@
 		705B9C3513A907D200346007 /* ParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C3413A907D100346007 /* ParseOperation.m */; };
 		705B9C6013BA742B00346007 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C5F13BA742900346007 /* DataModel.m */; };
 		7085B6C4142FB884006AEFF3 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6C3142FB884006AEFF3 /* Version.m */; };
+		7085B6D414340BD7006AEFF3 /* VersionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6D314340BD7006AEFF3 /* VersionController.m */; };
 		70AE05C513C69AE8005F8303 /* ExhibitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AE05C313C69AE8005F8303 /* ExhibitViewController.m */; };
 		70AE05C613C69AE8005F8303 /* ExhibitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */; };
 		70AE05D913C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */; };
@@ -42,6 +45,9 @@
 /* Begin PBXFileReference section */
 		7032191E1428088B002BF16A /* PerformerDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformerDataModel.h; sourceTree = "<group>"; };
 		7032191F1428088B002BF16A /* PerformerDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformerDataModel.m; sourceTree = "<group>"; };
+		703C4200143A3B2E004EBB9F /* PerformerDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformerDetailController.h; sourceTree = "<group>"; };
+		703C4201143A3B2E004EBB9F /* PerformerDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformerDetailController.m; sourceTree = "<group>"; };
+		703C4202143A3B2E004EBB9F /* PerformerDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PerformerDetailController.xib; sourceTree = "<group>"; };
 		705B96B513A275D000346007 /* CroatiaFest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CroatiaFest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		705B96B913A275D000346007 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		705B96BB13A275D000346007 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -76,6 +82,8 @@
 		705B9C5F13BA742900346007 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		7085B6C2142FB884006AEFF3 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
 		7085B6C3142FB884006AEFF3 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
+		7085B6D214340BD7006AEFF3 /* VersionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionController.h; sourceTree = "<group>"; };
+		7085B6D314340BD7006AEFF3 /* VersionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionController.m; sourceTree = "<group>"; };
 		70AE05C213C69AE8005F8303 /* ExhibitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExhibitViewController.h; sourceTree = "<group>"; };
 		70AE05C313C69AE8005F8303 /* ExhibitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExhibitViewController.m; sourceTree = "<group>"; };
 		70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExhibitViewController.xib; sourceTree = "<group>"; };
@@ -166,6 +174,8 @@
 		70B2AAE213CD0534004C7D51 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7085B6D214340BD7006AEFF3 /* VersionController.h */,
+				7085B6D314340BD7006AEFF3 /* VersionController.m */,
 				705B96CE13A275D000346007 /* RootViewController.h */,
 				705B96CF13A275D000346007 /* RootViewController.m */,
 				705B9BF913A30A4400346007 /* EventViewController.h */,
@@ -176,6 +186,8 @@
 				705B9C1813A8715000346007 /* MarketplaceViewController.m */,
 				70AE05C213C69AE8005F8303 /* ExhibitViewController.h */,
 				70AE05C313C69AE8005F8303 /* ExhibitViewController.m */,
+				703C4200143A3B2E004EBB9F /* PerformerDetailController.h */,
+				703C4201143A3B2E004EBB9F /* PerformerDetailController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -188,6 +200,7 @@
 				705B9BFB13A30A4400346007 /* EventViewController.xib */,
 				705B96D113A275D000346007 /* RootViewController.xib */,
 				70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */,
+				703C4202143A3B2E004EBB9F /* PerformerDetailController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -267,6 +280,7 @@
 				70AE05D913C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png in Resources */,
 				70AE05DC13C77460005F8303 /* cart_24.png in Resources */,
 				70AE05DE13C7746B005F8303 /* mic_24.png in Resources */,
+				703C4204143A3B2E004EBB9F /* PerformerDetailController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +304,8 @@
 				70B2AAE113CCF771004C7D51 /* CroatiaFest.xcdatamodeld in Sources */,
 				703219201428088B002BF16A /* PerformerDataModel.m in Sources */,
 				7085B6C4142FB884006AEFF3 /* Version.m in Sources */,
+				7085B6D414340BD7006AEFF3 /* VersionController.m in Sources */,
+				703C4203143A3B2E004EBB9F /* PerformerDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

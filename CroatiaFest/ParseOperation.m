@@ -8,22 +8,24 @@
 
 #import "ParseOperation.h"
 #import "PerformerDataModel.h"
+#import "VersionController.h"
 //#import "DataModel.h"
 
 // NSNotification name for sending Performer data back to the app delegate
-NSString *kAddPerformerNotif = @"AddPerformerNotif";
+NSString *kAddFestivalNotif = @"AddFestivalNotif";
 
 // NSNotification userInfo key for obtaining the Performer data
-NSString *kPerformerResultsKey = @"PerformerResultsKey";
+NSString *kFestivalResultsKey = @"FestivalResultsKey";
 
 // NSNotification name for reporting errors
-NSString *kPerformerErrorNotif = @"PerformerErrorNotif";
+NSString *kFestivalErrorNotif = @"FestivalErrorNotif";
 
 // NSNotification userInfo key for obtaining the error message
-NSString *kPerformerMsgErrorKey = @"PerformerMsgErrorKey";
+NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
 
 
 @interface ParseOperation () <NSXMLParserDelegate>
+@property (nonatomic, retain) VersionController *versionController;
 @property (nonatomic, retain) PerformerDataModel *currentPerformerObject;
 @property (nonatomic, retain) NSMutableArray *currentParseBatch;
 @property (nonatomic, retain) NSMutableString *currentParsedCharacterData;
@@ -31,13 +33,17 @@ NSString *kPerformerMsgErrorKey = @"PerformerMsgErrorKey";
 
 @implementation ParseOperation
 
-//@synthesize parseData, dataModel, currentPerformerObject, currentParsedCharacterData, currentParseBatch;
-//@synthesize dataModel, currentPerformerObject, currentParsedCharacterData, currentParseBatch;
-@synthesize parseData, currentPerformerObject, currentParsedCharacterData, currentParseBatch;
+@synthesize parseData;
+@synthesize versionController;
+@synthesize currentPerformerObject;
+@synthesize currentParsedCharacterData;
+@synthesize currentParseBatch;
 
 @synthesize currentItemDictionary;
 @synthesize currentTableName;
 @synthesize currentElementName;
+@synthesize managedObjectContext = __managedObjectContext;
+
 
 
 //- (id)initWithData:(NSData *)data model:(DataModel *)model
@@ -49,15 +55,12 @@ NSString *kPerformerMsgErrorKey = @"PerformerMsgErrorKey";
     if ((self = [super init])) {   
         tableItemNames = [[NSSet alloc] initWithObjects:TABLE_FEED_TAGS]; 
         columnItemNames = [[NSSet alloc] initWithObjects:COLUMN_FEED_TAGS]; 
+        appControlItemNames = [[NSSet alloc] initWithObjects:APPCONTROL_FEED_TAGS];
 
 //        dataModel = [[DataModel alloc] init];
 //        dataModel = model;
         parseData = [data copy];
-        
-//        dateFormatter = [[NSDateFormatter alloc] init];
-//        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-//        [dateFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease]];
-//        [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+
     }
     return self;
 }
@@ -65,12 +68,15 @@ NSString *kPerformerMsgErrorKey = @"PerformerMsgErrorKey";
     LogMethod();
     
     [parseData release];
+    [versionController release];
     [currentPerformerObject release];
     [currentParsedCharacterData release];
     [currentParseBatch release];
-    //    [dateFormatter release];
     [tableItemNames release];
     [columnItemNames release];
+    [appControlItemNames release];
+    [__managedObjectContext release];
+
     
     [super dealloc];
 }
@@ -78,10 +84,10 @@ NSString *kPerformerMsgErrorKey = @"PerformerMsgErrorKey";
     LogMethod();
     assert([NSThread isMainThread]);
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAddPerformerNotif
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAddFestivalNotif
                                                         object:self
                                                       userInfo:[NSDictionary dictionaryWithObject:performers
-                                                        forKey:kPerformerResultsKey]]; 
+                                                        forKey:kFestivalResultsKey]]; 
 }
 
 // the main function for this NSOperation, to start the parsing
@@ -112,7 +118,6 @@ NSString *kPerformerMsgErrorKey = @"PerformerMsgErrorKey";
                             waitUntilDone:NO];
     }
     
- //   self.currentParseBatch = nil;
     self.currentPerformerObject = nil;
     self.currentParsedCharacterData = nil;
     
@@ -124,7 +129,7 @@ NSString *kPerformerMsgErrorKey = @"PerformerMsgErrorKey";
 
 // Limit the number of parsed performers to 50
 //
-static const const NSUInteger kMaximumNumberOfPerformersToParse = 50;
+static const const NSUInteger kMaximumNumberOfPerformersToParse = 150;
 
 // When an performer object has been fully constructed, it must be passed to the main thread and
 // the table view in PerformerViewController must be reloaded to display it. It is not efficient to do
@@ -143,6 +148,7 @@ static NSString * const kElementName = @"Name";
 static NSString * const kElementDesc = @"Desc";
 static NSString * const kElementCity = @"City";
 static NSString * const kElementWebsite = @"Website";
+static NSString * const kElementPerformanceTime = @"Performance_Time";
 
 #pragma mark -
 #pragma mark NSXMLParser delegate methods
@@ -190,25 +196,21 @@ static NSString * const kElementWebsite = @"Website";
         } else self.currentTableName = nil;
     } 
     if ([elementName isEqualToString:kColumnName]) {
-        if ([self.currentTableName isEqualToString:@"performers"]) {
         NSString *fieldName = [attributeDict valueForKey:@"name"];
-        if ([columnItemNames containsObject:fieldName]) {
+
+        if (([self.currentTableName isEqualToString:@"appControl"] && [appControlItemNames containsObject:fieldName]) 
+               ||
+            ([self.currentTableName isEqualToString:@"performers"] && [columnItemNames containsObject:fieldName])) {
             self.currentElementName = [[[NSString alloc] initWithString:fieldName] autorelease];
-//            NSLog(@"currentElementName is **************%@", currentElementName);
-            // The mutable string needs to be reset to empty.
-            currentParsedCharacterData = [[NSMutableString alloc] init];
+                // The mutable string needs to be reset to empty.
+                currentParsedCharacterData = [[NSMutableString alloc] init];
 
-            //self.currentElementName = fieldName;
-
-        // For the 'column' element begin accumulating parsed character data.
-        // The contents are collected in parser:foundCharacters:.
-        accumulatingParsedCharacterData = YES;
-//        [currentParsedCharacterData setString:@""];
-        }
+                // For the 'column' element begin accumulating parsed character data.
+                // The contents are collected in parser:foundCharacters:.
+                accumulatingParsedCharacterData = YES;
         }
     }
 }
-# pragma mark TODO: code to parse actual data  use self.currentParsedCharacterData that is where the stringed data is
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI
@@ -218,13 +220,30 @@ static NSString * const kElementWebsite = @"Website";
 //
 //    NSLog (@" here is the data that is in the parsed string %@", self.currentParsedCharacterData);
 //    NSLog(@"end element %@", elementName);
+    if ([self.currentTableName isEqualToString:@"appControl"]) {
+        if ([elementName isEqualToString:kColumnName]) {
+            self.versionController = [[[VersionController alloc] init] autorelease];
+            self.versionController.managedObjectContext = self.managedObjectContext;
+            if ([self.versionController updateSavedVersion:self.currentParsedCharacterData]) {
+                NSLog(@"yes versionHasChanged continue with parsing");
+            } else {
+                // no need to parse data if version has not changed because data that has been
+                //stored in Core Data will be used.
+                //Use the flag didAbortParsing to distinguish between this deliberate stop
+                // and other parser errors.
+                //
+                didAbortParsing = YES;
+                [parser abortParsing];
+            }
+        }
+    }
     if ([self.currentTableName isEqualToString:@"performers"]) {
 
     if ([elementName isEqualToString:kColumnName]) {
 //        NSLog(@"currentElementName is %@", self.currentElementName);
 //        NSLog(@"currentParsedCharacterData is %@", self.currentParsedCharacterData);
         [self.currentItemDictionary setValue:currentParsedCharacterData forKey:self.currentElementName];
-//        NSLog(@"currentItemDictionary is %@", self.currentItemDictionary);
+        NSLog(@"currentItemDictionary is %@", self.currentItemDictionary);
 
     }
     else if ([elementName isEqualToString:kTableName]) {
@@ -236,11 +255,15 @@ static NSString * const kElementWebsite = @"Website";
         } else {
             PerformerDataModel *performer = [[PerformerDataModel alloc] init];
             
-            performer.name = [self.currentItemDictionary valueForKey:@"Name"];
-            performer.desc = [self.currentItemDictionary valueForKey:@"Desc"];
-            performer.city = [self.currentItemDictionary valueForKey:@"City"];
-            performer.website = [self.currentItemDictionary valueForKey:@"Website"];
-            performer.websiteDesc = [self.currentItemDictionary valueForKey:@"Website_description"];
+            performer.name = [self.currentItemDictionary valueForKey:kElementName];
+            performer.desc = [self.currentItemDictionary valueForKey:kElementDesc];
+            performer.city = [self.currentItemDictionary valueForKey:kElementCity];
+            performer.website = [self.currentItemDictionary valueForKey:kElementWebsite];
+
+            // Convert string to date object
+            NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+            [dateFormatter setDateFormat:@"hh:mm:ss"];
+            performer.performanceTime = [dateFormatter dateFromString:[self.currentItemDictionary valueForKey:kElementPerformanceTime]];
             
 //            [dataModel.itemsArray addObject:performer];
             [self.currentParseBatch addObject:performer];
@@ -281,10 +304,10 @@ static NSString * const kElementWebsite = @"Website";
 - (void)handlePerformerError:(NSError *)parseError {
     LogMethod();
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPerformerErrorNotif
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFestivalErrorNotif
                                                         object:self
                                                       userInfo:[NSDictionary dictionaryWithObject:parseError
-                                                                                           forKey:kPerformerMsgErrorKey]];
+                                                                                           forKey:kFestivalMsgErrorKey]];
 }
 
 // an error occurred while parsing the Performer data,

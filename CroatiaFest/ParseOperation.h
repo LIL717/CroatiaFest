@@ -7,19 +7,19 @@
 //
 #import <Foundation/Foundation.h>
 
-//#define TABLE_FEED_TAGS @"appControl", @"performers", nil
-#define TABLE_FEED_TAGS @"performers", nil
+#define TABLE_FEED_TAGS @"appControl", @"performers", nil
 
 #define COLUMN_FEED_TAGS @"Name", @"Desc", @"City", @"Website", @"Website_description", @"Performance_Time", nil
+#define APPCONTROL_FEED_TAGS @"Version",  nil
 
-extern NSString *kAddPerformerNotif;
-extern NSString *kPerformerResultsKey;
+extern NSString *kAddFestivalNotif;
+extern NSString *kFestivalResultsKey;
 
-extern NSString *kPerformerErrorNotif;
-extern NSString *kPerformerMsgErrorKey;
+extern NSString *kFestivalErrorNotif;
+extern NSString *kFestivalMsgErrorKey;
 
 @class PerformerDataModel;
-//@class DataModel;
+@class VersionController;
 
 @interface ParseOperation : NSOperation {
     
@@ -27,17 +27,18 @@ extern NSString *kPerformerMsgErrorKey;
     
     NSSet *tableItemNames;
     NSSet *columnItemNames;
+    NSSet *appControlItemNames;
     NSMutableDictionary *currentItemDictionary;
     NSString *currentTableName;
     NSString *currentElementName;
 
 
 @private
-//    NSDateFormatter *dateFormatter;
     
     // these variables are used during parsing
-//    DataModel *dataModel;
+    VersionController *versionController;
     PerformerDataModel *currentPerformerObject;
+
     NSMutableArray *currentParseBatch;
     NSMutableString *currentParsedCharacterData;
     
@@ -52,8 +53,7 @@ extern NSString *kPerformerMsgErrorKey;
 @property (nonatomic, retain) NSMutableDictionary *currentItemDictionary;
 @property (nonatomic, retain) NSString *currentElementName;
 @property (nonatomic, retain) NSString *currentTableName;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
-
-//- (id)initWithData:(NSData *)data model:(DataModel *)model;
 
 @end

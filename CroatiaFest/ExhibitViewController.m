@@ -54,11 +54,11 @@
     [super viewDidLoad];
     self.title = @"Exhibits";
     
-    //become observer for application going to background
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector (applicationWillResignActive:)
-                                                 name:UIApplicationWillResignActiveNotification
-                                               object:[UIApplication sharedApplication]];
+//    //become observer for application going to background
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector (applicationWillResignActive:)
+//                                                 name:UIApplicationWillResignActiveNotification
+//                                               object:[UIApplication sharedApplication]];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

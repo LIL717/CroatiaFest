@@ -7,8 +7,9 @@
 //
 
 
+#import <CoreData/CoreData.h>
 
-@interface Version : NSManagedObject
+@interface Version : NSManagedObject 
 
 @property (nonatomic, retain) NSNumber *number;
 

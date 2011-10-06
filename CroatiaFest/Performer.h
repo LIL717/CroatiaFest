@@ -13,7 +13,7 @@
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *desc;
 @property (nonatomic, retain) NSString *city;
-@property (nonatomic, retain) NSURL *website;
+@property (nonatomic, retain) NSString *website;
 @property (nonatomic, retain) NSString *websiteDesc;
 @property (nonatomic, retain) NSDate *performanceTime;
 

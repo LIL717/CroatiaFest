@@ -27,8 +27,10 @@
 @property (nonatomic, retain) NSMutableData *festivalData;    // the data returned from the NSURLConnection
 @property (nonatomic, retain) NSOperationQueue *parseQueue;     // the queue that manages our NSOperation for parsing performer data
 
-- (void)addPerformersToList:(NSArray *)performers;
-- (void)handleError:(NSError *)error;
+- (void) setUpViewControllers;
+- (void) setUpURLConnection;
+- (void) addPerformersToList:(NSArray *)performers;
+- (void) handleError:(NSError *)error;
 @end
 
 @implementation CroatiaFestAppDelegate
@@ -37,7 +39,6 @@
 @synthesize webConnection;
 @synthesize festivalData;
 @synthesize parseQueue;
-//@synthesize performerViewController;
 @synthesize performer = performer_;
 @synthesize managedObjectContext = managedObjectContext_;
 @synthesize managedObjectModel = managedObjectModel_;
@@ -49,7 +50,6 @@
     [webConnection cancel];
     [webConnection release];
     [festivalData release];
-//    [performerViewController release];
     [performer_ release];
     [managedObjectContext_ release];
     [managedObjectModel_ release];
@@ -57,8 +57,8 @@
     
     [parseQueue release];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kAddPerformerNotif object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kPerformerErrorNotif object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kAddFestivalNotif object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kFestivalErrorNotif object:nil];
     [super dealloc];
 }
 
@@ -68,59 +68,66 @@
     LogMethod ();
     // Override point for customization after application launch.
     
+    [self setUpViewControllers];   
+    [self.window makeKeyAndVisible];
+    [self setUpURLConnection];
+
+    return YES;
+
+}
+- (void) setUpViewControllers {
     //Create the tabBarController
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    
+
     //Create two view controllers
     RootViewController *rootViewController = [[RootViewController alloc] init];
     EventViewController *eventViewController = [[EventViewController alloc] init];
     eventViewController.managedObjectContext = self.managedObjectContext;
 
     MarketplaceViewController *marketplaceViewController = [[MarketplaceViewController alloc] init];
-    
+
     //Create navigation controller
     UINavigationController *navController = [[UINavigationController alloc]
                                              initWithRootViewController:rootViewController];
-    
+
     //Create navigation controller
     UINavigationController *navController2 = [[UINavigationController alloc]
                                               initWithRootViewController:eventViewController];
-    
+
     //Create navigation controller
     UINavigationController *navController3 = [[UINavigationController alloc]
                                               initWithRootViewController:marketplaceViewController];
-    
-    
+
+
     //Make an array containing the two view controllers
     NSArray *viewControllers = [NSArray arrayWithObjects: navController, navController2, navController3, nil];
-//    NSArray *viewControllers = [NSArray arrayWithObjects: navController, navController2,  nil];
-//    NSArray *viewControllers = [NSArray arrayWithObjects: navController, nil];
+    //    NSArray *viewControllers = [NSArray arrayWithObjects: navController, navController2,  nil];
+    //    NSArray *viewControllers = [NSArray arrayWithObjects: navController, nil];
 
 
-    
-    
+
+
     //The viewControllers array retains them so we can release our ownership of them in this method
     [rootViewController release];
     [eventViewController release];
     [marketplaceViewController release];
-    
-    
+
+
     //Attach them to the tab bar controller
     [tabBarController setViewControllers:viewControllers];
-    
+
     //Set tabBar Controller as rootViewController of window
-//    [self.window setRootViewController:tabBarController];
+    //    [self.window setRootViewController:tabBarController];
     self.window.rootViewController = tabBarController;
 
     [tabBarController release];
-    
+
     [navController release];
     [navController2 release];
     [navController3 release];
-    
-    [self.window makeKeyAndVisible];
-    
-    
+}
+
+- (void) setUpURLConnection {    
     // Use NSURLConnection to asynchronously download the data. This means the main thread will not
     // be blocked - the application will remain responsive to the user. 
     //
@@ -128,9 +135,9 @@
     // Also, avoid synchronous network access on any thread.
     //
     static NSString *feedURLString = @"http://www.croatiafest.org/croatia4_tables.xml";
-    NSURLRequest *performerURLRequest =
+    NSURLRequest *festivalURLRequest =
     [NSURLRequest requestWithURL:[NSURL URLWithString:feedURLString]];
-    self.webConnection = [[[NSURLConnection alloc] initWithRequest:performerURLRequest delegate:self] autorelease];
+    self.webConnection = [[[NSURLConnection alloc] initWithRequest:festivalURLRequest delegate:self] autorelease];
     
     // Test the validity of the connection object. The most likely reason for the connection object
     // to be nil is a malformed URL, which is a programmatic error easily detected during development.
@@ -147,17 +154,15 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(addPerformers:)
-                                                 name:kAddPerformerNotif
+                                                 name:kAddFestivalNotif
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(performerError:)
-                                                 name:kPerformerErrorNotif
+                                                 name:kFestivalErrorNotif
                                                object:nil];
     
-
-    return YES;
-
 }
+
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
@@ -198,7 +203,7 @@
     //    LogMethod();
     
     [festivalData appendData:data];
-     //   NSLog (@"(performerData is %@", performerData);
+     //   NSLog (@"(festivalData is %@", festivalData);
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -238,6 +243,9 @@
     //    ParseOperation *parseOperation = [[ParseOperation alloc] initWithData:self.performerData model:model];
     
     ParseOperation *parseOperation = [[ParseOperation alloc] initWithData:self.festivalData];
+    //need to pass managedObjectContext because ParseOperation calls core data to check version number
+    parseOperation.managedObjectContext = self.managedObjectContext;
+
     [self.parseQueue addOperation:parseOperation];
     [parseOperation release];   // once added to the NSOperationQueue it's retained, we don't need it anymore
     //    [model release];
@@ -260,7 +268,7 @@
     NSString *errorMessage = [error localizedDescription];
     UIAlertView *alertView =
     [[UIAlertView alloc] initWithTitle:
-     NSLocalizedString(@"Error Title",
+     NSLocalizedString(@"Connection Error",
                        @"Title for alert displayed when download or parse error occurs.")
                                message:errorMessage
                               delegate:nil
@@ -277,7 +285,7 @@
     
     assert([NSThread isMainThread]);
     
-    [self addPerformersToList:[[notif userInfo] valueForKey:kPerformerResultsKey]];
+    [self addPerformersToList:[[notif userInfo] valueForKey:kFestivalResultsKey]];
 }
 
 // Our NSNotification callback from the running NSOperation when a parsing error has occurred
@@ -287,7 +295,7 @@
     
     assert([NSThread isMainThread]);
     
-    [self handleError:[[notif userInfo] valueForKey:kPerformerMsgErrorKey]];
+    [self handleError:[[notif userInfo] valueForKey:kFestivalMsgErrorKey]];
 }
 
 // The NSOperation "ParseOperation" calls addPerformers: via NSNotification, on the main thread
@@ -302,18 +310,18 @@
     NSError *error = nil;
     
     for (PerformerDataModel *newPerformer in performers) {
-//        NSLog(@"name=%@, desc=%@, city=%@, website=%@, websiteDesc=%@", newPerformer.name, newPerformer.desc, newPerformer.city, newPerformer.website, newPerformer.websiteDesc);
+        NSLog(@"name=%@, desc=%@, city=%@, website=%@, websiteDesc=%@, performanceTime=%@", newPerformer.name, newPerformer.desc, newPerformer.city, newPerformer.website, newPerformer.websiteDesc,newPerformer.performanceTime);
         self.performer= [NSEntityDescription insertNewObjectForEntityForName:@"Performer" inManagedObjectContext:self.managedObjectContext];
         self.performer.name = newPerformer.name;
         self.performer.desc = newPerformer.desc;
         self.performer.city = newPerformer.city;
         self.performer.website = newPerformer.website;
         self.performer.websiteDesc = newPerformer.websiteDesc;
+        self.performer.performanceTime = newPerformer.performanceTime;
         
         if (![self.managedObjectContext save:&error]) {
             NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
         }
-//        NSLog(@"performer in core data is %@", self.performer.name);
         
     }
 }
@@ -436,3 +444,4 @@
 }
 
 @end
+ 

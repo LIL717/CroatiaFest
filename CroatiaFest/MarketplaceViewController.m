@@ -31,11 +31,11 @@
     
     [[self navigationItem] setTitle: @"Marketplace"];
     
-    //become observer for application going to background
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector (applicationWillResignActive:)
-                                                 name:UIApplicationWillResignActiveNotification
-                                               object:[UIApplication sharedApplication]];
+//    //become observer for application going to background
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector (applicationWillResignActive:)
+//                                                 name:UIApplicationWillResignActiveNotification
+//                                               object:[UIApplication sharedApplication]];
     return self;
 }
 - (id)initWithStyle:(UITableViewStyle)style
@@ -59,6 +59,11 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+//- (void) applicationWillResignActive: (NSNotification *) note
+//{
+//    NSLog(@"in applicationWillResignActive in RootViewController");
+//
+//}
 
 #pragma mark - View lifecycle
 

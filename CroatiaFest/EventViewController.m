@@ -36,11 +36,11 @@
     
     [[self navigationItem] setTitle: @"Events"];
     
-    //become observer for application going to background
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector (applicationWillResignActive:)
-                                                 name:UIApplicationWillResignActiveNotification
-                                               object:[UIApplication sharedApplication]];
+//    //become observer for application going to background
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector (applicationWillResignActive:)
+//                                                 name:UIApplicationWillResignActiveNotification
+//                                               object:[UIApplication sharedApplication]];
     return self;
 }
 
@@ -55,7 +55,7 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [managedObjectContext_ release];
 
     [super dealloc];
@@ -68,6 +68,11 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+//- (void) applicationWillResignActive: (NSNotification *) note
+//{
+//    NSLog(@"in applicationWillResignActive in RootViewController");
+//
+//}
 
 #pragma mark - View lifecycle
 

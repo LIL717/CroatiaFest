@@ -7,6 +7,7 @@
 //
 
 #import "PerformerViewController.h"
+#import "PerformerDetailController.h"
 #import "Performer.h"
 
 #pragma mark -
@@ -49,6 +50,11 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+//- (void) applicationWillResignActive: (NSNotification *) note
+//{
+//    NSLog(@"in applicationWillResignActive in RootViewController");
+//
+//}
 
 #pragma mark - View lifecycle
 
@@ -57,11 +63,11 @@
     [super viewDidLoad];
     self.title = @"Performers";
 
-    //become observer for application going to background
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector (applicationWillResignActive:)
-                                                 name:UIApplicationWillResignActiveNotification
-                                               object:[UIApplication sharedApplication]];
+//    //become observer for application going to background
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector (applicationWillResignActive:)
+//                                                 name:UIApplicationWillResignActiveNotification
+//                                               object:[UIApplication sharedApplication]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -82,7 +88,7 @@
     // e.g. self.myOutlet = nil;
 //    self.performerList = nil;
     
-    [self removeObserver:self forKeyPath:@"performerList"];
+//    [self removeObserver:self forKeyPath:@"performerList"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -155,14 +161,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+
+    PerformerDetailController *performerDetailController = [[[PerformerDetailController alloc] init] autorelease];
+    performerDetailController.managedObjectContext = self.managedObjectContext;
+    
+    Performer *selectedPerformer = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    performerDetailController.performer = selectedPerformer;
+    
+    [self.navigationController pushViewController:performerDetailController animated:YES];
 }
 
 // listen for changes to the performer list coming from our app delegagte.

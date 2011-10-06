@@ -10,7 +10,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "RootViewController.h"
-//@class Performer, PerformerViewController;
 @class Performer;
 
 @interface CroatiaFestAppDelegate : NSObject <UIApplicationDelegate, NSXMLParserDelegate> {
@@ -20,9 +19,7 @@
 @private    
     NSManagedObjectContext *managedObjectContext_;
     NSManagedObjectModel *managedObjectModel_;
-    NSPersistentStoreCoordinator *persistentStoreCoordinator_;
-    //    PerformerViewController *performerViewController;
-    
+    NSPersistentStoreCoordinator *persistentStoreCoordinator_;    
 
     // for downloading the xml data
     NSURLConnection *webConnection;
@@ -33,7 +30,6 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-//@property (nonatomic, retain) PerformerViewController *performerViewController;
 @property (nonatomic, retain) Performer *performer;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
