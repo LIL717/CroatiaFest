@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		703219201428088B002BF16A /* PerformerDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7032191F1428088B002BF16A /* PerformerDataModel.m */; };
+		70213F25143E522800E1C499 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 70213F24143E522800E1C499 /* Food.m */; };
+		70213F311442950800E1C499 /* Vendor.m in Sources */ = {isa = PBXBuildFile; fileRef = 70213F301442950800E1C499 /* Vendor.m */; };
+		70213F341442952D00E1C499 /* Workshop.m in Sources */ = {isa = PBXBuildFile; fileRef = 70213F331442952D00E1C499 /* Workshop.m */; };
 		703C4203143A3B2E004EBB9F /* PerformerDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4201143A3B2E004EBB9F /* PerformerDetailController.m */; };
 		703C4204143A3B2E004EBB9F /* PerformerDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 703C4202143A3B2E004EBB9F /* PerformerDetailController.xib */; };
 		705B96BA13A275D000346007 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96B913A275D000346007 /* UIKit.framework */; };
@@ -33,6 +35,7 @@
 		705B9C6013BA742B00346007 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C5F13BA742900346007 /* DataModel.m */; };
 		7085B6C4142FB884006AEFF3 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6C3142FB884006AEFF3 /* Version.m */; };
 		7085B6D414340BD7006AEFF3 /* VersionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6D314340BD7006AEFF3 /* VersionController.m */; };
+		70864CAE1444B30100C25B4B /* Directory.m in Sources */ = {isa = PBXBuildFile; fileRef = 70864CAD1444B30100C25B4B /* Directory.m */; };
 		70AE05C513C69AE8005F8303 /* ExhibitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AE05C313C69AE8005F8303 /* ExhibitViewController.m */; };
 		70AE05C613C69AE8005F8303 /* ExhibitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */; };
 		70AE05D913C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */; };
@@ -43,8 +46,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7032191E1428088B002BF16A /* PerformerDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformerDataModel.h; sourceTree = "<group>"; };
-		7032191F1428088B002BF16A /* PerformerDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformerDataModel.m; sourceTree = "<group>"; };
+		70213F23143E522800E1C499 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		70213F24143E522800E1C499 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		70213F2F1442950800E1C499 /* Vendor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vendor.h; sourceTree = "<group>"; };
+		70213F301442950800E1C499 /* Vendor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vendor.m; sourceTree = "<group>"; };
+		70213F321442952C00E1C499 /* Workshop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workshop.h; sourceTree = "<group>"; };
+		70213F331442952D00E1C499 /* Workshop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workshop.m; sourceTree = "<group>"; };
 		703C4200143A3B2E004EBB9F /* PerformerDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformerDetailController.h; sourceTree = "<group>"; };
 		703C4201143A3B2E004EBB9F /* PerformerDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformerDetailController.m; sourceTree = "<group>"; };
 		703C4202143A3B2E004EBB9F /* PerformerDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PerformerDetailController.xib; sourceTree = "<group>"; };
@@ -84,6 +91,8 @@
 		7085B6C3142FB884006AEFF3 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
 		7085B6D214340BD7006AEFF3 /* VersionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionController.h; sourceTree = "<group>"; };
 		7085B6D314340BD7006AEFF3 /* VersionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionController.m; sourceTree = "<group>"; };
+		70864CAC1444B30100C25B4B /* Directory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Directory.h; sourceTree = "<group>"; };
+		70864CAD1444B30100C25B4B /* Directory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Directory.m; sourceTree = "<group>"; };
 		70AE05C213C69AE8005F8303 /* ExhibitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExhibitViewController.h; sourceTree = "<group>"; };
 		70AE05C313C69AE8005F8303 /* ExhibitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExhibitViewController.m; sourceTree = "<group>"; };
 		70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExhibitViewController.xib; sourceTree = "<group>"; };
@@ -212,10 +221,16 @@
 				705B9C2C13A8F76400346007 /* Performer.m */,
 				705B9C5E13BA742800346007 /* DataModel.h */,
 				705B9C5F13BA742900346007 /* DataModel.m */,
-				7032191E1428088B002BF16A /* PerformerDataModel.h */,
-				7032191F1428088B002BF16A /* PerformerDataModel.m */,
 				7085B6C2142FB884006AEFF3 /* Version.h */,
 				7085B6C3142FB884006AEFF3 /* Version.m */,
+				70213F23143E522800E1C499 /* Food.h */,
+				70213F24143E522800E1C499 /* Food.m */,
+				70213F2F1442950800E1C499 /* Vendor.h */,
+				70213F301442950800E1C499 /* Vendor.m */,
+				70213F321442952C00E1C499 /* Workshop.h */,
+				70213F331442952D00E1C499 /* Workshop.m */,
+				70864CAC1444B30100C25B4B /* Directory.h */,
+				70864CAD1444B30100C25B4B /* Directory.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -245,6 +260,9 @@
 /* Begin PBXProject section */
 		705B96AC13A275D000346007 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 705B96AF13A275D000346007 /* Build configuration list for PBXProject "CroatiaFest" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -302,10 +320,13 @@
 				705B9C6013BA742B00346007 /* DataModel.m in Sources */,
 				70AE05C513C69AE8005F8303 /* ExhibitViewController.m in Sources */,
 				70B2AAE113CCF771004C7D51 /* CroatiaFest.xcdatamodeld in Sources */,
-				703219201428088B002BF16A /* PerformerDataModel.m in Sources */,
 				7085B6C4142FB884006AEFF3 /* Version.m in Sources */,
 				7085B6D414340BD7006AEFF3 /* VersionController.m in Sources */,
 				703C4203143A3B2E004EBB9F /* PerformerDetailController.m in Sources */,
+				70213F25143E522800E1C499 /* Food.m in Sources */,
+				70213F311442950800E1C499 /* Vendor.m in Sources */,
+				70213F341442952D00E1C499 /* Workshop.m in Sources */,
+				70864CAE1444B30100C25B4B /* Directory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +400,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CroatiaFest/CroatiaFest-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -393,6 +415,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CroatiaFest/CroatiaFest-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;

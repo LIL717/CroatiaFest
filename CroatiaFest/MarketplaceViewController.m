@@ -13,6 +13,7 @@
 @synthesize marketArray;
 -(id)init
 {
+    self = [super init];
     //Call the superclass's designated initializer
     [super initWithNibName: nil
                     bundle:nil];

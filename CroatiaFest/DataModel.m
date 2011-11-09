@@ -10,11 +10,13 @@
 
 
 @implementation DataModel
+@synthesize itemsType;
 @synthesize itemsArray;
 
 - (id)init {
     
     if ((self = [super init])) {
+        itemsType = [[NSString alloc] init];
         itemsArray = [[NSMutableArray alloc] init];
     }
     
@@ -23,6 +25,7 @@
 
 - (void)dealloc {
     
+    [itemsType release];
     [itemsArray release];
     
     [super dealloc];

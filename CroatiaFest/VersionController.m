@@ -26,6 +26,7 @@
 
 - (id)init
 {
+    LogMethod();
     self = [super init];
     if (self) {
         // Initialization code here.

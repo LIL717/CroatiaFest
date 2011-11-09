@@ -10,9 +10,11 @@
 
 
 @interface DataModel : NSObject {
+    NSString *itemsType;
     NSMutableArray *itemsArray;
     
 }
+@property (nonatomic, retain) NSString *itemsType;
 @property (nonatomic, retain) NSMutableArray *itemsArray;
 
 @end

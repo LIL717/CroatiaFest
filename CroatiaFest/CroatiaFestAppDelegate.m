@@ -12,8 +12,13 @@
 #import "MarketplaceViewController.h"
 #import "PerformerViewController.h"
 #import "Performer.h"
-#import "PerformerDataModel.h"
+//#import "PerformerDataModel.h"
 #import "ParseOperation.h"
+#import "Directory.h"
+#import "Food.h"
+#import "Vendor.h"
+#import "Workshop.h"
+
 
 // this framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code
 #import <CFNetwork/CFNetwork.h>
@@ -29,7 +34,8 @@
 
 - (void) setUpViewControllers;
 - (void) setUpURLConnection;
-- (void) addPerformersToList:(NSArray *)performers;
+//- (void) addPerformersToList:(NSArray *)performers;
+- (void)distributeParsedData:(NSDictionary *) parsedData;
 - (void) handleError:(NSError *)error;
 @end
 
@@ -39,7 +45,7 @@
 @synthesize webConnection;
 @synthesize festivalData;
 @synthesize parseQueue;
-@synthesize performer = performer_;
+//@synthesize performer = performer_;
 @synthesize managedObjectContext = managedObjectContext_;
 @synthesize managedObjectModel = managedObjectModel_;
 @synthesize persistentStoreCoordinator = persistentStoreCoordinator_;
@@ -50,7 +56,7 @@
     [webConnection cancel];
     [webConnection release];
     [festivalData release];
-    [performer_ release];
+//    [performer_ release];
     [managedObjectContext_ release];
     [managedObjectModel_ release];
     [persistentStoreCoordinator_ release];
@@ -153,11 +159,11 @@
     parseQueue = [NSOperationQueue new];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(addPerformers:)
+                                             selector:@selector(addParsedData:)
                                                  name:kAddFestivalNotif
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(performerError:)
+                                             selector:@selector(parsedDataError:)
                                                  name:kFestivalErrorNotif
                                                object:nil];
     
@@ -184,10 +190,12 @@
     //
     //    LogMethod();
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-    //    NSLog (@"httpResponse is %d", httpResponse.statusCode);
-    //    NSLog (@"response.MIMEType is %@", response.MIMEType);
+    NSLog (@"httpResponse is %d", httpResponse.statusCode);
+    NSLog (@"response.MIMEType is %@", response.MIMEType);
     //    if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"application/atom+xml"]) {
-    if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"application/xml"]) {
+//    if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"application/xml"]) {
+    if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"text/xml"]) {
+
         self.festivalData = [NSMutableData data];
     } else {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:
@@ -203,7 +211,7 @@
     //    LogMethod();
     
     [festivalData appendData:data];
-     //   NSLog (@"(festivalData is %@", festivalData);
+//        NSLog (@"(festivalData is %@", festivalData);
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -242,7 +250,7 @@
     //    DataModel *model = [[DataModel alloc] init];
     //    ParseOperation *parseOperation = [[ParseOperation alloc] initWithData:self.performerData model:model];
     
-    ParseOperation *parseOperation = [[ParseOperation alloc] initWithData:self.festivalData];
+    ParseOperation *parseOperation = [[ParseOperation alloc] initWithData: self.festivalData];
     //need to pass managedObjectContext because ParseOperation calls core data to check version number
     parseOperation.managedObjectContext = self.managedObjectContext;
 
@@ -278,19 +286,21 @@
     [alertView release];
 }
 
-// Our NSNotification callback from the running NSOperation to add the performers
+// Our NSNotification callback from the running NSOperation to add the parsed data
 //
-- (void)addPerformers:(NSNotification *)notif {
+- (void)addParsedData:(NSNotification *)notif {
     LogMethod();
     
     assert([NSThread isMainThread]);
     
-    [self addPerformersToList:[[notif userInfo] valueForKey:kFestivalResultsKey]];
+//    [self addPerformersToList:[[notif userInfo] valueForKey:kFestivalResultsKey]];
+    [self distributeParsedData:[[notif userInfo] valueForKey:kFestivalResultsKey]];
+
 }
 
 // Our NSNotification callback from the running NSOperation when a parsing error has occurred
 //
-- (void)performerError:(NSNotification *)notif {
+- (void)parsedDataError:(NSNotification *)notif {
     LogMethod();
     
     assert([NSThread isMainThread]);
@@ -298,31 +308,72 @@
     [self handleError:[[notif userInfo] valueForKey:kFestivalMsgErrorKey]];
 }
 
-// The NSOperation "ParseOperation" calls addPerformers: via NSNotification, on the main thread
+// The NSOperation "ParseOperation" calls addParsedData: via NSNotification, on the main thread
 // which in turn calls this method, with batches of parsed objects.
 // The batch size is set via the kSizeOfPerformersBatch constant.
 //
-- (void)addPerformersToList:(NSArray *)performers {
+//- (void)addPerformersToList:(NSArray *)performers {
+//    LogMethod();
+//    
+//    // insert the performers into Core Data
+//    
+//    NSError *error = nil;
+//    
+//    for (PerformerDataModel *newPerformer in performers) {
+//        NSLog(@"name=%@, desc=%@, city=%@, website=%@, websiteDesc=%@, performanceTime=%@", newPerformer.name, newPerformer.desc, newPerformer.city, newPerformer.website, newPerformer.websiteDesc,newPerformer.performanceTime);
+//        self.performer= [NSEntityDescription insertNewObjectForEntityForName:@"Performer" inManagedObjectContext:self.managedObjectContext];
+//        self.performer.name = newPerformer.name;
+//        self.performer.desc = newPerformer.desc;
+//        self.performer.city = newPerformer.city;
+//        self.performer.website = newPerformer.website;
+//        self.performer.websiteDesc = newPerformer.websiteDesc;
+//        self.performer.performanceTime = newPerformer.performanceTime;
+//        
+//        if (![self.managedObjectContext save:&error]) {
+//            NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
+//        }
+//        
+//    }
+//}
+- (void)distributeParsedData:(NSDictionary *) parsedData {
     LogMethod();
-    
-    // insert the performers into Core Data
-    
-    NSError *error = nil;
-    
-    for (PerformerDataModel *newPerformer in performers) {
-        NSLog(@"name=%@, desc=%@, city=%@, website=%@, websiteDesc=%@, performanceTime=%@", newPerformer.name, newPerformer.desc, newPerformer.city, newPerformer.website, newPerformer.websiteDesc,newPerformer.performanceTime);
-        self.performer= [NSEntityDescription insertNewObjectForEntityForName:@"Performer" inManagedObjectContext:self.managedObjectContext];
-        self.performer.name = newPerformer.name;
-        self.performer.desc = newPerformer.desc;
-        self.performer.city = newPerformer.city;
-        self.performer.website = newPerformer.website;
-        self.performer.websiteDesc = newPerformer.websiteDesc;
-        self.performer.performanceTime = newPerformer.performanceTime;
-        
-        if (![self.managedObjectContext save:&error]) {
-            NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
+    NSLog (@"parsedData dictionary is %@", parsedData);
+
+// read through dictionary, for each key, call method for that type of table with the dictionary of parsed data
+    NSEnumerator *enumerator = [parsedData keyEnumerator];
+    id key;
+    while ((key = [enumerator nextObject])) {
+        /* code that uses the returned key */
+        NSLog (@"key is %@", key);
+        NSArray* passedArray = [[[NSArray alloc] initWithArray:[parsedData objectForKey:key]] autorelease];
+
+//        NSDictionary * passedDictionary = [[[NSDictionary alloc] initWithDictionary:[parsedData objectForKey:key]] autorelease];
+//        if (key == @"directory") {
+//            Directory *directory = [[[Directory alloc] init] autorelease];
+//            [directory addDirectoryToCoreData:passedArray];
+//        }
+//        if (key == @"food") {
+//            Food *food = [[[Food alloc] init] autorelease];
+//            [food addFoodToCoreData:passedArray];
+//        }
+//        if (key == @"performers") {
+//            Performer *performer = [[[Performer alloc] init] autorelease];                                   
+//            [performer addPerformersToCoreData:passedArray];
+//        }
+        if ([key isEqualToString: @"performers"]) {
+            Performer *performer = [[Performer alloc] autorelease];
+            performer.managedObjectContext = self.managedObjectContext;
+            [performer addPerformersToCoreData:passedArray];
+            NSLog (@"performer %@", performer);
         }
-        
+//        if (key == @"vendors") {
+//            Vendor *vendor = [[[Vendor alloc] init] autorelease];
+//            [vendor addVendorsToCoreData:passedArray];
+//        }
+//        if (key == @"workshops") {
+//            Workshop *workshop = [[[Workshop alloc] init] autorelease];                                   
+//            [workshop addWorkshopsToCoreData:passedArray];
+//        }
     }
 }
 #pragma mark -
