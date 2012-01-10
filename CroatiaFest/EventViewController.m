@@ -9,6 +9,8 @@
 #import "EventViewController.h"
 #import "PerformerViewController.h"
 #import "ExhibitViewController.h"
+#import "WorkshopViewController.h"
+
 
 
 
@@ -216,6 +218,16 @@
         [self.navigationController pushViewController:exhibitViewController animated:YES];
         [exhibitViewController release];
     }
+    if (indexPath.row == 2) {
+        
+        WorkshopViewController *workshopViewController = [[WorkshopViewController alloc] initWithNibName:@"WorkshopViewController" bundle:nil];
+        workshopViewController.managedObjectContext = self.managedObjectContext;
+        
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:workshopViewController animated:YES];
+        [workshopViewController release];
+    }
+    
 }
 
 @end

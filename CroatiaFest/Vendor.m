@@ -11,11 +11,11 @@
 @implementation Vendor
 
 @dynamic name;
-@dynamic desc_1;
-@dynamic desc_2;
+@dynamic desc1;
+@dynamic desc2;
 @dynamic contact;
-@dynamic addr_1;
-@dynamic addr_2;
+@dynamic addr1;
+@dynamic addr2;
 @dynamic phone;
 @dynamic website;
 

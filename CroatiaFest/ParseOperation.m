@@ -7,9 +7,7 @@
 //
 
 #import "ParseOperation.h"
-//#import "PerformerDataModel.h"
 #import "VersionController.h"
-//#import "DataModel.h"
 
 // NSNotification name for sending Festival data back to the app delegate
 NSString *kAddFestivalNotif = @"AddFestivalNotif";
@@ -26,7 +24,6 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
 
 @interface ParseOperation () <NSXMLParserDelegate>
 @property (nonatomic, retain) VersionController *versionController;
-//@property (nonatomic, retain) PerformerDataModel *currentPerformerObject;
 @property (nonatomic, retain) NSMutableArray *currentParseBatch;
 @property (nonatomic, retain) NSMutableString *currentParsedCharacterData;
 @end
@@ -35,7 +32,6 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
 
 @synthesize parseData;
 @synthesize versionController;
-//@synthesize currentPerformerObject;
 @synthesize currentParsedCharacterData;
 @synthesize currentParseBatch;
 
@@ -48,7 +44,6 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
 
 
 
-//- (id)initWithData:(NSData *)data model:(DataModel *)model
 - (id)initWithData:(NSData *)data
 
 {
@@ -58,12 +53,6 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
         tableItemNames = [[NSSet alloc] initWithObjects:TABLE_FEED_TAGS]; 
         self.tableTagsDictionary = [[[NSMutableDictionary alloc] initWithCapacity: [tableItemNames count]] autorelease];
         self.parsedTablesDictionary = [[[NSMutableDictionary alloc] initWithCapacity:[tableItemNames count]] autorelease];
-
-//        appControlItemNames = [[NSSet alloc] initWithObjects:APPCONTROL_FEED_TAGS];
-//        foodItemNames = [[NSSet alloc] initWithObjects:FOOD_FEED_TAGS];
-//        performerItemNames = [[NSSet alloc] initWithObjects:PERFORMER_FEED_TAGS]; 
-//        vendorItemNames = [[NSSet alloc] initWithObjects:VENDOR_FEED_TAGS]; 
-//        workshopItemNames = [[NSSet alloc] initWithObjects:WORKSHOP_FEED_TAGS]; 
         
         [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:APPCONTROL_FEED_TAGS] autorelease] forKey:@"appControl"];
         [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:DIRECTORY_FEED_TAGS] autorelease] forKey:@"directory"];    
@@ -72,12 +61,6 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
         [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:VENDOR_FEED_TAGS] autorelease] forKey:@"vendors"];
         [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:WORKSHOP_FEED_TAGS] autorelease] forKey:@"workshops"];
 
-
-//        NSLog (@"tableTagsDictionary for performers is %@", [self.tableTagsDictionary objectForKey:@"performers"]);
-//        NSLog (@"tableTagsDictionary is %@", self.tableTagsDictionary);
-//        dataModel = [[DataModel alloc] init];
-        
-//        dataModel = model;
         parseData = [data copy];
 
     }
@@ -88,23 +71,15 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
     
     [parseData release];
     [versionController release];
-//    [currentPerformerObject release];
     [currentParsedCharacterData release];
     [currentParseBatch release];
     [tableItemNames release];
-//    [appControlItemNames release];
-//    [foodItemNames release];
-//    [performerItemNames release];
-//    [vendorItemNames release];
-//    [workshopItemNames release];
-
 
     [__managedObjectContext release];
 
     
     [super dealloc];
 }
-//- (void)addPerformerToList:(NSArray *)performers {
 - (void)distributeParsedData:(NSDictionary *)parsedData {
 
     LogMethod();
@@ -133,23 +108,17 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
     [parser setDelegate:self];
     [parser parse];
     
-//    for (PerformerDataModel *performer in self.currentParseBatch) {
-//        NSLog(@"name=%@, desc=%@, city=%@, website=%@, websiteDesc=%@", performer.name, performer.desc, performer.city, performer.website, performer.websiteDesc);
-//    }
-    
     // depending on the total number of reocrds parsed, the last batch might not have been a
     // "full" batch, and thus not been part of the regular batch transfer. So, we check the count of
     // the array and, if necessary, send it to the main thread.
     //
     if ([self.currentParseBatch count] > 0) {
-//        [self performSelectorOnMainThread:@selector(addPerformerToList:)
-//                               withObject:self.currentParseBatch
-//                            waitUntilDone:NO];
+        [self.parsedTablesDictionary setValue:self.currentParseBatch forKey:self.currentTableName];
         [self performSelectorOnMainThread:@selector(distributeParsedData:)
                                withObject:self.parsedTablesDictionary
                             waitUntilDone:NO];
     }
-    
+   
 //    self.currentPerformerObject = nil;
     self.currentParsedCharacterData = nil;
     
@@ -171,27 +140,16 @@ static const NSUInteger kMaximumNumberOfRecordsToParse = 150;
 // constant below. In your application, the optimal batch size will vary 
 // depending on the amount of data in the object and other factors, as appropriate.
 //
-static NSUInteger const kSizeOfParsedBatch = 20;
+static NSUInteger const kSizeOfParsedBatch = 80;
 
 // Reduce potential parsing errors by using string constants declared in a single place.
 static NSString * const kTableName = @"table";
 static NSString * const kColumnName = @"column";
 
-//static NSString * const kElementName = @"Name";
-//static NSString * const kElementDesc = @"Desc";
-//static NSString * const kElementCity = @"City";
-//static NSString * const kElementWebsite = @"Website";
-//static NSString * const kElementPerformanceTime = @"Performance_Time";
-
 #pragma mark -
 #pragma mark NSXMLParser delegate methods
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
-//    LogMethod();
-    
-//    NSMutableArray *array = [[NSMutableArray alloc] init];
-//    dataModel.itemsArray = array;
-//    [array release];
     
     self.currentItemDictionary = nil;
 	self.currentElementName = nil;
@@ -217,8 +175,8 @@ static NSString * const kColumnName = @"column";
         didAbortParsing = YES;
         [parser abortParsing];
     }
-    NSLog (@"elementName is %@", elementName);
-    NSLog (@"attributeDict is %@", attributeDict);
+//    NSLog (@"elementName is %@", elementName);
+//    NSLog (@"attributeDict is %@", attributeDict);
 
     if ([elementName isEqualToString:kTableName]) {
         
@@ -228,42 +186,30 @@ static NSString * const kColumnName = @"column";
                 //if the table is a different type from the previous one, need put previous table's data into passing dictionary and init
                 //put the array in the dictionary with the type of table for the key
                 [self.parsedTablesDictionary setValue:self.currentParseBatch forKey:self.currentTableName];
-                NSLog (@" parsedTablesDictionary is %@", self.parsedTablesDictionary);
+//                NSLog (@" parsedTablesDictionary is %@", self.parsedTablesDictionary);
                 
                 if ([self.currentParseBatch count] >= kSizeOfParsedBatch) {
                     //pass the dictionary
                     [self performSelectorOnMainThread:@selector(distributeParsedData:)
                                            withObject:self.parsedTablesDictionary
                                         waitUntilDone:NO];
-//                    [self.parsedTablesDictionary removeAllObjects];
+                    self.currentParseBatch = [NSMutableArray array];
+
                 }
                 self.currentParseBatch = [NSMutableArray array];
             }
         self.currentTableName = [[[NSString alloc] initWithString:[attributeDict valueForKey:@"name"]] autorelease];
 
-//        NSString *tableName = [attributeDict valueForKey:@"name"];
-//        if ([tableItemNames containsObject:tableName]) {
         if ([tableItemNames containsObject:self.currentTableName ]) {
-
-//            self.currentTableName = [[[NSString alloc] initWithString:tableName] autorelease];
             NSSet *itemNames = [[[NSSet alloc] initWithSet:[self.tableTagsDictionary valueForKey:self.currentTableName]] autorelease];
-                                
             self.currentItemDictionary = [[[NSMutableDictionary alloc] initWithCapacity: [itemNames count]] autorelease];
-
-//            self.currentItemDictionary = [[[NSMutableDictionary alloc] initWithCapacity: [performerItemNames count]] autorelease];
-
         } else self.currentTableName = nil;
     } 
     if ([elementName isEqualToString:kColumnName]) {
         self.currentElementName  = [[[NSString alloc] initWithString:[attributeDict valueForKey:@"name"]] autorelease];
 
-//        if ([[self.tableTagsDictionary valueForKey:self.currentTableName] containsObject:fieldName]) {
         if ([[self.tableTagsDictionary valueForKey:self.currentTableName] containsObject:self.currentElementName]) {
 
-//        if (([self.currentTableName isEqualToString:@"appControl"] && [appControlItemNames containsObject:fieldName]) 
-//               ||
-//            ([self.currentTableName isEqualToString:@"performers"] && [performerItemNames containsObject:fieldName])) {
-//            self.currentElementName = [[[NSString alloc] initWithString:fieldName] autorelease];
                 // The mutable string needs to be reset to empty.
                 currentParsedCharacterData = [[NSMutableString alloc] init];
 
@@ -302,19 +248,19 @@ static NSString * const kColumnName = @"column";
     }
 
     if ([elementName isEqualToString:kColumnName]) {
-        NSLog(@"currentElementName is %@", self.currentElementName);
-        NSLog(@"currentParsedCharacterData is %@", self.currentParsedCharacterData);
+//        NSLog(@"currentElementName is %@", self.currentElementName);
+//        NSLog(@"currentParsedCharacterData is %@", self.currentParsedCharacterData);
         [self.currentItemDictionary setValue:currentParsedCharacterData forKey:self.currentElementName];
         [currentParsedCharacterData release];
         currentParsedCharacterData = nil;
-        NSLog (@"currentItemDictionary is %@", self.currentItemDictionary);
+//        NSLog (@"currentItemDictionary is %@", self.currentItemDictionary);
 
     }
     else if ([elementName isEqualToString:kTableName]) {
         [self.currentParseBatch addObject:self.currentItemDictionary];
 
-        NSLog (@" currentItemDictionary is %@", self.currentItemDictionary);
-        NSLog (@" currentParseBatch is %@", self.currentParseBatch);
+//        NSLog (@" currentItemDictionary is %@", self.currentItemDictionary);
+//        NSLog (@" currentParseBatch is %@", self.currentParseBatch);
                 
         parsedRecordCounter++;
         

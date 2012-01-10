@@ -11,12 +11,13 @@
 @interface Directory : NSManagedObject
 
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *desc_1;
+@property (nonatomic, retain) NSString *desc1;
+@property (nonatomic, retain) NSString *desc2;
 @property (nonatomic, retain) NSString *contact;
-@property (nonatomic, retain) NSString *addr_1;
-@property (nonatomic, retain) NSString *addr_2;
-@property (nonatomic, retain) NSString *phone_1;
-@property (nonatomic, retain) NSString *phone_2;
+@property (nonatomic, retain) NSString *addr1;
+@property (nonatomic, retain) NSString *addr2;
+@property (nonatomic, retain) NSString *phone1;
+@property (nonatomic, retain) NSString *phone2;
 @property (nonatomic, retain) NSString *website;
 @property (nonatomic, retain) NSString *email;
 

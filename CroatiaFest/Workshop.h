@@ -14,16 +14,18 @@
 @property (nonatomic, retain) NSString *presenter;
 @property (nonatomic, retain) NSString *website;
 @property (nonatomic, retain) NSString *desc;
-@property (nonatomic, retain) NSString *panel_1;
-@property (nonatomic, retain) NSString *panel_2;
-@property (nonatomic, retain) NSString *panel_3;
-@property (nonatomic, retain) NSString *panel_4;
-@property (nonatomic, retain) NSString *panel_5;
-@property (nonatomic, retain) NSString *panel_6;
-@property (nonatomic, retain) NSString *link_text;
+@property (nonatomic, retain) NSString *panel1;
+@property (nonatomic, retain) NSString *panel2;
+@property (nonatomic, retain) NSString *panel3;
+@property (nonatomic, retain) NSString *panel4;
+@property (nonatomic, retain) NSString *panel5;
+@property (nonatomic, retain) NSString *panel6;
+@property (nonatomic, retain) NSString *linkText;
 @property (nonatomic, retain) NSString *link;
-@property (nonatomic, retain) NSDate *time;
+@property (nonatomic, retain) NSDate *presentationTime;
 
-- (void)addWorkshopsToCoreData:(NSDictionary *)workshops;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
+- (void)addWorkshopsToCoreData:(NSArray *)workshops;
 
 @end

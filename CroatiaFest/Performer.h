@@ -8,7 +8,6 @@
 
 #import <CoreData/CoreData.h>
 
-
 @interface Performer : NSManagedObject
 
 @property (nonatomic, retain) NSString *name;

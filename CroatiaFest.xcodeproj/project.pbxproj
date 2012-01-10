@@ -32,10 +32,13 @@
 		705B9C3113A8FB6F00346007 /* PerformerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C2F13A8FB6F00346007 /* PerformerViewController.m */; };
 		705B9C3213A8FB6F00346007 /* PerformerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705B9C3013A8FB6F00346007 /* PerformerViewController.xib */; };
 		705B9C3513A907D200346007 /* ParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C3413A907D100346007 /* ParseOperation.m */; };
-		705B9C6013BA742B00346007 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C5F13BA742900346007 /* DataModel.m */; };
 		7085B6C4142FB884006AEFF3 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6C3142FB884006AEFF3 /* Version.m */; };
 		7085B6D414340BD7006AEFF3 /* VersionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6D314340BD7006AEFF3 /* VersionController.m */; };
 		70864CAE1444B30100C25B4B /* Directory.m in Sources */ = {isa = PBXBuildFile; fileRef = 70864CAD1444B30100C25B4B /* Directory.m */; };
+		7088322D146CD0C9006C2749 /* WorkshopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7088322B146CD0C9006C2749 /* WorkshopViewController.m */; };
+		7088322E146CD0C9006C2749 /* WorkshopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7088322C146CD0C9006C2749 /* WorkshopViewController.xib */; };
+		70883232146CDA09006C2749 /* WorkshopDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70883230146CDA09006C2749 /* WorkshopDetailController.m */; };
+		70883233146CDA09006C2749 /* WorkshopDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70883231146CDA09006C2749 /* WorkshopDetailController.xib */; };
 		70AE05C513C69AE8005F8303 /* ExhibitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AE05C313C69AE8005F8303 /* ExhibitViewController.m */; };
 		70AE05C613C69AE8005F8303 /* ExhibitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */; };
 		70AE05D913C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */; };
@@ -85,14 +88,18 @@
 		705B9C3013A8FB6F00346007 /* PerformerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PerformerViewController.xib; sourceTree = "<group>"; };
 		705B9C3313A907D100346007 /* ParseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseOperation.h; sourceTree = "<group>"; };
 		705B9C3413A907D100346007 /* ParseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseOperation.m; sourceTree = "<group>"; };
-		705B9C5E13BA742800346007 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
-		705B9C5F13BA742900346007 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		7085B6C2142FB884006AEFF3 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
 		7085B6C3142FB884006AEFF3 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
 		7085B6D214340BD7006AEFF3 /* VersionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionController.h; sourceTree = "<group>"; };
 		7085B6D314340BD7006AEFF3 /* VersionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionController.m; sourceTree = "<group>"; };
 		70864CAC1444B30100C25B4B /* Directory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Directory.h; sourceTree = "<group>"; };
 		70864CAD1444B30100C25B4B /* Directory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Directory.m; sourceTree = "<group>"; };
+		7088322A146CD0C9006C2749 /* WorkshopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkshopViewController.h; sourceTree = "<group>"; };
+		7088322B146CD0C9006C2749 /* WorkshopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkshopViewController.m; sourceTree = "<group>"; };
+		7088322C146CD0C9006C2749 /* WorkshopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkshopViewController.xib; sourceTree = "<group>"; };
+		7088322F146CDA09006C2749 /* WorkshopDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkshopDetailController.h; sourceTree = "<group>"; };
+		70883230146CDA09006C2749 /* WorkshopDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkshopDetailController.m; sourceTree = "<group>"; };
+		70883231146CDA09006C2749 /* WorkshopDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkshopDetailController.xib; sourceTree = "<group>"; };
 		70AE05C213C69AE8005F8303 /* ExhibitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExhibitViewController.h; sourceTree = "<group>"; };
 		70AE05C313C69AE8005F8303 /* ExhibitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExhibitViewController.m; sourceTree = "<group>"; };
 		70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExhibitViewController.xib; sourceTree = "<group>"; };
@@ -191,12 +198,16 @@
 				705B9BFA13A30A4400346007 /* EventViewController.m */,
 				705B9C2E13A8FB6E00346007 /* PerformerViewController.h */,
 				705B9C2F13A8FB6F00346007 /* PerformerViewController.m */,
+				703C4200143A3B2E004EBB9F /* PerformerDetailController.h */,
+				703C4201143A3B2E004EBB9F /* PerformerDetailController.m */,
 				705B9C1713A8715000346007 /* MarketplaceViewController.h */,
 				705B9C1813A8715000346007 /* MarketplaceViewController.m */,
 				70AE05C213C69AE8005F8303 /* ExhibitViewController.h */,
 				70AE05C313C69AE8005F8303 /* ExhibitViewController.m */,
-				703C4200143A3B2E004EBB9F /* PerformerDetailController.h */,
-				703C4201143A3B2E004EBB9F /* PerformerDetailController.m */,
+				7088322A146CD0C9006C2749 /* WorkshopViewController.h */,
+				7088322B146CD0C9006C2749 /* WorkshopViewController.m */,
+				7088322F146CDA09006C2749 /* WorkshopDetailController.h */,
+				70883230146CDA09006C2749 /* WorkshopDetailController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -204,12 +215,14 @@
 		70B2AAE313CD053D004C7D51 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				705B9C1913A8715100346007 /* MarketplaceViewController.xib */,
-				705B9C3013A8FB6F00346007 /* PerformerViewController.xib */,
-				705B9BFB13A30A4400346007 /* EventViewController.xib */,
 				705B96D113A275D000346007 /* RootViewController.xib */,
-				70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */,
+				705B9BFB13A30A4400346007 /* EventViewController.xib */,
+				705B9C3013A8FB6F00346007 /* PerformerViewController.xib */,
 				703C4202143A3B2E004EBB9F /* PerformerDetailController.xib */,
+				70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */,
+				7088322C146CD0C9006C2749 /* WorkshopViewController.xib */,
+				70883231146CDA09006C2749 /* WorkshopDetailController.xib */,
+				705B9C1913A8715100346007 /* MarketplaceViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -219,8 +232,6 @@
 			children = (
 				705B9C2B13A8F76400346007 /* Performer.h */,
 				705B9C2C13A8F76400346007 /* Performer.m */,
-				705B9C5E13BA742800346007 /* DataModel.h */,
-				705B9C5F13BA742900346007 /* DataModel.m */,
 				7085B6C2142FB884006AEFF3 /* Version.h */,
 				7085B6C3142FB884006AEFF3 /* Version.m */,
 				70213F23143E522800E1C499 /* Food.h */,
@@ -299,6 +310,8 @@
 				70AE05DC13C77460005F8303 /* cart_24.png in Resources */,
 				70AE05DE13C7746B005F8303 /* mic_24.png in Resources */,
 				703C4204143A3B2E004EBB9F /* PerformerDetailController.xib in Resources */,
+				7088322E146CD0C9006C2749 /* WorkshopViewController.xib in Resources */,
+				70883233146CDA09006C2749 /* WorkshopDetailController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +330,6 @@
 				705B9C2D13A8F76500346007 /* Performer.m in Sources */,
 				705B9C3113A8FB6F00346007 /* PerformerViewController.m in Sources */,
 				705B9C3513A907D200346007 /* ParseOperation.m in Sources */,
-				705B9C6013BA742B00346007 /* DataModel.m in Sources */,
 				70AE05C513C69AE8005F8303 /* ExhibitViewController.m in Sources */,
 				70B2AAE113CCF771004C7D51 /* CroatiaFest.xcdatamodeld in Sources */,
 				7085B6C4142FB884006AEFF3 /* Version.m in Sources */,
@@ -327,6 +339,8 @@
 				70213F311442950800E1C499 /* Vendor.m in Sources */,
 				70213F341442952D00E1C499 /* Workshop.m in Sources */,
 				70864CAE1444B30100C25B4B /* Directory.m in Sources */,
+				7088322D146CD0C9006C2749 /* WorkshopViewController.m in Sources */,
+				70883232146CDA09006C2749 /* WorkshopDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

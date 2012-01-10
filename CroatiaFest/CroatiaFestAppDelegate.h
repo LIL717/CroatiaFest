@@ -10,11 +10,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "RootViewController.h"
-//@class Performer;
 
 @interface CroatiaFestAppDelegate : NSObject <UIApplicationDelegate, NSXMLParserDelegate> {
-
-//    Performer *performer_;
     
 @private    
     NSManagedObjectContext *managedObjectContext_;
@@ -30,7 +27,6 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-//@property (nonatomic, retain) Performer *performer;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;

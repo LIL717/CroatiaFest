@@ -11,11 +11,11 @@
 @interface Vendor : NSManagedObject
 
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *desc_1;
-@property (nonatomic, retain) NSString *desc_2;
+@property (nonatomic, retain) NSString *desc1;
+@property (nonatomic, retain) NSString *desc2;
 @property (nonatomic, retain) NSString *contact;
-@property (nonatomic, retain) NSString *addr_1;
-@property (nonatomic, retain) NSString *addr_2;
+@property (nonatomic, retain) NSString *addr1;
+@property (nonatomic, retain) NSString *addr2;
 @property (nonatomic, retain) NSString *phone;
 @property (nonatomic, retain) NSString *website;
 

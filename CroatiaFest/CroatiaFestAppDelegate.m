@@ -12,7 +12,6 @@
 #import "MarketplaceViewController.h"
 #import "PerformerViewController.h"
 #import "Performer.h"
-//#import "PerformerDataModel.h"
 #import "ParseOperation.h"
 #import "Directory.h"
 #import "Food.h"
@@ -34,7 +33,6 @@
 
 - (void) setUpViewControllers;
 - (void) setUpURLConnection;
-//- (void) addPerformersToList:(NSArray *)performers;
 - (void)distributeParsedData:(NSDictionary *) parsedData;
 - (void) handleError:(NSError *)error;
 @end
@@ -45,7 +43,6 @@
 @synthesize webConnection;
 @synthesize festivalData;
 @synthesize parseQueue;
-//@synthesize performer = performer_;
 @synthesize managedObjectContext = managedObjectContext_;
 @synthesize managedObjectModel = managedObjectModel_;
 @synthesize persistentStoreCoordinator = persistentStoreCoordinator_;
@@ -56,7 +53,6 @@
     [webConnection cancel];
     [webConnection release];
     [festivalData release];
-//    [performer_ release];
     [managedObjectContext_ release];
     [managedObjectModel_ release];
     [persistentStoreCoordinator_ release];
@@ -107,11 +103,6 @@
 
     //Make an array containing the two view controllers
     NSArray *viewControllers = [NSArray arrayWithObjects: navController, navController2, navController3, nil];
-    //    NSArray *viewControllers = [NSArray arrayWithObjects: navController, navController2,  nil];
-    //    NSArray *viewControllers = [NSArray arrayWithObjects: navController, nil];
-
-
-
 
     //The viewControllers array retains them so we can release our ownership of them in this method
     [rootViewController release];
@@ -192,8 +183,7 @@
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     NSLog (@"httpResponse is %d", httpResponse.statusCode);
     NSLog (@"response.MIMEType is %@", response.MIMEType);
-    //    if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"application/atom+xml"]) {
-//    if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"application/xml"]) {
+
     if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"text/xml"]) {
 
         self.festivalData = [NSMutableData data];
@@ -258,7 +248,7 @@
     [parseOperation release];   // once added to the NSOperationQueue it's retained, we don't need it anymore
     //    [model release];
     
-    // performerData will be retained by the NSOperation until it has finished executing,
+    // festivalData will be retained by the NSOperation until it has finished executing,
     // so we no longer need a reference to it in the main thread.
     self.festivalData = nil;
 }
@@ -293,7 +283,6 @@
     
     assert([NSThread isMainThread]);
     
-//    [self addPerformersToList:[[notif userInfo] valueForKey:kFestivalResultsKey]];
     [self distributeParsedData:[[notif userInfo] valueForKey:kFestivalResultsKey]];
 
 }
@@ -312,29 +301,7 @@
 // which in turn calls this method, with batches of parsed objects.
 // The batch size is set via the kSizeOfPerformersBatch constant.
 //
-//- (void)addPerformersToList:(NSArray *)performers {
-//    LogMethod();
-//    
-//    // insert the performers into Core Data
-//    
-//    NSError *error = nil;
-//    
-//    for (PerformerDataModel *newPerformer in performers) {
-//        NSLog(@"name=%@, desc=%@, city=%@, website=%@, websiteDesc=%@, performanceTime=%@", newPerformer.name, newPerformer.desc, newPerformer.city, newPerformer.website, newPerformer.websiteDesc,newPerformer.performanceTime);
-//        self.performer= [NSEntityDescription insertNewObjectForEntityForName:@"Performer" inManagedObjectContext:self.managedObjectContext];
-//        self.performer.name = newPerformer.name;
-//        self.performer.desc = newPerformer.desc;
-//        self.performer.city = newPerformer.city;
-//        self.performer.website = newPerformer.website;
-//        self.performer.websiteDesc = newPerformer.websiteDesc;
-//        self.performer.performanceTime = newPerformer.performanceTime;
-//        
-//        if (![self.managedObjectContext save:&error]) {
-//            NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
-//        }
-//        
-//    }
-//}
+
 - (void)distributeParsedData:(NSDictionary *) parsedData {
     LogMethod();
     NSLog (@"parsedData dictionary is %@", parsedData);
@@ -347,7 +314,6 @@
         NSLog (@"key is %@", key);
         NSArray* passedArray = [[[NSArray alloc] initWithArray:[parsedData objectForKey:key]] autorelease];
 
-//        NSDictionary * passedDictionary = [[[NSDictionary alloc] initWithDictionary:[parsedData objectForKey:key]] autorelease];
 //        if (key == @"directory") {
 //            Directory *directory = [[[Directory alloc] init] autorelease];
 //            [directory addDirectoryToCoreData:passedArray];
@@ -356,24 +322,24 @@
 //            Food *food = [[[Food alloc] init] autorelease];
 //            [food addFoodToCoreData:passedArray];
 //        }
-//        if (key == @"performers") {
-//            Performer *performer = [[[Performer alloc] init] autorelease];                                   
-//            [performer addPerformersToCoreData:passedArray];
-//        }
+
         if ([key isEqualToString: @"performers"]) {
             Performer *performer = [[Performer alloc] autorelease];
             performer.managedObjectContext = self.managedObjectContext;
             [performer addPerformersToCoreData:passedArray];
-            NSLog (@"performer %@", performer);
+//            NSLog (@"performer %@", performer);
+        }
+        if ([key isEqualToString: @"workshops"]) {
+            Workshop *workshop = [[Workshop alloc] autorelease];
+            workshop.managedObjectContext = self.managedObjectContext;
+            [workshop addWorkshopsToCoreData:passedArray];
+            NSLog (@"workshop %@", workshop);
         }
 //        if (key == @"vendors") {
 //            Vendor *vendor = [[[Vendor alloc] init] autorelease];
 //            [vendor addVendorsToCoreData:passedArray];
 //        }
-//        if (key == @"workshops") {
-//            Workshop *workshop = [[[Workshop alloc] init] autorelease];                                   
-//            [workshop addWorkshopsToCoreData:passedArray];
-//        }
+
     }
 }
 #pragma mark -

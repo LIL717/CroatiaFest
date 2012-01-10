@@ -22,7 +22,6 @@ extern NSString *kFestivalResultsKey;
 extern NSString *kFestivalErrorNotif;
 extern NSString *kFestivalMsgErrorKey;
 
-//@class PerformerDataModel;
 @class VersionController;
 
 @interface ParseOperation : NSOperation {
@@ -30,12 +29,6 @@ extern NSString *kFestivalMsgErrorKey;
     NSData *parseData;
     
     NSSet *tableItemNames;
-    
-//    NSSet *appControlItemNames;
-//    NSSet *foodItemNames;
-//    NSSet *performerItemNames;
-//    NSSet *vendorItemNames;
-//    NSSet *workshopItemNames;
 
     NSMutableDictionary *tableTagsDictionary;
     NSMutableDictionary *currentItemDictionary;
@@ -48,7 +41,6 @@ extern NSString *kFestivalMsgErrorKey;
     
     // these variables are used during parsing
     VersionController *versionController;
-//    PerformerDataModel *currentPerformerObject;
 
     NSMutableArray *currentParseBatch;
     NSMutableString *currentParsedCharacterData;
@@ -60,7 +52,6 @@ extern NSString *kFestivalMsgErrorKey;
 }
 
 @property (copy, readonly) NSData *parseData;
-//@property (nonatomic, retain) DataModel *dataModel;
 @property (nonatomic, retain) NSMutableDictionary *tableTagsDictionary;
 @property (nonatomic, retain) NSMutableDictionary *currentItemDictionary;
 @property (nonatomic, retain) NSMutableDictionary *parsedTablesDictionary;
