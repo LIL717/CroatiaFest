@@ -7,10 +7,15 @@
 //
 
 #import "MarketplaceViewController.h"
+#import "VendorViewController.h"
+#import "FoodViewController.h"
+#import "DirectoryViewController.h"
 
 
 @implementation MarketplaceViewController
 @synthesize marketArray;
+@synthesize managedObjectContext = managedObjectContext_;
+
 -(id)init
 {
     self = [super init];
@@ -72,7 +77,7 @@
 {
     [super viewDidLoad];
     
-    marketArray = [[[NSArray alloc] initWithObjects:@"Vendor 1", @"Vendor 2", @"Vendor 3", nil] autorelease];
+    marketArray = [[[NSArray alloc] initWithObjects:@"Vendor Booths", @"Food Booths", @"Advertisers", nil] autorelease];
     NSLog (@"marketArray is %@", marketArray);
 
     // Uncomment the following line to preserve selection between presentations.
@@ -185,13 +190,37 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    
+    if (indexPath.row == 0) {
+        
+        VendorViewController *vendorViewController = [[VendorViewController alloc] initWithNibName:@"VendorViewController" bundle:nil];
+        vendorViewController.managedObjectContext = self.managedObjectContext;
+        
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:vendorViewController animated:YES];
+        [vendorViewController release];
+    }
+    
+    if (indexPath.row == 1) {
+        
+        FoodViewController *foodViewController = [[FoodViewController alloc] initWithNibName:@"FoodViewController" bundle:nil];
+        foodViewController.managedObjectContext = self.managedObjectContext;
+
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:foodViewController animated:YES];
+        [foodViewController release];
+    }
+    if (indexPath.row == 2) {
+        
+        DirectoryViewController *directoryViewController = [[DirectoryViewController alloc] initWithNibName:@"DirectoryViewController" bundle:nil];
+        directoryViewController.managedObjectContext = self.managedObjectContext;
+        
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:directoryViewController animated:YES];
+        [directoryViewController release];
+        
+    }
+    
 }
 
 @end

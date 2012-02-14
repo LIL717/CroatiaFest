@@ -10,6 +10,8 @@
 #import "PerformerViewController.h"
 #import "ExhibitViewController.h"
 #import "WorkshopViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 
 
@@ -85,6 +87,9 @@
 
     eventArray = [[[NSArray alloc] initWithObjects:@"Performers", @"Exhibits", @"Food Stage", nil] autorelease];
     NSLog (@"eventArray is %@", eventArray);
+    
+    //code for CALayer
+    //self.view.layer.contents = (id) [UIImage imageNamed:@"RedandWhiteCheckered.jpg"].CGImage;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

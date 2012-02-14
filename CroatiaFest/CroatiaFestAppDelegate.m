@@ -7,6 +7,7 @@
 //
 
 #import "CroatiaFestAppDelegate.h"
+#import "ScheduleViewController.h"
 #import "RootViewController.h"
 #import "EventViewController.h"
 #import "MarketplaceViewController.h"
@@ -21,7 +22,13 @@
 
 // this framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code
 #import <CFNetwork/CFNetwork.h>
-
+@implementation UINavigationBar (BackgroundImage)
+//This overridden implementation will patch up the NavBar with a custom Image instead of the title
+- (void)drawRect:(CGRect)rect {
+    UIImage *image = [UIImage imageNamed: @"navigationBarImage.png"];
+    [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+}
+@end
 #pragma mark CroatiaFestAppDelegate () 
 
 // forward declarations
@@ -78,34 +85,68 @@
 
 }
 - (void) setUpViewControllers {
+
     //Create the tabBarController
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
 
-    //Create two view controllers
+    //Create view controllers
     RootViewController *rootViewController = [[RootViewController alloc] init];
+    
+    ScheduleViewController *scheduleViewController = [[ScheduleViewController alloc] init];
+    scheduleViewController.managedObjectContext = self.managedObjectContext;
+    
     EventViewController *eventViewController = [[EventViewController alloc] init];
     eventViewController.managedObjectContext = self.managedObjectContext;
 
     MarketplaceViewController *marketplaceViewController = [[MarketplaceViewController alloc] init];
+    marketplaceViewController.managedObjectContext = self.managedObjectContext;
+
 
     //Create navigation controller
     UINavigationController *navController = [[UINavigationController alloc]
                                              initWithRootViewController:rootViewController];
-
     //Create navigation controller
     UINavigationController *navController2 = [[UINavigationController alloc]
-                                              initWithRootViewController:eventViewController];
+                                              initWithRootViewController:scheduleViewController];
 
     //Create navigation controller
     UINavigationController *navController3 = [[UINavigationController alloc]
+                                              initWithRootViewController:eventViewController];
+
+
+    //Create navigation controller
+    UINavigationController *navController4 = [[UINavigationController alloc]
                                               initWithRootViewController:marketplaceViewController];
+    //Customize the look of the UINavBar for iOS5 devices
+    if ([[UINavigationBar class]respondsToSelector:@selector(appearance)]) {
+//        UIImage *backgroundWithAlpha = [self UIImageWithAlpha: [UIImage imageNamed: @"navigationBarImage.png"]];
+//        UIImage *myImage = [UIImage imageNamed: @"navigationBarImage.png"];
+//        CGContextRef context = UIGraphicsGetCurrentContext();
+//        CGContextSaveGState(context);
+//        CGRect paramRect = CGRectMake(0, 0, myImage.size.width, myImage.size.height);
+//        [myImage drawInRect: paramRect
+//                  blendMode:kCGBlendModeLighten
+//                      alpha:1.0f];
+//        CGContextRestoreGState(context);
+//        [[UINavigationBar appearance] setBackgroundImage:myImage forBarMetrics:UIBarMetricsDefault];
+
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBarImageMuted.png"] forBarMetrics:UIBarMetricsDefault];
+//        [[UINavigationBar appearance] setTintColor:[UIColor colorWithWhite:1.0 alpha:0.9]];
+        [[UINavigationBar  appearance]setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                 [UIFont fontWithName:@"Chalkduster" size:20.0f], UITextAttributeFont,
+                                                 [UIColor blueColor], UITextAttributeTextColor,
+                                                 [UIColor grayColor], UITextAttributeTextShadowColor,
+                                                 [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.0f)], UITextAttributeTextShadowOffset,
+                                                 nil]];
+    }
 
 
     //Make an array containing the two view controllers
-    NSArray *viewControllers = [NSArray arrayWithObjects: navController, navController2, navController3, nil];
+    NSArray *viewControllers = [NSArray arrayWithObjects: navController, navController2, navController3, navController4, nil];
 
     //The viewControllers array retains them so we can release our ownership of them in this method
     [rootViewController release];
+    [scheduleViewController release];
     [eventViewController release];
     [marketplaceViewController release];
 
@@ -122,8 +163,16 @@
     [navController release];
     [navController2 release];
     [navController3 release];
+    [navController4 release];
 }
-
+- (UIImage *) UIImageWithAlpha: (UIImage *) backgroundImage {
+    UIImage *myImage = backgroundImage;
+    CGRect paramRect = CGRectMake(0, 0, myImage.size.width, myImage.size.height);
+    [myImage drawInRect: paramRect
+              blendMode:kCGBlendModeLighten
+                  alpha:1.0f];
+    return myImage;
+}
 - (void) setUpURLConnection {    
     // Use NSURLConnection to asynchronously download the data. This means the main thread will not
     // be blocked - the application will remain responsive to the user. 
@@ -314,20 +363,20 @@
         NSLog (@"key is %@", key);
         NSArray* passedArray = [[[NSArray alloc] initWithArray:[parsedData objectForKey:key]] autorelease];
 
-//        if (key == @"directory") {
-//            Directory *directory = [[[Directory alloc] init] autorelease];
-//            [directory addDirectoryToCoreData:passedArray];
-//        }
-//        if (key == @"food") {
-//            Food *food = [[[Food alloc] init] autorelease];
-//            [food addFoodToCoreData:passedArray];
-//        }
-
+        if ([key isEqualToString: @"directory"]) {
+            Directory *directory = [[Directory alloc] autorelease];
+            directory.managedObjectContext = self.managedObjectContext;
+            [directory addDirectoryToCoreData:passedArray];
+        }
+        if ([key isEqualToString: @"food"]) {
+            Food *food = [[Food alloc] autorelease];
+            food.managedObjectContext = self.managedObjectContext;
+            [food addFoodToCoreData:passedArray];
+        }
         if ([key isEqualToString: @"performers"]) {
             Performer *performer = [[Performer alloc] autorelease];
             performer.managedObjectContext = self.managedObjectContext;
             [performer addPerformersToCoreData:passedArray];
-//            NSLog (@"performer %@", performer);
         }
         if ([key isEqualToString: @"workshops"]) {
             Workshop *workshop = [[Workshop alloc] autorelease];
@@ -335,10 +384,12 @@
             [workshop addWorkshopsToCoreData:passedArray];
             NSLog (@"workshop %@", workshop);
         }
-//        if (key == @"vendors") {
-//            Vendor *vendor = [[[Vendor alloc] init] autorelease];
-//            [vendor addVendorsToCoreData:passedArray];
-//        }
+        if ([key isEqualToString: @"vendors"]) {
+            Vendor *vendor = [[Vendor alloc] autorelease];
+            vendor.managedObjectContext = self.managedObjectContext;
+            [vendor addVendorsToCoreData:passedArray];
+            NSLog (@"vendor %@", vendor);
+        }
 
     }
 }

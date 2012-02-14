@@ -19,5 +19,8 @@
 @property (nonatomic, retain) NSString *phone;
 @property (nonatomic, retain) NSString *website;
 
-- (void)addVendorsToCoreData:(NSDictionary *)vendors;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
+- (void)addVendorsToCoreData:(NSArray *)vendors;
+
 @end

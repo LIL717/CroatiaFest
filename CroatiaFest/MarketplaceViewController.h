@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+
 
 
 @interface MarketplaceViewController : UITableViewController {
     NSArray *marketArray; 
+    NSManagedObjectContext *managedObjectContext_;
 }
-@property (nonatomic, retain) NSArray *marketArray;    
+@property (nonatomic, retain) NSArray *marketArray; 
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
 
 @end

@@ -12,7 +12,6 @@
 
 @dynamic name;
 @dynamic desc1;
-@dynamic desc2;
 @dynamic contact;
 @dynamic addr1;
 @dynamic addr2;
@@ -21,15 +20,33 @@
 @dynamic website;
 @dynamic email;
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization code here.
+@synthesize managedObjectContext = managedObjectContext_;
+
+- (void)addDirectoryToCoreData:(NSArray *)directory {
+    LogMethod();
+    //this is an array of dictionaries
+    
+    NSError *error = nil;
+    // insert the directory into Core Data
+    for (id newDirectory in directory) {
+        
+        NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Directory" inManagedObjectContext:self.managedObjectContext];
+        [newManagedObject setValue: [newDirectory valueForKey: @"Name"] forKey:@"name"];
+        [newManagedObject setValue: [newDirectory valueForKey: @"Desc_1"] forKey:@"desc1"];
+        [newManagedObject setValue: [newDirectory valueForKey: @"Contact"] forKey:@"contact"];
+        [newManagedObject setValue: [newDirectory valueForKey: @"Addr_1"] forKey:@"addr1"];
+        [newManagedObject setValue: [newDirectory valueForKey: @"Addr_2"] forKey:@"addr2"];
+        [newManagedObject setValue: [newDirectory valueForKey: @"Phone_1"] forKey:@"phone1"];
+        [newManagedObject setValue: [newDirectory valueForKey: @"Phone_2"] forKey:@"phone2"];
+        [newManagedObject setValue: [newDirectory valueForKey: @"Website"] forKey:@"website"];
+        [newManagedObject setValue: [newDirectory valueForKey: @"Email"] forKey:@"email"];
+        
+//        NSLog(@" newManagedObject is %@", newManagedObject);
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
+        }
     }
     
-    return self;
 }
-- (void)addDirectoryToCoreData:directory {
-}
+
 @end

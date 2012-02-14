@@ -53,9 +53,9 @@
     self.desc.text = self.workshop.desc;
 //    NSLog (@"name, webiste is %@ %@", self.workshop.name, self.workshop.website);
 
-    if ([self.workshop.website length] >0)
-        self.website.text = self.workshop.website;
-    else self.website.text = @" ";
+//    if ([self.workshop.website length] >0)
+//        self.website.text = self.workshop.website;
+//    else self.website.text = @" ";
     
     NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
     NSDate *date = self.workshop.presentationTime;

@@ -14,6 +14,8 @@
 @property (nonatomic, retain) NSString *desc;
 @property (nonatomic, retain) NSString *sponsor;
 
-- (void)addFoodToCoreData:(NSDictionary *)food;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
+- (void)addFoodToCoreData:(NSArray *)food;
 
 @end

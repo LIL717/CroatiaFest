@@ -13,7 +13,28 @@
 @dynamic desc;
 @dynamic sponsor;
 
-- (void)addFoodToCoreData:(NSDictionary *)food {
+@synthesize managedObjectContext = managedObjectContext_;
+
+- (void)addFoodToCoreData:(NSArray *)food {
+    LogMethod();
+    //this is an array of dictionaries
+    
+    NSError *error = nil;
+    // insert the directory into Core Data
+    for (id newFood in food) {
+        
+        NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:self.managedObjectContext];
+        [newManagedObject setValue: [newFood valueForKey: @"Name"] forKey:@"name"];
+        [newManagedObject setValue: [newFood valueForKey: @"Desc"] forKey:@"desc"];
+        [newManagedObject setValue: [newFood valueForKey: @"Contributing_sponsor"] forKey:@"sponsor"];
+
+        
+        //        NSLog(@" newManagedObject is %@", newManagedObject);
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
+        }
+    }
+    
 }
 
 @end

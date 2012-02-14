@@ -12,7 +12,6 @@
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *desc1;
-@property (nonatomic, retain) NSString *desc2;
 @property (nonatomic, retain) NSString *contact;
 @property (nonatomic, retain) NSString *addr1;
 @property (nonatomic, retain) NSString *addr2;
@@ -21,5 +20,7 @@
 @property (nonatomic, retain) NSString *website;
 @property (nonatomic, retain) NSString *email;
 
-- (void)addDirectoryToCoreData:(NSDictionary *)directory;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
+- (void)addDirectoryToCoreData:(NSArray *)directory;
 @end

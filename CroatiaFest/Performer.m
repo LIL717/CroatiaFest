@@ -35,8 +35,9 @@
         // Convert string to date object
         NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
         [dateFormatter setDateFormat:@"hh:mm:ss"];
+
         [newManagedObject setValue: [dateFormatter dateFromString: [newPerformer valueForKey: @"Performance_Time"]] forKey:@"performanceTime"];
-        
+//        NSLog (@"newPerformer is %@ newManagedObject is %@", newPerformer, newManagedObject);
         if (![self.managedObjectContext save:&error]) {
             NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
         }

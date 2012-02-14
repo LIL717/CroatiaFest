@@ -7,6 +7,7 @@
 //
 
 #import "RootViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation RootViewController
 @synthesize savedAlert;
@@ -41,6 +42,9 @@
     [button release];
     
     [[self navigationItem] setTitle: @"Welcome"];
+//    [self setTitle: @"Welcome"];
+
+    
     
     //become observer for application going to background
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -50,6 +54,25 @@
     
     return self;
 }
+- (void)setTitle:(NSString *)title
+{
+//    [super setTitle:title];
+    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
+    if (!titleView) {
+        titleView = [[UILabel alloc] initWithFrame:CGRectZero];
+        titleView.backgroundColor = [UIColor clearColor];
+        titleView.font = [UIFont boldSystemFontOfSize:20.0];
+        titleView.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        
+        titleView.textColor = [UIColor blueColor]; // Change to desired color
+        
+        self.navigationItem.titleView = titleView;
+        [titleView release];
+    }
+    [[self navigationItem] setTitle: title];
+//    [titleView sizeToFit];
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -98,7 +121,9 @@
     // autoresizing for autorotating
     self.view.autoresizesSubviews = YES;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
+    //code for CALayer
+//    self.view.layer.contents = (id) [UIImage imageNamed:@"RedandWhiteCheckered.jpg"].CGImage;
+    self.view.backgroundColor = [UIColor blackColor];
 }
 - (void)viewDidUnload
 {
