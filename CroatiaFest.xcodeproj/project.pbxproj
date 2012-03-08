@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7019A83C1506E6A4001C919C /* FestivalTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7019A83B1506E6A4001C919C /* FestivalTableViewController.xib */; };
+		7019A83E1506E6C0001C919C /* EventTypeDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7019A83D1506E6BF001C919C /* EventTypeDetailController.xib */; };
+		7019A84015081EEE001C919C /* MarketplaceTypeDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7019A83F15081EEE001C919C /* MarketplaceTypeDetailController.xib */; };
 		70213F25143E522800E1C499 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 70213F24143E522800E1C499 /* Food.m */; };
 		70213F311442950800E1C499 /* Vendor.m in Sources */ = {isa = PBXBuildFile; fileRef = 70213F301442950800E1C499 /* Vendor.m */; };
 		70213F341442952D00E1C499 /* Workshop.m in Sources */ = {isa = PBXBuildFile; fileRef = 70213F331442952D00E1C499 /* Workshop.m */; };
@@ -16,7 +19,6 @@
 		703139F914C245B1008DDC53 /* VendorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703139F814C245B1008DDC53 /* VendorViewController.m */; };
 		703139FE14C249B6008DDC53 /* VendorDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703139FD14C249B6008DDC53 /* VendorDetailController.m */; };
 		703C4203143A3B2E004EBB9F /* PerformerDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4201143A3B2E004EBB9F /* PerformerDetailController.m */; };
-		703C4204143A3B2E004EBB9F /* PerformerDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 703C4202143A3B2E004EBB9F /* PerformerDetailController.xib */; };
 		705B96BA13A275D000346007 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96B913A275D000346007 /* UIKit.framework */; };
 		705B96BC13A275D000346007 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BB13A275D000346007 /* Foundation.framework */; };
 		705B96BE13A275D000346007 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BD13A275D000346007 /* CoreGraphics.framework */; };
@@ -35,16 +37,20 @@
 		705B9C1F13A876B400346007 /* RedandWhiteCheckered.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 705B9C1E13A876B400346007 /* RedandWhiteCheckered.jpg */; };
 		705B9C2D13A8F76500346007 /* Performer.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C2C13A8F76400346007 /* Performer.m */; };
 		705B9C3113A8FB6F00346007 /* PerformerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C2F13A8FB6F00346007 /* PerformerViewController.m */; };
-		705B9C3213A8FB6F00346007 /* PerformerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705B9C3013A8FB6F00346007 /* PerformerViewController.xib */; };
 		705B9C3513A907D200346007 /* ParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C3413A907D100346007 /* ParseOperation.m */; };
-		705CD14C14BD037300B5733E /* FoodStageDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705CD14B14BD037300B5733E /* FoodStageDetailController.xib */; };
+		705FD5E3150591680071DFDB /* CookingDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 705FD5E2150591680071DFDB /* CookingDemo.m */; };
+		705FD5ED15066DB00071DFDB /* CookingDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705FD5EC15066DAF0071DFDB /* CookingDemoViewController.m */; };
+		705FD5F0150672460071DFDB /* CookingDemoDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705FD5EF150672450071DFDB /* CookingDemoDetailController.m */; };
+		705FD5F315067B5C0071DFDB /* Exhibit.m in Sources */ = {isa = PBXBuildFile; fileRef = 705FD5F215067B5C0071DFDB /* Exhibit.m */; };
+		705FD5F815067E2E0071DFDB /* ExhibitDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705FD5F715067E2D0071DFDB /* ExhibitDetailController.m */; };
+		705FD5FB15068AE90071DFDB /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 705FD5FA15068AE80071DFDB /* Activity.m */; };
+		705FD60215068C3F0071DFDB /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705FD60115068C3D0071DFDB /* ActivityViewController.m */; };
+		705FD60515068C660071DFDB /* ActivityDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705FD60415068C650071DFDB /* ActivityDetailController.m */; };
 		7085B6C4142FB884006AEFF3 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6C3142FB884006AEFF3 /* Version.m */; };
 		7085B6D414340BD7006AEFF3 /* VersionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6D314340BD7006AEFF3 /* VersionController.m */; };
 		70864CAE1444B30100C25B4B /* Directory.m in Sources */ = {isa = PBXBuildFile; fileRef = 70864CAD1444B30100C25B4B /* Directory.m */; };
 		7088322D146CD0C9006C2749 /* WorkshopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7088322B146CD0C9006C2749 /* WorkshopViewController.m */; };
-		7088322E146CD0C9006C2749 /* WorkshopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7088322C146CD0C9006C2749 /* WorkshopViewController.xib */; };
 		70883232146CDA09006C2749 /* WorkshopDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70883230146CDA09006C2749 /* WorkshopDetailController.m */; };
-		70883233146CDA09006C2749 /* WorkshopDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70883231146CDA09006C2749 /* WorkshopDetailController.xib */; };
 		709A9A5014C7CBDC000EB059 /* cflogo57.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A4F14C7CBDC000EB059 /* cflogo57.png */; };
 		709A9A5414C7CCBB000EB059 /* cflogo114.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A5314C7CCBB000EB059 /* cflogo114.png */; };
 		709A9A5A14C7E918000EB059 /* croatiafestwos57.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A5914C7E918000EB059 /* croatiafestwos57.png */; };
@@ -53,14 +59,9 @@
 		709A9A6614C7ED92000EB059 /* cfminilogo114.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A6514C7ED92000EB059 /* cfminilogo114.png */; };
 		709A9A6A14C7F0C5000EB059 /* cfredwhitemini114.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A6914C7F0C5000EB059 /* cfredwhitemini114.png */; };
 		709A9A6E14C7F255000EB059 /* karlovacko114.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A6D14C7F255000EB059 /* karlovacko114.png */; };
-		70AC5AEF14E5F4C70045514C /* navigationBarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AC5AEE14E5F4C70045514C /* navigationBarImage.png */; };
-		70AC5AF114E5F4D30045514C /* navigationBarImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AC5AF014E5F4D30045514C /* navigationBarImage@2x.png */; };
-		70AC5AF414EAF1780045514C /* navigationBarImageMuted.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AC5AF214EAF1760045514C /* navigationBarImageMuted.png */; };
-		70AC5AF514EAF1780045514C /* navigationBarImageMuted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AC5AF314EAF1770045514C /* navigationBarImageMuted@2x.png */; };
-		70AC5AF814EAF48D0045514C /* navigationBarImageExposed.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AC5AF614EAF48C0045514C /* navigationBarImageExposed.png */; };
-		70AC5AF914EAF48D0045514C /* navigationBarImageExposed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AC5AF714EAF48C0045514C /* navigationBarImageExposed@2x.png */; };
+		70AC5AFD14EE24450045514C /* navigationBarPleter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AC5AFB14EE24440045514C /* navigationBarPleter@2x.png */; };
+		70AC5AFF14EE25D60045514C /* navigationBarPleter.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AC5AFE14EE25D50045514C /* navigationBarPleter.png */; };
 		70AE05C513C69AE8005F8303 /* ExhibitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AE05C313C69AE8005F8303 /* ExhibitViewController.m */; };
-		70AE05C613C69AE8005F8303 /* ExhibitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */; };
 		70AE05D913C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */; };
 		70AE05DC13C77460005F8303 /* cart_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05DB13C77460005F8303 /* cart_24.png */; };
 		70AE05DE13C7746B005F8303 /* mic_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05DD13C7746B005F8303 /* mic_24.png */; };
@@ -85,6 +86,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7019A83B1506E6A4001C919C /* FestivalTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FestivalTableViewController.xib; sourceTree = "<group>"; };
+		7019A83D1506E6BF001C919C /* EventTypeDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTypeDetailController.xib; sourceTree = "<group>"; };
+		7019A83F15081EEE001C919C /* MarketplaceTypeDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketplaceTypeDetailController.xib; sourceTree = "<group>"; };
 		70213F23143E522800E1C499 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
 		70213F24143E522800E1C499 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		70213F2F1442950800E1C499 /* Vendor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vendor.h; sourceTree = "<group>"; };
@@ -100,7 +104,6 @@
 		703139FD14C249B6008DDC53 /* VendorDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VendorDetailController.m; path = ../VendorDetailController.m; sourceTree = "<group>"; };
 		703C4200143A3B2E004EBB9F /* PerformerDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformerDetailController.h; sourceTree = "<group>"; };
 		703C4201143A3B2E004EBB9F /* PerformerDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformerDetailController.m; sourceTree = "<group>"; };
-		703C4202143A3B2E004EBB9F /* PerformerDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PerformerDetailController.xib; sourceTree = "<group>"; };
 		705B96B513A275D000346007 /* CroatiaFest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CroatiaFest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		705B96B913A275D000346007 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		705B96BB13A275D000346007 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -128,10 +131,24 @@
 		705B9C2C13A8F76400346007 /* Performer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Performer.m; sourceTree = "<group>"; };
 		705B9C2E13A8FB6E00346007 /* PerformerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformerViewController.h; sourceTree = "<group>"; };
 		705B9C2F13A8FB6F00346007 /* PerformerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformerViewController.m; sourceTree = "<group>"; };
-		705B9C3013A8FB6F00346007 /* PerformerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PerformerViewController.xib; sourceTree = "<group>"; };
 		705B9C3313A907D100346007 /* ParseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseOperation.h; sourceTree = "<group>"; };
 		705B9C3413A907D100346007 /* ParseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseOperation.m; sourceTree = "<group>"; };
-		705CD14B14BD037300B5733E /* FoodStageDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodStageDetailController.xib; sourceTree = "<group>"; };
+		705FD5E1150591670071DFDB /* CookingDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookingDemo.h; sourceTree = "<group>"; };
+		705FD5E2150591680071DFDB /* CookingDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookingDemo.m; sourceTree = "<group>"; };
+		705FD5EB15066DAF0071DFDB /* CookingDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookingDemoViewController.h; sourceTree = "<group>"; };
+		705FD5EC15066DAF0071DFDB /* CookingDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookingDemoViewController.m; sourceTree = "<group>"; };
+		705FD5EE150672450071DFDB /* CookingDemoDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookingDemoDetailController.h; sourceTree = "<group>"; };
+		705FD5EF150672450071DFDB /* CookingDemoDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookingDemoDetailController.m; sourceTree = "<group>"; };
+		705FD5F115067B5C0071DFDB /* Exhibit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exhibit.h; sourceTree = "<group>"; };
+		705FD5F215067B5C0071DFDB /* Exhibit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exhibit.m; sourceTree = "<group>"; };
+		705FD5F615067E2D0071DFDB /* ExhibitDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExhibitDetailController.h; sourceTree = "<group>"; };
+		705FD5F715067E2D0071DFDB /* ExhibitDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExhibitDetailController.m; sourceTree = "<group>"; };
+		705FD5F915068AE80071DFDB /* Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Activity.h; sourceTree = "<group>"; };
+		705FD5FA15068AE80071DFDB /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Activity.m; sourceTree = "<group>"; };
+		705FD60015068C3C0071DFDB /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
+		705FD60115068C3D0071DFDB /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
+		705FD60315068C640071DFDB /* ActivityDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailController.h; sourceTree = "<group>"; };
+		705FD60415068C650071DFDB /* ActivityDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailController.m; sourceTree = "<group>"; };
 		7085B6C2142FB884006AEFF3 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
 		7085B6C3142FB884006AEFF3 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
 		7085B6D214340BD7006AEFF3 /* VersionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionController.h; sourceTree = "<group>"; };
@@ -140,10 +157,8 @@
 		70864CAD1444B30100C25B4B /* Directory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Directory.m; sourceTree = "<group>"; };
 		7088322A146CD0C9006C2749 /* WorkshopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkshopViewController.h; sourceTree = "<group>"; };
 		7088322B146CD0C9006C2749 /* WorkshopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkshopViewController.m; sourceTree = "<group>"; };
-		7088322C146CD0C9006C2749 /* WorkshopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkshopViewController.xib; sourceTree = "<group>"; };
 		7088322F146CDA09006C2749 /* WorkshopDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkshopDetailController.h; sourceTree = "<group>"; };
 		70883230146CDA09006C2749 /* WorkshopDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkshopDetailController.m; sourceTree = "<group>"; };
-		70883231146CDA09006C2749 /* WorkshopDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkshopDetailController.xib; sourceTree = "<group>"; };
 		709A9A4F14C7CBDC000EB059 /* cflogo57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cflogo57.png; path = ../cflogo57.png; sourceTree = "<group>"; };
 		709A9A5314C7CCBB000EB059 /* cflogo114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cflogo114.png; path = ../cflogo114.png; sourceTree = "<group>"; };
 		709A9A5914C7E918000EB059 /* croatiafestwos57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafestwos57.png; path = ../croatiafestwos57.png; sourceTree = "<group>"; };
@@ -152,15 +167,10 @@
 		709A9A6514C7ED92000EB059 /* cfminilogo114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cfminilogo114.png; path = ../cfminilogo114.png; sourceTree = "<group>"; };
 		709A9A6914C7F0C5000EB059 /* cfredwhitemini114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cfredwhitemini114.png; path = ../cfredwhitemini114.png; sourceTree = "<group>"; };
 		709A9A6D14C7F255000EB059 /* karlovacko114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = karlovacko114.png; path = ../karlovacko114.png; sourceTree = "<group>"; };
-		70AC5AEE14E5F4C70045514C /* navigationBarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigationBarImage.png; sourceTree = "<group>"; };
-		70AC5AF014E5F4D30045514C /* navigationBarImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationBarImage@2x.png"; sourceTree = "<group>"; };
-		70AC5AF214EAF1760045514C /* navigationBarImageMuted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigationBarImageMuted.png; sourceTree = "<group>"; };
-		70AC5AF314EAF1770045514C /* navigationBarImageMuted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationBarImageMuted@2x.png"; sourceTree = "<group>"; };
-		70AC5AF614EAF48C0045514C /* navigationBarImageExposed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigationBarImageExposed.png; sourceTree = "<group>"; };
-		70AC5AF714EAF48C0045514C /* navigationBarImageExposed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationBarImageExposed@2x.png"; sourceTree = "<group>"; };
+		70AC5AFB14EE24440045514C /* navigationBarPleter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationBarPleter@2x.png"; sourceTree = "<group>"; };
+		70AC5AFE14EE25D50045514C /* navigationBarPleter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navigationBarPleter.png; path = ../navigationBarPleter.png; sourceTree = "<group>"; };
 		70AE05C213C69AE8005F8303 /* ExhibitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExhibitViewController.h; sourceTree = "<group>"; };
 		70AE05C313C69AE8005F8303 /* ExhibitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExhibitViewController.m; sourceTree = "<group>"; };
-		70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExhibitViewController.xib; sourceTree = "<group>"; };
 		70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20px-Coat_of_arms_of_Croatia.png"; sourceTree = "<group>"; };
 		70AE05DB13C77460005F8303 /* cart_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart_24.png; sourceTree = "<group>"; };
 		70AE05DD13C7746B005F8303 /* mic_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic_24.png; sourceTree = "<group>"; };
@@ -253,12 +263,9 @@
 		705B96C013A275D000346007 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				70AC5AF614EAF48C0045514C /* navigationBarImageExposed.png */,
-				70AC5AF714EAF48C0045514C /* navigationBarImageExposed@2x.png */,
-				70AC5AF214EAF1760045514C /* navigationBarImageMuted.png */,
-				70AC5AF314EAF1770045514C /* navigationBarImageMuted@2x.png */,
-				70AC5AF014E5F4D30045514C /* navigationBarImage@2x.png */,
-				70AC5AEE14E5F4C70045514C /* navigationBarImage.png */,
+				70B2AADF13CCF771004C7D51 /* CroatiaFest.xcdatamodeld */,
+				70AC5AFE14EE25D50045514C /* navigationBarPleter.png */,
+				70AC5AFB14EE24440045514C /* navigationBarPleter@2x.png */,
 				709A9A6D14C7F255000EB059 /* karlovacko114.png */,
 				70B93A7B14DA6632007A3D56 /* cfredwhitemini57.png */,
 				709A9A6914C7F0C5000EB059 /* cfredwhitemini114.png */,
@@ -273,7 +280,6 @@
 				70E78C7014C7920800687947 /* crestimage114.png */,
 				70E78C6C14C7913500687947 /* cresticon57.png */,
 				70B7013414C7708800407A11 /* calendar_24.png */,
-				70B2AADF13CCF771004C7D51 /* CroatiaFest.xcdatamodeld */,
 				70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */,
 				70AE05DB13C77460005F8303 /* cart_24.png */,
 				70AE05DD13C7746B005F8303 /* mic_24.png */,
@@ -303,12 +309,22 @@
 				705B9C2F13A8FB6F00346007 /* PerformerViewController.m */,
 				703C4200143A3B2E004EBB9F /* PerformerDetailController.h */,
 				703C4201143A3B2E004EBB9F /* PerformerDetailController.m */,
-				70AE05C213C69AE8005F8303 /* ExhibitViewController.h */,
-				70AE05C313C69AE8005F8303 /* ExhibitViewController.m */,
 				7088322A146CD0C9006C2749 /* WorkshopViewController.h */,
 				7088322B146CD0C9006C2749 /* WorkshopViewController.m */,
 				7088322F146CDA09006C2749 /* WorkshopDetailController.h */,
 				70883230146CDA09006C2749 /* WorkshopDetailController.m */,
+				705FD5EB15066DAF0071DFDB /* CookingDemoViewController.h */,
+				705FD5EC15066DAF0071DFDB /* CookingDemoViewController.m */,
+				705FD5EE150672450071DFDB /* CookingDemoDetailController.h */,
+				705FD5EF150672450071DFDB /* CookingDemoDetailController.m */,
+				70AE05C213C69AE8005F8303 /* ExhibitViewController.h */,
+				70AE05C313C69AE8005F8303 /* ExhibitViewController.m */,
+				705FD5F615067E2D0071DFDB /* ExhibitDetailController.h */,
+				705FD5F715067E2D0071DFDB /* ExhibitDetailController.m */,
+				705FD60015068C3C0071DFDB /* ActivityViewController.h */,
+				705FD60115068C3D0071DFDB /* ActivityViewController.m */,
+				705FD60315068C640071DFDB /* ActivityDetailController.h */,
+				705FD60415068C650071DFDB /* ActivityDetailController.m */,
 				705B9C1713A8715000346007 /* MarketplaceViewController.h */,
 				705B9C1813A8715000346007 /* MarketplaceViewController.m */,
 				70E0122414BD433F00E230CA /* DirectoryViewController.h */,
@@ -333,13 +349,10 @@
 				705B96D113A275D000346007 /* RootViewController.xib */,
 				70E78C6614C7726000687947 /* ScheduleViewController.xib */,
 				705B9BFB13A30A4400346007 /* EventViewController.xib */,
-				705B9C3013A8FB6F00346007 /* PerformerViewController.xib */,
-				703C4202143A3B2E004EBB9F /* PerformerDetailController.xib */,
-				70AE05C413C69AE8005F8303 /* ExhibitViewController.xib */,
-				7088322C146CD0C9006C2749 /* WorkshopViewController.xib */,
-				70883231146CDA09006C2749 /* WorkshopDetailController.xib */,
-				705CD14B14BD037300B5733E /* FoodStageDetailController.xib */,
 				705B9C1913A8715100346007 /* MarketplaceViewController.xib */,
+				7019A83B1506E6A4001C919C /* FestivalTableViewController.xib */,
+				7019A83D1506E6BF001C919C /* EventTypeDetailController.xib */,
+				7019A83F15081EEE001C919C /* MarketplaceTypeDetailController.xib */,
 				703139F114C24192008DDC53 /* VendorViewController.xib */,
 				703139F314C24263008DDC53 /* VendorDetailController.xib */,
 				70B0555B14C25EE0008C07E3 /* FoodViewController.xib */,
@@ -359,6 +372,12 @@
 				705B9C2C13A8F76400346007 /* Performer.m */,
 				70213F321442952C00E1C499 /* Workshop.h */,
 				70213F331442952D00E1C499 /* Workshop.m */,
+				705FD5E1150591670071DFDB /* CookingDemo.h */,
+				705FD5E2150591680071DFDB /* CookingDemo.m */,
+				705FD5F115067B5C0071DFDB /* Exhibit.h */,
+				705FD5F215067B5C0071DFDB /* Exhibit.m */,
+				705FD5F915068AE80071DFDB /* Activity.h */,
+				705FD5FA15068AE80071DFDB /* Activity.m */,
 				70213F2F1442950800E1C499 /* Vendor.h */,
 				70213F301442950800E1C499 /* Vendor.m */,
 				70213F23143E522800E1C499 /* Food.h */,
@@ -427,15 +446,9 @@
 				705B9C1B13A8715100346007 /* MarketplaceViewController.xib in Resources */,
 				705B9C1D13A8742500346007 /* croatiafestwos.jpg in Resources */,
 				705B9C1F13A876B400346007 /* RedandWhiteCheckered.jpg in Resources */,
-				705B9C3213A8FB6F00346007 /* PerformerViewController.xib in Resources */,
-				70AE05C613C69AE8005F8303 /* ExhibitViewController.xib in Resources */,
 				70AE05D913C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png in Resources */,
 				70AE05DC13C77460005F8303 /* cart_24.png in Resources */,
 				70AE05DE13C7746B005F8303 /* mic_24.png in Resources */,
-				703C4204143A3B2E004EBB9F /* PerformerDetailController.xib in Resources */,
-				7088322E146CD0C9006C2749 /* WorkshopViewController.xib in Resources */,
-				70883233146CDA09006C2749 /* WorkshopDetailController.xib in Resources */,
-				705CD14C14BD037300B5733E /* FoodStageDetailController.xib in Resources */,
 				70BB309414BD58B200DB54DD /* DirectoryViewController.xib in Resources */,
 				70BB309614BD5A2E00DB54DD /* DirectoryDetailController.xib in Resources */,
 				703139F214C24192008DDC53 /* VendorViewController.xib in Resources */,
@@ -457,12 +470,11 @@
 				709A9A6A14C7F0C5000EB059 /* cfredwhitemini114.png in Resources */,
 				709A9A6E14C7F255000EB059 /* karlovacko114.png in Resources */,
 				70B93A7C14DA6632007A3D56 /* cfredwhitemini57.png in Resources */,
-				70AC5AEF14E5F4C70045514C /* navigationBarImage.png in Resources */,
-				70AC5AF114E5F4D30045514C /* navigationBarImage@2x.png in Resources */,
-				70AC5AF414EAF1780045514C /* navigationBarImageMuted.png in Resources */,
-				70AC5AF514EAF1780045514C /* navigationBarImageMuted@2x.png in Resources */,
-				70AC5AF814EAF48D0045514C /* navigationBarImageExposed.png in Resources */,
-				70AC5AF914EAF48D0045514C /* navigationBarImageExposed@2x.png in Resources */,
+				70AC5AFD14EE24450045514C /* navigationBarPleter@2x.png in Resources */,
+				70AC5AFF14EE25D60045514C /* navigationBarPleter.png in Resources */,
+				7019A83C1506E6A4001C919C /* FestivalTableViewController.xib in Resources */,
+				7019A83E1506E6C0001C919C /* EventTypeDetailController.xib in Resources */,
+				7019A84015081EEE001C919C /* MarketplaceTypeDetailController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +511,14 @@
 				70B0556114C26162008C07E3 /* FoodViewController.m in Sources */,
 				70B0556414C26186008C07E3 /* FoodDetailController.m in Sources */,
 				70B7013D14C7719700407A11 /* ScheduleViewController.m in Sources */,
+				705FD5E3150591680071DFDB /* CookingDemo.m in Sources */,
+				705FD5ED15066DB00071DFDB /* CookingDemoViewController.m in Sources */,
+				705FD5F0150672460071DFDB /* CookingDemoDetailController.m in Sources */,
+				705FD5F315067B5C0071DFDB /* Exhibit.m in Sources */,
+				705FD5F815067E2E0071DFDB /* ExhibitDetailController.m in Sources */,
+				705FD5FB15068AE90071DFDB /* Activity.m in Sources */,
+				705FD60215068C3F0071DFDB /* ActivityViewController.m in Sources */,
+				705FD60515068C660071DFDB /* ActivityDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

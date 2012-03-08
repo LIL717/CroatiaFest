@@ -7,14 +7,12 @@
 //
 #import <Foundation/Foundation.h>
 
-#define TABLE_FEED_TAGS @"appControl", @"directory", @"food", @"performers", @"vendors", @"workshops", nil
+#define TABLE_FEED_TAGS @"activities", @"appControl", @"cookingDemos", @"directory", @"exhibits", @"food", @"performers", @"vendors", @"workshops", nil
 
 #define APPCONTROL_FEED_TAGS @"Version",  nil
-#define DIRECTORY_FEED_TAGS @"Name", @"Desc_1", @"Contact", @"Addr_1", @"Addr_2", @"Phone_1", @"Phone_2", @"Website", @"Email", nil
-#define FOOD_FEED_TAGS @"Name", @"Desc", @"Contributing_sponsor", nil
-#define PERFORMER_FEED_TAGS @"Name", @"Desc", @"City", @"Website", @"Website_description", @"Performance_Time", nil
-#define VENDOR_FEED_TAGS @"Name", @"Desc_1", @"Desc_2", @"Contact", @"Addr_1", @"Addr_2", @"Phone", @"Website", nil
-#define WORKSHOP_FEED_TAGS @"Name", @"Presenter", @"Website", @"Desc", @"Panel_1", @"Panel_2", @"Panel_3", @"Panel_4", @"Panel_5", @"Panel_6", @"link_text", @"link", @"Time", nil
+#define EVENT_FEED_TAGS @"Name", @"Desc_1", @"Desc_2", @"Addr_1", @"Addr_2", @"Phone_1", @"Phone_2", @"Website", @"Email", @"Video", @"Performance_Date_1", @"Performance_Begin_Time_1", @"Performance_End_Time_1", @"Performance_Location_1", @"Performance_Date_2", @"Performance_Begin_Time_2", @"Performance_End_Time_2", @"Performance_Location_2", nil
+#define MARKETPLACE_FEED_TAGS @"Name", @"Desc_1", @"Desc_2", @"Addr_1", @"Addr_2", @"Phone_1", @"Phone_2", @"Website", @"Email",nil
+
 
 extern NSString *kAddFestivalNotif;
 extern NSString *kFestivalResultsKey;

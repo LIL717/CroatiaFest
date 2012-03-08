@@ -10,8 +10,14 @@
 
 @implementation Food
 @dynamic name;
-@dynamic desc;
-@dynamic sponsor;
+@dynamic desc1;
+@dynamic desc2;
+@dynamic addr1;
+@dynamic addr2;
+@dynamic phone1;
+@dynamic phone2;
+@dynamic website;
+@dynamic email;
 
 @synthesize managedObjectContext = managedObjectContext_;
 
@@ -25,8 +31,14 @@
         
         NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:self.managedObjectContext];
         [newManagedObject setValue: [newFood valueForKey: @"Name"] forKey:@"name"];
-        [newManagedObject setValue: [newFood valueForKey: @"Desc"] forKey:@"desc"];
-        [newManagedObject setValue: [newFood valueForKey: @"Contributing_sponsor"] forKey:@"sponsor"];
+        [newManagedObject setValue: [newFood valueForKey: @"Desc_1"] forKey:@"desc1"];
+        [newManagedObject setValue: [newFood valueForKey: @"Desc_2"] forKey:@"desc2"];
+        [newManagedObject setValue: [newFood valueForKey: @"Addr_1"] forKey:@"addr1"];
+        [newManagedObject setValue: [newFood valueForKey: @"Addr_2"] forKey:@"addr2"];
+        [newManagedObject setValue: [newFood valueForKey: @"Phone_1"] forKey:@"phone1"];
+        [newManagedObject setValue: [newFood valueForKey: @"Phone_2"] forKey:@"phone2"];
+        [newManagedObject setValue: [newFood valueForKey: @"Website"] forKey:@"website"];
+        [newManagedObject setValue: [newFood valueForKey: @"Email"] forKey:@"email"];
 
         
         //        NSLog(@" newManagedObject is %@", newManagedObject);

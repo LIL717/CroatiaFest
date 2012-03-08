@@ -12,7 +12,7 @@
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *desc1;
-@property (nonatomic, retain) NSString *contact;
+@property (nonatomic, retain) NSString *desc2;
 @property (nonatomic, retain) NSString *addr1;
 @property (nonatomic, retain) NSString *addr2;
 @property (nonatomic, retain) NSString *phone1;

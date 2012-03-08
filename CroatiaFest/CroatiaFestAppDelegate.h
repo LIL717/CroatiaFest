@@ -33,8 +33,6 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-- (UIImage *) UIImageWithAlpha: (UIImage *) backgroundImage;
-
 
 
 @end

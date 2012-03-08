@@ -11,24 +11,30 @@
 #import "RootViewController.h"
 #import "EventViewController.h"
 #import "MarketplaceViewController.h"
-#import "PerformerViewController.h"
-#import "Performer.h"
+//#import "PerformerViewController.h"
 #import "ParseOperation.h"
+#import "Activity.h"
+#import "CookingDemo.h"
 #import "Directory.h"
+#import "Exhibit.h"
 #import "Food.h"
+#import "Performer.h"
 #import "Vendor.h"
 #import "Workshop.h"
 
 
 // this framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code
 #import <CFNetwork/CFNetwork.h>
-@implementation UINavigationBar (BackgroundImage)
-//This overridden implementation will patch up the NavBar with a custom Image instead of the title
-- (void)drawRect:(CGRect)rect {
-    UIImage *image = [UIImage imageNamed: @"navigationBarImage.png"];
-    [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-}
-@end
+
+//// customize navBar for pre iOS5 devices
+//@implementation UINavigationBar (CustomImage)
+//- (void)drawRect:(CGRect)rect
+//{
+//    UIImage *image = [UIImage imageNamed: @"navigationBarImageMuted.png"];
+//    [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+//}
+//@end
+
 #pragma mark CroatiaFestAppDelegate () 
 
 // forward declarations
@@ -119,25 +125,17 @@
                                               initWithRootViewController:marketplaceViewController];
     //Customize the look of the UINavBar for iOS5 devices
     if ([[UINavigationBar class]respondsToSelector:@selector(appearance)]) {
-//        UIImage *backgroundWithAlpha = [self UIImageWithAlpha: [UIImage imageNamed: @"navigationBarImage.png"]];
-//        UIImage *myImage = [UIImage imageNamed: @"navigationBarImage.png"];
-//        CGContextRef context = UIGraphicsGetCurrentContext();
-//        CGContextSaveGState(context);
-//        CGRect paramRect = CGRectMake(0, 0, myImage.size.width, myImage.size.height);
-//        [myImage drawInRect: paramRect
-//                  blendMode:kCGBlendModeLighten
-//                      alpha:1.0f];
-//        CGContextRestoreGState(context);
-//        [[UINavigationBar appearance] setBackgroundImage:myImage forBarMetrics:UIBarMetricsDefault];
 
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBarImageMuted.png"] forBarMetrics:UIBarMetricsDefault];
-//        [[UINavigationBar appearance] setTintColor:[UIColor colorWithWhite:1.0 alpha:0.9]];
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBarPleter.png"] forBarMetrics:UIBarMetricsDefault];
         [[UINavigationBar  appearance]setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                 [UIFont fontWithName:@"Chalkduster" size:20.0f], UITextAttributeFont,
+//                                                 [UIFont fontWithName:@"Chalkduster" size:20.0f], UITextAttributeFont,
                                                  [UIColor blueColor], UITextAttributeTextColor,
                                                  [UIColor grayColor], UITextAttributeTextShadowColor,
                                                  [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.0f)], UITextAttributeTextShadowOffset,
                                                  nil]];
+//        [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:-10.0f forBarMetrics:(UIBarMetrics)UIBarMetricsDefault];
+
+        [[UIBarButtonItem appearance] setTintColor:[UIColor blueColor]];
     }
 
 
@@ -164,14 +162,6 @@
     [navController2 release];
     [navController3 release];
     [navController4 release];
-}
-- (UIImage *) UIImageWithAlpha: (UIImage *) backgroundImage {
-    UIImage *myImage = backgroundImage;
-    CGRect paramRect = CGRectMake(0, 0, myImage.size.width, myImage.size.height);
-    [myImage drawInRect: paramRect
-              blendMode:kCGBlendModeLighten
-                  alpha:1.0f];
-    return myImage;
 }
 - (void) setUpURLConnection {    
     // Use NSURLConnection to asynchronously download the data. This means the main thread will not
@@ -363,10 +353,25 @@
         NSLog (@"key is %@", key);
         NSArray* passedArray = [[[NSArray alloc] initWithArray:[parsedData objectForKey:key]] autorelease];
 
+        if ([key isEqualToString: @"activities"]) {
+            Activity *activity = [[Activity alloc] autorelease];
+            activity.managedObjectContext = self.managedObjectContext;
+            [activity addActivitiesToCoreData:passedArray];
+        }
+        if ([key isEqualToString: @"cookingDemos"]) {
+            CookingDemo *cookingDemo = [[CookingDemo alloc] autorelease];
+            cookingDemo.managedObjectContext = self.managedObjectContext;
+            [cookingDemo addCookingDemosToCoreData:passedArray];
+        }
         if ([key isEqualToString: @"directory"]) {
             Directory *directory = [[Directory alloc] autorelease];
             directory.managedObjectContext = self.managedObjectContext;
             [directory addDirectoryToCoreData:passedArray];
+        }
+        if ([key isEqualToString: @"exhibits"]) {
+            Exhibit *exhibit = [[Exhibit alloc] autorelease];
+            exhibit.managedObjectContext = self.managedObjectContext;
+            [exhibit addExhibitsToCoreData:passedArray];
         }
         if ([key isEqualToString: @"food"]) {
             Food *food = [[Food alloc] autorelease];
@@ -378,19 +383,18 @@
             performer.managedObjectContext = self.managedObjectContext;
             [performer addPerformersToCoreData:passedArray];
         }
-        if ([key isEqualToString: @"workshops"]) {
-            Workshop *workshop = [[Workshop alloc] autorelease];
-            workshop.managedObjectContext = self.managedObjectContext;
-            [workshop addWorkshopsToCoreData:passedArray];
-            NSLog (@"workshop %@", workshop);
-        }
         if ([key isEqualToString: @"vendors"]) {
             Vendor *vendor = [[Vendor alloc] autorelease];
             vendor.managedObjectContext = self.managedObjectContext;
             [vendor addVendorsToCoreData:passedArray];
             NSLog (@"vendor %@", vendor);
         }
-
+        if ([key isEqualToString: @"workshops"]) {
+            Workshop *workshop = [[Workshop alloc] autorelease];
+            workshop.managedObjectContext = self.managedObjectContext;
+            [workshop addWorkshopsToCoreData:passedArray];
+            NSLog (@"workshop %@", workshop);
+        }
     }
 }
 #pragma mark -

@@ -11,11 +11,16 @@
 @interface Performer : NSManagedObject
 
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *desc;
-@property (nonatomic, retain) NSString *city;
+@property (nonatomic, retain) NSString *desc1;
+@property (nonatomic, retain) NSString *desc2;
+@property (nonatomic, retain) NSString *addr1;
+@property (nonatomic, retain) NSString *addr2;
+@property (nonatomic, retain) NSString *phone1;
+@property (nonatomic, retain) NSString *phone2;
 @property (nonatomic, retain) NSString *website;
-@property (nonatomic, retain) NSString *websiteDesc;
-@property (nonatomic, retain) NSDate *performanceTime;
+@property (nonatomic, retain) NSString *email;
+@property (nonatomic, retain) NSString *video;
+
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 

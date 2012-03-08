@@ -61,7 +61,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Vendor";
+    self.title = @"Vendors";
     
     //    //become observer for application going to background
     //    [[NSNotificationCenter defaultCenter] addObserver:self
@@ -165,7 +165,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    VendorDetailController *vendorDetailController = [[[VendorDetailController alloc] init] autorelease];
+    VendorDetailController *vendorDetailController = [[[VendorDetailController alloc] initWithNibName:@"MarketplaceTypeDetailController" bundle:nil] autorelease];
     vendorDetailController.managedObjectContext = self.managedObjectContext;
     
     Vendor *selectedVendor = [[self fetchedResultsController] objectAtIndexPath:indexPath];

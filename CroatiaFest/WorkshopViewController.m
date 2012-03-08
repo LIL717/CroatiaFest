@@ -60,7 +60,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Food Stage";
+    self.title = @"Workshops";
     
     //    //become observer for application going to background
     //    [[NSNotificationCenter defaultCenter] addObserver:self
@@ -161,13 +161,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    WorkshopDetailController *workshopDetailController = [[[WorkshopDetailController alloc] init] autorelease];
+    WorkshopDetailController *workshopDetailController = [[WorkshopDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil];
     workshopDetailController.managedObjectContext = self.managedObjectContext;
     
     Workshop *selectedWorkshop = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     workshopDetailController.workshop = selectedWorkshop;
     
     [self.navigationController pushViewController:workshopDetailController animated:YES];
+    [workshopDetailController release];
 }
 
 // listen for changes to the performer list coming from our app delegagte.

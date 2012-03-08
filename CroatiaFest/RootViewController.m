@@ -54,24 +54,26 @@
     
     return self;
 }
-- (void)setTitle:(NSString *)title
-{
+// set the color and font of the title in the navigationBar (4.3 and lower)
+//- (void)setTitle:(NSString *)title
+//{
 //    [super setTitle:title];
-    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
-    if (!titleView) {
-        titleView = [[UILabel alloc] initWithFrame:CGRectZero];
-        titleView.backgroundColor = [UIColor clearColor];
-        titleView.font = [UIFont boldSystemFontOfSize:20.0];
-        titleView.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-        
-        titleView.textColor = [UIColor blueColor]; // Change to desired color
-        
-        self.navigationItem.titleView = titleView;
-        [titleView release];
-    }
-    [[self navigationItem] setTitle: title];
+//    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
+//    if (!titleView) {
+//        titleView = [[UILabel alloc] initWithFrame:CGRectZero];
+//        titleView.backgroundColor = [UIColor clearColor];
+////        titleView.font = [UIFont boldSystemFontOfSize:20.0];
+//        titleView.font = [UIFont fontWithName:@"Chalkduster" size:20.0f];
+//        titleView.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+//        
+//        titleView.textColor = [UIColor blueColor]; // Change to desired color
+//        
+//        self.navigationItem.titleView = titleView;
+//        [titleView release];
+//    }
+//    titleView.text = title;
 //    [titleView sizeToFit];
-}
+//}
 
 - (void)dealloc
 {

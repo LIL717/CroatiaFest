@@ -10,11 +10,15 @@
 
 @implementation Performer
 @dynamic name;
-@dynamic desc;
-@dynamic city;
+@dynamic desc1;
+@dynamic desc2;
+@dynamic addr1;
+@dynamic addr2;
+@dynamic phone1;
+@dynamic phone2;
 @dynamic website;
-@dynamic websiteDesc;
-@dynamic performanceTime;
+@dynamic email;
+@dynamic video;
 
 @synthesize managedObjectContext = managedObjectContext_;
 
@@ -28,15 +32,22 @@
 
         NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Performer" inManagedObjectContext:self.managedObjectContext];
         [newManagedObject setValue: [newPerformer valueForKey: @"Name"] forKey:@"name"];
-        [newManagedObject setValue: [newPerformer valueForKey: @"Desc"] forKey:@"desc"];
-        [newManagedObject setValue: [newPerformer valueForKey: @"City"] forKey:@"city"];
+        [newManagedObject setValue: [newPerformer valueForKey: @"Desc_1"] forKey:@"desc1"];
+        [newManagedObject setValue: [newPerformer valueForKey: @"Desc_2"] forKey:@"desc2"];
+        [newManagedObject setValue: [newPerformer valueForKey: @"Addr_1"] forKey:@"addr1"];
+        [newManagedObject setValue: [newPerformer valueForKey: @"Addr_2"] forKey:@"addr2"];
+        [newManagedObject setValue: [newPerformer valueForKey: @"Phone_1"] forKey:@"phone1"];
+        [newManagedObject setValue: [newPerformer valueForKey: @"Phone_2"] forKey:@"phone2"];
         [newManagedObject setValue: [newPerformer valueForKey: @"Website"] forKey:@"website"];
-        
-        // Convert string to date object
-        NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-        [dateFormatter setDateFormat:@"hh:mm:ss"];
+        [newManagedObject setValue: [newPerformer valueForKey: @"Email"] forKey:@"email"];
+        [newManagedObject setValue: [newPerformer valueForKey: @"Video"] forKey:@"video"];
 
-        [newManagedObject setValue: [dateFormatter dateFromString: [newPerformer valueForKey: @"Performance_Time"]] forKey:@"performanceTime"];
+//        
+//        // Convert string to date object
+//        NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+//        [dateFormatter setDateFormat:@"hh:mm:ss"];
+
+//        [newManagedObject setValue: [dateFormatter dateFromString: [newPerformer valueForKey: @"Performance_Time"]] forKey:@"performanceTime"];
 //        NSLog (@"newPerformer is %@ newManagedObject is %@", newPerformer, newManagedObject);
         if (![self.managedObjectContext save:&error]) {
             NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);

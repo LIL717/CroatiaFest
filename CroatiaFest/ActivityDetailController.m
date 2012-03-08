@@ -1,17 +1,17 @@
 //
-//  VendorDetailController.m
+//  ActivityDetailController.m
 //  CroatiaFest
 //
-//  Created by Lori Hill on 1/14/12.
+//  Created by Lori Hill on 3/6/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "VendorDetailController.h"
-#import "Vendor.h"
+#import "ActivityDetailController.h"
+#import "Activity.h"
 
-@implementation VendorDetailController
+@implementation ActivityDetailController
 
-@synthesize vendor = vendor_;
+@synthesize activity = activity_;
 @synthesize managedObjectContext = managedObjectContext_;
 
 @synthesize name = name_;
@@ -23,12 +23,11 @@
 @synthesize phone2 = phone2_;
 @synthesize website = website_;
 @synthesize email = email_;
-
+@synthesize video = video_;  
 
 - (void) dealloc {
-    [vendor_ release];
+    [activity_ release];
     [managedObjectContext_ release];
-    
     [name_ release];
     [desc1_ release];
     [desc2_ release];
@@ -38,11 +37,10 @@
     [phone2_ release];
     [website_ release];
     [email_ release];
-    
+    [video_ release];
     
     [super dealloc];
 }
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     LogMethod();
@@ -55,23 +53,36 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.name.text = self.vendor.name;
-    self.desc1.text = self.vendor.desc1;
-    self.desc2.text = self.vendor.desc2;
-    self.addr1.text = self.vendor.addr1;
-    self.addr2.text = self.vendor.addr2;
-    self.phone1.text = self.vendor.phone1;
-    self.phone2.text = self.vendor.phone2;
-    self.website.text = self.vendor.website;
-    self.email.text = self.vendor.email;
-
+    self.name.text = self.activity.name;
+    self.desc1.text = self.activity.desc1;
+    self.desc2.text = self.activity.desc2;
+    self.addr1.text = self.activity.addr1;
+    self.addr2.text = self.activity.addr2;
+    self.phone1.text = self.activity.phone1;
+    self.phone2.text = self.activity.phone2;
+    self.website.text = self.activity.website;
+    self.email.text = self.activity.email;
+    self.video.text = self.activity.video;
+    //    NSLog (@"name, webiste is %@ %@", self.Activity.name, self.Activity.website);
     
+    //    if ([self.Activity.website length] >0)
+    //        self.website.text = self.Activity.website;
+    //    else self.website.text = @" ";
+    
+    //    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    //    NSDate *date = self.Activity.presentationTime;
+    //    NSLocale *usLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+    //    [dateFormatter setLocale:usLocale];
+    //    
+    //    // Convert date object to desired output format
+    //    [dateFormatter setDateFormat:@"h:mm"];
+    //    self.presentationTime.text = [dateFormatter stringFromDate:date]; 
 }
 // IBAction needs to be from touch on textfield
 //  should it be a safari page within the app that then can go back????   YES change this
 
 -(IBAction)launchWeb:(id)sender {
-    NSString* launchUrl = [NSString stringWithFormat:@"http://%@",self.website.text];
+    NSString* launchUrl = [[[NSString alloc] initWithString: [NSString stringWithFormat:@"http://%@",self.website.text]] autorelease];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: launchUrl]];
 }
 
@@ -103,8 +114,7 @@
     self.phone2 = nil;
     self.website = nil;
     self.email = nil;
-
-    
+    self.video = nil;
     
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

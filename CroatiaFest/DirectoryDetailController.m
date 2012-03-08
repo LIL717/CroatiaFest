@@ -16,7 +16,7 @@
 
 @synthesize name = name_;
 @synthesize desc1 = desc1_;
-@synthesize contact = contact_;
+@synthesize desc2 = desc2_;
 @synthesize addr1 = addr1_;
 @synthesize addr2 = addr2_;
 @synthesize phone1 = phone1_;
@@ -30,7 +30,7 @@
     
     [name_ release];
     [desc1_ release];
-    [contact_ release];
+    [desc2_ release];
     [addr1_ release];
     [addr2_ release];
     [phone1_ release];
@@ -41,10 +41,22 @@
     
     [super dealloc];
 }
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    LogMethod();
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        
+    }
+    return self;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     self.name.text = self.directory.name;
     self.desc1.text = self.directory.desc1;
-    self.contact.text = self.directory.contact;
+    self.desc2.text = self.directory.desc2;
     self.addr1.text = self.directory.addr1;
     self.addr2.text = self.directory.addr2;
     self.phone1.text = self.directory.phone1;
@@ -90,7 +102,7 @@
     [super viewDidUnload];
     self.name = nil;
     self.desc1 = nil;
-    self.contact = nil;
+    self.desc2 = nil;
     self.addr1 = nil;
     self.addr2 = nil;
     self.phone1 = nil;

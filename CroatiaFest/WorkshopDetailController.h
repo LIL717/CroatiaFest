@@ -12,41 +12,34 @@
 
 @interface WorkshopDetailController : UIViewController {
     UITextField *name_;
-    UITextField *presenter_;
+    UITextField *desc1_;
+    UITextView *desc2_;
+    UITextField *addr1_;
+    UITextField *addr2_;
+    UITextField *phone1_;
+    UITextField *phone2_;
     UITextField *website_;
-    UITextView  *desc_;
-    UITextField *panel1_;
-    UITextField *panel2_;
-    UITextField *panel3_;
-    UITextField *panel4_;
-    UITextField *panel5_;
-    UITextField *panel6_;
-    UITextField *linkText_;
-    UITextField *link_;
-    UITextField *presentationTime_;    
+    UITextField *email_;
+    UITextField *video_;   
     
     Workshop *workshop_;
     NSManagedObjectContext *managedObjectContext_;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *name;
-@property (nonatomic, retain) IBOutlet UITextField *presenter;
+@property (nonatomic, retain) IBOutlet UITextField *desc1;
+@property (nonatomic, retain) IBOutlet UITextView *desc2;
+@property (nonatomic, retain) IBOutlet UITextField *addr1;
+@property (nonatomic, retain) IBOutlet UITextField *addr2;
+@property (nonatomic, retain) IBOutlet UITextField *phone1;
+@property (nonatomic, retain) IBOutlet UITextField *phone2;
 @property (nonatomic, retain) IBOutlet UITextField *website;
-@property (nonatomic, retain) IBOutlet UITextView *desc;
-@property (nonatomic, retain) IBOutlet UITextField *panel1;
-@property (nonatomic, retain) IBOutlet UITextField *panel2;
-@property (nonatomic, retain) IBOutlet UITextField *panel3;
-@property (nonatomic, retain) IBOutlet UITextField *panel4;
-@property (nonatomic, retain) IBOutlet UITextField *panel5;
-@property (nonatomic, retain) IBOutlet UITextField *panel6;
-@property (nonatomic, retain) IBOutlet UITextField *linkText;
-@property (nonatomic, retain) IBOutlet UITextField *link;
-@property (nonatomic, retain) IBOutlet UITextField *presentationTime;
+@property (nonatomic, retain) IBOutlet UITextField *email;
+@property (nonatomic, retain) IBOutlet UITextField *video;
 
 @property (nonatomic, retain) Workshop *workshop;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
-- (IBAction)launchURL:(id)sender; 
-- (NSString *) mailOrWeb;
+- (IBAction)launchWeb:(id)sender; 
 
 @end

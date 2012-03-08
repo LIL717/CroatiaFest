@@ -10,18 +10,15 @@
 
 @implementation Workshop
 @dynamic name;
-@dynamic presenter;
+@dynamic desc1;
+@dynamic desc2;
+@dynamic addr1;
+@dynamic addr2;
+@dynamic phone1;
+@dynamic phone2;
 @dynamic website;
-@dynamic desc;
-@dynamic panel1;
-@dynamic panel2;
-@dynamic panel3;
-@dynamic panel4;
-@dynamic panel5;
-@dynamic panel6;
-@dynamic linkText;
-@dynamic link;
-@dynamic presentationTime;
+@dynamic email;
+@dynamic video;
 
 @synthesize managedObjectContext = managedObjectContext_;
 
@@ -36,21 +33,20 @@
         
         NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Workshop" inManagedObjectContext:self.managedObjectContext];
         [newManagedObject setValue: [newWorkshop valueForKey: @"Name"] forKey:@"name"];
-        [newManagedObject setValue: [newWorkshop valueForKey: @"Presenter"] forKey:@"presenter"];
+        [newManagedObject setValue: [newWorkshop valueForKey: @"Desc_1"] forKey:@"desc1"];
+        [newManagedObject setValue: [newWorkshop valueForKey: @"Desc_2"] forKey:@"desc2"];
+        [newManagedObject setValue: [newWorkshop valueForKey: @"Addr_1"] forKey:@"addr1"];
+        [newManagedObject setValue: [newWorkshop valueForKey: @"Addr_2"] forKey:@"addr2"];
+        [newManagedObject setValue: [newWorkshop valueForKey: @"Phone_1"] forKey:@"phone1"];
+        [newManagedObject setValue: [newWorkshop valueForKey: @"Phone_2"] forKey:@"phone2"];
         [newManagedObject setValue: [newWorkshop valueForKey: @"Website"] forKey:@"website"];
-        [newManagedObject setValue: [newWorkshop valueForKey: @"Desc"] forKey:@"desc"];
-        [newManagedObject setValue: [newWorkshop valueForKey: @"Panel_1"] forKey:@"panel1"];
-        [newManagedObject setValue: [newWorkshop valueForKey: @"Panel_2"] forKey:@"panel2"];
-        [newManagedObject setValue: [newWorkshop valueForKey: @"Panel_4"] forKey:@"panel4"];
-        [newManagedObject setValue: [newWorkshop valueForKey: @"Panel_5"] forKey:@"panel5"];
-        [newManagedObject setValue: [newWorkshop valueForKey: @"Panel_6"] forKey:@"panel6"];
-        [newManagedObject setValue: [newWorkshop valueForKey: @"link_text"] forKey:@"linkText"];
-        [newManagedObject setValue: [newWorkshop valueForKey: @"link"] forKey:@"link"];
+        [newManagedObject setValue: [newWorkshop valueForKey: @"Email"] forKey:@"email"];
+        [newManagedObject setValue: [newWorkshop valueForKey: @"Video"] forKey:@"video"];
         
-        // Convert string to date object
-        NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-        [dateFormatter setDateFormat:@"hh:mm:ss"];
-        [newManagedObject setValue: [dateFormatter dateFromString: [newWorkshop valueForKey: @"Time"]] forKey:@"presentationTime"];
+//        // Convert string to date object
+//        NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+//        [dateFormatter setDateFormat:@"hh:mm:ss"];
+//        [newManagedObject setValue: [dateFormatter dateFromString: [newWorkshop valueForKey: @"Time"]] forKey:@"presentationTime"];
         
         if (![self.managedObjectContext save:&error]) {
             NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);

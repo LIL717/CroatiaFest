@@ -53,13 +53,16 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
         tableItemNames = [[NSSet alloc] initWithObjects:TABLE_FEED_TAGS]; 
         self.tableTagsDictionary = [[[NSMutableDictionary alloc] initWithCapacity: [tableItemNames count]] autorelease];
         self.parsedTablesDictionary = [[[NSMutableDictionary alloc] initWithCapacity:[tableItemNames count]] autorelease];
-        
+
+        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"activities"];
         [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:APPCONTROL_FEED_TAGS] autorelease] forKey:@"appControl"];
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:DIRECTORY_FEED_TAGS] autorelease] forKey:@"directory"];    
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:FOOD_FEED_TAGS] autorelease] forKey:@"food"];
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:PERFORMER_FEED_TAGS] autorelease] forKey:@"performers"];
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:VENDOR_FEED_TAGS] autorelease] forKey:@"vendors"];
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:WORKSHOP_FEED_TAGS] autorelease] forKey:@"workshops"];
+        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"cookingDemos"];
+        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:MARKETPLACE_FEED_TAGS] autorelease] forKey:@"directory"];  
+        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"exhibits"];
+        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:MARKETPLACE_FEED_TAGS] autorelease] forKey:@"food"];
+        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"performers"];
+        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:MARKETPLACE_FEED_TAGS] autorelease] forKey:@"vendors"];
+        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"workshops"];
 
         parseData = [data copy];
 

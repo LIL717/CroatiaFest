@@ -11,18 +11,15 @@
 @interface Workshop : NSManagedObject
 
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *presenter;
+@property (nonatomic, retain) NSString *desc1;
+@property (nonatomic, retain) NSString *desc2;
+@property (nonatomic, retain) NSString *addr1;
+@property (nonatomic, retain) NSString *addr2;
+@property (nonatomic, retain) NSString *phone1;
+@property (nonatomic, retain) NSString *phone2;
 @property (nonatomic, retain) NSString *website;
-@property (nonatomic, retain) NSString *desc;
-@property (nonatomic, retain) NSString *panel1;
-@property (nonatomic, retain) NSString *panel2;
-@property (nonatomic, retain) NSString *panel3;
-@property (nonatomic, retain) NSString *panel4;
-@property (nonatomic, retain) NSString *panel5;
-@property (nonatomic, retain) NSString *panel6;
-@property (nonatomic, retain) NSString *linkText;
-@property (nonatomic, retain) NSString *link;
-@property (nonatomic, retain) NSDate *presentationTime;
+@property (nonatomic, retain) NSString *email;
+@property (nonatomic, retain) NSString *video;
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 

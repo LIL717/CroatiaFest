@@ -12,7 +12,7 @@
 
 @dynamic name;
 @dynamic desc1;
-@dynamic contact;
+@dynamic desc2;
 @dynamic addr1;
 @dynamic addr2;
 @dynamic phone1;
@@ -33,7 +33,7 @@
         NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Directory" inManagedObjectContext:self.managedObjectContext];
         [newManagedObject setValue: [newDirectory valueForKey: @"Name"] forKey:@"name"];
         [newManagedObject setValue: [newDirectory valueForKey: @"Desc_1"] forKey:@"desc1"];
-        [newManagedObject setValue: [newDirectory valueForKey: @"Contact"] forKey:@"contact"];
+        [newManagedObject setValue: [newDirectory valueForKey: @"Desc_2"] forKey:@"desc2"];
         [newManagedObject setValue: [newDirectory valueForKey: @"Addr_1"] forKey:@"addr1"];
         [newManagedObject setValue: [newDirectory valueForKey: @"Addr_2"] forKey:@"addr2"];
         [newManagedObject setValue: [newDirectory valueForKey: @"Phone_1"] forKey:@"phone1"];

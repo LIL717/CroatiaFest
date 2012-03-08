@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+@class Exhibit;
 
 
-@interface ExhibitViewController : UITableViewController {
+@interface ExhibitViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
+    Exhibit *exhibit_;
     
-    NSArray *exhibitArray; 
 }
-@property (nonatomic, retain) NSArray *exhibitArray; 
+@property (nonatomic, retain) Exhibit *exhibit;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 @end

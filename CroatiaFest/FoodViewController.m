@@ -164,7 +164,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    FoodDetailController *foodDetailController = [[[FoodDetailController alloc] init] autorelease];
+    FoodDetailController *foodDetailController = [[[FoodDetailController alloc] initWithNibName:@"MarketplaceTypeDetailController" bundle:nil] autorelease];
     foodDetailController.managedObjectContext = self.managedObjectContext;
     
     Food *selectedFood = [[self fetchedResultsController] objectAtIndexPath:indexPath];

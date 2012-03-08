@@ -8,8 +8,11 @@
 
 #import "EventViewController.h"
 #import "PerformerViewController.h"
-#import "ExhibitViewController.h"
 #import "WorkshopViewController.h"
+#import "CookingDemoViewController.h"
+#import "ExhibitViewController.h"
+#import "ActivityViewController.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -85,7 +88,7 @@
 {
     [super viewDidLoad];
 
-    eventArray = [[[NSArray alloc] initWithObjects:@"Performers", @"Exhibits", @"Food Stage", nil] autorelease];
+    eventArray = [[[NSArray alloc] initWithObjects:@"Performers", @"Workshops", @"Cooking Demos", @"Exhibits", @"Activities", nil] autorelease];
     NSLog (@"eventArray is %@", eventArray);
     
     //code for CALayer
@@ -142,7 +145,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 3;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -208,29 +211,51 @@
     
     if (indexPath.row == 0) {
     
-         PerformerViewController *performerViewController = [[PerformerViewController alloc] initWithNibName:@"PerformerViewController" bundle:nil];
+         PerformerViewController *performerViewController = [[PerformerViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
         performerViewController.managedObjectContext = self.managedObjectContext;
         
          // Pass the selected object to the new view controller.
          [self.navigationController pushViewController:performerViewController animated:YES];
          [performerViewController release];
-    }
-     
-    if (indexPath.row == 1) {
+    }     
 
-        ExhibitViewController *exhibitViewController = [[ExhibitViewController alloc] initWithNibName:@"ExhibitViewController" bundle:nil];
-        // Pass the selected object to the new view controller.
-        [self.navigationController pushViewController:exhibitViewController animated:YES];
-        [exhibitViewController release];
-    }
-    if (indexPath.row == 2) {
+    if (indexPath.row == 1) {
         
-        WorkshopViewController *workshopViewController = [[WorkshopViewController alloc] initWithNibName:@"WorkshopViewController" bundle:nil];
+//        WorkshopViewController *workshopViewController = [[WorkshopViewController alloc] initWithNibName:@"WorkshopViewController" bundle:nil];
+        WorkshopViewController *workshopViewController = [[WorkshopViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
+
         workshopViewController.managedObjectContext = self.managedObjectContext;
         
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:workshopViewController animated:YES];
         [workshopViewController release];
+    }
+    if (indexPath.row == 2) {
+        
+        CookingDemoViewController *cookingDemoViewController = [[CookingDemoViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
+        cookingDemoViewController.managedObjectContext = self.managedObjectContext;
+        
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:cookingDemoViewController animated:YES];
+        [cookingDemoViewController release];
+    }
+    if (indexPath.row == 3) {
+        
+        ExhibitViewController *exhibitViewController = [[ExhibitViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
+        exhibitViewController.managedObjectContext = self.managedObjectContext;
+
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:exhibitViewController animated:YES];
+        [exhibitViewController release];
+    }
+    if (indexPath.row == 4) {
+        
+        ActivityViewController *activityViewController = [[ActivityViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
+        activityViewController.managedObjectContext = self.managedObjectContext;
+
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:activityViewController animated:YES];
+        [activityViewController release];
     }
     
 }

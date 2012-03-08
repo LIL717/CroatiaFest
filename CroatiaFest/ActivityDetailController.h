@@ -1,16 +1,15 @@
 //
-//  DirectoryDetailController.h
+//  ActivityDetailController.h
 //  CroatiaFest
 //
-//  Created by Lori Hill on 1/10/12.
+//  Created by Lori Hill on 3/6/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 
-@class Directory;
+@class Activity;
 
-@interface DirectoryDetailController : UIViewController {
+@interface ActivityDetailController : UIViewController {
     UITextField *name_;
     UITextField *desc1_;
     UITextView *desc2_;
@@ -20,8 +19,9 @@
     UITextField *phone2_;
     UITextField *website_;
     UITextField *email_;
-  
-    Directory *directory;
+    UITextField *video_;   
+    
+    Activity *activity_;
     NSManagedObjectContext *managedObjectContext_;
 }
 
@@ -34,12 +34,11 @@
 @property (nonatomic, retain) IBOutlet UITextField *phone2;
 @property (nonatomic, retain) IBOutlet UITextField *website;
 @property (nonatomic, retain) IBOutlet UITextField *email;
+@property (nonatomic, retain) IBOutlet UITextField *video;
 
-
-@property (nonatomic, retain) Directory *directory;
+@property (nonatomic, retain) Activity *activity;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 - (IBAction)launchWeb:(id)sender; 
-- (IBAction)launchMail:(id)sender; 
 
 @end

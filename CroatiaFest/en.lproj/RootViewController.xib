@@ -45,6 +45,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 0}, {280, 120}}</string>
 						<reference key="NSSuperview" ref="469847347"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1056626859"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
@@ -62,6 +63,8 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 114}, {280, 316}}</string>
 						<reference key="NSSuperview" ref="469847347"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MAA</bytes>
@@ -71,13 +74,18 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIAlwaysBounceVertical">YES</bool>
 						<bool key="IBUIEditable">NO</bool>
-						<string type="base64-UTF8" key="IBUIText">QSBDZWxlYnJhdGlvbiBvZiBDcm9hdGlhbiBDdWx0dXJlICYgSGVyaXRhZ2UKCldlbGNvbWUgdG8gQ3Jv
-YXRpYUZlc3QgMjAxMTog4oCcVGFzdGUgb2YgQ3JvYXRpYeKAnS4gVGhpcyB5ZWFyJ3MgZXZlbnQgd2ls
-bCBiZSBoZWxkIGluIGEgbmV3IHZlbnVlLCB0aGUgRXhoaWJpdGlvbiBIYWxsIGF0IHRoZSBTZWF0dGxl
-IENlbnRlciBhbmQgd2lsbCBmZWF0dXJlIGV4Y2x1c2l2ZWx5IENyb2F0aWFuIGZvb2QgYm9vdGhzLCBh
-IHdpbmUgYW5kIGJlZXIgZ2FyZGVuIGFuZCBjb250aW51b3VzIGxpdmUgcGVyZm9ybWFuY2VzIG9uIHRo
-ZSBtYWluIHN0YWdlLiBJbiBhZGRpdGlvbiwgdGhlcmUgd2lsbCBiZSBmb29kIGRlbW9uc3RyYXRpb25z
-IGFuZCB2ZW5kb3JzIHNlbGxpbmcgeW91ciBmYXZvcml0ZSBDcm9hdGlhbiBtZXJjaGFuZGlzZS4</string>
+						<object class="NSMutableString" key="IBUIText">
+							<bytes key="NS.bytes">T2N0b2JlciA3LCAyMDEyICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgU2VhdHRsZSBD
+ZW50ZXIgSG91c2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBIENlbGVicmF0aW9uIG9mICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBDcm9hdGlhbiBDdWx0dXJlICYgSGVyaXRhZ2UKCkNyb2F0aWFGZXN0
+4oCZcyBtaXNzaW9uIGlzIHRvIHByb21vdGUgYW5kIHByZXNlcnZlIENyb2F0aWFuIGN1bHR1cmUgYW5k
+IHRvIGVkdWNhdGUgZnV0dXJlIGdlbmVyYXRpb25zIG9mIENyb2F0aWFuIEFtZXJpY2FucyBhbmQgdGhl
+IGdlbmVyYWwgcHVibGljIHdpdGggdGhlIHJpY2huZXNzIGFuZCBiZWF1dHkgb2YgQ3JvYXRpYW4gQ3Vs
+dHVyZSBhbmQgQ3JvYXRpYW4gQW1lcmljYW4gY29udHJpYnV0aW9ucyB0byB0aGUgYnVpbGRpbmcgb2Yg
+dGhlIFVuaXRlZCBTdGF0ZXMgb2YgQW1lcmljYS4</bytes>
+						</object>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -100,6 +108,7 @@ IGFuZCB2ZW5kb3JzIHNlbGxpbmcgeW91ciBmYXZvcml0ZSBDcm9hdGlhbiBtZXJjaGFuZGlzZS4</str
 				</object>
 				<string key="NSFrame">{{0, 64}, {320, 367}}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="181796366"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
@@ -207,7 +216,30 @@ IGFuZCB2ZW5kb3JzIHNlbGxpbmcgeW91ciBmYXZvcml0ZSBDcm9hdGlhbiBtZXJjaGFuZGlzZS4</str
 			<nil key="sourceID"/>
 			<int key="maxID">22</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">RootViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">savedAlert</string>
+						<string key="NS.object.0">UIAlertView</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">savedAlert</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">savedAlert</string>
+							<string key="candidateClassName">UIAlertView</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/RootViewController.h</string>
+					</object>
+				</object>
+			</object>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">

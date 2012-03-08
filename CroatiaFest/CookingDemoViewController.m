@@ -1,31 +1,30 @@
 //
-//  PerformerViewController.m
+//  CookingDemoViewController.m
 //  CroatiaFest
 //
-//  Created by Lori Hill on 6/15/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by Lori Hill on 3/6/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
-
-#import "PerformerViewController.h"
-#import "PerformerDetailController.h"
-#import "Performer.h"
+#import "CookingDemoViewController.h"
+#import "CookingDemoDetailController.h"
+#import "CookingDemo.h"
 
 #pragma mark -
-#pragma mark PerformerViewController
+#pragma mark CookingDemoViewController
 
-@interface PerformerViewController ()
+@interface CookingDemoViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
-@implementation PerformerViewController
+@implementation CookingDemoViewController
 
-@synthesize performer = performer_; 
+@synthesize cookingDemo = cookingDemo_; 
 @synthesize fetchedResultsController = __fetchedResultsController;
 @synthesize managedObjectContext = __managedObjectContext;
 
 - (void)dealloc {
-
-    [performer_ release];
+    
+    [cookingDemo_ release];
     [__fetchedResultsController release];
     [__managedObjectContext release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -38,7 +37,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
+        
     }
     return self;
 }
@@ -61,23 +60,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Performers";
-
-//    //become observer for application going to background
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector (applicationWillResignActive:)
-//                                                 name:UIApplicationWillResignActiveNotification
-//                                               object:[UIApplication sharedApplication]];
+    self.title = @"Cooking Demos";
+    
+    //    //become observer for application going to background
+    //    [[NSNotificationCenter defaultCenter] addObserver:self
+    //                                             selector:@selector (applicationWillResignActive:)
+    //                                                 name:UIApplicationWillResignActiveNotification
+    //                                               object:[UIApplication sharedApplication]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-//    self.performerList = [[NSMutableArray alloc] init];
+    //    self.performerList = [[NSMutableArray alloc] init];
     
     // KVO: listen for changes to our performer data source for table view updates
-//    [self addObserver:self forKeyPath:@"performerList" options:0 context:NULL];
+    //    [self addObserver:self forKeyPath:@"performerList" options:0 context:NULL];
     
 }
 
@@ -86,9 +85,9 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-//    self.performerList = nil;
+    //    self.performerList = nil;
     
-//    [self removeObserver:self forKeyPath:@"performerList"];
+    //    [self removeObserver:self forKeyPath:@"performerList"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -130,7 +129,7 @@
     // Return the number of rows in the section.
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
     return [sectionInfo numberOfObjects];
-
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -146,14 +145,14 @@
     // all the rows should show the disclosure indicator
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-// Get the specific performer for this row.
+    // Get the specific performer for this row.
     [self configureCell:cell atIndexPath:indexPath];
-
+    
     return cell;
 }
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    Performer *newManagedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    CookingDemo *newManagedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[newManagedObject valueForKey:@"name"] description];  
 }
 
@@ -161,14 +160,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    PerformerDetailController *performerDetailController = [[[PerformerDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil] autorelease];
-    performerDetailController.managedObjectContext = self.managedObjectContext;
     
-    Performer *selectedPerformer = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    performerDetailController.performer = selectedPerformer;
+    CookingDemoDetailController *cookingDemoDetailController = [[[CookingDemoDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil] autorelease];
+    cookingDemoDetailController.managedObjectContext = self.managedObjectContext;
     
-    [self.navigationController pushViewController:performerDetailController animated:YES];
+    CookingDemo *selectedCookingDemo = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    cookingDemoDetailController.cookingDemo = selectedCookingDemo;
+    
+    [self.navigationController pushViewController:cookingDemoDetailController animated:YES];
 }
 
 // listen for changes to the performer list coming from our app delegagte.
@@ -195,7 +194,7 @@
     // Create the fetch request for the entity.
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Performer" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CookingDemo" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.

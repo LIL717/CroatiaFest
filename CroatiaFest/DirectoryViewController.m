@@ -60,7 +60,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Directory";
+    self.title = @"Advertisers";
     
     //    //become observer for application going to background
     //    [[NSNotificationCenter defaultCenter] addObserver:self
@@ -164,7 +164,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    DirectoryDetailController *directoryDetailController = [[[DirectoryDetailController alloc] init] autorelease];
+    DirectoryDetailController *directoryDetailController = [[[DirectoryDetailController alloc] initWithNibName:@"MarketplaceTypeDetailController" bundle:nil] autorelease];
     directoryDetailController.managedObjectContext = self.managedObjectContext;
     
     Directory *selectedDirectory = [[self fetchedResultsController] objectAtIndexPath:indexPath];
