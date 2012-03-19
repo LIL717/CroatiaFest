@@ -8,6 +8,7 @@
 
 #import "ActivityDetailController.h"
 #import "Activity.h"
+#import "WebViewController.h"
 
 @implementation ActivityDetailController
 
@@ -78,12 +79,17 @@
     //    [dateFormatter setDateFormat:@"h:mm"];
     //    self.presentationTime.text = [dateFormatter stringFromDate:date]; 
 }
-// IBAction needs to be from touch on textfield
-//  should it be a safari page within the app that then can go back????   YES change this
+// IBAction from touch on invisible button
 
 -(IBAction)launchWeb:(id)sender {
     NSString* launchUrl = [[[NSString alloc] initWithString: [NSString stringWithFormat:@"http://%@",self.website.text]] autorelease];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: launchUrl]];
+    NSURL *url = [NSURL URLWithString: launchUrl];
+    
+    WebViewController *webViewController = [[[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil] autorelease];
+    
+    webViewController.urlObject = url;
+    
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -120,10 +126,8 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
-
 @end

@@ -111,10 +111,9 @@
     [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation ==  UIInterfaceOrientationPortrait) || UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return YES;
 }
 
 #pragma mark - Table view data source
@@ -155,6 +154,7 @@
 {
     
     Food *newManagedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.adjustsFontSizeToFitWidth = YES; 
     cell.textLabel.text = [[newManagedObject valueForKey:@"name"] description];  
     NSLog(@" cell.textLabel.text is %@", cell.textLabel.text);
 }

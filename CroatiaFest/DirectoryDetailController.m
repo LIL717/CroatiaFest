@@ -8,6 +8,7 @@
 
 #import "DirectoryDetailController.h"
 #import "Directory.h"
+#import "WebViewController.h"
 
 @implementation DirectoryDetailController
 
@@ -66,19 +67,17 @@
 
     
 }
-// IBAction needs to be from touch on textfield
-//  should it be a safari page within the app that then can go back????   YES change this
+// IBAction from touch on invisible button
 
 -(IBAction)launchWeb:(id)sender {
-    NSString* launchUrl = [NSString stringWithFormat:@"http://%@",self.website.text];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: launchUrl]];
-}
-
-//  should it be a safari page within the app that then can go back????   YES change this
-
--(IBAction)launchMail:(id)sender {
-    NSString* launchUrl = [NSString stringWithFormat:@"mailto:%@", self.email.text];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: launchUrl]];
+    NSString* launchUrl = [[[NSString alloc] initWithString: [NSString stringWithFormat:@"http://%@",self.website.text]] autorelease];
+    NSURL *url = [NSURL URLWithString: launchUrl];
+    
+    WebViewController *webViewController = [[[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil] autorelease];
+    
+    webViewController.urlObject = url;
+    
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -115,10 +114,8 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
-
 @end

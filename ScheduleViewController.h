@@ -7,14 +7,14 @@
 //
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-@class Performer;
+@class Schedule;
 
 
 @interface ScheduleViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
-    Performer *performer_;
+    Schedule *schedule_;
     
 }
-@property (nonatomic, retain) Performer *performer;
+@property (nonatomic, retain) Schedule *schedule;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 

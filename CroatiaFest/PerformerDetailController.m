@@ -8,6 +8,8 @@
 
 #import "PerformerDetailController.h"
 #import "Performer.h"
+#import "Schedule.h"
+#import "WebViewController.h"
 
 @implementation PerformerDetailController
 
@@ -24,6 +26,7 @@
 @synthesize website = website_;
 @synthesize email = email_;
 @synthesize video = video_;
+@synthesize time = time_;
 
 - (void) dealloc {
     [performer_ release];
@@ -38,6 +41,7 @@
     [website_ release];
     [email_ release];
     [video_ release];
+    [time_ release];
 
     [super dealloc];
 }
@@ -47,6 +51,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+
         
     }
     return self;
@@ -63,6 +68,26 @@
     self.website.text = self.performer.website;
     self.email.text = self.performer.email;
     self.video.text = self.performer.video;
+    
+    NSTimeInterval secondsInFiveHours = 7 * 60 * 60;
+    NSDate *correctedBeginDate = [self.performer.performanceTime.beginTime dateByAddingTimeInterval:secondsInFiveHours];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"h:mm a"];
+    self.time.text = [dateFormatter stringFromDate:correctedBeginDate];  
+    [dateFormatter release];
+
+    // Create "Watch Video" button for the nav bar if there is a video
+    if (!isEmpty(self.performer.video)) {
+        UIBarButtonItem *watchButton = [[UIBarButtonItem alloc] 
+                                        initWithTitle:@"Watch Video" 
+                                        style:(UIBarButtonItemStyleBordered) 
+//                                        initWithBarButtonSystemItem:UIBarButtonSystemItemPlay 
+                                        target:self 
+                                        action:@selector(watchVideo)];
+        [[self navigationItem] setRightBarButtonItem:watchButton];
+        [watchButton release];
+    }
 
 
 //    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
@@ -74,22 +99,30 @@
 //    [dateFormatter setDateFormat:@"h:mm"];
 //    self.performanceTime.text = [dateFormatter stringFromDate:date]; 
 }
-// IBAction needs to be from touch on textfield
-//  should it be a safari page within the app that then can go back????
+
+// IBAction from touch on invisible button
 
 -(IBAction)launchWeb:(id)sender {
     NSString* launchUrl = [[[NSString alloc] initWithString: [NSString stringWithFormat:@"http://%@",self.website.text]] autorelease];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: launchUrl]];
+    NSURL *url = [NSURL URLWithString: launchUrl];
+    
+    WebViewController *webViewController = [[[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil] autorelease];
+    
+    webViewController.urlObject = url;
+    
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
-//- (NSString *)  mailOrWeb;
-//{
-//    if ([self.website.text rangeOfString:@"@"].location == NSNotFound) {
-//        return [NSString stringWithFormat:@"http://%@",self.website.text];
-//    } else {
-//        return [NSString stringWithFormat:@"mailto:%@", self.website.text];
-//    }
-//   
-//}
+
+-(void)watchVideo {
+    NSString* videoUrl = [[[NSString alloc] initWithString: [NSString stringWithFormat:@"http://%@",self.performer.video]] autorelease];
+    NSURL *url = [NSURL URLWithString: videoUrl];
+
+    WebViewController *webViewController = [[[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil] autorelease];
+    
+    webViewController.urlObject = url;
+
+    [self.navigationController pushViewController:webViewController animated:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -120,16 +153,15 @@
     self.website = nil;
     self.email = nil;
     self.video = nil;
+    self.time = nil;
     
 
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
-
 @end

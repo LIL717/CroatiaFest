@@ -8,6 +8,7 @@
 
 #import "ScheduleViewController.h"
 #import "PerformerDetailController.h"
+#import "Schedule.h"
 #import "Performer.h"
 
 #pragma mark -
@@ -19,13 +20,13 @@
 
 @implementation ScheduleViewController
 
-@synthesize performer = performer_; 
+@synthesize schedule = schedule_; 
 @synthesize fetchedResultsController = __fetchedResultsController;
 @synthesize managedObjectContext = __managedObjectContext;
 
 - (void)dealloc {
     
-    [performer_ release];
+    [schedule_ release];
     [__fetchedResultsController release];
     [__managedObjectContext release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -90,6 +91,7 @@
 {
     [super viewDidLoad];
     self.title = @"Schedule";
+
     
     //    //become observer for application going to background
     //    [[NSNotificationCenter defaultCenter] addObserver:self
@@ -139,12 +141,10 @@
     [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation ==  UIInterfaceOrientationPortrait) || UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return YES;
 }
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -185,12 +185,17 @@
 }
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    Performer *newManagedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[newManagedObject valueForKey:@"name"] description];
+    Schedule *schedule = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Performer *performer = schedule.performer;
+    
+    cell.textLabel.text = performer.name;
+
+//    cell.textLabel.text = [schedule.performer.name description];
     cell.textLabel.adjustsFontSizeToFitWidth = YES; 
-    cell.detailTextLabel.text = [[newManagedObject valueForKey:@"desc"] description];
+    cell.detailTextLabel.text = [schedule.location  description];
     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES; 
 }
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section { 
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
     
@@ -204,12 +209,15 @@
 //    [dateFormatter setLocale:enUSPOSIXLocale];
     NSDate *newDate = [dateFormatter dateFromString:[sectionInfo name]];
 //    NSLog (@"newDate is %@", newDate);
-    NSDate *newDate1 = [newDate dateByAddingTimeInterval:60*60*4];
+//    NSDate *newDate1 = [newDate dateByAddingTimeInterval:60*60*4];
     
     // Convert date object to desired output format
     [dateFormatter setDateFormat:@"h:mm a"];
 
-    return [dateFormatter stringFromDate:newDate1];
+//    return [dateFormatter stringFromDate:newDate1];
+    return [dateFormatter stringFromDate:newDate];
+//    return [sectionInfo name];
+
 
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -239,11 +247,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    PerformerDetailController *performerDetailController = [[[PerformerDetailController alloc] init] autorelease];
+    PerformerDetailController *performerDetailController = [[[PerformerDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil] autorelease];
     performerDetailController.managedObjectContext = self.managedObjectContext;
     
-    Performer *selectedPerformer = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    performerDetailController.performer = selectedPerformer;
+    Schedule *selectedPerformance = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    performerDetailController.performer = selectedPerformance.performer;
     
     [self.navigationController pushViewController:performerDetailController animated:YES];
 }
@@ -272,14 +280,14 @@
     // Create the fetch request for the entity.
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Performer" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Schedule" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"performanceTime" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"beginTime" ascending:YES];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -287,7 +295,7 @@
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
 //    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"performanceTime" cacheName:@"Root"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"beginTime" cacheName:@"Root"];
 
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;

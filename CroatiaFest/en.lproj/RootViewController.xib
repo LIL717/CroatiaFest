@@ -42,32 +42,27 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIImageView" id="181796366">
 						<reference key="NSNextResponder" ref="469847347"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 0}, {280, 120}}</string>
+						<int key="NSvFlags">293</int>
+						<string key="NSFrame">{{20, 0}, {280, 100}}</string>
 						<reference key="NSSuperview" ref="469847347"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1056626859"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">2</int>
-							<bytes key="NSRGB">MCAwLjA5NDExNzY1NjM1IDAuODc0NTA5ODcxAA</bytes>
-						</object>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">croatiafestwos.jpg</string>
+							<string key="NSResourceName">cflogowhite 100x280.png</string>
 						</object>
 					</object>
 					<object class="IBUITextView" id="1056626859">
 						<reference key="NSNextResponder" ref="469847347"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 114}, {280, 316}}</string>
+						<int key="NSvFlags">295</int>
+						<string key="NSFrame">{{20, 108}, {280, 307}}</string>
 						<reference key="NSSuperview" ref="469847347"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
+						<object class="NSColor" key="IBUIBackgroundColor" id="270274631">
 							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MAA</bytes>
+							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -85,10 +80,6 @@ IHRvIGVkdWNhdGUgZnV0dXJlIGdlbmVyYXRpb25zIG9mIENyb2F0aWFuIEFtZXJpY2FucyBhbmQgdGhl
 IGdlbmVyYWwgcHVibGljIHdpdGggdGhlIHJpY2huZXNzIGFuZCBiZWF1dHkgb2YgQ3JvYXRpYW4gQ3Vs
 dHVyZSBhbmQgQ3JvYXRpYW4gQW1lcmljYW4gY29udHJpYnV0aW9ucyB0byB0aGUgYnVpbGRpbmcgb2Yg
 dGhlIFVuaXRlZCBTdGF0ZXMgb2YgQW1lcmljYS4</bytes>
-						</object>
-						<object class="NSColor" key="IBUITextColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -110,6 +101,8 @@ dGhlIFVuaXRlZCBTdGF0ZXMgb2YgQW1lcmljYS4</bytes>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="181796366"/>
+				<reference key="IBUIBackgroundColor" ref="270274631"/>
+				<int key="IBUIContentMode">4</int>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
 				</object>
@@ -253,8 +246,8 @@ dGhlIFVuaXRlZCBTdGF0ZXMgb2YgQW1lcmljYS4</bytes>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">croatiafestwos.jpg</string>
-			<string key="NS.object.0">{2828, 1016}</string>
+			<string key="NS.key.0">cflogowhite 100x280.png</string>
+			<string key="NS.object.0">{280, 100}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

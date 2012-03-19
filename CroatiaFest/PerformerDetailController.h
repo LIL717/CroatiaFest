@@ -22,6 +22,7 @@
     UITextField *website_;
     UITextField *email_;
     UITextField *video_;
+    UITextField *time_;
 
     
     Performer *performer_;
@@ -37,10 +38,13 @@
 @property (nonatomic, retain) IBOutlet UITextField *website;
 @property (nonatomic, retain) IBOutlet UITextField *email;
 @property (nonatomic, retain) IBOutlet UITextField *video;
+@property (nonatomic, retain) IBOutlet UITextField *time;
 
 @property (nonatomic, retain) Performer *performer;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 - (IBAction)launchWeb:(id)sender; 
+- (void)watchVideo; 
+
 
 @end

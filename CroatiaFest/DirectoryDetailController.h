@@ -40,6 +40,5 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 - (IBAction)launchWeb:(id)sender; 
-- (IBAction)launchMail:(id)sender; 
 
 @end

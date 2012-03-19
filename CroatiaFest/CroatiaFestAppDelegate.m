@@ -11,14 +11,13 @@
 #import "RootViewController.h"
 #import "EventViewController.h"
 #import "MarketplaceViewController.h"
-//#import "PerformerViewController.h"
 #import "ParseOperation.h"
 #import "Activity.h"
 #import "CookingDemo.h"
 #import "Directory.h"
 #import "Exhibit.h"
 #import "Food.h"
-#import "Performer.h"
+#import "InsertPerformers.h"
 #import "Vendor.h"
 #import "Workshop.h"
 
@@ -52,7 +51,7 @@
 
 @implementation CroatiaFestAppDelegate
 
-@synthesize window=_window;
+@synthesize window;
 @synthesize webConnection;
 @synthesize festivalData;
 @synthesize parseQueue;
@@ -62,7 +61,7 @@
 
 - (void)dealloc {
 
-    [_window release];  
+    [window release];  
     [webConnection cancel];
     [webConnection release];
     [festivalData release];
@@ -379,9 +378,9 @@
             [food addFoodToCoreData:passedArray];
         }
         if ([key isEqualToString: @"performers"]) {
-            Performer *performer = [[Performer alloc] autorelease];
-            performer.managedObjectContext = self.managedObjectContext;
-            [performer addPerformersToCoreData:passedArray];
+            InsertPerformers *insertPerformer = [[InsertPerformers alloc] autorelease];
+            insertPerformer.managedObjectContext = self.managedObjectContext;
+            [insertPerformer addPerformersToCoreData:passedArray];
         }
         if ([key isEqualToString: @"vendors"]) {
             Vendor *vendor = [[Vendor alloc] autorelease];
