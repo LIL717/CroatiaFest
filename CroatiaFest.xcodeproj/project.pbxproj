@@ -54,6 +54,7 @@
 		7085B6C4142FB884006AEFF3 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6C3142FB884006AEFF3 /* Version.m */; };
 		7085B6D414340BD7006AEFF3 /* VersionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6D314340BD7006AEFF3 /* VersionController.m */; };
 		70864CAE1444B30100C25B4B /* Directory.m in Sources */ = {isa = PBXBuildFile; fileRef = 70864CAD1444B30100C25B4B /* Directory.m */; };
+		7087A6C51516D7D00015A2F3 /* ScheduleDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7087A6C41516D7D00015A2F3 /* ScheduleDateFormatter.m */; };
 		7088322D146CD0C9006C2749 /* WorkshopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7088322B146CD0C9006C2749 /* WorkshopViewController.m */; };
 		70883232146CDA09006C2749 /* WorkshopDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70883230146CDA09006C2749 /* WorkshopDetailController.m */; };
 		709A9A5014C7CBDC000EB059 /* cflogo57.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A4F14C7CBDC000EB059 /* cflogo57.png */; };
@@ -162,6 +163,8 @@
 		7085B6D314340BD7006AEFF3 /* VersionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionController.m; sourceTree = "<group>"; };
 		70864CAC1444B30100C25B4B /* Directory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Directory.h; sourceTree = "<group>"; };
 		70864CAD1444B30100C25B4B /* Directory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Directory.m; sourceTree = "<group>"; };
+		7087A6C31516D7D00015A2F3 /* ScheduleDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleDateFormatter.h; sourceTree = "<group>"; };
+		7087A6C41516D7D00015A2F3 /* ScheduleDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleDateFormatter.m; sourceTree = "<group>"; };
 		7088322A146CD0C9006C2749 /* WorkshopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkshopViewController.h; sourceTree = "<group>"; };
 		7088322B146CD0C9006C2749 /* WorkshopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkshopViewController.m; sourceTree = "<group>"; };
 		7088322F146CDA09006C2749 /* WorkshopDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkshopDetailController.h; sourceTree = "<group>"; };
@@ -300,6 +303,8 @@
 			children = (
 				705B9C2B13A8F76400346007 /* InsertPerformers.h */,
 				705B9C2C13A8F76400346007 /* InsertPerformers.m */,
+				7087A6C31516D7D00015A2F3 /* ScheduleDateFormatter.h */,
+				7087A6C41516D7D00015A2F3 /* ScheduleDateFormatter.m */,
 				7085B6D214340BD7006AEFF3 /* VersionController.h */,
 				7085B6D314340BD7006AEFF3 /* VersionController.m */,
 				705B96CE13A275D000346007 /* RootViewController.h */,
@@ -521,6 +526,7 @@
 				707DD3B1150C1740002F354B /* WebViewController.m in Sources */,
 				707E52D51514546F00ACC0E0 /* Schedule.m in Sources */,
 				707E52D81514559000ACC0E0 /* Performer.m in Sources */,
+				7087A6C51516D7D00015A2F3 /* ScheduleDateFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

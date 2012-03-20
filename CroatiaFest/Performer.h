@@ -23,8 +23,8 @@
 @property (nonatomic, retain) NSString * addr2;
 @property (nonatomic, retain) NSString * video;
 @property (nonatomic, retain) NSString * name;
-//@property (nonatomic, retain) NSSet *performanceTimes;
+@property (nonatomic, retain) NSSet *performanceTimes;
 
-@property (nonatomic, retain) Schedule *performanceTime;
+//@property (nonatomic, retain) Schedule *performanceTime;
 
 @end

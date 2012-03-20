@@ -22,8 +22,8 @@
 @dynamic addr2;
 @dynamic video;
 @dynamic name;
-//@dynamic performanceTimes;
+@dynamic performanceTimes;
 
-@dynamic performanceTime;
+//@dynamic performanceTime;
 
 @end

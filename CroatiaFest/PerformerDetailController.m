@@ -69,8 +69,30 @@
     self.email.text = self.performer.email;
     self.video.text = self.performer.video;
     
+//// Test listing all Performers from the store
+//    NSManagedObjectContext *context = self.managedObjectContext;
+//    NSError *error = nil;
+//
+//    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Performer" 
+//                                              inManagedObjectContext:context];
+//    [fetchRequest setEntity:entity];
+//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+//    for (Performer *performer in fetchedObjects) {
+//        NSLog(@"Name: %@", performer.name);
+////        NSArray *timesArray = [performer.performanceTimes allObjects];
+//        for (Schedule *schedule in [performer performanceTimes ]) {
+//            NSLog(@"Begin Time: %@", schedule.beginTime);
+//        }
+//
+//    }    
+//// end test    
+    NSArray *performanceTimesArray = [self.performer.performanceTimes allObjects];
+    
+    Schedule *performanceTime = [performanceTimesArray objectAtIndex:0];
+    
     NSTimeInterval secondsInFiveHours = 7 * 60 * 60;
-    NSDate *correctedBeginDate = [self.performer.performanceTime.beginTime dateByAddingTimeInterval:secondsInFiveHours];
+    NSDate *correctedBeginDate = [performanceTime.beginTime dateByAddingTimeInterval:secondsInFiveHours];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"h:mm a"];
@@ -89,15 +111,6 @@
         [watchButton release];
     }
 
-
-//    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-//    NSDate *date = self.performer.performanceTime;
-//    NSLocale *usLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
-//    [dateFormatter setLocale:usLocale];
-//    
-//    // Convert date object to desired output format
-//    [dateFormatter setDateFormat:@"h:mm"];
-//    self.performanceTime.text = [dateFormatter stringFromDate:date]; 
 }
 
 // IBAction from touch on invisible button
