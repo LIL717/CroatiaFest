@@ -7,7 +7,7 @@
 //
 
 #import "Performer.h"
-#import "Schedule.h"
+//#import "Schedule.h"
 
 
 @implementation Performer
@@ -24,6 +24,5 @@
 @dynamic name;
 @dynamic performanceTimes;
 
-//@dynamic performanceTime;
-
 @end
+

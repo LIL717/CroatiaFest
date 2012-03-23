@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Schedule;
+//@class Schedule;
 
 @interface Performer : NSManagedObject
 
@@ -25,6 +25,8 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *performanceTimes;
 
-//@property (nonatomic, retain) Schedule *performanceTime;
-
 @end
+
+//@interface Performer (CoreDataGeneratedAccessors)
+//- (void)addPerformanceTimes:(NSSet *)value;
+//@end

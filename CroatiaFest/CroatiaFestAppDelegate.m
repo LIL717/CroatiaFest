@@ -20,6 +20,9 @@
 #import "InsertPerformers.h"
 #import "Vendor.h"
 #import "Workshop.h"
+//the following are only needed for the test
+#import "Schedule.h"
+#import "Performer.h"
 
 
 // this framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code
@@ -204,7 +207,17 @@
     [self saveContext];
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    NSError *error = nil;
+    if (managedObjectContext_ != nil) {
+        if ([managedObjectContext_ hasChanges] && ![managedObjectContext_ save:&error]) 
+            [self saveContext];
+//        //remove this code after testing
+//            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//            abort();
 
+            }
+}
 #pragma mark -
 #pragma mark NSURLConnection delegate methods
 
@@ -395,6 +408,43 @@
             NSLog (@"workshop %@", workshop);
         }
     }
+//    // Test listing all Performers from the store
+//    NSManagedObjectContext *context = self.managedObjectContext;
+//    NSError *error = nil;
+//    
+////    NSSet *set=[performer performanceTimes];
+//
+//
+//    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Performer" 
+//                                              inManagedObjectContext:context];
+//    [fetchRequest setEntity:entity];
+//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+//    //        for (Performer *performer in fetchedObjects) {
+//    for (Performer *performer in fetchedObjects) {
+//        
+//        NSLog(@"Name: %@", performer.name);
+//        //        NSArray *timesArray = [performer.performanceTimes allObjects];
+//        for (Schedule *schedule in [performer performanceTimes]) {
+//            NSLog(@"Begin Time: %@", schedule.beginTime);
+//        }
+//    }    
+//    // end test 
+//    // Test listing all Schedule from the store
+//    //        NSManagedObjectContext *context = self.managedObjectContext;
+//    //        NSError *error = nil;
+//    
+//    NSFetchRequest *fetchRequest2 = [[[NSFetchRequest alloc] init] autorelease];
+//    NSEntityDescription *entity2 = [NSEntityDescription entityForName:@"Schedule" 
+//                                               inManagedObjectContext:context];
+//    [fetchRequest2 setEntity:entity2];
+//    NSArray *fetchedObjects2 = [context executeFetchRequest:fetchRequest2 error:&error];
+//    for (Schedule *schedule in fetchedObjects2) {
+//        NSLog(@"Begin Time: %@", schedule.beginTime);
+//        Performer *performer = schedule.performer;
+//        NSLog(@"Performer name: %@", performer.name);
+//    }        
+//    // end test 
 }
 #pragma mark -
 #pragma mark save context method

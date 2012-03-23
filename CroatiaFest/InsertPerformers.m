@@ -7,8 +7,8 @@
 //
 
 #import "InsertPerformers.h"
-#import "ScheduleDateFormatter.h"
-#import "Schedule.h"
+#import "InsertSchedule.h"
+//#import "Schedule.h"
 #import "Performer.h"
 
 @implementation InsertPerformers
@@ -19,9 +19,9 @@
     LogMethod();
     //this is an array of dictionaries
     
-
     // insert the performers into Core Data
     for (id newPerformer in performers) {
+        NSError *error = nil;
 
         NSManagedObjectContext *context = self.managedObjectContext;
         Performer *performer = [NSEntityDescription insertNewObjectForEntityForName:@"Performer" inManagedObjectContext:context];
@@ -35,99 +35,76 @@
         performer.website = [newPerformer valueForKey: @"Website"];
         performer.email = [newPerformer valueForKey: @"Email"];
         performer.video = [newPerformer valueForKey: @"Video"];
-                
         
-        if (![[newPerformer valueForKey: @"Performance_Date_1"] isEqualToString: @"0000-00-00"]) {
-
-            NSDictionary *scheduleDataDictionary1 = [[[NSDictionary alloc] initWithObjectsAndKeys:
-                                 [newPerformer valueForKey: @"Performance_Date_1"], @"dateString",
-                                 [newPerformer valueForKey: @"Performance_Begin_Time_1"], @"beginTimeString",
-                                 [newPerformer valueForKey: @"Performance_End_Time_1"], @"endTimeString", nil] autorelease];
-        
-            ScheduleDateFormatter *scheduleDateFormatter = [[ScheduleDateFormatter alloc] autorelease];
-            NSDictionary *scheduleDates =[scheduleDateFormatter formatScheduleData: scheduleDataDictionary1];
-
-            Schedule *schedule1 = [NSEntityDescription insertNewObjectForEntityForName:@"Schedule" inManagedObjectContext:context];
-            schedule1.location = [newPerformer valueForKey: @"Performance_Location_1"];
-            schedule1.beginTime = [scheduleDates valueForKey: @"beginTime"];
-            schedule1.endTime = [scheduleDates valueForKey: @"endTime"];
-           
-            schedule1.performer = performer;
-////            performer.performanceTime = schedule; ^^ OMG only need one of these - don't use both!!! 
-            
-//            [schedule1 setPerformer:performer];
-        }
-
-        if (![[newPerformer valueForKey: @"Performance_Date_2"] isEqualToString: @"0000-00-00"]) {
-            
-            NSDictionary *scheduleDataDictionary2 = [[[NSDictionary alloc] initWithObjectsAndKeys:
-                                                      [newPerformer valueForKey: @"Performance_Date_1"], @"dateString",
-                                                      [newPerformer valueForKey: @"Performance_Begin_Time_2"], @"beginTimeString",
-                                                      [newPerformer valueForKey: @"Performance_End_Time_2"], @"endTimeString", nil] autorelease];
-            
-            ScheduleDateFormatter *scheduleDateFormatter = [[ScheduleDateFormatter alloc] autorelease];
-            NSDictionary *scheduleDates =[scheduleDateFormatter formatScheduleData: scheduleDataDictionary2];
-            
-            Schedule *schedule2 = [NSEntityDescription insertNewObjectForEntityForName:@"Schedule" inManagedObjectContext:context];
-            schedule2.location = [newPerformer valueForKey: @"Performance_Location_2"];
-            schedule2.beginTime = [scheduleDates valueForKey: @"beginTime"];
-            schedule2.endTime = [scheduleDates valueForKey: @"endTime"];
-            
-            schedule2.performer = performer;
-////            performer.performanceTime = schedule; ^^ OMG only need one of these - don't use both!!! 
-            
-//            [schedule2 setPerformer:performer];
-        }
-        
-        NSError *error = nil;
         if (![context save:&error]) {
             NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
         }
-        NSSet *set=[performer performanceTimes];
-// Test listing all Performers from the store
-        
-        NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Performer" 
-                                                  inManagedObjectContext:context];
-        [fetchRequest setEntity:entity];
-        NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-//        for (Performer *performer in fetchedObjects) {
-        for (Performer *performer in fetchedObjects) {
+                
+        if (![[newPerformer valueForKey: @"Performance_Date_1"] isEqualToString: @"0000-00-00"]) {
+            NSDictionary *scheduleDataDictionary1 = [[[NSDictionary alloc] initWithObjectsAndKeys:
+                         performer, @"performer",                    
+                         [newPerformer valueForKey: @"Performance_Location_1"], @"location",                     
+                         [newPerformer valueForKey: @"Performance_Date_1"], @"dateString",
+                         [newPerformer valueForKey: @"Performance_Begin_Time_1"], @"beginTimeString",
+                         [newPerformer valueForKey: @"Performance_End_Time_1"], @"endTimeString", nil] autorelease];
 
-            NSLog(@"Name: %@", performer.name);
-            //        NSArray *timesArray = [performer.performanceTimes allObjects];
-            for (Schedule *schedule in set) {
-                NSLog(@"Begin Time: %@", schedule.beginTime);
-            }
+            InsertSchedule *scheduleDateFormatter1 = [[InsertSchedule alloc] autorelease];
+            scheduleDateFormatter1.managedObjectContext = self.managedObjectContext;
+            [scheduleDateFormatter1 formatScheduleData: scheduleDataDictionary1];
+
+        }            
+
+        if (![[newPerformer valueForKey: @"Performance_Date_2"] isEqualToString: @"0000-00-00"]) {
+
+            
+            NSDictionary *scheduleDataDictionary2 = [[[NSDictionary alloc] initWithObjectsAndKeys:
+                      performer, @"performer", 
+                      [newPerformer valueForKey: @"Performance_Location_2"], @"location",                     
+                      [newPerformer valueForKey: @"Performance_Date_2"], @"dateString",
+                      [newPerformer valueForKey: @"Performance_Begin_Time_2"], @"beginTimeString",
+                      [newPerformer valueForKey: @"Performance_End_Time_2"], @"endTimeString", nil] autorelease];
+            
+            InsertSchedule *scheduleDateFormatter2 = [[InsertSchedule alloc] autorelease];
+            scheduleDateFormatter2.managedObjectContext = self.managedObjectContext;
+            [scheduleDateFormatter2 formatScheduleData: scheduleDataDictionary2];
+            
         }    
-// end test 
-        
-    }
-// Test listing all FailedBankInfos from the store
-//    NSManagedObjectContext *context = self.managedObjectContext;
-//    NSError *error = nil;
+
+//// Test listing all Performers from the store
+//        NSSet *set=[performer performanceTimes];
 //
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Schedule" 
-//                                              inManagedObjectContext:context];
-//    [fetchRequest setEntity:entity];
-//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-//    for (Schedule *schedule in fetchedObjects) {
-//        NSLog(@"Begin Time: %@", schedule.beginTime);
-//        Performer *performer = schedule.performer;
-//        NSLog(@"Performer name: %@", performer.name);
-//    }        
-//    [fetchRequest release];
+//        NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+//        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Performer" 
+//                                                  inManagedObjectContext:context];
+//        [fetchRequest setEntity:entity];
+//        NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+////        for (Performer *performer in fetchedObjects) {
+//        for (Performer *performer in fetchedObjects) {
+//
+//            NSLog(@"Name: %@", performer.name);
+//            //        NSArray *timesArray = [performer.performanceTimes allObjects];
+//            for (Schedule *schedule in set) {
+//                NSLog(@"Begin Time: %@", schedule.beginTime);
+//            }
+//        }    
+//// end test 
+//        // Test listing all Schedule from the store
+////        NSManagedObjectContext *context = self.managedObjectContext;
+////        NSError *error = nil;
+//        
+//        NSFetchRequest *fetchRequest2 = [[[NSFetchRequest alloc] init] autorelease];
+//        NSEntityDescription *entity2 = [NSEntityDescription entityForName:@"Schedule" 
+//                                                  inManagedObjectContext:context];
+//        [fetchRequest2 setEntity:entity2];
+//        NSArray *fetchedObjects2 = [context executeFetchRequest:fetchRequest2 error:&error];
+//        for (Schedule *schedule in fetchedObjects2) {
+//            NSLog(@"Begin Time: %@", schedule.beginTime);
+//            Performer *performer = schedule.performer;
+//            NSLog(@"Performer name: %@", performer.name);
+//        }        
+//        // end test        
+    }
+
 }
 
-//Entity1 *entity1=[NSEntityDescription insertNewObjectForEntityForName:@"Entity1" inManagedObjectContext:self.managedObjectContext];
-//Entity2 *entity2=[NSEntityDescription insertNewObjectForEntityForName:@"Entity2" inManagedObjectContext:self.managedObjectContext];
-//Entity2 *entity3=[NSEntityDescription insertNewObjectForEntityForName:@"Entity2" inManagedObjectContext:self.managedObjectContext];
-//
-//[entity2 setParentEntity:entity1];
-//[entity3 setParentEntity:entity1];
-//NSError *error;
-//[[self managedObjectContext]save:&error];
-//
-//NSSet *set=[performer children];
 @end
