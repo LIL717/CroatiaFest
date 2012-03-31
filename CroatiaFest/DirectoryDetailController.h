@@ -16,7 +16,7 @@
     UITextView *desc2_;
     UITextField *addr1_;
     UITextField *addr2_;
-    UITextField *phone1_;
+    UITextView *phone1_;
     UITextField *phone2_;
     UITextField *website_;
     UITextField *email_;
@@ -30,7 +30,7 @@
 @property (nonatomic, retain) IBOutlet UITextView *desc2;
 @property (nonatomic, retain) IBOutlet UITextField *addr1;
 @property (nonatomic, retain) IBOutlet UITextField *addr2;
-@property (nonatomic, retain) IBOutlet UITextField *phone1;
+@property (nonatomic, retain) IBOutlet UITextView *phone1;
 @property (nonatomic, retain) IBOutlet UITextField *phone2;
 @property (nonatomic, retain) IBOutlet UITextField *website;
 @property (nonatomic, retain) IBOutlet UITextField *email;

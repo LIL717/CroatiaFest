@@ -7,7 +7,7 @@
 //
 
 #import "Schedule.h"
-#import "Performer.h"
+#import "Event.h"
 
 
 @implementation Schedule
@@ -15,6 +15,6 @@
 @dynamic endTime;
 @dynamic beginTime;
 @dynamic location;
-@dynamic performer;
+@dynamic event;
 
 @end

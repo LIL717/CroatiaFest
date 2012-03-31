@@ -13,7 +13,7 @@
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>cfredwhitemini57.png</string>
-		<string>karlovacko114.png</string>
+		<string>crestimage114.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -22,7 +22,7 @@
 			<key>CFBundleIconFiles</key>
 			<array>
 				<string>cfredwhitemini57.png</string>
-				<string>karlovacko114.png</string>
+				<string>crestimage114.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<false/>
@@ -44,10 +44,10 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIInterfaceOrientation</key>
-	<string>UIInterfaceOrientationPortrait</string>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
+	<key>UIInterfaceOrientation</key>
+	<string>UIInterfaceOrientationPortrait</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

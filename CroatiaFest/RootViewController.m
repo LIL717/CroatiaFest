@@ -34,6 +34,13 @@
     [tbi setImage:i];
     
     //Make a bar button for an alert
+    
+    
+    UIImage *barButton = [[UIImage imageNamed:@"small-button-red"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+    
+    [[UIBarButtonItem appearance] setBackgroundImage:barButton forState:UIControlStateNormal 
+                                          barMetrics:UIBarMetricsDefault];
+    
     UIBarButtonItem * button = [[UIBarButtonItem alloc] initWithTitle:@"Support" 
                                                                 style:(UIBarButtonItemStyleBordered) 
                                                                target:self 

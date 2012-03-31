@@ -11,7 +11,7 @@
 
 
 @interface EventViewController : UITableViewController {
-    NSArray *eventArray; 
+    NSArray *eventArray_; 
     NSManagedObjectContext *managedObjectContext_;
 
 }

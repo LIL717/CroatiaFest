@@ -192,7 +192,7 @@
     
     if (indexPath.row == 0) {
         
-        VendorViewController *vendorViewController = [[VendorViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
+        VendorViewController *vendorViewController = [[VendorViewController alloc] initWithNibName:@"EventTypeViewController" bundle:nil];
         vendorViewController.managedObjectContext = self.managedObjectContext;
         
         // Pass the selected object to the new view controller.
@@ -202,7 +202,7 @@
     
     if (indexPath.row == 1) {
         
-        FoodViewController *foodViewController = [[FoodViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
+        FoodViewController *foodViewController = [[FoodViewController alloc] initWithNibName:@"EventTypeViewController" bundle:nil];
         foodViewController.managedObjectContext = self.managedObjectContext;
 
         // Pass the selected object to the new view controller.
@@ -211,7 +211,7 @@
     }
     if (indexPath.row == 2) {
         
-        DirectoryViewController *directoryViewController = [[DirectoryViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
+        DirectoryViewController *directoryViewController = [[DirectoryViewController alloc] initWithNibName:@"EventTypeViewController" bundle:nil];
         directoryViewController.managedObjectContext = self.managedObjectContext;
         
         // Pass the selected object to the new view controller.

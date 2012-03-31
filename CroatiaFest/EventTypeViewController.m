@@ -1,42 +1,56 @@
 //
-//  CookingDemoViewController.m
+//  EventTypeViewController.m
 //  CroatiaFest
 //
-//  Created by Lori Hill on 3/6/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Lori Hill on 6/15/11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-#import "CookingDemoViewController.h"
-#import "CookingDemoDetailController.h"
-#import "CookingDemo.h"
+
+#import "EventTypeViewController.h"
+#import "EventDetailController.h"
+
 
 #pragma mark -
-#pragma mark CookingDemoViewController
+#pragma mark PerformerViewController
 
-@interface CookingDemoViewController ()
+@interface EventTypeViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
-@implementation CookingDemoViewController
+@implementation EventTypeViewController
 
-@synthesize cookingDemo = cookingDemo_; 
+@synthesize event = event_; 
+@synthesize eventType = eventType_;
 @synthesize fetchedResultsController = __fetchedResultsController;
 @synthesize managedObjectContext = __managedObjectContext;
 
 - (void)dealloc {
-    
-    [cookingDemo_ release];
+
+    [event_ release];
+    [eventType_ release];
     [__fetchedResultsController release];
     [__managedObjectContext release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    LogMethod();
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        // Custom initialization
+//
+//    }
+//    return self;
+//}
+- (id)initWithEventType:(NSString *)eventType
 {
     LogMethod();
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
         // Custom initialization
+        self.eventType = [[[NSString alloc] initWithString: eventType] autorelease];;
         
     }
     return self;
@@ -60,23 +74,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Cooking Demos";
-    
-    //    //become observer for application going to background
-    //    [[NSNotificationCenter defaultCenter] addObserver:self
-    //                                             selector:@selector (applicationWillResignActive:)
-    //                                                 name:UIApplicationWillResignActiveNotification
-    //                                               object:[UIApplication sharedApplication]];
+//    self.title = @"Performers";
+    self.title = self.eventType;
+
+//    //become observer for application going to background
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector (applicationWillResignActive:)
+//                                                 name:UIApplicationWillResignActiveNotification
+//                                               object:[UIApplication sharedApplication]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+ 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    //    self.performerList = [[NSMutableArray alloc] init];
+//    self.performerList = [[NSMutableArray alloc] init];
     
     // KVO: listen for changes to our performer data source for table view updates
-    //    [self addObserver:self forKeyPath:@"performerList" options:0 context:NULL];
+//    [self addObserver:self forKeyPath:@"performerList" options:0 context:NULL];
     
 }
 
@@ -85,9 +100,9 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    //    self.performerList = nil;
+//    self.performerList = nil;
     
-    //    [self removeObserver:self forKeyPath:@"performerList"];
+//    [self removeObserver:self forKeyPath:@"performerList"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -127,7 +142,7 @@
     // Return the number of rows in the section.
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
     return [sectionInfo numberOfObjects];
-    
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -143,30 +158,30 @@
     // all the rows should show the disclosure indicator
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    // Get the specific performer for this row.
+// Get the specific event for this row.
     [self configureCell:cell atIndexPath:indexPath];
-    
+
     return cell;
 }
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    CookingDemo *newManagedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Event *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.adjustsFontSizeToFitWidth = YES; 
-    cell.textLabel.text = [[newManagedObject valueForKey:@"name"] description];  
+    cell.textLabel.text = [[event valueForKey:@"name"] description];  
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    EventDetailController *eventDetailController = [[[EventDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil] autorelease];
+    eventDetailController.managedObjectContext = self.managedObjectContext;
     
-    CookingDemoDetailController *cookingDemoDetailController = [[[CookingDemoDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil] autorelease];
-    cookingDemoDetailController.managedObjectContext = self.managedObjectContext;
+    Event *selectedEvent = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    eventDetailController.event = selectedEvent;
     
-    CookingDemo *selectedCookingDemo = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    cookingDemoDetailController.cookingDemo = selectedCookingDemo;
-    
-    [self.navigationController pushViewController:cookingDemoDetailController animated:YES];
+    [self.navigationController pushViewController:eventDetailController animated:YES];
 }
 
 // listen for changes to the performer list coming from our app delegagte.
@@ -186,16 +201,20 @@
     {
         return __fetchedResultsController;
     }
-    
+    [NSFetchedResultsController deleteCacheWithName:@"Root"];  
+
     /*
      Set up the fetched results controller.
      */
     // Create the fetch request for the entity.
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CookingDemo" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"eventType == %@", self.eventType];
+    [fetchRequest setPredicate: predicate];
+
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
@@ -230,70 +249,5 @@
     
     return __fetchedResultsController;
 }    
-
-#pragma mark - Fetched results controller delegate
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
-    switch(type)
-    {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
-    UITableView *tableView = self.tableView;
-    
-    switch(type)
-    {
-            
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView endUpdates];
-}
-
-/*
- // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
- 
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
- {
- // In the simplest, most efficient, case, reload the table view.
- [self.tableView reloadData];
- }
- */
 
 @end

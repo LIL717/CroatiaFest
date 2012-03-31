@@ -1,5 +1,5 @@
 //
-//  VideoViewController.h
+//  WebViewController.h
 //  CroatiaFest
 //
 //  Created by Lori Hill on 3/10/12.
@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UIKit/UIWebView.h>
 
-@interface WebViewController : UIViewController
+@interface WebViewController : UIViewController  <UIWebViewDelegate> {
+    IBOutlet UIWebView *webView;
 
+}
 @property (retain, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic, retain) NSURL *urlObject;
 

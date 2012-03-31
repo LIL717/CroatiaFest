@@ -1,5 +1,5 @@
 //
-//  ScheduleDateFormatter.m
+//  InsertSchedule.m
 //  CroatiaFest
 //
 //  Created by Lori Hill on 3/18/12.
@@ -8,7 +8,7 @@
 
 #import "InsertSchedule.h"
 #import "Schedule.h"
-#import "Performer.h"
+#import "Event.h"
 
 @implementation InsertSchedule
 
@@ -23,9 +23,9 @@
     // Convert beginDate and BeginTime to an NSDate Object
     NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    //        NSLocale *usLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
-    //        [dateFormatter setLocale:usLocale];
-    //        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"PDT"]];
+    NSLocale *usLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+    [dateFormatter setLocale:usLocale];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"PDT"]];
 
 
     NSString *beginDateTimeString = [NSString stringWithFormat: @"%@ %@", [scheduleData valueForKey: @"dateString"], [scheduleData valueForKey: @"beginTimeString"]];
@@ -35,23 +35,35 @@
     NSDate *beginTime = [dateFormatter dateFromString: beginDateTimeString];
     NSDate *endTime = [dateFormatter dateFromString: endDateTimeString];
 
-    NSTimeInterval secondsInFiveHours = 5 * 60 * 60;
-    NSDate *correctedBeginTime = [beginTime dateByAddingTimeInterval:secondsInFiveHours];
-    NSDate *correctedEndTime = [endTime dateByAddingTimeInterval:secondsInFiveHours];
+    //this is ugly but it works - dates come in in the format 12:30:00 everything is assumed to be pm because CroatiaFest is only in the afternoon, the time needs to be manipulated so that the times that begin with 12:00 convert to pm rather than am  so the hour is checked and if its 12 it is set back 12 hours 
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:beginTime];
+    NSInteger hour = [components hour];
+    
+    NSTimeInterval timeInterval = 0;
+    if (hour == 12) {
+        timeInterval = -7 * 60 * 60;
+    }
+    else {
+        timeInterval = 5 * 60 * 60;
+    }
+    
+    NSDate *correctedBeginTime = [beginTime dateByAddingTimeInterval:timeInterval];
+    NSDate *correctedEndTime = [endTime dateByAddingTimeInterval:timeInterval];
     
     Schedule *schedule = [NSEntityDescription insertNewObjectForEntityForName:@"Schedule" inManagedObjectContext:context];
     schedule.location = [scheduleData valueForKey: @"location"];
     schedule.beginTime = correctedBeginTime;
     schedule.endTime = correctedEndTime;
-    
-    schedule.performer = [scheduleData valueForKey: @"performer"];
-    ////            performer.performanceTime = schedule; ^^ OMG only need one of these - don't use both!!! 
+    schedule.event = [scheduleData valueForKey: @"event"];
+
+    //            performer.performanceTime = schedule; ^^ OMG only need one of these - don't use both!!! 
     if (![context save:&error]) {
         NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
     }
 
     return;
 
-    //        NSLog (@"begin time is %@, end time is %@", beginDateTimeString, endDateTimeString);
 }
 @end

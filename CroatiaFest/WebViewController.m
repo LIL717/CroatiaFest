@@ -1,5 +1,5 @@
 //
-//  VideoViewController.m
+//  WebViewController.m
 //  CroatiaFest
 //
 //  Created by Lori Hill on 3/10/12.
@@ -7,6 +7,7 @@
 //
 
 #import "WebViewController.h"
+
 
 @implementation WebViewController
 @synthesize webView;
@@ -56,5 +57,29 @@
     [webView release];
     [urlObject release];
     [super dealloc];
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    // starting the load, show the activity indicator in the status bar
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    // finished loading, hide the activity indicator in the status bar
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    // load error, hide the activity indicator in the status bar
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
+    // report the error inside the webview
+    NSString* errorString = [NSString stringWithFormat:
+                             @"<html><center><font size=+5 color='red'>An error occurred:<br>%@</font></center></html>",
+                             error.localizedDescription];
+    [self.webView loadHTMLString:errorString baseURL:nil];
 }
 @end

@@ -90,7 +90,6 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
     NSLog (@" parsedData %@", parsedData);
     [[NSNotificationCenter defaultCenter] postNotificationName:kAddFestivalNotif
                                                         object:self
-//                                                      userInfo:[NSDictionary dictionaryWithObject:performers
                                                         userInfo:[NSDictionary dictionaryWithObject:parsedData
                                                         forKey:kFestivalResultsKey]]; 
 }

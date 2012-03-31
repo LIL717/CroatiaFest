@@ -12,17 +12,10 @@
 #import "EventViewController.h"
 #import "MarketplaceViewController.h"
 #import "ParseOperation.h"
-#import "Activity.h"
-#import "CookingDemo.h"
 #import "Directory.h"
-#import "Exhibit.h"
 #import "Food.h"
-#import "InsertPerformers.h"
+#import "InsertEvents.h"
 #import "Vendor.h"
-#import "Workshop.h"
-//the following are only needed for the test
-#import "Schedule.h"
-#import "Performer.h"
 
 
 // this framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code
@@ -96,6 +89,8 @@
 
     //Create the tabBarController
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar-button-red.png"]];
+
 
     //Create view controllers
     RootViewController *rootViewController = [[RootViewController alloc] init];
@@ -128,16 +123,20 @@
     //Customize the look of the UINavBar for iOS5 devices
     if ([[UINavigationBar class]respondsToSelector:@selector(appearance)]) {
 
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBarPleter.png"] forBarMetrics:UIBarMetricsDefault];
+//        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBarPleter.png"] forBarMetrics:UIBarMetricsDefault];
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"menubar-red.png"] forBarMetrics:UIBarMetricsDefault];
         [[UINavigationBar  appearance]setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
 //                                                 [UIFont fontWithName:@"Chalkduster" size:20.0f], UITextAttributeFont,
-                                                 [UIColor blueColor], UITextAttributeTextColor,
+                                                 [UIColor whiteColor], UITextAttributeTextColor,
                                                  [UIColor grayColor], UITextAttributeTextShadowColor,
                                                  [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.0f)], UITextAttributeTextShadowOffset,
                                                  nil]];
 //        [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:-10.0f forBarMetrics:(UIBarMetrics)UIBarMetricsDefault];
-
-        [[UIBarButtonItem appearance] setTintColor:[UIColor blueColor]];
+        UIImage *backButton = [[UIImage imageNamed:@"back-red.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
+                                  
+        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal 
+                                    barMetrics:UIBarMetricsDefault];
+//        [[UIBarButtonItem appearance] setTintColor:[UIColor redColor]];
     }
 
 
@@ -366,14 +365,14 @@
         NSArray* passedArray = [[[NSArray alloc] initWithArray:[parsedData objectForKey:key]] autorelease];
 
         if ([key isEqualToString: @"activities"]) {
-            Activity *activity = [[Activity alloc] autorelease];
-            activity.managedObjectContext = self.managedObjectContext;
-            [activity addActivitiesToCoreData:passedArray];
+            InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
+            insertEvents.managedObjectContext = self.managedObjectContext;
+            [insertEvents addEventsToCoreData:passedArray forKey: @"Activities"];
         }
         if ([key isEqualToString: @"cookingDemos"]) {
-            CookingDemo *cookingDemo = [[CookingDemo alloc] autorelease];
-            cookingDemo.managedObjectContext = self.managedObjectContext;
-            [cookingDemo addCookingDemosToCoreData:passedArray];
+            InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
+            insertEvents.managedObjectContext = self.managedObjectContext;
+            [insertEvents addEventsToCoreData:passedArray forKey: @"Cooking Demos"];
         }
         if ([key isEqualToString: @"directory"]) {
             Directory *directory = [[Directory alloc] autorelease];
@@ -381,9 +380,9 @@
             [directory addDirectoryToCoreData:passedArray];
         }
         if ([key isEqualToString: @"exhibits"]) {
-            Exhibit *exhibit = [[Exhibit alloc] autorelease];
-            exhibit.managedObjectContext = self.managedObjectContext;
-            [exhibit addExhibitsToCoreData:passedArray];
+            InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
+            insertEvents.managedObjectContext = self.managedObjectContext;
+            [insertEvents addEventsToCoreData:passedArray forKey: @"Exhibits"];
         }
         if ([key isEqualToString: @"food"]) {
             Food *food = [[Food alloc] autorelease];
@@ -391,9 +390,9 @@
             [food addFoodToCoreData:passedArray];
         }
         if ([key isEqualToString: @"performers"]) {
-            InsertPerformers *insertPerformer = [[InsertPerformers alloc] autorelease];
-            insertPerformer.managedObjectContext = self.managedObjectContext;
-            [insertPerformer addPerformersToCoreData:passedArray];
+            InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
+            insertEvents.managedObjectContext = self.managedObjectContext;
+            [insertEvents addEventsToCoreData:passedArray forKey: @"Performers"];
         }
         if ([key isEqualToString: @"vendors"]) {
             Vendor *vendor = [[Vendor alloc] autorelease];
@@ -402,49 +401,12 @@
             NSLog (@"vendor %@", vendor);
         }
         if ([key isEqualToString: @"workshops"]) {
-            Workshop *workshop = [[Workshop alloc] autorelease];
-            workshop.managedObjectContext = self.managedObjectContext;
-            [workshop addWorkshopsToCoreData:passedArray];
-            NSLog (@"workshop %@", workshop);
+            InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
+            insertEvents.managedObjectContext = self.managedObjectContext;
+            [insertEvents addEventsToCoreData:passedArray forKey: @"Workshops"];
         }
     }
-//    // Test listing all Performers from the store
-//    NSManagedObjectContext *context = self.managedObjectContext;
-//    NSError *error = nil;
-//    
-////    NSSet *set=[performer performanceTimes];
-//
-//
-//    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Performer" 
-//                                              inManagedObjectContext:context];
-//    [fetchRequest setEntity:entity];
-//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-//    //        for (Performer *performer in fetchedObjects) {
-//    for (Performer *performer in fetchedObjects) {
-//        
-//        NSLog(@"Name: %@", performer.name);
-//        //        NSArray *timesArray = [performer.performanceTimes allObjects];
-//        for (Schedule *schedule in [performer performanceTimes]) {
-//            NSLog(@"Begin Time: %@", schedule.beginTime);
-//        }
-//    }    
-//    // end test 
-//    // Test listing all Schedule from the store
-//    //        NSManagedObjectContext *context = self.managedObjectContext;
-//    //        NSError *error = nil;
-//    
-//    NSFetchRequest *fetchRequest2 = [[[NSFetchRequest alloc] init] autorelease];
-//    NSEntityDescription *entity2 = [NSEntityDescription entityForName:@"Schedule" 
-//                                               inManagedObjectContext:context];
-//    [fetchRequest2 setEntity:entity2];
-//    NSArray *fetchedObjects2 = [context executeFetchRequest:fetchRequest2 error:&error];
-//    for (Schedule *schedule in fetchedObjects2) {
-//        NSLog(@"Begin Time: %@", schedule.beginTime);
-//        Performer *performer = schedule.performer;
-//        NSLog(@"Performer name: %@", performer.name);
-//    }        
-//    // end test 
+
 }
 #pragma mark -
 #pragma mark save context method

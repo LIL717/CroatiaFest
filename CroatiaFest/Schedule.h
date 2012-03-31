@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Performer;
+@class Event;
 
 @interface Schedule : NSManagedObject
 
 @property (nonatomic, retain) NSDate * endTime;
 @property (nonatomic, retain) NSDate * beginTime;
 @property (nonatomic, retain) NSString * location;
-@property (nonatomic, retain) Performer *performer;
+@property (nonatomic, retain) Event *event;
+
 
 @end

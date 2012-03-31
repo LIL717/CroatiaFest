@@ -7,11 +7,7 @@
 //
 
 #import "EventViewController.h"
-#import "PerformerViewController.h"
-#import "WorkshopViewController.h"
-#import "CookingDemoViewController.h"
-#import "ExhibitViewController.h"
-#import "ActivityViewController.h"
+#import "EventTypeViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -20,7 +16,7 @@
 
 
 @implementation EventViewController
-@synthesize eventArray;
+@synthesize eventArray = eventArray_;
 @synthesize managedObjectContext = managedObjectContext_;
 
 -(id)init
@@ -65,6 +61,7 @@
 {
 //    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [managedObjectContext_ release];
+    [eventArray_ release];
 
     [super dealloc];
 }
@@ -88,8 +85,8 @@
 {
     [super viewDidLoad];
 
-    eventArray = [[[NSArray alloc] initWithObjects:@"Performers", @"Workshops", @"Cooking Demos", @"Exhibits", @"Activities", nil] autorelease];
-    NSLog (@"eventArray is %@", eventArray);
+    self.eventArray = [[[NSArray alloc] initWithObjects:@"Performers", @"Workshops", @"Cooking Demos", @"Exhibits", @"Activities", nil] autorelease];
+    NSLog (@"eventArray is %@", self.eventArray);
     
     //code for CALayer
     //self.view.layer.contents = (id) [UIImage imageNamed:@"RedandWhiteCheckered.jpg"].CGImage;
@@ -162,44 +159,6 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -207,54 +166,14 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     
-    if (indexPath.row == 0) {
-    
-         PerformerViewController *performerViewController = [[PerformerViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
-        performerViewController.managedObjectContext = self.managedObjectContext;
+        EventTypeViewController *eventTypeViewController = [[EventTypeViewController alloc] initWithEventType: [self.eventArray objectAtIndex:indexPath.row]];
+        eventTypeViewController.managedObjectContext = self.managedObjectContext;
         
          // Pass the selected object to the new view controller.
-         [self.navigationController pushViewController:performerViewController animated:YES];
-         [performerViewController release];
-    }     
+         [self.navigationController pushViewController:eventTypeViewController animated:YES];
+         [eventTypeViewController release];
 
-    if (indexPath.row == 1) {
-        
-//        WorkshopViewController *workshopViewController = [[WorkshopViewController alloc] initWithNibName:@"WorkshopViewController" bundle:nil];
-        WorkshopViewController *workshopViewController = [[WorkshopViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
 
-        workshopViewController.managedObjectContext = self.managedObjectContext;
-        
-        // Pass the selected object to the new view controller.
-        [self.navigationController pushViewController:workshopViewController animated:YES];
-        [workshopViewController release];
-    }
-    if (indexPath.row == 2) {
-        
-        CookingDemoViewController *cookingDemoViewController = [[CookingDemoViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
-        cookingDemoViewController.managedObjectContext = self.managedObjectContext;
-        
-        // Pass the selected object to the new view controller.
-        [self.navigationController pushViewController:cookingDemoViewController animated:YES];
-        [cookingDemoViewController release];
-    }
-    if (indexPath.row == 3) {
-        
-        ExhibitViewController *exhibitViewController = [[ExhibitViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
-        exhibitViewController.managedObjectContext = self.managedObjectContext;
-
-        // Pass the selected object to the new view controller.
-        [self.navigationController pushViewController:exhibitViewController animated:YES];
-        [exhibitViewController release];
-    }
-    if (indexPath.row == 4) {
-        
-        ActivityViewController *activityViewController = [[ActivityViewController alloc] initWithNibName:@"FestivalTableViewController" bundle:nil];
-        activityViewController.managedObjectContext = self.managedObjectContext;
-
-        // Pass the selected object to the new view controller.
-        [self.navigationController pushViewController:activityViewController animated:YES];
-        [activityViewController release];
-    }
     
 }
 
