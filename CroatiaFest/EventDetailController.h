@@ -25,6 +25,7 @@
     UITextField *video_;
     UITextField *time_;
     UITableView *scheduleTableView_;
+    UIButton *webButton_;
 
 
     
@@ -47,6 +48,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *video;
 @property (nonatomic, retain) IBOutlet UITextField *time;
 @property (nonatomic, retain) IBOutlet UITableView *scheduleTableView;
+@property (nonatomic, retain) IBOutlet UIButton *webButton;
 
 @property (nonatomic, retain) Event *event;
 @property (nonatomic, retain) Schedule *schedule;

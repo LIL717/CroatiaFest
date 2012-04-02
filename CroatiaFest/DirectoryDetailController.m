@@ -24,6 +24,7 @@
 @synthesize phone2 = phone2_;
 @synthesize website = website_;
 @synthesize email = email_;
+@synthesize webButton = webButton_;
 
 - (void) dealloc {
     [directory_ release];
@@ -38,6 +39,7 @@
     [phone2_ release];
     [website_ release];
     [email_ release];
+    [webButton_ release];
 
     
     [super dealloc];
@@ -65,6 +67,10 @@
     self.website.text = self.directory.website;
     self.email.text = self.directory.email;
 
+    // Disable invisible webButton button if there is no website
+    if (isEmpty(self.directory.website)) {
+        [self.webButton setEnabled:NO]; // To toggle enabled / disabled
+    }
     
 }
 // IBAction from touch on invisible button
@@ -108,6 +114,7 @@
     self.phone2 = nil;
     self.website = nil;
     self.email = nil;
+    self.webButton = nil;
 
     
     // Release any retained subviews of the main view.

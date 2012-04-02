@@ -12,8 +12,8 @@
 	<string></string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>cfredwhitemini57.png</string>
-		<string>crestimage114.png</string>
+		<string>cficon57.png</string>
+		<string>cficon114.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -21,8 +21,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>cfredwhitemini57.png</string>
-				<string>crestimage114.png</string>
+				<string>cficon57.png</string>
+				<string>cficon114.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<false/>

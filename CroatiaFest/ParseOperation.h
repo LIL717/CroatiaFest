@@ -58,6 +58,8 @@ extern NSString *kFestivalMsgErrorKey;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 - (id)initWithData:(NSData *)data;
+- (void) deletePersistentStore;
+
 
 
 @end

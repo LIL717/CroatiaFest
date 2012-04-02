@@ -24,6 +24,7 @@
 @synthesize phone2 = phone2_;
 @synthesize website = website_;
 @synthesize email = email_;
+@synthesize webButton = webButton_;
 
 
 - (void) dealloc {
@@ -39,6 +40,7 @@
     [phone2_ release];
     [website_ release];
     [email_ release];
+    [webButton_ release];
     
     
     [super dealloc];
@@ -65,6 +67,11 @@
     self.phone2.text = self.vendor.phone2;
     self.website.text = self.vendor.website;
     self.email.text = self.vendor.email;
+    
+    // Disable invisible webButton button if there is no website
+    if (isEmpty(self.vendor.website)) {
+        [self.webButton setEnabled:NO]; // To toggle enabled / disabled
+    }
 
     
 }
@@ -109,6 +116,7 @@
     self.phone2 = nil;
     self.website = nil;
     self.email = nil;
+    self.webButton = nil;
 
     
     

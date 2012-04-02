@@ -234,9 +234,14 @@ static NSString * const kColumnName = @"column";
         if ([elementName isEqualToString:kColumnName]) {
             self.versionController = [[[VersionController alloc] init] autorelease];
             self.versionController.managedObjectContext = self.managedObjectContext;
-            if ([self.versionController updateSavedVersion:self.currentParsedCharacterData]) {
+            if ([self.versionController compareVersion:self.currentParsedCharacterData]) {
                 NSLog(@"yes versionHasChanged continue with parsing");
-                //need to skip to next table type
+                //  delete and reinitialize core data persistent store
+                [self deletePersistentStore];
+                //  insert the version number (clean up that mathod)
+                [self.versionController insertVersion:self.currentParsedCharacterData];
+                
+                // skip to next table type
             } else {
                 // no need to parse data if version has not changed because data that has been
                 //stored in Core Data will be used.
@@ -296,8 +301,9 @@ static NSString * const kColumnName = @"column";
 
     [[NSNotificationCenter defaultCenter] postNotificationName:kFestivalErrorNotif
                                                         object:self
-                                                      userInfo:[NSDictionary dictionaryWithObject:parseError
-                                                                                           forKey:kFestivalMsgErrorKey]];
+                                                      userInfo:[NSDictionary 
+                                            dictionaryWithObject:parseError
+                                                        forKey:kFestivalMsgErrorKey]];
 }
 
 // an error occurred while parsing the Performer data,
@@ -314,5 +320,22 @@ static NSString * const kColumnName = @"column";
                             waitUntilDone:NO];
     }
 }
+- (void) deletePersistentStore {
+    NSError *error = nil;
+    // retrieve the store URL
+    NSURL * storeURL = [[self.managedObjectContext persistentStoreCoordinator] URLForPersistentStore:[[[self.managedObjectContext persistentStoreCoordinator] persistentStores] lastObject]];
+    // lock the current context
+    [self.managedObjectContext lock];
+    [self.managedObjectContext reset];//to drop pending changes
+    //delete the store from the current managedObjectContext
+    if ([[self.managedObjectContext persistentStoreCoordinator] removePersistentStore:[[[self.managedObjectContext persistentStoreCoordinator] persistentStores] lastObject] error:&error])
+    {
+        // remove the file containing the data
+        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:&error];
+        //recreate the store like in the  appDelegate method
+        [[self.managedObjectContext persistentStoreCoordinator] addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];//recreates the persistent store
+    }
+    [self.managedObjectContext unlock];
 
+}
 @end

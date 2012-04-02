@@ -37,6 +37,7 @@
 @synthesize email = email_;
 @synthesize video = video_;
 @synthesize time = time_;
+@synthesize webButton = webButton_;
 
 - (void) dealloc {
     [event_ release];
@@ -55,6 +56,7 @@
     [email_ release];
     [video_ release];
     [time_ release];
+    [webButton_ release];
 
     [super dealloc];
 }
@@ -96,12 +98,16 @@
         [[self navigationItem] setRightBarButtonItem:watchButton];
         [watchButton release];
     }
-
+    // Disable invisible webButton button if there is no website
+    if (isEmpty(self.event.website)) {
+        [self.webButton setEnabled:NO]; // To toggle enabled / disabled
+    }
 }
 
 // IBAction from touch on invisible button
 
 -(IBAction)launchWeb:(id)sender {
+    
     NSString* launchUrl = [[[NSString alloc] initWithString: [NSString stringWithFormat:@"http://%@",self.website.text]] autorelease];
     NSURL *url = [NSURL URLWithString: launchUrl];
     
@@ -156,6 +162,7 @@
     self.email = nil;
     self.video = nil;
     self.time = nil;
+    self.webButton = nil;
     
 
     // Release any retained subviews of the main view.

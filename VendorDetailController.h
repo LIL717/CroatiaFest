@@ -20,6 +20,7 @@
     UITextField *phone2_;
     UITextField *website_;
     UITextField *email_;
+    UIButton *webButton_;
     
     Vendor *vendor;
     NSManagedObjectContext *managedObjectContext_;
@@ -34,6 +35,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *phone2;
 @property (nonatomic, retain) IBOutlet UITextField *website;
 @property (nonatomic, retain) IBOutlet UITextField *email;
+@property (nonatomic, retain) IBOutlet UIButton *webButton;
 
 
 

@@ -35,21 +35,10 @@
     return self;
 }
 
-- (BOOL)updateSavedVersion: (NSString *) newVersionString
+- (BOOL)compareVersion: (NSString *) newVersionString
 {
     int savedVersion;
     BOOL versionChanged;
-    // use NSNumberFormatter to change string to int
-    //localization allows other thousands separators, also.
-    NSNumberFormatter * myNumFormatter = [[NSNumberFormatter alloc] init];
-    [myNumFormatter setLocale:[NSLocale currentLocale]];
-//    [myNumFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-//    [myNumFormatter setNumberStyle:NSNumberFormatterDecimalStyle]; 
-    
-    NSNumber *newVersionNumber = [myNumFormatter numberFromString:newVersionString];
-//    NSLog(@"string '%@' gives NSNumber '%@' with intValue '%i'", 
-//          newVersionString, newVersionNumber, [newVersionNumber intValue]);
-    [myNumFormatter release];
         
     NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Version"
@@ -66,10 +55,10 @@
         NSLog (@"fetch error");
     }
     
-    //if there is not an object, need to insert one with the new Version Number
+    //if there is not an object, set flag that version is changed, but version number will be saved after core data persistent store is reinitialized
     if ([fetchedObjects count] == 0) {
 //        NSLog (@"no objects fetched");
-        [self insertVersion:newVersionNumber];
+//        [self insertVersion:newVersionNumber];
         versionChanged = YES;
     } else {
         //if there is an object, need to get the Version Number 
@@ -77,33 +66,42 @@
         savedVersion = [[[currentManagedObject valueForKey:@"number"] description] intValue];
 //        NSLog (@"savedVersion is %d", savedVersion);
 
-        if (savedVersion == [newVersionNumber intValue]) {
+        if (savedVersion == [[self convertStringToNumber: newVersionString] intValue]) {
 //            NSLog(@"version number is the same");
             versionChanged = NO;
         } else {
-//            NSLog(@"savedVersion is %d while newVersionNumber is %@", savedVersion, newVersionNumber);
-            // update version number
-            currentManagedObject.number = newVersionNumber;
-            //save
-            if (![self.managedObjectContext save:&error]) {
-                NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
-            }
+            //set flag, but version number will be saved after core data persistent store is reinitialized
+            NSLog(@"savedVersion is %d while newVersionNumber is %@", savedVersion, [self convertStringToNumber: newVersionString]);
             versionChanged = YES;
         }
     }
     return versionChanged;
 }
 
-- (void) insertVersion: (NSNumber *) newVersionNumber {
+- (void) insertVersion: (NSString *) newVersionString {
     
     NSError *error = nil;
 
     self.version= [NSEntityDescription insertNewObjectForEntityForName:@"Version" inManagedObjectContext:self.managedObjectContext];
-    self.version.number = newVersionNumber;
+    self.version.number = [self convertStringToNumber: newVersionString];
 
     if (![self.managedObjectContext save:&error]) {
     NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
     }
 }
 
+-(NSNumber *) convertStringToNumber: (NSString *) newVersionString {
+    
+    //localization allows other thousands separators, also.
+    NSNumberFormatter * myNumFormatter = [[NSNumberFormatter alloc] init];
+    [myNumFormatter setLocale:[NSLocale currentLocale]];
+ 
+    
+    NSNumber *newVersionNumber = [myNumFormatter numberFromString:newVersionString];
+    //    NSLog(@"string '%@' gives NSNumber '%@' with intValue '%i'", 
+    //          newVersionString, newVersionNumber, [newVersionNumber intValue]);
+    [myNumFormatter release];
+    
+    return newVersionNumber;
+}
 @end
