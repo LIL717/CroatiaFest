@@ -39,6 +39,7 @@
 {
     int savedVersion;
     BOOL versionChanged;
+    NSLog (@"newVersionString is %@", newVersionString);
         
     NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Version"
@@ -64,7 +65,7 @@
         //if there is an object, need to get the Version Number 
         Version *currentManagedObject = [fetchedObjects objectAtIndex:0];
         savedVersion = [[[currentManagedObject valueForKey:@"number"] description] intValue];
-//        NSLog (@"savedVersion is %d", savedVersion);
+        NSLog (@"savedVersion is %d", savedVersion);
 
         if (savedVersion == [[self convertStringToNumber: newVersionString] intValue]) {
 //            NSLog(@"version number is the same");
@@ -78,15 +79,25 @@
     return versionChanged;
 }
 
-- (void) insertVersion: (NSString *) newVersionString {
+- (void) insertVersion: (NSArray *) version {  
+    LogMethod();
+    //this is an array of dictionaries
     
-    NSError *error = nil;
+    for (id newVersion in version) {
+        
+        NSError *error = nil;
+        
+        self.version = [NSEntityDescription insertNewObjectForEntityForName:@"Version" inManagedObjectContext:self.managedObjectContext];
+        self.version.number = [self convertStringToNumber:[newVersion valueForKey: @"Version"]];
 
-    self.version= [NSEntityDescription insertNewObjectForEntityForName:@"Version" inManagedObjectContext:self.managedObjectContext];
-    self.version.number = [self convertStringToNumber: newVersionString];
 
-    if (![self.managedObjectContext save:&error]) {
-    NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
+//
+//    self.version= [NSEntityDescription insertNewObjectForEntityForName:@"Version" inManagedObjectContext:self.managedObjectContext];
+//    self.version.number = [self convertStringToNumber: newVersionString];
+
+        if (![self.managedObjectContext save:&error]) {
+        NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
+        }
     }
 }
 

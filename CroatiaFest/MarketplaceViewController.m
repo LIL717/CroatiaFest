@@ -18,6 +18,7 @@
 
 -(id)init
 {
+    LogMethod();
     self = [super init];
     //Call the superclass's designated initializer
     [super initWithNibName: nil
@@ -46,6 +47,7 @@
 }
 - (id)initWithStyle:(UITableViewStyle)style
 {
+    LogMethod();
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization

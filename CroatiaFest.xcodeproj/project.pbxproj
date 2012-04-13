@@ -57,6 +57,12 @@
 		7085B6C4142FB884006AEFF3 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6C3142FB884006AEFF3 /* Version.m */; };
 		7085B6D414340BD7006AEFF3 /* VersionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6D314340BD7006AEFF3 /* VersionController.m */; };
 		70864CAE1444B30100C25B4B /* Directory.m in Sources */ = {isa = PBXBuildFile; fileRef = 70864CAD1444B30100C25B4B /* Directory.m */; };
+		7086CED715364C6C00919C0F /* croatiafesticon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CED515364C6C00919C0F /* croatiafesticon57.png */; };
+		7086CEDB15364CFB00919C0F /* croatiafesticon114.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEDA15364CFB00919C0F /* croatiafesticon114.png */; };
+		7086CEE115365C3900919C0F /* croatiafesticon57whitebkgd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEE015365C3900919C0F /* croatiafesticon57whitebkgd.png */; };
+		7086CEE315365C4900919C0F /* croatiafesticon114whitebkgd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEE215365C4900919C0F /* croatiafesticon114whitebkgd.png */; };
+		7086CEEF15373C6B00919C0F /* croatiafesticon57whitebkgd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEEE15373C6B00919C0F /* croatiafesticon57whitebkgd.png */; };
+		7086CEF115373C7300919C0F /* croatiafesticon114whitebkgd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEF015373C7300919C0F /* croatiafesticon114whitebkgd.png */; };
 		7087A6C51516D7D00015A2F3 /* InsertSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7087A6C41516D7D00015A2F3 /* InsertSchedule.m */; };
 		7090A4FE151E9C91006BA945 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 7090A4FD151E9C91006BA945 /* Event.m */; };
 		709A9A5014C7CBDC000EB059 /* cflogo57.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A4F14C7CBDC000EB059 /* cflogo57.png */; };
@@ -157,6 +163,12 @@
 		7085B6D314340BD7006AEFF3 /* VersionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionController.m; sourceTree = "<group>"; };
 		70864CAC1444B30100C25B4B /* Directory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Directory.h; sourceTree = "<group>"; };
 		70864CAD1444B30100C25B4B /* Directory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Directory.m; sourceTree = "<group>"; };
+		7086CED515364C6C00919C0F /* croatiafesticon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafesticon57.png; path = ../../../../../Desktop/croatiafesticon57.png; sourceTree = "<group>"; };
+		7086CEDA15364CFB00919C0F /* croatiafesticon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafesticon114.png; path = ../../../../../Desktop/croatiafesticon114.png; sourceTree = "<group>"; };
+		7086CEE015365C3900919C0F /* croatiafesticon57whitebkgd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafesticon57whitebkgd.png; path = ../../../../../Desktop/croatiafesticon57whitebkgd.png; sourceTree = "<group>"; };
+		7086CEE215365C4900919C0F /* croatiafesticon114whitebkgd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafesticon114whitebkgd.png; path = ../../../../../Desktop/croatiafesticon114whitebkgd.png; sourceTree = "<group>"; };
+		7086CEEE15373C6B00919C0F /* croatiafesticon57whitebkgd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = croatiafesticon57whitebkgd.png; sourceTree = "<group>"; };
+		7086CEF015373C7300919C0F /* croatiafesticon114whitebkgd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = croatiafesticon114whitebkgd.png; sourceTree = "<group>"; };
 		7087A6C31516D7D00015A2F3 /* InsertSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertSchedule.h; sourceTree = "<group>"; };
 		7087A6C41516D7D00015A2F3 /* InsertSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertSchedule.m; sourceTree = "<group>"; };
 		7090A4FC151E9C91006BA945 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = ../Event.h; sourceTree = "<group>"; };
@@ -212,6 +224,8 @@
 		705B96AA13A275D000346007 = {
 			isa = PBXGroup;
 			children = (
+				7086CEF015373C7300919C0F /* croatiafesticon114whitebkgd.png */,
+				7086CEEE15373C6B00919C0F /* croatiafesticon57whitebkgd.png */,
 				705B96BF13A275D000346007 /* CroatiaFest */,
 				705B96B813A275D000346007 /* Frameworks */,
 				705B96B613A275D000346007 /* Products */,
@@ -257,6 +271,10 @@
 		705B96C013A275D000346007 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7086CEE015365C3900919C0F /* croatiafesticon57whitebkgd.png */,
+				7086CEE215365C4900919C0F /* croatiafesticon114whitebkgd.png */,
+				7086CED515364C6C00919C0F /* croatiafesticon57.png */,
+				7086CEDA15364CFB00919C0F /* croatiafesticon114.png */,
 				708217F21528DFC400A83AED /* cficon57.png */,
 				708217F31528DFC400A83AED /* cficon114.png */,
 				70245ADA1522D75900470372 /* textview-back-blue.png */,
@@ -471,6 +489,12 @@
 				70245ADB1522D75900470372 /* textview-back-blue.png in Resources */,
 				708217F41528DFC500A83AED /* cficon57.png in Resources */,
 				708217F51528DFC500A83AED /* cficon114.png in Resources */,
+				7086CED715364C6C00919C0F /* croatiafesticon57.png in Resources */,
+				7086CEDB15364CFB00919C0F /* croatiafesticon114.png in Resources */,
+				7086CEE115365C3900919C0F /* croatiafesticon57whitebkgd.png in Resources */,
+				7086CEE315365C4900919C0F /* croatiafesticon114whitebkgd.png in Resources */,
+				7086CEEF15373C6B00919C0F /* croatiafesticon57whitebkgd.png in Resources */,
+				7086CEF115373C7300919C0F /* croatiafesticon114whitebkgd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,7 +606,7 @@
 				GCC_PREFIX_HEADER = "CroatiaFest/CroatiaFest-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
@@ -598,7 +622,7 @@
 				GCC_PREFIX_HEADER = "CroatiaFest/CroatiaFest-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALIDATE_PRODUCT = YES;

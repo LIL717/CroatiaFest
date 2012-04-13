@@ -12,6 +12,8 @@
 
 @interface ScheduleViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
     Schedule *schedule_;
+    NSManagedObjectContext *managedObjectContext_;
+
     
 }
 @property (nonatomic, retain) Schedule *schedule;

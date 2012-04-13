@@ -21,9 +21,8 @@
     // for downloading the xml data
     NSURLConnection *webConnection;
     NSMutableData *festivalData;
-    NSOperationQueue *parseQueue;  
+    NSOperationQueue *parseQueue; 
     
-
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -33,6 +32,8 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+- (void) deletePersistentStore;
+
 
 
 @end

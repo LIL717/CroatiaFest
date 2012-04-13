@@ -16,6 +16,7 @@
 #import "Food.h"
 #import "InsertEvents.h"
 #import "Vendor.h"
+#import "VersionController.h"
 
 
 // this framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code
@@ -38,6 +39,7 @@
 @property (nonatomic, retain) NSURLConnection *webConnection;
 @property (nonatomic, retain) NSMutableData *festivalData;    // the data returned from the NSURLConnection
 @property (nonatomic, retain) NSOperationQueue *parseQueue;     // the queue that manages our NSOperation for parsing performer data
+@property (nonatomic, assign) BOOL resetData;
 
 - (void) setUpViewControllers;
 - (void) setUpURLConnection;
@@ -51,6 +53,7 @@
 @synthesize webConnection;
 @synthesize festivalData;
 @synthesize parseQueue;
+@synthesize resetData;
 @synthesize managedObjectContext = managedObjectContext_;
 @synthesize managedObjectModel = managedObjectModel_;
 @synthesize persistentStoreCoordinator = persistentStoreCoordinator_;
@@ -77,19 +80,24 @@
 {
     LogMethod ();
     // Override point for customization after application launch.
-    
+
+    [self setUpURLConnection];
+    self.resetData = YES; //use this bool to only reset core data once when new data is coming in
+    self.festivalData = nil;
     [self setUpViewControllers];   
     [self.window makeKeyAndVisible];
-    [self setUpURLConnection];
+
 
     return YES;
 
 }
 - (void) setUpViewControllers {
+    LogMethod ();
 
     //Create the tabBarController
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar-button-red.png"]];
+
 
 
     //Create view controllers
@@ -164,7 +172,9 @@
     [navController3 release];
     [navController4 release];
 }
-- (void) setUpURLConnection {    
+- (void) setUpURLConnection { 
+    LogMethod ();
+
     // Use NSURLConnection to asynchronously download the data. This means the main thread will not
     // be blocked - the application will remain responsive to the user. 
     //
@@ -236,7 +246,9 @@
 
     if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"text/xml"]) {
 
-        self.festivalData = [NSMutableData data];
+//        self.festivalData = [NSMutableData data];
+        self.festivalData = [[[NSMutableData alloc] init] autorelease];
+
     } else {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:
                                   NSLocalizedString(@"HTTP Error",
@@ -248,7 +260,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    //    LogMethod();
+    LogMethod();
     
     [festivalData appendData:data];
 //        NSLog (@"(festivalData is %@", festivalData);
@@ -289,7 +301,7 @@
     //
     //    DataModel *model = [[DataModel alloc] init];
     //    ParseOperation *parseOperation = [[ParseOperation alloc] initWithData:self.performerData model:model];
-    
+
     ParseOperation *parseOperation = [[ParseOperation alloc] initWithData: self.festivalData];
     //need to pass managedObjectContext because ParseOperation calls core data to check version number
     parseOperation.managedObjectContext = self.managedObjectContext;
@@ -354,8 +366,12 @@
 
 - (void)distributeParsedData:(NSDictionary *) parsedData {
     LogMethod();
-    NSLog (@"parsedData dictionary is %@", parsedData);
+//    NSLog (@"parsedData dictionary is %@", parsedData);
 
+    if (self.resetData) {
+        [self deletePersistentStore];
+        self.resetData = NO;  //only reset Core Data the first time that data is coming in here in case it comes back in multiple batches
+    }
 // read through dictionary, for each key, call method for that type of table with the dictionary of parsed data
     NSEnumerator *enumerator = [parsedData keyEnumerator];
     id key;
@@ -364,10 +380,10 @@
         NSLog (@"key is %@", key);
         NSArray* passedArray = [[[NSArray alloc] initWithArray:[parsedData objectForKey:key]] autorelease];
 
-        if ([key isEqualToString: @"activities"]) {
-            InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
-            insertEvents.managedObjectContext = self.managedObjectContext;
-            [insertEvents addEventsToCoreData:passedArray forKey: @"Activities"];
+        if ([key isEqualToString: @"appControl"]) {
+            VersionController *versionController = [[VersionController alloc] autorelease];
+            versionController.managedObjectContext = self.managedObjectContext;
+            [versionController insertVersion: passedArray];
         }
         if ([key isEqualToString: @"cookingDemos"]) {
             InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
@@ -383,6 +399,11 @@
             InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
             insertEvents.managedObjectContext = self.managedObjectContext;
             [insertEvents addEventsToCoreData:passedArray forKey: @"Exhibits"];
+        }
+        if ([key isEqualToString: @"festivalActivities"]) {
+            InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
+            insertEvents.managedObjectContext = self.managedObjectContext;
+            [insertEvents addEventsToCoreData:passedArray forKey: @"Activities"];
         }
         if ([key isEqualToString: @"food"]) {
             Food *food = [[Food alloc] autorelease];
@@ -407,6 +428,25 @@
         }
     }
 
+}
+- (void) deletePersistentStore {
+    NSError *error = nil;
+    // retrieve the store URL
+    NSURL * storeURL = [[self.managedObjectContext persistentStoreCoordinator] URLForPersistentStore:[[[self.managedObjectContext persistentStoreCoordinator] persistentStores] lastObject]];
+    // lock the current context
+    [self.managedObjectContext lock];
+    [self.managedObjectContext reset];//to drop pending changes
+    
+    //delete the store from the current managedObjectContext
+    if ([[self.managedObjectContext persistentStoreCoordinator] removePersistentStore:[[[self.managedObjectContext persistentStoreCoordinator] persistentStores] lastObject] error:&error])
+    {
+        // remove the file containing the data
+        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:&error];
+        //recreate the store like in the  appDelegate method
+        [[self.managedObjectContext persistentStoreCoordinator] addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];//recreates the persistent store
+    }
+    [self.managedObjectContext unlock];
+    
 }
 #pragma mark -
 #pragma mark save context method

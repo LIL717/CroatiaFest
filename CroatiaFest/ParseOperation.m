@@ -54,11 +54,12 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
         self.tableTagsDictionary = [[[NSMutableDictionary alloc] initWithCapacity: [tableItemNames count]] autorelease];
         self.parsedTablesDictionary = [[[NSMutableDictionary alloc] initWithCapacity:[tableItemNames count]] autorelease];
 
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"activities"];
+
         [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:APPCONTROL_FEED_TAGS] autorelease] forKey:@"appControl"];
         [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"cookingDemos"];
         [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:MARKETPLACE_FEED_TAGS] autorelease] forKey:@"directory"];  
         [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"exhibits"];
+        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"festivalActivities"];
         [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:MARKETPLACE_FEED_TAGS] autorelease] forKey:@"food"];
         [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"performers"];
         [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:MARKETPLACE_FEED_TAGS] autorelease] forKey:@"vendors"];
@@ -87,7 +88,7 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
 
     LogMethod();
     assert([NSThread isMainThread]);
-    NSLog (@" parsedData %@", parsedData);
+//    NSLog (@" parsedData %@", parsedData);
     [[NSNotificationCenter defaultCenter] postNotificationName:kAddFestivalNotif
                                                         object:self
                                                         userInfo:[NSDictionary dictionaryWithObject:parsedData
@@ -236,11 +237,6 @@ static NSString * const kColumnName = @"column";
             self.versionController.managedObjectContext = self.managedObjectContext;
             if ([self.versionController compareVersion:self.currentParsedCharacterData]) {
                 NSLog(@"yes versionHasChanged continue with parsing");
-                //  delete and reinitialize core data persistent store
-                [self deletePersistentStore];
-                //  insert the version number (clean up that mathod)
-                [self.versionController insertVersion:self.currentParsedCharacterData];
-                
                 // skip to next table type
             } else {
                 // no need to parse data if version has not changed because data that has been
@@ -264,9 +260,10 @@ static NSString * const kColumnName = @"column";
 
     }
     else if ([elementName isEqualToString:kTableName]) {
+//        NSLog (@" currentItemDictionary is %@", self.currentItemDictionary);
+
         [self.currentParseBatch addObject:self.currentItemDictionary];
 
-//        NSLog (@" currentItemDictionary is %@", self.currentItemDictionary);
 //        NSLog (@" currentParseBatch is %@", self.currentParseBatch);
                 
         parsedRecordCounter++;
@@ -320,22 +317,5 @@ static NSString * const kColumnName = @"column";
                             waitUntilDone:NO];
     }
 }
-- (void) deletePersistentStore {
-    NSError *error = nil;
-    // retrieve the store URL
-    NSURL * storeURL = [[self.managedObjectContext persistentStoreCoordinator] URLForPersistentStore:[[[self.managedObjectContext persistentStoreCoordinator] persistentStores] lastObject]];
-    // lock the current context
-    [self.managedObjectContext lock];
-    [self.managedObjectContext reset];//to drop pending changes
-    //delete the store from the current managedObjectContext
-    if ([[self.managedObjectContext persistentStoreCoordinator] removePersistentStore:[[[self.managedObjectContext persistentStoreCoordinator] persistentStores] lastObject] error:&error])
-    {
-        // remove the file containing the data
-        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:&error];
-        //recreate the store like in the  appDelegate method
-        [[self.managedObjectContext persistentStoreCoordinator] addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];//recreates the persistent store
-    }
-    [self.managedObjectContext unlock];
 
-}
 @end

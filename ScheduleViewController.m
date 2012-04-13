@@ -22,18 +22,21 @@
 
 @synthesize schedule = schedule_; 
 @synthesize fetchedResultsController = __fetchedResultsController;
-@synthesize managedObjectContext = __managedObjectContext;
+@synthesize managedObjectContext = managedObjectContext_;
 
 - (void)dealloc {
-    
+    LogMethod();
+
     [schedule_ release];
     [__fetchedResultsController release];
-    [__managedObjectContext release];
+    [managedObjectContext_ release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 -(id)init
 {
+    LogMethod();
+
     self = [super init];
     //Call the superclass's designated initializer
     [super initWithNibName: nil
@@ -61,19 +64,21 @@
     return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    LogMethod();
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        
-    }
-    return self;
-}
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    LogMethod();
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        // Custom initialization
+//        
+//    }
+//    return self;
+//}
 
 - (void)didReceiveMemoryWarning
 {
+    LogMethod();
+
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
@@ -89,9 +94,10 @@
 
 - (void)viewDidLoad
 {
+    LogMethod();
+
     [super viewDidLoad];
-    self.title = @"Schedule";
-    
+    self.title = @"Schedule";    
 }
 
 - (void)viewDidUnload
@@ -106,52 +112,71 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    LogMethod();
+
     [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    LogMethod();
+
     [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    LogMethod();
+
     [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    LogMethod();
+
     [super viewDidDisappear:animated];
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    
-    //the following line added to lengthen/shorten section header on rotation appropriately
-    [self.tableView reloadData];
+    LogMethod();
+
+
 
     return YES;
 }
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+        //the following line added to lengthen/shorten section header on rotation appropriately
+        [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    LogMethod();
+
     // Return the number of sections.
-//    NSLog(@"count of sections %d",  [[self.fetchedResultsController sections] count]);
+    NSLog(@"count of sections %d",  [[self.fetchedResultsController sections] count]);
     return [[self.fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    LogMethod();
+
     // Return the number of rows in the section.
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-//    NSLog(@"number of rows in section %d", [sectionInfo numberOfObjects]);
+    NSLog(@"number of rows in section %d", [sectionInfo numberOfObjects]);
     return [sectionInfo numberOfObjects];
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    LogMethod();
+
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -172,6 +197,8 @@
 }
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
+    LogMethod();
+
     Schedule *schedule = [self.fetchedResultsController objectAtIndexPath:indexPath];
     Event *event = schedule.event;
     
@@ -184,7 +211,8 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section { 
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    
+    LogMethod();
+
     NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
 
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss '+0000'"];
@@ -201,7 +229,8 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    
+    LogMethod();
+
     NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
     if (sectionTitle == nil) {
         return nil;
@@ -234,21 +263,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    LogMethod();
+
     Schedule *selectedEvent = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         EventDetailController *eventDetailController = [[[EventDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil] autorelease];
         eventDetailController.managedObjectContext = self.managedObjectContext;
         
         eventDetailController.event = selectedEvent.event;
         [self.navigationController pushViewController:eventDetailController animated:YES];
-
-//    if (!isEmpty(selectedPerformance.cookingDemo)) {
-//        CookingDemoDetailController *cookingDemoDetailController = [[[CookingDemoDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil] autorelease];
-//        cookingDemoDetailController.managedObjectContext = self.managedObjectContext;
-//        
-//        cookingDemoDetailController.cookingDemo = selectedPerformance.cookingDemo;
-//        [self.navigationController pushViewController:cookingDemoDetailController animated:YES];
-//
-//    }
 
     
 }
@@ -259,6 +281,8 @@
                         change:(NSDictionary *)change
                        context:(void *)context
 {
+    LogMethod();
+
     [self.tableView reloadData];
 }
 
@@ -266,6 +290,8 @@
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
+    LogMethod();
+
     if (__fetchedResultsController != nil)
     {
         return __fetchedResultsController;

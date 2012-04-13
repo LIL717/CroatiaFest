@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 - (BOOL) compareVersion: (NSString *) newVersionString;
-- (void) insertVersion: (NSString *) newVersionString;
+- (void) insertVersion: (NSArray *) version;
 -(NSNumber *) convertStringToNumber: (NSString *) newVersionString;
 
 
