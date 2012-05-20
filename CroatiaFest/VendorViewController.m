@@ -3,7 +3,7 @@
 //  CroatiaFest
 //
 //  Created by Lori Hill on 1/14/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 CroatiaFest. All rights reserved.
 //
 
 #import "VendorViewController.h"
@@ -34,7 +34,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    LogMethod();
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -156,7 +155,7 @@
     Vendor *newManagedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[newManagedObject valueForKey:@"name"] description];
     cell.textLabel.adjustsFontSizeToFitWidth = YES; 
-    NSLog(@" cell.textLabel.text is %@", cell.textLabel.text);
+//    NSLog(@" cell.textLabel.text is %@", cell.textLabel.text);
 }
 
 #pragma mark - Table view delegate
@@ -186,7 +185,6 @@
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
-    LogMethod();
     
     if (__fetchedResultsController != nil)
     {
@@ -227,13 +225,14 @@
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error])
     {
-	    /*
-	     Replace this implementation with code to handle the error appropriately.
-         
-	     abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-	     */
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
+        UIAlertView* alertView =
+        [[UIAlertView alloc] initWithTitle:@"Pazi!! Data Management Error" 
+                                   message:@"Press the Home button to quit this application." 
+                                  delegate:self 
+                         cancelButtonTitle:@"OK" 
+                         otherButtonTitles: nil];
+        [alertView show];
+        [alertView release];
 	}
     
     return __fetchedResultsController;

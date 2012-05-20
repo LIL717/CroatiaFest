@@ -3,7 +3,7 @@
 //  CroatiaFest
 //
 //  Created by Lori Hill on 10/6/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 CroatiaFest. All rights reserved.
 //
 
 #import <CoreData/CoreData.h>

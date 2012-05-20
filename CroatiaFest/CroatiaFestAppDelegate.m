@@ -3,7 +3,7 @@
 //  CroatiaFest
 //
 //  Created by Lori Hill on 6/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 CroatiaFest. All rights reserved.
 //
 
 #import "CroatiaFestAppDelegate.h"
@@ -38,7 +38,7 @@
 
 @property (nonatomic, retain) NSURLConnection *webConnection;
 @property (nonatomic, retain) NSMutableData *festivalData;    // the data returned from the NSURLConnection
-@property (nonatomic, retain) NSOperationQueue *parseQueue;     // the queue that manages our NSOperation for parsing performer data
+@property (nonatomic, retain) NSOperationQueue *parseQueue;   // the queue that manages our NSOperation for parsing festival data
 @property (nonatomic, assign) BOOL resetData;
 
 - (void) setUpViewControllers;
@@ -294,13 +294,13 @@
     self.webConnection = nil;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
     
-    // Spawn an NSOperation to parse the performer data so that the UI is not blocked while the
+    // Spawn an NSOperation to parse the data so that the UI is not blocked while the
     // application parses the XML data.
     //
     // IMPORTANT! - Don't access or affect UIKit objects on secondary threads.
     //
     //    DataModel *model = [[DataModel alloc] init];
-    //    ParseOperation *parseOperation = [[ParseOperation alloc] initWithData:self.performerData model:model];
+
 
     ParseOperation *parseOperation = [[ParseOperation alloc] initWithData: self.festivalData];
     //need to pass managedObjectContext because ParseOperation calls core data to check version number
@@ -317,10 +317,6 @@
 #pragma mark -
 #pragma mark handle data coming from URL
 
-// Handle errors in the download by showing an alert to the user. This is a very
-// simple way of handling the error, partly because this application does not have any offline
-// functionality for the user. Most real applications should handle the error in a less obtrusive
-// way and provide offline functionality to the user.
 //
 - (void)handleError:(NSError *)error {
     LogMethod();
@@ -329,7 +325,7 @@
     UIAlertView *alertView =
     [[UIAlertView alloc] initWithTitle:
      NSLocalizedString(@"Connection Error",
-                       @"Title for alert displayed when download or parse error occurs.")
+                       @"App will display previously loaded data")
                                message:errorMessage
                               delegate:nil
                      cancelButtonTitle:@"OK"
@@ -361,7 +357,7 @@
 
 // The NSOperation "ParseOperation" calls addParsedData: via NSNotification, on the main thread
 // which in turn calls this method, with batches of parsed objects.
-// The batch size is set via the kSizeOfPerformersBatch constant.
+// The batch size is set via the kSizeOfParsedBatch constant.
 //
 
 - (void)distributeParsedData:(NSDictionary *) parsedData {
@@ -458,13 +454,14 @@
     {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
         {
-            /*
-             Replace this implementation with code to handle the error appropriately.
-             
-             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-             */
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
+            UIAlertView* alertView =
+            [[UIAlertView alloc] initWithTitle:@"Pazi!! Data Management Error" 
+                                       message:@"Press the Home button to quit this application." 
+                                      delegate:self 
+                             cancelButtonTitle:@"OK" 
+                             otherButtonTitles: nil];
+            [alertView show];
+            [alertView release];
         } 
     }
 }
@@ -526,31 +523,15 @@
     persistentStoreCoordinator_ = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![persistentStoreCoordinator_ addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
     {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter: 
-         [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+        UIAlertView* alertView =
+        [[UIAlertView alloc] initWithTitle:@"Pazi!! Data Management Error" 
+                                   message:@"Press the Home button to quit this application." 
+                                  delegate:self 
+                         cancelButtonTitle:@"OK" 
+                         otherButtonTitles: nil];
+        [alertView show];
+        [alertView release];
+        
     }    
     
     return persistentStoreCoordinator_;

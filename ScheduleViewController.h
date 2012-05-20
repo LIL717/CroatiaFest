@@ -3,7 +3,7 @@
 //  CroatiaFest
 //
 //  Created by Lori Hill on 1/18/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 CroatiaFest. All rights reserved.
 //
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>

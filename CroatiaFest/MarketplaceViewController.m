@@ -3,7 +3,7 @@
 //  CroatiaFest
 //
 //  Created by Lori Hill on 6/14/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 CroatiaFest. All rights reserved.
 //
 
 #import "MarketplaceViewController.h"
@@ -18,7 +18,6 @@
 
 -(id)init
 {
-    LogMethod();
     self = [super init];
     //Call the superclass's designated initializer
     [super initWithNibName: nil
@@ -47,7 +46,6 @@
 }
 - (id)initWithStyle:(UITableViewStyle)style
 {
-    LogMethod();
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -80,7 +78,7 @@
     [super viewDidLoad];
     
     marketArray = [[[NSArray alloc] initWithObjects:@"Vendor Booths", @"Food Booths", @"Advertisers", nil] autorelease];
-    NSLog (@"marketArray is %@", marketArray);
+//    NSLog (@"marketArray is %@", marketArray);
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

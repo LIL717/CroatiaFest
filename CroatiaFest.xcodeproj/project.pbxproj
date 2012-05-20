@@ -20,13 +20,12 @@
 		70245ACB15226FED00470372 /* tabbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245AC915226FED00470372 /* tabbar-button-red@2x.png */; };
 		70245ACE1522754100470372 /* small-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245ACC1522754100470372 /* small-button-red.png */; };
 		70245ACF1522754100470372 /* small-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245ACD1522754100470372 /* small-button-red@2x.png */; };
-		70245AD51522A74A00470372 /* section-header-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245AD41522A74A00470372 /* section-header-red.png */; };
-		70245AD71522B5C500470372 /* section-header-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245AD61522B5C400470372 /* section-header-red@2x.png */; };
-		70245ADB1522D75900470372 /* textview-back-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245ADA1522D75900470372 /* textview-back-blue.png */; };
 		703139EF14C1498C008DDC53 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703139EE14C1498C008DDC53 /* QuartzCore.framework */; };
 		703139F914C245B1008DDC53 /* VendorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703139F814C245B1008DDC53 /* VendorViewController.m */; };
 		703139FE14C249B6008DDC53 /* VendorDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703139FD14C249B6008DDC53 /* VendorDetailController.m */; };
 		703C4203143A3B2E004EBB9F /* EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4201143A3B2E004EBB9F /* EventDetailController.m */; };
+		7052228915669C2F0003AE9F /* section-header-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 7052228815669C2F0003AE9F /* section-header-red.png */; };
+		7052228B15669C4E0003AE9F /* section-header-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7052228A15669C4E0003AE9F /* section-header-red@2x.png */; };
 		705B96BA13A275D000346007 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96B913A275D000346007 /* UIKit.framework */; };
 		705B96BC13A275D000346007 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BB13A275D000346007 /* Foundation.framework */; };
 		705B96BE13A275D000346007 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BD13A275D000346007 /* CoreGraphics.framework */; };
@@ -38,11 +37,8 @@
 		705B96D313A275D000346007 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705B96D113A275D000346007 /* RootViewController.xib */; };
 		705B9BFC13A30A4400346007 /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9BFA13A30A4400346007 /* EventViewController.m */; };
 		705B9BFD13A30A4400346007 /* EventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705B9BFB13A30A4400346007 /* EventViewController.xib */; };
-		705B9C0E13A6D83700346007 /* croatiafestws.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 705B9C0D13A6D83700346007 /* croatiafestws.jpg */; };
 		705B9C1A13A8715100346007 /* MarketplaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C1813A8715000346007 /* MarketplaceViewController.m */; };
 		705B9C1B13A8715100346007 /* MarketplaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705B9C1913A8715100346007 /* MarketplaceViewController.xib */; };
-		705B9C1D13A8742500346007 /* croatiafestwos.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 705B9C1C13A8742500346007 /* croatiafestwos.jpg */; };
-		705B9C1F13A876B400346007 /* RedandWhiteCheckered.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 705B9C1E13A876B400346007 /* RedandWhiteCheckered.jpg */; };
 		705B9C2D13A8F76500346007 /* InsertEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C2C13A8F76400346007 /* InsertEvents.m */; };
 		705B9C3113A8FB6F00346007 /* EventTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C2F13A8FB6F00346007 /* EventTypeViewController.m */; };
 		705B9C3513A907D200346007 /* ParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B9C3413A907D100346007 /* ParseOperation.m */; };
@@ -52,29 +48,15 @@
 		707DD3C0150D630E002F354B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 707DD3BF150D630E002F354B /* Default.png */; };
 		707DD3C2150D631B002F354B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 707DD3C1150D631B002F354B /* Default@2x.png */; };
 		707E52D51514546F00ACC0E0 /* Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 707E52D41514546F00ACC0E0 /* Schedule.m */; };
-		708217F41528DFC500A83AED /* cficon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 708217F21528DFC400A83AED /* cficon57.png */; };
-		708217F51528DFC500A83AED /* cficon114.png in Resources */ = {isa = PBXBuildFile; fileRef = 708217F31528DFC400A83AED /* cficon114.png */; };
 		7085B6C4142FB884006AEFF3 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6C3142FB884006AEFF3 /* Version.m */; };
 		7085B6D414340BD7006AEFF3 /* VersionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7085B6D314340BD7006AEFF3 /* VersionController.m */; };
 		70864CAE1444B30100C25B4B /* Directory.m in Sources */ = {isa = PBXBuildFile; fileRef = 70864CAD1444B30100C25B4B /* Directory.m */; };
-		7086CED715364C6C00919C0F /* croatiafesticon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CED515364C6C00919C0F /* croatiafesticon57.png */; };
-		7086CEDB15364CFB00919C0F /* croatiafesticon114.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEDA15364CFB00919C0F /* croatiafesticon114.png */; };
-		7086CEE115365C3900919C0F /* croatiafesticon57whitebkgd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEE015365C3900919C0F /* croatiafesticon57whitebkgd.png */; };
-		7086CEE315365C4900919C0F /* croatiafesticon114whitebkgd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEE215365C4900919C0F /* croatiafesticon114whitebkgd.png */; };
 		7086CEEF15373C6B00919C0F /* croatiafesticon57whitebkgd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEEE15373C6B00919C0F /* croatiafesticon57whitebkgd.png */; };
 		7086CEF115373C7300919C0F /* croatiafesticon114whitebkgd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEF015373C7300919C0F /* croatiafesticon114whitebkgd.png */; };
+		7086CEF9153C75CB00919C0F /* textview-back-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEF7153C75CA00919C0F /* textview-back-blue.png */; };
+		7086CEFA153C75CB00919C0F /* textview-back-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEF8153C75CA00919C0F /* textview-back-blue@2x.png */; };
 		7087A6C51516D7D00015A2F3 /* InsertSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7087A6C41516D7D00015A2F3 /* InsertSchedule.m */; };
 		7090A4FE151E9C91006BA945 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 7090A4FD151E9C91006BA945 /* Event.m */; };
-		709A9A5014C7CBDC000EB059 /* cflogo57.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A4F14C7CBDC000EB059 /* cflogo57.png */; };
-		709A9A5414C7CCBB000EB059 /* cflogo114.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A5314C7CCBB000EB059 /* cflogo114.png */; };
-		709A9A5A14C7E918000EB059 /* croatiafestwos57.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A5914C7E918000EB059 /* croatiafestwos57.png */; };
-		709A9A5C14C7E924000EB059 /* croatiafestwos114.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A5B14C7E924000EB059 /* croatiafestwos114.png */; };
-		709A9A6014C7EBF1000EB059 /* cfminilogo57.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A5F14C7EBF1000EB059 /* cfminilogo57.png */; };
-		709A9A6614C7ED92000EB059 /* cfminilogo114.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A6514C7ED92000EB059 /* cfminilogo114.png */; };
-		709A9A6A14C7F0C5000EB059 /* cfredwhitemini114.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A6914C7F0C5000EB059 /* cfredwhitemini114.png */; };
-		709A9A6E14C7F255000EB059 /* karlovacko114.png in Resources */ = {isa = PBXBuildFile; fileRef = 709A9A6D14C7F255000EB059 /* karlovacko114.png */; };
-		70AC5AFD14EE24450045514C /* navigationBarPleter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AC5AFB14EE24440045514C /* navigationBarPleter@2x.png */; };
-		70AC5AFF14EE25D60045514C /* navigationBarPleter.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AC5AFE14EE25D50045514C /* navigationBarPleter.png */; };
 		70AE05D913C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */; };
 		70AE05DC13C77460005F8303 /* cart_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05DB13C77460005F8303 /* cart_24.png */; };
 		70AE05DE13C7746B005F8303 /* mic_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05DD13C7746B005F8303 /* mic_24.png */; };
@@ -84,12 +66,9 @@
 		70B2AAE113CCF771004C7D51 /* CroatiaFest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70B2AADF13CCF771004C7D51 /* CroatiaFest.xcdatamodeld */; };
 		70B7013514C7708800407A11 /* calendar_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B7013414C7708800407A11 /* calendar_24.png */; };
 		70B7013D14C7719700407A11 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B7013C14C7719700407A11 /* ScheduleViewController.m */; };
-		70B93A7C14DA6632007A3D56 /* cfredwhitemini57.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B93A7B14DA6632007A3D56 /* cfredwhitemini57.png */; };
 		70E0122614BD433F00E230CA /* DirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E0122514BD433F00E230CA /* DirectoryViewController.m */; };
 		70E0122914BD469A00E230CA /* DirectoryDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E0122814BD469A00E230CA /* DirectoryDetailController.m */; };
 		70E78C6714C7726000687947 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E78C6614C7726000687947 /* ScheduleViewController.xib */; };
-		70E78C6D14C7913500687947 /* cresticon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E78C6C14C7913500687947 /* cresticon57.png */; };
-		70E78C7114C7920800687947 /* crestimage114.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E78C7014C7920800687947 /* crestimage114.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,9 +87,6 @@
 		70245AC915226FED00470372 /* tabbar-button-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar-button-red@2x.png"; path = "../../../prolific/sample-project/prolific/Resources/tabbar-button-red@2x.png"; sourceTree = "<group>"; };
 		70245ACC1522754100470372 /* small-button-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small-button-red.png"; path = "../../../prolific/sample-project/prolific/Resources/small-button-red.png"; sourceTree = "<group>"; };
 		70245ACD1522754100470372 /* small-button-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small-button-red@2x.png"; path = "../../../prolific/sample-project/prolific/Resources/small-button-red@2x.png"; sourceTree = "<group>"; };
-		70245AD41522A74A00470372 /* section-header-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "section-header-red.png"; path = "../../../../../Desktop/section-header-red.png"; sourceTree = "<group>"; };
-		70245AD61522B5C400470372 /* section-header-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "section-header-red@2x.png"; path = "../../../../../Desktop/section-header-red@2x.png"; sourceTree = "<group>"; };
-		70245ADA1522D75900470372 /* textview-back-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "textview-back-blue.png"; path = "../../../../../Desktop/textview-back-blue.png"; sourceTree = "<group>"; };
 		703139EE14C1498C008DDC53 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		703139F714C245B1008DDC53 /* VendorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VendorViewController.h; sourceTree = "<group>"; };
 		703139F814C245B1008DDC53 /* VendorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VendorViewController.m; sourceTree = "<group>"; };
@@ -118,6 +94,8 @@
 		703139FD14C249B6008DDC53 /* VendorDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VendorDetailController.m; path = ../VendorDetailController.m; sourceTree = "<group>"; };
 		703C4200143A3B2E004EBB9F /* EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailController.h; sourceTree = "<group>"; };
 		703C4201143A3B2E004EBB9F /* EventDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailController.m; sourceTree = "<group>"; };
+		7052228815669C2F0003AE9F /* section-header-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "section-header-red.png"; path = "../section-header-red.png"; sourceTree = "<group>"; };
+		7052228A15669C4E0003AE9F /* section-header-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section-header-red@2x.png"; sourceTree = "<group>"; };
 		705B96B513A275D000346007 /* CroatiaFest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CroatiaFest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		705B96B913A275D000346007 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		705B96BB13A275D000346007 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -127,7 +105,7 @@
 		705B96C513A275D000346007 /* CroatiaFest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CroatiaFest-Prefix.pch"; sourceTree = "<group>"; };
 		705B96C613A275D000346007 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		705B96C813A275D000346007 /* CroatiaFestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CroatiaFestAppDelegate.h; sourceTree = "<group>"; };
-		705B96C913A275D000346007 /* CroatiaFestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CroatiaFestAppDelegate.m; sourceTree = "<group>"; };
+		705B96C913A275D000346007 /* CroatiaFestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CroatiaFestAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		705B96CC13A275D000346007 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		705B96CE13A275D000346007 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		705B96CF13A275D000346007 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
@@ -135,12 +113,9 @@
 		705B9BF913A30A4400346007 /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
 		705B9BFA13A30A4400346007 /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
 		705B9BFB13A30A4400346007 /* EventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventViewController.xib; sourceTree = "<group>"; };
-		705B9C0D13A6D83700346007 /* croatiafestws.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = croatiafestws.jpg; path = ../croatiafestws.jpg; sourceTree = "<group>"; };
 		705B9C1713A8715000346007 /* MarketplaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketplaceViewController.h; sourceTree = "<group>"; };
 		705B9C1813A8715000346007 /* MarketplaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketplaceViewController.m; sourceTree = "<group>"; };
 		705B9C1913A8715100346007 /* MarketplaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketplaceViewController.xib; sourceTree = "<group>"; };
-		705B9C1C13A8742500346007 /* croatiafestwos.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = croatiafestwos.jpg; sourceTree = "<group>"; };
-		705B9C1E13A876B400346007 /* RedandWhiteCheckered.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RedandWhiteCheckered.jpg; sourceTree = "<group>"; };
 		705B9C2B13A8F76400346007 /* InsertEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertEvents.h; sourceTree = "<group>"; };
 		705B9C2C13A8F76400346007 /* InsertEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertEvents.m; sourceTree = "<group>"; };
 		705B9C2E13A8FB6E00346007 /* EventTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTypeViewController.h; sourceTree = "<group>"; };
@@ -155,34 +130,20 @@
 		707DD3C1150D631B002F354B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		707E52D31514546F00ACC0E0 /* Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Schedule.h; sourceTree = "<group>"; };
 		707E52D41514546F00ACC0E0 /* Schedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Schedule.m; sourceTree = "<group>"; };
-		708217F21528DFC400A83AED /* cficon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cficon57.png; path = ../../../../../Desktop/cficon57.png; sourceTree = "<group>"; };
-		708217F31528DFC400A83AED /* cficon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cficon114.png; path = ../../../../../Desktop/cficon114.png; sourceTree = "<group>"; };
 		7085B6C2142FB884006AEFF3 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
 		7085B6C3142FB884006AEFF3 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
 		7085B6D214340BD7006AEFF3 /* VersionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionController.h; sourceTree = "<group>"; };
 		7085B6D314340BD7006AEFF3 /* VersionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionController.m; sourceTree = "<group>"; };
 		70864CAC1444B30100C25B4B /* Directory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Directory.h; sourceTree = "<group>"; };
 		70864CAD1444B30100C25B4B /* Directory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Directory.m; sourceTree = "<group>"; };
-		7086CED515364C6C00919C0F /* croatiafesticon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafesticon57.png; path = ../../../../../Desktop/croatiafesticon57.png; sourceTree = "<group>"; };
-		7086CEDA15364CFB00919C0F /* croatiafesticon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafesticon114.png; path = ../../../../../Desktop/croatiafesticon114.png; sourceTree = "<group>"; };
-		7086CEE015365C3900919C0F /* croatiafesticon57whitebkgd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafesticon57whitebkgd.png; path = ../../../../../Desktop/croatiafesticon57whitebkgd.png; sourceTree = "<group>"; };
-		7086CEE215365C4900919C0F /* croatiafesticon114whitebkgd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafesticon114whitebkgd.png; path = ../../../../../Desktop/croatiafesticon114whitebkgd.png; sourceTree = "<group>"; };
-		7086CEEE15373C6B00919C0F /* croatiafesticon57whitebkgd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = croatiafesticon57whitebkgd.png; sourceTree = "<group>"; };
-		7086CEF015373C7300919C0F /* croatiafesticon114whitebkgd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = croatiafesticon114whitebkgd.png; sourceTree = "<group>"; };
+		7086CEEE15373C6B00919C0F /* croatiafesticon57whitebkgd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafesticon57whitebkgd.png; path = ../croatiafesticon57whitebkgd.png; sourceTree = "<group>"; };
+		7086CEF015373C7300919C0F /* croatiafesticon114whitebkgd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafesticon114whitebkgd.png; path = ../croatiafesticon114whitebkgd.png; sourceTree = "<group>"; };
+		7086CEF7153C75CA00919C0F /* textview-back-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "textview-back-blue.png"; path = "../textview-back-blue.png"; sourceTree = "<group>"; };
+		7086CEF8153C75CA00919C0F /* textview-back-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "textview-back-blue@2x.png"; path = "../textview-back-blue@2x.png"; sourceTree = "<group>"; };
 		7087A6C31516D7D00015A2F3 /* InsertSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertSchedule.h; sourceTree = "<group>"; };
 		7087A6C41516D7D00015A2F3 /* InsertSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertSchedule.m; sourceTree = "<group>"; };
 		7090A4FC151E9C91006BA945 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = ../Event.h; sourceTree = "<group>"; };
 		7090A4FD151E9C91006BA945 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Event.m; path = ../Event.m; sourceTree = "<group>"; };
-		709A9A4F14C7CBDC000EB059 /* cflogo57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cflogo57.png; path = ../cflogo57.png; sourceTree = "<group>"; };
-		709A9A5314C7CCBB000EB059 /* cflogo114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cflogo114.png; path = ../cflogo114.png; sourceTree = "<group>"; };
-		709A9A5914C7E918000EB059 /* croatiafestwos57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafestwos57.png; path = ../croatiafestwos57.png; sourceTree = "<group>"; };
-		709A9A5B14C7E924000EB059 /* croatiafestwos114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croatiafestwos114.png; path = ../croatiafestwos114.png; sourceTree = "<group>"; };
-		709A9A5F14C7EBF1000EB059 /* cfminilogo57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cfminilogo57.png; path = ../cfminilogo57.png; sourceTree = "<group>"; };
-		709A9A6514C7ED92000EB059 /* cfminilogo114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cfminilogo114.png; path = ../cfminilogo114.png; sourceTree = "<group>"; };
-		709A9A6914C7F0C5000EB059 /* cfredwhitemini114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cfredwhitemini114.png; path = ../cfredwhitemini114.png; sourceTree = "<group>"; };
-		709A9A6D14C7F255000EB059 /* karlovacko114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = karlovacko114.png; path = ../karlovacko114.png; sourceTree = "<group>"; };
-		70AC5AFB14EE24440045514C /* navigationBarPleter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationBarPleter@2x.png"; sourceTree = "<group>"; };
-		70AC5AFE14EE25D50045514C /* navigationBarPleter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navigationBarPleter.png; path = ../navigationBarPleter.png; sourceTree = "<group>"; };
 		70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20px-Coat_of_arms_of_Croatia.png"; sourceTree = "<group>"; };
 		70AE05DB13C77460005F8303 /* cart_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart_24.png; sourceTree = "<group>"; };
 		70AE05DD13C7746B005F8303 /* mic_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic_24.png; sourceTree = "<group>"; };
@@ -195,14 +156,11 @@
 		70B7013414C7708800407A11 /* calendar_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar_24.png; path = "../../../TWG Retina Icons/calendar_24.png"; sourceTree = "<group>"; };
 		70B7013B14C7719700407A11 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleViewController.h; path = ../ScheduleViewController.h; sourceTree = "<group>"; };
 		70B7013C14C7719700407A11 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleViewController.m; path = ../ScheduleViewController.m; sourceTree = "<group>"; };
-		70B93A7B14DA6632007A3D56 /* cfredwhitemini57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cfredwhitemini57.png; path = ../cfredwhitemini57.png; sourceTree = "<group>"; };
 		70E0122414BD433F00E230CA /* DirectoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryViewController.h; sourceTree = "<group>"; };
-		70E0122514BD433F00E230CA /* DirectoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryViewController.m; sourceTree = "<group>"; };
+		70E0122514BD433F00E230CA /* DirectoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DirectoryViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		70E0122714BD469A00E230CA /* DirectoryDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryDetailController.h; sourceTree = "<group>"; };
 		70E0122814BD469A00E230CA /* DirectoryDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryDetailController.m; sourceTree = "<group>"; };
 		70E78C6614C7726000687947 /* ScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
-		70E78C6C14C7913500687947 /* cresticon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cresticon57.png; path = ../cresticon57.png; sourceTree = "<group>"; };
-		70E78C7014C7920800687947 /* crestimage114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = crestimage114.png; path = ../crestimage114.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,8 +182,6 @@
 		705B96AA13A275D000346007 = {
 			isa = PBXGroup;
 			children = (
-				7086CEF015373C7300919C0F /* croatiafesticon114whitebkgd.png */,
-				7086CEEE15373C6B00919C0F /* croatiafesticon57whitebkgd.png */,
 				705B96BF13A275D000346007 /* CroatiaFest */,
 				705B96B813A275D000346007 /* Frameworks */,
 				705B96B613A275D000346007 /* Products */,
@@ -271,15 +227,12 @@
 		705B96C013A275D000346007 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7086CEE015365C3900919C0F /* croatiafesticon57whitebkgd.png */,
-				7086CEE215365C4900919C0F /* croatiafesticon114whitebkgd.png */,
-				7086CED515364C6C00919C0F /* croatiafesticon57.png */,
-				7086CEDA15364CFB00919C0F /* croatiafesticon114.png */,
-				708217F21528DFC400A83AED /* cficon57.png */,
-				708217F31528DFC400A83AED /* cficon114.png */,
-				70245ADA1522D75900470372 /* textview-back-blue.png */,
-				70245AD41522A74A00470372 /* section-header-red.png */,
-				70245AD61522B5C400470372 /* section-header-red@2x.png */,
+				7052228815669C2F0003AE9F /* section-header-red.png */,
+				7052228A15669C4E0003AE9F /* section-header-red@2x.png */,
+				7086CEF7153C75CA00919C0F /* textview-back-blue.png */,
+				7086CEF8153C75CA00919C0F /* textview-back-blue@2x.png */,
+				7086CEF015373C7300919C0F /* croatiafesticon114whitebkgd.png */,
+				7086CEEE15373C6B00919C0F /* croatiafesticon57whitebkgd.png */,
 				70245ACC1522754100470372 /* small-button-red.png */,
 				70245ACD1522754100470372 /* small-button-red@2x.png */,
 				70245AC815226FED00470372 /* tabbar-button-red.png */,
@@ -288,29 +241,13 @@
 				70245AC515226FB100470372 /* back-red@2x.png */,
 				70245AC015226F4F00470372 /* menubar-red.png */,
 				70245AC115226F4F00470372 /* menubar-red@2x.png */,
-				707DD3C1150D631B002F354B /* Default@2x.png */,
 				707DD3BF150D630E002F354B /* Default.png */,
+				707DD3C1150D631B002F354B /* Default@2x.png */,
 				707DD3B9150D5158002F354B /* cflogowhite 100x280.png */,
-				70AC5AFE14EE25D50045514C /* navigationBarPleter.png */,
-				70AC5AFB14EE24440045514C /* navigationBarPleter@2x.png */,
-				709A9A6D14C7F255000EB059 /* karlovacko114.png */,
-				70B93A7B14DA6632007A3D56 /* cfredwhitemini57.png */,
-				709A9A6914C7F0C5000EB059 /* cfredwhitemini114.png */,
-				709A9A6514C7ED92000EB059 /* cfminilogo114.png */,
-				709A9A5F14C7EBF1000EB059 /* cfminilogo57.png */,
-				709A9A5B14C7E924000EB059 /* croatiafestwos114.png */,
-				709A9A5914C7E918000EB059 /* croatiafestwos57.png */,
-				709A9A5314C7CCBB000EB059 /* cflogo114.png */,
-				709A9A4F14C7CBDC000EB059 /* cflogo57.png */,
-				70E78C7014C7920800687947 /* crestimage114.png */,
-				70E78C6C14C7913500687947 /* cresticon57.png */,
 				70B7013414C7708800407A11 /* calendar_24.png */,
 				70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */,
 				70AE05DB13C77460005F8303 /* cart_24.png */,
 				70AE05DD13C7746B005F8303 /* mic_24.png */,
-				705B9C1E13A876B400346007 /* RedandWhiteCheckered.jpg */,
-				705B9C0D13A6D83700346007 /* croatiafestws.jpg */,
-				705B9C1C13A8742500346007 /* croatiafestwos.jpg */,
 				705B96C113A275D000346007 /* CroatiaFest-Info.plist */,
 				705B96C213A275D000346007 /* InfoPlist.strings */,
 				705B96C513A275D000346007 /* CroatiaFest-Prefix.pch */,
@@ -419,7 +356,7 @@
 		705B96AC13A275D000346007 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 705B96AF13A275D000346007 /* Build configuration list for PBXProject "CroatiaFest" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -447,28 +384,12 @@
 				705B96CD13A275D000346007 /* MainWindow.xib in Resources */,
 				705B96D313A275D000346007 /* RootViewController.xib in Resources */,
 				705B9BFD13A30A4400346007 /* EventViewController.xib in Resources */,
-				705B9C0E13A6D83700346007 /* croatiafestws.jpg in Resources */,
 				705B9C1B13A8715100346007 /* MarketplaceViewController.xib in Resources */,
-				705B9C1D13A8742500346007 /* croatiafestwos.jpg in Resources */,
-				705B9C1F13A876B400346007 /* RedandWhiteCheckered.jpg in Resources */,
 				70AE05D913C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png in Resources */,
 				70AE05DC13C77460005F8303 /* cart_24.png in Resources */,
 				70AE05DE13C7746B005F8303 /* mic_24.png in Resources */,
 				70B7013514C7708800407A11 /* calendar_24.png in Resources */,
 				70E78C6714C7726000687947 /* ScheduleViewController.xib in Resources */,
-				70E78C6D14C7913500687947 /* cresticon57.png in Resources */,
-				70E78C7114C7920800687947 /* crestimage114.png in Resources */,
-				709A9A5014C7CBDC000EB059 /* cflogo57.png in Resources */,
-				709A9A5414C7CCBB000EB059 /* cflogo114.png in Resources */,
-				709A9A5A14C7E918000EB059 /* croatiafestwos57.png in Resources */,
-				709A9A5C14C7E924000EB059 /* croatiafestwos114.png in Resources */,
-				709A9A6014C7EBF1000EB059 /* cfminilogo57.png in Resources */,
-				709A9A6614C7ED92000EB059 /* cfminilogo114.png in Resources */,
-				709A9A6A14C7F0C5000EB059 /* cfredwhitemini114.png in Resources */,
-				709A9A6E14C7F255000EB059 /* karlovacko114.png in Resources */,
-				70B93A7C14DA6632007A3D56 /* cfredwhitemini57.png in Resources */,
-				70AC5AFD14EE24450045514C /* navigationBarPleter@2x.png in Resources */,
-				70AC5AFF14EE25D60045514C /* navigationBarPleter.png in Resources */,
 				7019A83C1506E6A4001C919C /* EventTypeViewController.xib in Resources */,
 				7019A83E1506E6C0001C919C /* EventTypeDetailController.xib in Resources */,
 				7019A84015081EEE001C919C /* MarketplaceTypeDetailController.xib in Resources */,
@@ -484,17 +405,12 @@
 				70245ACB15226FED00470372 /* tabbar-button-red@2x.png in Resources */,
 				70245ACE1522754100470372 /* small-button-red.png in Resources */,
 				70245ACF1522754100470372 /* small-button-red@2x.png in Resources */,
-				70245AD51522A74A00470372 /* section-header-red.png in Resources */,
-				70245AD71522B5C500470372 /* section-header-red@2x.png in Resources */,
-				70245ADB1522D75900470372 /* textview-back-blue.png in Resources */,
-				708217F41528DFC500A83AED /* cficon57.png in Resources */,
-				708217F51528DFC500A83AED /* cficon114.png in Resources */,
-				7086CED715364C6C00919C0F /* croatiafesticon57.png in Resources */,
-				7086CEDB15364CFB00919C0F /* croatiafesticon114.png in Resources */,
-				7086CEE115365C3900919C0F /* croatiafesticon57whitebkgd.png in Resources */,
-				7086CEE315365C4900919C0F /* croatiafesticon114whitebkgd.png in Resources */,
 				7086CEEF15373C6B00919C0F /* croatiafesticon57whitebkgd.png in Resources */,
 				7086CEF115373C7300919C0F /* croatiafesticon114whitebkgd.png in Resources */,
+				7086CEF9153C75CB00919C0F /* textview-back-blue.png in Resources */,
+				7086CEFA153C75CB00919C0F /* textview-back-blue@2x.png in Resources */,
+				7052228915669C2F0003AE9F /* section-header-red.png in Resources */,
+				7052228B15669C4E0003AE9F /* section-header-red@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +516,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lori Hill (RA8TSUL9QH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lori Hill (RA8TSUL9QH)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -608,6 +526,8 @@
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0DA7F017-A449-4286-863F-7379C61EFA72";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0DA7F017-A449-4286-863F-7379C61EFA72";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -617,6 +537,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CroatiaFest/CroatiaFest-Prefix.pch";
@@ -624,6 +546,8 @@
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

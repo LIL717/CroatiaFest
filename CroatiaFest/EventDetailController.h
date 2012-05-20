@@ -1,9 +1,9 @@
 //
-//  PerformerDetailController.h
+//  EventDetailController.h
 //  CroatiaFest
 //
 //  Created by Lori Hill on 10/3/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 CroatiaFest. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

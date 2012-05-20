@@ -1,9 +1,9 @@
 //
-//  PerformerDetailController.m
+//  EventDetailController.m
 //  CroatiaFest
 //
 //  Created by Lori Hill on 10/3/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 CroatiaFest. All rights reserved.
 //
 
 #import "EventDetailController.h"
@@ -62,7 +62,6 @@
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    LogMethod();
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -82,7 +81,7 @@
     self.email.text = self.event.email;
     self.video.text = self.event.video;
     
-    NSLog(@"Event name: %@", self.name.text);
+//    NSLog(@"Event name: %@", self.name.text);
        
     // Populate array with eventTimes
     

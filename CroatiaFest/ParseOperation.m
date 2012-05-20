@@ -3,7 +3,7 @@
 //  CroatiaFest
 //
 //  Created by Lori Hill on 6/15/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 CroatiaFest. All rights reserved.
 //
 
 #import "ParseOperation.h"
@@ -78,10 +78,8 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
     [currentParsedCharacterData release];
     [currentParseBatch release];
     [tableItemNames release];
-
     [__managedObjectContext release];
 
-    
     [super dealloc];
 }
 - (void)distributeParsedData:(NSDictionary *)parsedData {
@@ -121,8 +119,6 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
                                withObject:self.parsedTablesDictionary
                             waitUntilDone:NO];
     }
-   
-//    self.currentPerformerObject = nil;
     self.currentParsedCharacterData = nil;
     
     [parser release];
@@ -133,12 +129,11 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
 
 // Limit the number of parsed records 
 //
-//static const const NSUInteger kMaximumNumberOfRecordsToParse = 150;
 static const NSUInteger kMaximumNumberOfRecordsToParse = 150;
 
 // When an parsed object has been fully constructed, it must be passed to the main thread and
 // loaded into Core Data.   It is not efficient to do
-// this for every performer object - the overhead in communicating between the threads and reloading
+// this for every festival object - the overhead in communicating between the threads and reloading
 // the table exceed the benefit to the user. Instead, we pass the objects in batches, sized by the
 // constant below. In your application, the optimal batch size will vary 
 // depending on the amount of data in the object and other factors, as appropriate.
@@ -159,7 +154,6 @@ static NSString * const kColumnName = @"column";
 	self.currentParsedCharacterData = nil;
 }
 
-
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName
@@ -168,8 +162,8 @@ static NSString * const kColumnName = @"column";
 
 //    NSLog(@"start element ************%@", elementName);
 
-    // If the number of parsed Performer is greater than
-    // kMaximumNumberOfPerformersToParse, abort the parse.
+    // If the number of parsed records is greater than
+    // kMaximumNumberOfRecordsToParse, abort the parse.
     //
     if (parsedRecordCounter >= kMaximumNumberOfRecordsToParse) {
         // Use the flag didAbortParsing to distinguish between this deliberate stop
@@ -195,8 +189,12 @@ static NSString * const kColumnName = @"column";
                     //pass the dictionary
                     [self performSelectorOnMainThread:@selector(distributeParsedData:)
                                            withObject:self.parsedTablesDictionary
-                                        waitUntilDone:NO];
+//                                        waitUntilDone:NO];
+                                          waitUntilDone:YES];
+
                     self.currentParseBatch = [NSMutableArray array];
+                    self.parsedTablesDictionary = [[[NSMutableDictionary alloc] initWithCapacity:[tableItemNames count]] autorelease];
+
 
                 }
                 self.currentParseBatch = [NSMutableArray array];
@@ -273,7 +271,7 @@ static NSString * const kColumnName = @"column";
     accumulatingParsedCharacterData = NO;
 }
 
-// This method is called by the parser when it find parsed character data ("PCDATA") in an element.
+// This method is called by the parser when it finds parsed character data ("PCDATA") in an element.
 // The parser is not guaranteed to deliver all of the parsed character data for an element in a single
 // invocation, so it is necessary to accumulate character data until the end of the element is reached.
 //

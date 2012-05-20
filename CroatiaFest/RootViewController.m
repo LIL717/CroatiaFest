@@ -3,7 +3,7 @@
 //  CroatiaFest
 //
 //  Created by Lori Hill on 6/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 CroatiaFest. All rights reserved.
 //
 
 #import "RootViewController.h"
@@ -16,7 +16,6 @@
 
 -(id)init
 {
-    LogMethod();
     self = [super init];
     //Call the superclass's designated initializer
     [super initWithNibName: nil
@@ -163,24 +162,24 @@
     [alertView release];
     
 }
-#pragma mark -
-#pragma mark UIAlertViewDelegate Methods
-
-- (void) alertView: (UIAlertView *) alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if (alertView == self.savedAlert) {
-        self.savedAlert = nil;
-        if (buttonIndex == [alertView cancelButtonIndex]) {
-            NSLog(@"alert cancel button pressed!");
-        }
-        else {
-            NSLog(@"alert action button pressed open webpage to support page!");
-        }
-    }
-}
+//#pragma mark -
+//#pragma mark UIAlertViewDelegate Methods
+//
+//- (void) alertView: (UIAlertView *) alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+//{
+//    if (alertView == self.savedAlert) {
+//        self.savedAlert = nil;
+//        if (buttonIndex == [alertView cancelButtonIndex]) {
+//            NSLog(@"alert cancel button pressed!");
+//        }
+//        else {
+//            NSLog(@"alert action button pressed open webpage to support page!");
+//        }
+//    }
+//}
 - (void) applicationWillResignActive: (NSNotification *) note
 {
-    NSLog(@"in applicationWillResignActive in RootViewController");
+//    NSLog(@"in applicationWillResignActive in RootViewController");
     [self.savedAlert dismissWithClickedButtonIndex: self.savedAlert.cancelButtonIndex animated:NO];
     self.savedAlert = nil;
 }

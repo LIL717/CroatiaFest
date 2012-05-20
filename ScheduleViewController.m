@@ -3,7 +3,7 @@
 //  CroatiaFest
 //
 //  Created by Lori Hill on 1/18/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 CroatiaFest. All rights reserved.
 //
 
 #import "ScheduleViewController.h"
@@ -25,7 +25,6 @@
 @synthesize managedObjectContext = managedObjectContext_;
 
 - (void)dealloc {
-    LogMethod();
 
     [schedule_ release];
     [__fetchedResultsController release];
@@ -35,7 +34,6 @@
 }
 -(id)init
 {
-    LogMethod();
 
     self = [super init];
     //Call the superclass's designated initializer
@@ -77,7 +75,6 @@
 
 - (void)didReceiveMemoryWarning
 {
-    LogMethod();
 
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -94,7 +91,6 @@
 
 - (void)viewDidLoad
 {
-    LogMethod();
 
     [super viewDidLoad];
     self.title = @"Schedule";    
@@ -112,38 +108,30 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    LogMethod();
 
     [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    LogMethod();
 
     [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    LogMethod();
 
     [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    LogMethod();
 
     [super viewDidDisappear:animated];
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    LogMethod();
-
-
-
     return YES;
 }
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
@@ -155,27 +143,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    LogMethod();
 
     // Return the number of sections.
-    NSLog(@"count of sections %d",  [[self.fetchedResultsController sections] count]);
+//    NSLog(@"count of sections %d",  [[self.fetchedResultsController sections] count]);
     return [[self.fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    LogMethod();
 
     // Return the number of rows in the section.
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    NSLog(@"number of rows in section %d", [sectionInfo numberOfObjects]);
+//    NSLog(@"number of rows in section %d", [sectionInfo numberOfObjects]);
     return [sectionInfo numberOfObjects];
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LogMethod();
 
     static NSString *CellIdentifier = @"Cell";
     
@@ -197,7 +182,6 @@
 }
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    LogMethod();
 
     Schedule *schedule = [self.fetchedResultsController objectAtIndexPath:indexPath];
     Event *event = schedule.event;
@@ -211,7 +195,6 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section { 
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    LogMethod();
 
     NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
 
@@ -229,7 +212,6 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    LogMethod();
 
     NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
     if (sectionTitle == nil) {
@@ -248,8 +230,8 @@
     UIView *sectionHeaderView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 25)] autorelease];
     UIImageView *backgroundView =[[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 25)] autorelease];
 
-//    backgroundView.image = [UIImage imageNamed:@"section-header-red.png"];
     backgroundView.image = [UIImage imageNamed:@"section-header-red.png"];
+//    backgroundView.image = [UIImage imageNamed:@"menubar-red.png"];
 
 //    [sectionHeaderView setBackgroundColor:[UIColor blueColor]];
     [sectionHeaderView addSubview: backgroundView];
@@ -263,7 +245,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LogMethod();
 
     Schedule *selectedEvent = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         EventDetailController *eventDetailController = [[[EventDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil] autorelease];
@@ -290,7 +271,6 @@
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
-    LogMethod();
 
     if (__fetchedResultsController != nil)
     {
@@ -331,13 +311,14 @@
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error])
     {
-	    /*
-	     Replace this implementation with code to handle the error appropriately.
-         
-	     abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-	     */
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
+        UIAlertView* alertView =
+        [[UIAlertView alloc] initWithTitle:@"Pazi!! Data Management Error" 
+                                   message:@"Press the Home button to quit this application." 
+                                  delegate:self 
+                         cancelButtonTitle:@"OK" 
+                         otherButtonTitles: nil];
+        [alertView show];
+        [alertView release];
 	}
     
     return __fetchedResultsController;

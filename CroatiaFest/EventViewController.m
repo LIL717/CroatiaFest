@@ -3,7 +3,7 @@
 //  CroatiaFest
 //
 //  Created by Lori Hill on 6/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 CroatiaFest. All rights reserved.
 //
 
 #import "EventViewController.h"
@@ -21,7 +21,6 @@
 
 -(id)init
 {
-    LogMethod();
     self = [super init];
     //Call the superclass's designated initializer
     [super initWithNibName: nil
@@ -51,7 +50,6 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
-    LogMethod();
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -88,7 +86,7 @@
     [super viewDidLoad];
 
     self.eventArray = [[[NSArray alloc] initWithObjects:@"Performers", @"Workshops", @"Cooking Demos", @"Exhibits", @"Activities", nil] autorelease];
-    NSLog (@"eventArray is %@", self.eventArray);
+//    NSLog (@"eventArray is %@", self.eventArray);
     
     //code for CALayer
     //self.view.layer.contents = (id) [UIImage imageNamed:@"RedandWhiteCheckered.jpg"].CGImage;
@@ -128,7 +126,6 @@
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    LogMethod();
 
     // Return YES for supported orientations
     return YES;
