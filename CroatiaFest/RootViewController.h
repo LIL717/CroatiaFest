@@ -11,16 +11,11 @@
 
 
 @interface RootViewController : UIViewController <NSFetchedResultsControllerDelegate> {
-
-
+    UIAlertView *savedAlert_;
 @private 
-//    NSFetchedResultsController *fetchedResultsController_;
-//    NSManagedObjectContext *managedObjectContext_;
     
 }
 @property (nonatomic, retain) IBOutlet UIAlertView *savedAlert;
-//@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-//@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 - (void) supportAlert;
 - (void) applicationWillResignActive: (NSNotification *) note;

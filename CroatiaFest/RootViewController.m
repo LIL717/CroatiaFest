@@ -10,10 +10,14 @@
 #import <QuartzCore/QuartzCore.h>
 
 @implementation RootViewController
-@synthesize savedAlert;
-//@synthesize managedObjectContext = managedObjectContext_;
-//@synthesize fetchedResultsController = fetchedResultsController_;
+@synthesize savedAlert = savedAlert_;
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [savedAlert_ release];
+    [super dealloc];
+}
 -(id)init
 {
     self = [super init];
@@ -81,13 +85,7 @@
 //    [titleView sizeToFit];
 //}
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-//    [managedObjectContext_ release];
-//    [fetchedResultsController_ release];
-    [super dealloc];
-}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -105,7 +103,7 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated
-{
+{        
 	[super viewDidDisappear:animated];
 }
 
@@ -162,21 +160,7 @@
     [alertView release];
     
 }
-//#pragma mark -
-//#pragma mark UIAlertViewDelegate Methods
-//
-//- (void) alertView: (UIAlertView *) alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-//{
-//    if (alertView == self.savedAlert) {
-//        self.savedAlert = nil;
-//        if (buttonIndex == [alertView cancelButtonIndex]) {
-//            NSLog(@"alert cancel button pressed!");
-//        }
-//        else {
-//            NSLog(@"alert action button pressed open webpage to support page!");
-//        }
-//    }
-//}
+
 - (void) applicationWillResignActive: (NSNotification *) note
 {
 //    NSLog(@"in applicationWillResignActive in RootViewController");

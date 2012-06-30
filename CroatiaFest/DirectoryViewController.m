@@ -19,14 +19,14 @@
 @implementation DirectoryViewController
 
 @synthesize directory = directory_; 
-@synthesize fetchedResultsController = __fetchedResultsController;
-@synthesize managedObjectContext = __managedObjectContext;
+@synthesize fetchedResultsController = fetchedResultsController_;
+@synthesize managedObjectContext = managedObjectContext_;
 
 - (void)dealloc {
     
     [directory_ release];
-    [__fetchedResultsController release];
-    [__managedObjectContext release];
+    [fetchedResultsController_ release];
+    [managedObjectContext_ release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
@@ -60,22 +60,6 @@
 {
     [super viewDidLoad];
     self.title = @"Advertisers";
-    
-    //    //become observer for application going to background
-    //    [[NSNotificationCenter defaultCenter] addObserver:self
-    //                                             selector:@selector (applicationWillResignActive:)
-    //                                                 name:UIApplicationWillResignActiveNotification
-    //                                               object:[UIApplication sharedApplication]];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    //    self.performerList = [[NSMutableArray alloc] init];
-    
-    // KVO: listen for changes to our performer data source for table view updates
-    //    [self addObserver:self forKeyPath:@"performerList" options:0 context:NULL];
     
 }
 
@@ -171,23 +155,14 @@
     [self.navigationController pushViewController:directoryDetailController animated:YES];
 }
 
-// listen for changes to the performer list coming from our app delegagte.
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context
-{
-    [self.tableView reloadData];
-}
-
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
 
-    if (__fetchedResultsController != nil)
+    if (fetchedResultsController_ != nil)
     {
-        return __fetchedResultsController;
+        return fetchedResultsController_;
     }
     
     /*
@@ -234,72 +209,7 @@
         [alertView release];
 	}
     
-    return __fetchedResultsController;
+    return fetchedResultsController_;
 }    
-
-#pragma mark - Fetched results controller delegate
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
-    switch(type)
-    {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
-    UITableView *tableView = self.tableView;
-    
-    switch(type)
-    {
-            
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView endUpdates];
-}
-
-/*
- // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
- 
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
- {
- // In the simplest, most efficient, case, reload the table view.
- [self.tableView reloadData];
- }
- */
 
 @end

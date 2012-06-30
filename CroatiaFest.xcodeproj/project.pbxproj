@@ -26,6 +26,10 @@
 		703C4203143A3B2E004EBB9F /* EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4201143A3B2E004EBB9F /* EventDetailController.m */; };
 		7052228915669C2F0003AE9F /* section-header-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 7052228815669C2F0003AE9F /* section-header-red.png */; };
 		7052228B15669C4E0003AE9F /* section-header-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7052228A15669C4E0003AE9F /* section-header-red@2x.png */; };
+		7052229115688F9F0003AE9F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7052228D15688F9F0003AE9F /* libTestFlight.a */; };
+		7052229215688F9F0003AE9F /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7052228E15688F9F0003AE9F /* README.txt */; };
+		7052229315688F9F0003AE9F /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7052228F15688F9F0003AE9F /* release_notes.txt */; };
+		70522295156891BE0003AE9F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 70522294156891BE0003AE9F /* libz.dylib */; };
 		705B96BA13A275D000346007 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96B913A275D000346007 /* UIKit.framework */; };
 		705B96BC13A275D000346007 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BB13A275D000346007 /* Foundation.framework */; };
 		705B96BE13A275D000346007 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BD13A275D000346007 /* CoreGraphics.framework */; };
@@ -69,6 +73,10 @@
 		70E0122614BD433F00E230CA /* DirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E0122514BD433F00E230CA /* DirectoryViewController.m */; };
 		70E0122914BD469A00E230CA /* DirectoryDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E0122814BD469A00E230CA /* DirectoryDetailController.m */; };
 		70E78C6714C7726000687947 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E78C6614C7726000687947 /* ScheduleViewController.xib */; };
+		70E7F6FB1580FA89009C88CF /* forward-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E7F6FA1580FA89009C88CF /* forward-button.png */; };
+		70E7F6FD1580FA94009C88CF /* back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E7F6FC1580FA94009C88CF /* back-button.png */; };
+		70E7F6FF1580FAA2009C88CF /* back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E7F6FE1580FAA2009C88CF /* back-button@2x.png */; };
+		70E7F7011580FAB6009C88CF /* forward-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E7F7001580FAB6009C88CF /* forward-button@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +104,11 @@
 		703C4201143A3B2E004EBB9F /* EventDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailController.m; sourceTree = "<group>"; };
 		7052228815669C2F0003AE9F /* section-header-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "section-header-red.png"; path = "../section-header-red.png"; sourceTree = "<group>"; };
 		7052228A15669C4E0003AE9F /* section-header-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section-header-red@2x.png"; sourceTree = "<group>"; };
+		7052228D15688F9F0003AE9F /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		7052228E15688F9F0003AE9F /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		7052228F15688F9F0003AE9F /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
+		7052229015688F9F0003AE9F /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		70522294156891BE0003AE9F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		705B96B513A275D000346007 /* CroatiaFest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CroatiaFest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		705B96B913A275D000346007 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		705B96BB13A275D000346007 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -161,6 +174,10 @@
 		70E0122714BD469A00E230CA /* DirectoryDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryDetailController.h; sourceTree = "<group>"; };
 		70E0122814BD469A00E230CA /* DirectoryDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryDetailController.m; sourceTree = "<group>"; };
 		70E78C6614C7726000687947 /* ScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
+		70E7F6FA1580FA89009C88CF /* forward-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forward-button.png"; path = "../../../Images/forward-button.png"; sourceTree = "<group>"; };
+		70E7F6FC1580FA94009C88CF /* back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-button.png"; path = "../../../Images/back-button.png"; sourceTree = "<group>"; };
+		70E7F6FE1580FAA2009C88CF /* back-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-button@2x.png"; path = "../../../Images/back-button@2x.png"; sourceTree = "<group>"; };
+		70E7F7001580FAB6009C88CF /* forward-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forward-button@2x.png"; path = "../../../Images/forward-button@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,20 +185,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70522295156891BE0003AE9F /* libz.dylib in Frameworks */,
 				703139EF14C1498C008DDC53 /* QuartzCore.framework in Frameworks */,
 				70B2AADD13CCDE09004C7D51 /* CoreData.framework in Frameworks */,
 				705B96BA13A275D000346007 /* UIKit.framework in Frameworks */,
 				705B96BC13A275D000346007 /* Foundation.framework in Frameworks */,
 				705B96BE13A275D000346007 /* CoreGraphics.framework in Frameworks */,
+				7052229115688F9F0003AE9F /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7052228C15688F9F0003AE9F /* TestFlightSDK1 */ = {
+			isa = PBXGroup;
+			children = (
+				7052228D15688F9F0003AE9F /* libTestFlight.a */,
+				7052228E15688F9F0003AE9F /* README.txt */,
+				7052228F15688F9F0003AE9F /* release_notes.txt */,
+				7052229015688F9F0003AE9F /* TestFlight.h */,
+			);
+			path = TestFlightSDK1;
+			sourceTree = "<group>";
+		};
 		705B96AA13A275D000346007 = {
 			isa = PBXGroup;
 			children = (
+				70522294156891BE0003AE9F /* libz.dylib */,
 				705B96BF13A275D000346007 /* CroatiaFest */,
 				705B96B813A275D000346007 /* Frameworks */,
 				705B96B613A275D000346007 /* Products */,
@@ -211,6 +242,7 @@
 		705B96BF13A275D000346007 /* CroatiaFest */ = {
 			isa = PBXGroup;
 			children = (
+				7052228C15688F9F0003AE9F /* TestFlightSDK1 */,
 				70B2AAE413CD0540004C7D51 /* Model */,
 				70B2AAE313CD053D004C7D51 /* View */,
 				70B2AAE213CD0534004C7D51 /* Controller */,
@@ -227,6 +259,10 @@
 		705B96C013A275D000346007 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				70E7F6FA1580FA89009C88CF /* forward-button.png */,
+				70E7F7001580FAB6009C88CF /* forward-button@2x.png */,
+				70E7F6FE1580FAA2009C88CF /* back-button@2x.png */,
+				70E7F6FC1580FA94009C88CF /* back-button.png */,
 				7052228815669C2F0003AE9F /* section-header-red.png */,
 				7052228A15669C4E0003AE9F /* section-header-red@2x.png */,
 				7086CEF7153C75CA00919C0F /* textview-back-blue.png */,
@@ -411,6 +447,12 @@
 				7086CEFA153C75CB00919C0F /* textview-back-blue@2x.png in Resources */,
 				7052228915669C2F0003AE9F /* section-header-red.png in Resources */,
 				7052228B15669C4E0003AE9F /* section-header-red@2x.png in Resources */,
+				7052229215688F9F0003AE9F /* README.txt in Resources */,
+				7052229315688F9F0003AE9F /* release_notes.txt in Resources */,
+				70E7F6FB1580FA89009C88CF /* forward-button.png in Resources */,
+				70E7F6FD1580FA94009C88CF /* back-button.png in Resources */,
+				70E7F6FF1580FAA2009C88CF /* back-button@2x.png in Resources */,
+				70E7F7011580FAB6009C88CF /* forward-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +527,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -494,6 +537,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -502,6 +546,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -509,6 +554,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Release;
 		};
@@ -525,6 +571,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0DA7F017-A449-4286-863F-7379C61EFA72";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0DA7F017-A449-4286-863F-7379C61EFA72";
@@ -545,6 +595,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

@@ -18,4 +18,5 @@
 @property (nonatomic, retain) NSArray *eventArray;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
+
 @end

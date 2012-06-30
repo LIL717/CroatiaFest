@@ -12,7 +12,7 @@
 
 
 @interface MarketplaceViewController : UITableViewController {
-    NSArray *marketArray; 
+    NSArray *marketArray_; 
     NSManagedObjectContext *managedObjectContext_;
 }
 @property (nonatomic, retain) NSArray *marketArray; 

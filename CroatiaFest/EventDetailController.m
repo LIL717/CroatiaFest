@@ -21,11 +21,7 @@
 @synthesize schedule = schedule_;
 @synthesize eventTimes = eventTimes_;
 
-@synthesize managedObjectContext = __managedObjectContext;
-@synthesize scheduleTableView = scheduleTableView_;
-
-
-@synthesize scrollView;
+@synthesize scrollView = scrollView_;
 @synthesize name = name_;
 @synthesize desc1 = desc1_;
 @synthesize desc2 = desc2_;
@@ -37,14 +33,19 @@
 @synthesize email = email_;
 @synthesize video = video_;
 @synthesize time = time_;
+
+@synthesize scheduleTableView = scheduleTableView_;
 @synthesize webButton = webButton_;
+
+
+@synthesize managedObjectContext = managedObjectContext_;
+
 
 - (void) dealloc {
     [event_ release];
     [schedule_ release];
     [eventTimes_ release];
-    [scheduleTableView_ release];
-    [__managedObjectContext release];
+    [scrollView_ release];
     [name_ release];
     [desc1_ release];
     [desc2_ release];
@@ -56,7 +57,10 @@
     [email_ release];
     [video_ release];
     [time_ release];
+    [scheduleTableView_ release];
     [webButton_ release];
+    [managedObjectContext_ release];
+//    [persistentStoreCoordinator_ release];
 
     [super dealloc];
 }
@@ -140,6 +144,7 @@
 
 - (void)viewDidLoad
 {
+//    LogMethod();
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.scrollView.delegate = self;
@@ -172,16 +177,7 @@
     // Return YES for supported orientations
     return YES;
 }
-//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration { 
-//    [UIView animateWithDuration:duration 
-//                     animations:^(void) {
-//                         if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-//                             self.scrollView.alpha = 1.0f;
-//                         } else {
-//                             self.scrollView.alpha = 0.0f;
-//                         }
-//                     }];
-//}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

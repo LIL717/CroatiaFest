@@ -13,6 +13,12 @@
 
 @interface EventDetailController : UIViewController <UIScrollViewDelegate> {
 
+    Event *event_;
+    Schedule *schedule_;
+    NSArray *eventTimes_;
+    
+    UIScrollView *scrollView_;
+    
     UITextField *name_;
     UITextField *desc1_;
     UITextView  *desc2_;
@@ -24,16 +30,17 @@
     UITextField *email_;
     UITextField *video_;
     UITextField *time_;
+    
     UITableView *scheduleTableView_;
     UIButton *webButton_;
-
-
     
-    Event *event_;
-    Schedule *schedule_;
-    NSArray *eventTimes_;
+
     
 }
+@property (nonatomic, retain) Event *event;
+@property (nonatomic, retain) Schedule *schedule;
+@property (nonatomic, retain) NSArray *eventTimes;
+
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic, retain) IBOutlet UITextField *name;
@@ -47,13 +54,13 @@
 @property (nonatomic, retain) IBOutlet UITextField *email;
 @property (nonatomic, retain) IBOutlet UITextField *video;
 @property (nonatomic, retain) IBOutlet UITextField *time;
+
 @property (nonatomic, retain) IBOutlet UITableView *scheduleTableView;
 @property (nonatomic, retain) IBOutlet UIButton *webButton;
 
-@property (nonatomic, retain) Event *event;
-@property (nonatomic, retain) Schedule *schedule;
-@property (nonatomic, retain) NSArray *eventTimes;
+
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
 
 - (IBAction)launchWeb:(id)sender; 
 - (void)watchVideo; 

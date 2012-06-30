@@ -43,11 +43,13 @@
 
 - (void) setUpViewControllers;
 - (void) setUpURLConnection;
-- (void)distributeParsedData:(NSDictionary *) parsedData;
+- (void) distributeParsedData:(NSDictionary *) parsedData;
 - (void) handleError:(NSError *)error;
 @end
 
 @implementation CroatiaFestAppDelegate
+
+//NSString *kNotificationDestroyAllNSFetchedResultsControllers = @"NotificationDestroyAllNSFetchedResultsControllers";
 
 @synthesize window;
 @synthesize webConnection;
@@ -56,19 +58,25 @@
 @synthesize resetData;
 @synthesize managedObjectContext = managedObjectContext_;
 @synthesize managedObjectModel = managedObjectModel_;
+@synthesize fetchedResultsController = fetchedResultsController_;
 @synthesize persistentStoreCoordinator = persistentStoreCoordinator_;
+
+
+
 
 - (void)dealloc {
 
+    LogMethod();
     [window release];  
     [webConnection cancel];
     [webConnection release];
     [festivalData release];
+    [parseQueue release];
     [managedObjectContext_ release];
     [managedObjectModel_ release];
+    [fetchedResultsController_ release];
     [persistentStoreCoordinator_ release];
     
-    [parseQueue release];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAddFestivalNotif object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kFestivalErrorNotif object:nil];
@@ -80,8 +88,24 @@
 {
     LogMethod ();
     // Override point for customization after application launch.
-
+    [TestFlight takeOff:@"edbbcf45a655f8286ea1810a5e350c09_OTE2NjEyMDEyLTA1LTE4IDE4OjE2OjEyLjMyODAxMA"];
+    
+#define TESTING 1
+#ifdef TESTING
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+#endif
+    
     [self setUpURLConnection];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(addParsedData:)
+                                                 name:kAddFestivalNotif
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(parsedDataError:)
+                                                 name:kFestivalErrorNotif
+                                               object:nil];
+
     self.resetData = YES; //use this bool to only reset core data once when new data is coming in
     self.festivalData = nil;
     [self setUpViewControllers];   
@@ -89,6 +113,21 @@
 
 
     return YES;
+
+}
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    LogMethod ();
+
+#define TESTING 1
+#ifdef TESTING
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+#endif
+    
+    [self setUpURLConnection];
+    self.resetData = YES; //use this bool to only reset core data once when new data is coming in
+    self.festivalData = nil;
+
 
 }
 - (void) setUpViewControllers {
@@ -183,7 +222,8 @@
     //
     static NSString *feedURLString = @"http://www.croatiafest.org/croatia4_tables.xml";
     NSURLRequest *festivalURLRequest =
-    [NSURLRequest requestWithURL:[NSURL URLWithString:feedURLString]];
+    [NSURLRequest requestWithURL:[NSURL URLWithString:feedURLString] cachePolicy: NSURLRequestReloadIgnoringLocalCacheData timeoutInterval: 60.0];
+
     self.webConnection = [[[NSURLConnection alloc] initWithRequest:festivalURLRequest delegate:self] autorelease];
     
     // Test the validity of the connection object. The most likely reason for the connection object
@@ -199,15 +239,6 @@
     
     parseQueue = [NSOperationQueue new];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(addParsedData:)
-                                                 name:kAddFestivalNotif
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(parsedDataError:)
-                                                 name:kFestivalErrorNotif
-                                               object:nil];
-    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -217,6 +248,8 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    LogMethod();
+
     NSError *error = nil;
     if (managedObjectContext_ != nil) {
         if ([managedObjectContext_ hasChanges] && ![managedObjectContext_ save:&error]) 
@@ -227,6 +260,8 @@
 
             }
 }
+
+
 #pragma mark -
 #pragma mark NSURLConnection delegate methods
 
@@ -239,20 +274,20 @@
     // anything in the 200 to 299 range is considered successful,
     // also make sure the MIMEType is correct:
     //
-    //    LogMethod();
+    LogMethod();
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     NSLog (@"httpResponse is %d", httpResponse.statusCode);
     NSLog (@"response.MIMEType is %@", response.MIMEType);
 
     if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"text/xml"]) {
 
-//        self.festivalData = [NSMutableData data];
-        self.festivalData = [[[NSMutableData alloc] init] autorelease];
+        self.festivalData = [NSMutableData data];
+//        self.festivalData = [[[NSMutableData alloc] init] autorelease];
 
     } else {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:
                                   NSLocalizedString(@"HTTP Error",
-                                                    @"Error message displayed when receving a connection error.")
+                                                    @"Connection Error.")
                                                              forKey:NSLocalizedDescriptionKey];
         NSError *error = [NSError errorWithDomain:@"HTTP" code:[httpResponse statusCode] userInfo:userInfo];
         [self handleError:error];
@@ -260,9 +295,10 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    LogMethod();
+//    LogMethod();
     
     [festivalData appendData:data];
+//        the following statement just shows binary data    
 //        NSLog (@"(festivalData is %@", festivalData);
 }
 
@@ -274,8 +310,8 @@
         // if we can identify the error, we can present a more precise message to the user.
         NSDictionary *userInfo =
         [NSDictionary dictionaryWithObject:
-         NSLocalizedString(@"No Connection Error",
-                           @"Error message displayed when not connected to the Internet.")
+         NSLocalizedString(@"Connection Error",
+                           @"Not connected to the Internet.")
                                     forKey:NSLocalizedDescriptionKey];
         NSError *noConnectionError = [NSError errorWithDomain:NSCocoaErrorDomain
                                                          code:kCFURLErrorNotConnectedToInternet
@@ -289,7 +325,7 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    //    LogMethod();
+    LogMethod();
     
     self.webConnection = nil;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
@@ -342,7 +378,7 @@
     assert([NSThread isMainThread]);
     
     [self distributeParsedData:[[notif userInfo] valueForKey:kFestivalResultsKey]];
-
+    
 }
 
 // Our NSNotification callback from the running NSOperation when a parsing error has occurred
@@ -367,6 +403,8 @@
     if (self.resetData) {
         [self deletePersistentStore];
         self.resetData = NO;  //only reset Core Data the first time that data is coming in here in case it comes back in multiple batches
+        // moc is deleted and re-created so need to re-setup view controllers
+        [self setUpViewControllers]; 
     }
 // read through dictionary, for each key, call method for that type of table with the dictionary of parsed data
     NSEnumerator *enumerator = [parsedData keyEnumerator];
@@ -379,6 +417,7 @@
         if ([key isEqualToString: @"appControl"]) {
             VersionController *versionController = [[VersionController alloc] autorelease];
             versionController.managedObjectContext = self.managedObjectContext;
+
             [versionController insertVersion: passedArray];
         }
         if ([key isEqualToString: @"cookingDemos"]) {
@@ -399,6 +438,7 @@
         if ([key isEqualToString: @"festivalActivities"]) {
             InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
             insertEvents.managedObjectContext = self.managedObjectContext;
+
             [insertEvents addEventsToCoreData:passedArray forKey: @"Activities"];
         }
         if ([key isEqualToString: @"food"]) {
@@ -415,7 +455,6 @@
             Vendor *vendor = [[Vendor alloc] autorelease];
             vendor.managedObjectContext = self.managedObjectContext;
             [vendor addVendorsToCoreData:passedArray];
-            NSLog (@"vendor %@", vendor);
         }
         if ([key isEqualToString: @"workshops"]) {
             InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
@@ -423,27 +462,29 @@
             [insertEvents addEventsToCoreData:passedArray forKey: @"Workshops"];
         }
     }
-
 }
 - (void) deletePersistentStore {
+    LogMethod();
+    //     retrieve the store URL
+    NSPersistentStore *store = [self.persistentStoreCoordinator.persistentStores lastObject];
     NSError *error = nil;
-    // retrieve the store URL
-    NSURL * storeURL = [[self.managedObjectContext persistentStoreCoordinator] URLForPersistentStore:[[[self.managedObjectContext persistentStoreCoordinator] persistentStores] lastObject]];
-    // lock the current context
-    [self.managedObjectContext lock];
-    [self.managedObjectContext reset];//to drop pending changes
-    
-    //delete the store from the current managedObjectContext
-    if ([[self.managedObjectContext persistentStoreCoordinator] removePersistentStore:[[[self.managedObjectContext persistentStoreCoordinator] persistentStores] lastObject] error:&error])
-    {
-        // remove the file containing the data
+    NSURL *storeURL = store.URL;
+    [self.persistentStoreCoordinator removePersistentStore:store error:&error];
+
+    // Release CoreData chain
+    [managedObjectContext_ release];
+    managedObjectContext_ = nil;
+    [persistentStoreCoordinator_ release];
+    persistentStoreCoordinator_ = nil;
+
+//    // Delete the sqlite file
+    if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL.path]) {
         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:&error];
-        //recreate the store like in the  appDelegate method
-        [[self.managedObjectContext persistentStoreCoordinator] addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];//recreates the persistent store
     }
-    [self.managedObjectContext unlock];
-    
+   
+    //NSLog(@"Data Reset");
 }
+
 #pragma mark -
 #pragma mark save context method
 - (void)saveContext
@@ -455,7 +496,7 @@
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
         {
             UIAlertView* alertView =
-            [[UIAlertView alloc] initWithTitle:@"Pazi!! Data Management Error" 
+            [[UIAlertView alloc] initWithTitle:@"Pazi!! Data Management Error - saving context" 
                                        message:@"Press the Home button to quit this application." 
                                       delegate:self 
                              cancelButtonTitle:@"OK" 
@@ -478,7 +519,7 @@
     {
         return managedObjectContext_;
     }
-    
+
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil)
     {
@@ -524,7 +565,7 @@
     if (![persistentStoreCoordinator_ addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
     {
         UIAlertView* alertView =
-        [[UIAlertView alloc] initWithTitle:@"Pazi!! Data Management Error" 
+        [[UIAlertView alloc] initWithTitle:@"Pazi!! Data Management Error with Persistent Store Coordinator" 
                                    message:@"Press the Home button to quit this application." 
                                   delegate:self 
                          cancelButtonTitle:@"OK" 
@@ -536,7 +577,6 @@
     
     return persistentStoreCoordinator_;
 }
-
 #pragma mark - Application's Documents directory
 
 /**

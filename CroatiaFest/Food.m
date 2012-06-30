@@ -21,8 +21,14 @@
 
 @synthesize managedObjectContext = managedObjectContext_;
 
+- (void)dealloc {
+    
+    [managedObjectContext_ release];
+    [super dealloc];
+    
+} 
 - (void)addFoodToCoreData:(NSArray *)food {
-    LogMethod();
+    //LogMethod();
     //this is an array of dictionaries
     
     NSError *error = nil;

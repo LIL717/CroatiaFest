@@ -9,13 +9,25 @@
 #import "InsertEvents.h"
 #import "InsertSchedule.h"
 #import "Event.h"
+#import "Schedule.h"
 
 @implementation InsertEvents
 
+@synthesize schedule = schedule_; 
+@synthesize event = event_;
 @synthesize managedObjectContext = managedObjectContext_;
 
+
+- (void)dealloc {
+    
+    [schedule_ release];
+    [event_ release];
+    [managedObjectContext_ release];
+    [super dealloc];
+
+}    
 - (void)addEventsToCoreData:(NSArray *)events forKey: (NSString *) eventType {
-    LogMethod();
+    //LogMethod();
     //this is an array of dictionaries
     
     NSError *error = nil;
@@ -69,24 +81,29 @@
     }
     
 }
-//// Test listing all Performers from the store
-//        NSSet *set=[performer performanceTimes];
+//// Test listing all Events from the store
+//    if ([eventType isEqualToString:@"Exhibits"]) {
+//        NSLog(@"***************insertEvents**********");
+//        NSSet *set=[self.event eventTimes];
 //
 //        NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-//        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Performer" 
-//                                                  inManagedObjectContext:context];
+//        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" 
+//                                                  inManagedObjectContext:self.managedObjectContext];
 //        [fetchRequest setEntity:entity];
-//        NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+//        NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 ////        for (Performer *performer in fetchedObjects) {
-//        for (Performer *performer in fetchedObjects) {
+//        for (Event *event in fetchedObjects) {
 //
-//            NSLog(@"Name: %@", performer.name);
+//            NSLog(@"Name: %@", event.name);
+//            NSLog(@" %@", event.desc1);
 //            //        NSArray *timesArray = [performer.performanceTimes allObjects];
 //            for (Schedule *schedule in set) {
 //                NSLog(@"Begin Time: %@", schedule.beginTime);
 //            }
-//        }    
+//        } 
+//    }
 //// end test 
+
 //        // Test listing all Schedule from the store
 ////        NSManagedObjectContext *context = self.managedObjectContext;
 ////        NSError *error = nil;

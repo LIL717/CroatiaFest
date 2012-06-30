@@ -8,6 +8,7 @@
 
 #import "EventTypeViewController.h"
 #import "EventDetailController.h"
+#import "Event.h"
 
 
 #pragma mark -
@@ -21,29 +22,21 @@
 
 @synthesize event = event_; 
 @synthesize eventType = eventType_;
-@synthesize fetchedResultsController = __fetchedResultsController;
-@synthesize managedObjectContext = __managedObjectContext;
+@synthesize fetchedResultsController = fetchedResultsController_;
+@synthesize managedObjectContext = managedObjectContext_;
+
 
 - (void)dealloc {
 
     [event_ release];
     [eventType_ release];
-    [__fetchedResultsController release];
-    [__managedObjectContext release];
+    [fetchedResultsController_ release];
+    [managedObjectContext_ release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 //
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//    LogMethod();
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self) {
-//        // Custom initialization
-//
-//    }
-//    return self;
-//}
+
 - (id)initWithEventType:(NSString *)eventType
 {
     self = [super init];
@@ -75,43 +68,49 @@
     [super viewDidLoad];
 //    self.title = @"Performers";
     self.title = self.eventType;
-
-//    //become observer for application going to background
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector (applicationWillResignActive:)
-//                                                 name:UIApplicationWillResignActiveNotification
-//                                               object:[UIApplication sharedApplication]];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-//    self.performerList = [[NSMutableArray alloc] init];
-    
-    // KVO: listen for changes to our performer data source for table view updates
-//    [self addObserver:self forKeyPath:@"performerList" options:0 context:NULL];
     
 }
 
 - (void)viewDidUnload
 {
+//    LogMethod();
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 //    self.performerList = nil;
-    
-//    [self removeObserver:self forKeyPath:@"performerList"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+//    LogMethod();
     [super viewWillAppear:animated];
+//    // Test listing all Events from the store
+//    NSLog(@"***************show database in Event Type View Controller ****");
+//    NSError *error = nil;
+//    //    NSSet *set=[self.event eventTimes];
+//    
+//    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" 
+//                                              inManagedObjectContext:self.managedObjectContext];
+//    [fetchRequest setEntity:entity];
+//    NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+//    //        for (Performer *performer in fetchedObjects) {
+//    for (Event *event in fetchedObjects) {
+//        
+//        NSLog(@"Name: %@", event.name);
+////        NSLog(@"Version: %@", event.desc1);
+//        //        NSArray *timesArray = [performer.performanceTimes allObjects];
+//        //        for (Schedule *schedule in set) {
+//        //            NSLog(@"Begin Time: %@", schedule.beginTime);
+//        //        }
+//    }    
+//    // end test
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewDidAppear:animated]; 
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -183,22 +182,13 @@
     [self.navigationController pushViewController:eventDetailController animated:YES];
 }
 
-// listen for changes to the performer list coming from our app delegagte.
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context
-{
-    [self.tableView reloadData];
-}
-
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
-    if (__fetchedResultsController != nil)
+    if (fetchedResultsController_ != nil)
     {
-        return __fetchedResultsController;
+        return fetchedResultsController_;
     }
     [NSFetchedResultsController deleteCacheWithName:@"Root"];  
 
@@ -247,7 +237,7 @@
         [alertView release];
 	}
     
-    return __fetchedResultsController;
+    return fetchedResultsController_;
 }    
 
 @end

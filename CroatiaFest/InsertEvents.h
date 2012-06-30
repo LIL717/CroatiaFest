@@ -7,9 +7,16 @@
 //
 
 #import <CoreData/CoreData.h>
+@class Schedule;
+@class Event;
 
-@interface InsertEvents : NSManagedObject 
+@interface InsertEvents : NSManagedObject {
 
+    Schedule *schedule_;
+    Event *event_;
+}
+@property (nonatomic, retain) Schedule *schedule;
+@property (nonatomic, retain) Event *event;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 - (void)addEventsToCoreData:(NSArray *)events forKey: (NSString *) eventType;

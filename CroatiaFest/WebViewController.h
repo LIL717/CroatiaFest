@@ -10,10 +10,19 @@
 #import <UIKit/UIWebView.h>
 
 @interface WebViewController : UIViewController  <UIWebViewDelegate> {
-    IBOutlet UIWebView *webView;
+    UIWebView *webView_;
+    UIBarButtonItem *backButton_;
+    UIBarButtonItem *forwardButton_;
+    NSURL *urlObject_;
 
 }
-@property (retain, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic, retain) IBOutlet UIWebView *webView;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *backButton;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *forwardButton;
 @property (nonatomic, retain) NSURL *urlObject;
+
+-(void) updateButtons;
+-(void) goForward;
+-(void) goBack;
 
 @end

@@ -84,7 +84,7 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
 }
 - (void)distributeParsedData:(NSDictionary *)parsedData {
 
-    LogMethod();
+//    LogMethod();
     assert([NSThread isMainThread]);
 //    NSLog (@" parsedData %@", parsedData);
     [[NSNotificationCenter defaultCenter] postNotificationName:kAddFestivalNotif
@@ -95,7 +95,7 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
 
 // the main function for this NSOperation, to start the parsing
 - (void)main {
-    LogMethod();
+//    LogMethod();
     self.currentParseBatch = [NSMutableArray array];
     self.currentParsedCharacterData = [NSMutableString string];
     self.currentItemDictionary = [[[NSMutableDictionary alloc] initWithCapacity: [tableItemNames count]] autorelease];
@@ -105,6 +105,7 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
     // not desirable because it gives less control over the network, particularly in responding to
     // connection errors.
     //
+//    NSLog (@"parseData %@", self.parseData);
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:self.parseData];
     [parser setDelegate:self];
     [parser parse];
@@ -120,6 +121,7 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
                             waitUntilDone:NO];
     }
     self.currentParsedCharacterData = nil;
+    self.currentParseBatch = nil;
     
     [parser release];
 }
@@ -285,7 +287,7 @@ static NSString * const kColumnName = @"column";
     }
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
-    LogMethod();
+//    LogMethod();
 }
 
 // an error occurred while parsing the Performer data,

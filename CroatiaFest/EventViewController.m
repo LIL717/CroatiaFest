@@ -11,13 +11,17 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-
-
-
-
 @implementation EventViewController
 @synthesize eventArray = eventArray_;
 @synthesize managedObjectContext = managedObjectContext_;
+
+- (void)dealloc
+{
+    [eventArray_ release];
+    [managedObjectContext_ release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
+}
 
 -(id)init
 {
@@ -39,12 +43,6 @@
     
     
     [[self navigationItem] setTitle: @"Events"];
-    
-//    //become observer for application going to background
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector (applicationWillResignActive:)
-//                                                 name:UIApplicationWillResignActiveNotification
-//                                               object:[UIApplication sharedApplication]];
     return self;
 }
 
@@ -57,14 +55,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [managedObjectContext_ release];
-    [eventArray_ release];
-
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -88,14 +78,6 @@
     self.eventArray = [[[NSArray alloc] initWithObjects:@"Performers", @"Workshops", @"Cooking Demos", @"Exhibits", @"Activities", nil] autorelease];
 //    NSLog (@"eventArray is %@", self.eventArray);
     
-    //code for CALayer
-    //self.view.layer.contents = (id) [UIImage imageNamed:@"RedandWhiteCheckered.jpg"].CGImage;
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload

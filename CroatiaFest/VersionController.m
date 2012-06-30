@@ -15,18 +15,18 @@
 @implementation VersionController
 
 @synthesize version = version_; 
-@synthesize managedObjectContext = __managedObjectContext;
+@synthesize managedObjectContext = managedObjectContext_;
 
 - (void)dealloc {
     
     [version_ release];
-    [__managedObjectContext release];
+    [managedObjectContext_ release];
     [super dealloc];
 }
 
 - (id)init
 {
-    LogMethod();
+//    LogMethod();
     self = [super init];
     if (self) {
         // Initialization code here.
@@ -80,7 +80,7 @@
 }
 
 - (void) insertVersion: (NSArray *) version {  
-    LogMethod();
+//    LogMethod();
     //this is an array of dictionaries
     
     for (id newVersion in version) {
@@ -89,11 +89,6 @@
         
         self.version = [NSEntityDescription insertNewObjectForEntityForName:@"Version" inManagedObjectContext:self.managedObjectContext];
         self.version.number = [self convertStringToNumber:[newVersion valueForKey: @"Version"]];
-
-
-//
-//    self.version= [NSEntityDescription insertNewObjectForEntityForName:@"Version" inManagedObjectContext:self.managedObjectContext];
-//    self.version.number = [self convertStringToNumber: newVersionString];
 
         if (![self.managedObjectContext save:&error]) {
         NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);

@@ -22,8 +22,14 @@
 
 @synthesize managedObjectContext = managedObjectContext_;
 
+- (void)dealloc {
+
+    [managedObjectContext_ release];
+    [super dealloc];
+    
+} 
 - (void)addDirectoryToCoreData:(NSArray *)directory {
-    LogMethod();
+    //LogMethod();
     //this is an array of dictionaries
     
     NSError *error = nil;
