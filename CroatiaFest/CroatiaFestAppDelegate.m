@@ -88,12 +88,12 @@
 {
     LogMethod ();
     // Override point for customization after application launch.
-    [TestFlight takeOff:@"edbbcf45a655f8286ea1810a5e350c09_OTE2NjEyMDEyLTA1LTE4IDE4OjE2OjEyLjMyODAxMA"];
-    
-#define TESTING 1
-#ifdef TESTING
-    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
-#endif
+//    [TestFlight takeOff:@"edbbcf45a655f8286ea1810a5e350c09_OTE2NjEyMDEyLTA1LTE4IDE4OjE2OjEyLjMyODAxMA"];
+//    
+//#define TESTING 1
+//#ifdef TESTING
+//    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+//#endif
     
     [self setUpURLConnection];
     
@@ -119,10 +119,10 @@
 {
     LogMethod ();
 
-#define TESTING 1
-#ifdef TESTING
-    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
-#endif
+//#define TESTING 1
+//#ifdef TESTING
+//    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+//#endif
     
     [self setUpURLConnection];
     self.resetData = YES; //use this bool to only reset core data once when new data is coming in

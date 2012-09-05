@@ -88,6 +88,7 @@
     [self setWebView:nil];
     [self setBackButton:nil];
     [self setForwardButton:nil];
+    [self setUrlObject:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

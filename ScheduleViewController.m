@@ -220,9 +220,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [TestFlight passCheckpoint:@"Select schedule event"];
-
-
     Schedule *selectedEvent = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         EventDetailController *eventDetailController = [[[EventDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil] autorelease];
         eventDetailController.managedObjectContext = self.managedObjectContext;
