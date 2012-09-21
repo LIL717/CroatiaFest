@@ -24,11 +24,12 @@
 		703139F914C245B1008DDC53 /* VendorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703139F814C245B1008DDC53 /* VendorViewController.m */; };
 		703139FE14C249B6008DDC53 /* VendorDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703139FD14C249B6008DDC53 /* VendorDetailController.m */; };
 		703C4203143A3B2E004EBB9F /* EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4201143A3B2E004EBB9F /* EventDetailController.m */; };
+		70515C13160BC3EC00D96335 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70515C0F160BC3EC00D96335 /* libTestFlight.a */; };
+		70515C14160BC3EC00D96335 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 70515C10160BC3EC00D96335 /* README.md */; };
+		70515C15160BC3EC00D96335 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 70515C11160BC3EC00D96335 /* release_notes.md */; };
+		70515C17160BDC1900D96335 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70515C16160BDC1900D96335 /* Default-568h@2x.png */; };
 		7052228915669C2F0003AE9F /* section-header-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 7052228815669C2F0003AE9F /* section-header-red.png */; };
 		7052228B15669C4E0003AE9F /* section-header-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7052228A15669C4E0003AE9F /* section-header-red@2x.png */; };
-		7052229115688F9F0003AE9F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7052228D15688F9F0003AE9F /* libTestFlight.a */; };
-		7052229215688F9F0003AE9F /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7052228E15688F9F0003AE9F /* README.txt */; };
-		7052229315688F9F0003AE9F /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7052228F15688F9F0003AE9F /* release_notes.txt */; };
 		70522295156891BE0003AE9F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 70522294156891BE0003AE9F /* libz.dylib */; };
 		705B96BA13A275D000346007 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96B913A275D000346007 /* UIKit.framework */; };
 		705B96BC13A275D000346007 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705B96BB13A275D000346007 /* Foundation.framework */; };
@@ -102,12 +103,13 @@
 		703139FD14C249B6008DDC53 /* VendorDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VendorDetailController.m; path = ../VendorDetailController.m; sourceTree = "<group>"; };
 		703C4200143A3B2E004EBB9F /* EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailController.h; sourceTree = "<group>"; };
 		703C4201143A3B2E004EBB9F /* EventDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailController.m; sourceTree = "<group>"; };
+		70515C0F160BC3EC00D96335 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		70515C10160BC3EC00D96335 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		70515C11160BC3EC00D96335 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		70515C12160BC3EC00D96335 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		70515C16160BDC1900D96335 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7052228815669C2F0003AE9F /* section-header-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "section-header-red.png"; path = "../section-header-red.png"; sourceTree = "<group>"; };
 		7052228A15669C4E0003AE9F /* section-header-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section-header-red@2x.png"; sourceTree = "<group>"; };
-		7052228D15688F9F0003AE9F /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		7052228E15688F9F0003AE9F /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		7052228F15688F9F0003AE9F /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
-		7052229015688F9F0003AE9F /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		70522294156891BE0003AE9F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		705B96B513A275D000346007 /* CroatiaFest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CroatiaFest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		705B96B913A275D000346007 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -191,22 +193,23 @@
 				705B96BA13A275D000346007 /* UIKit.framework in Frameworks */,
 				705B96BC13A275D000346007 /* Foundation.framework in Frameworks */,
 				705B96BE13A275D000346007 /* CoreGraphics.framework in Frameworks */,
-				7052229115688F9F0003AE9F /* libTestFlight.a in Frameworks */,
+				70515C13160BC3EC00D96335 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7052228C15688F9F0003AE9F /* TestFlightSDK1 */ = {
+		70515C0E160BC3EC00D96335 /* TestFlightSDK1-1 */ = {
 			isa = PBXGroup;
 			children = (
-				7052228D15688F9F0003AE9F /* libTestFlight.a */,
-				7052228E15688F9F0003AE9F /* README.txt */,
-				7052228F15688F9F0003AE9F /* release_notes.txt */,
-				7052229015688F9F0003AE9F /* TestFlight.h */,
+				70515C0F160BC3EC00D96335 /* libTestFlight.a */,
+				70515C10160BC3EC00D96335 /* README.md */,
+				70515C11160BC3EC00D96335 /* release_notes.md */,
+				70515C12160BC3EC00D96335 /* TestFlight.h */,
 			);
-			path = TestFlightSDK1;
+			name = "TestFlightSDK1-1";
+			path = "TestFlightSDK1/TestFlightSDK1-1";
 			sourceTree = "<group>";
 		};
 		705B96AA13A275D000346007 = {
@@ -242,7 +245,7 @@
 		705B96BF13A275D000346007 /* CroatiaFest */ = {
 			isa = PBXGroup;
 			children = (
-				7052228C15688F9F0003AE9F /* TestFlightSDK1 */,
+				70515C0E160BC3EC00D96335 /* TestFlightSDK1-1 */,
 				70B2AAE413CD0540004C7D51 /* Model */,
 				70B2AAE313CD053D004C7D51 /* View */,
 				70B2AAE213CD0534004C7D51 /* Controller */,
@@ -277,6 +280,7 @@
 				70245AC515226FB100470372 /* back-red@2x.png */,
 				70245AC015226F4F00470372 /* menubar-red.png */,
 				70245AC115226F4F00470372 /* menubar-red@2x.png */,
+				70515C16160BDC1900D96335 /* Default-568h@2x.png */,
 				707DD3BF150D630E002F354B /* Default.png */,
 				707DD3C1150D631B002F354B /* Default@2x.png */,
 				707DD3B9150D5158002F354B /* cflogowhite 100x280.png */,
@@ -392,7 +396,7 @@
 		705B96AC13A275D000346007 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 705B96AF13A275D000346007 /* Build configuration list for PBXProject "CroatiaFest" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -447,12 +451,13 @@
 				7086CEFA153C75CB00919C0F /* textview-back-blue@2x.png in Resources */,
 				7052228915669C2F0003AE9F /* section-header-red.png in Resources */,
 				7052228B15669C4E0003AE9F /* section-header-red@2x.png in Resources */,
-				7052229215688F9F0003AE9F /* README.txt in Resources */,
-				7052229315688F9F0003AE9F /* release_notes.txt in Resources */,
 				70E7F6FB1580FA89009C88CF /* forward-button.png in Resources */,
 				70E7F6FD1580FA94009C88CF /* back-button.png in Resources */,
 				70E7F6FF1580FAA2009C88CF /* back-button@2x.png in Resources */,
 				70E7F7011580FAB6009C88CF /* forward-button@2x.png in Resources */,
+				70515C14160BC3EC00D96335 /* README.md in Resources */,
+				70515C15160BC3EC00D96335 /* release_notes.md in Resources */,
+				70515C17160BDC1900D96335 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,8 +552,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Lori Hill";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lori Hill";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -556,7 +561,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1C671FCB-E7AA-4B0E-8ACF-44F51A4FC267";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C671FCB-E7AA-4B0E-8ACF-44F51A4FC267";
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 			};
@@ -578,6 +584,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1\"",
+					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1/TestFlightSDK1-1\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -590,7 +597,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -601,6 +608,52 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1\"",
+					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1/TestFlightSDK1-1\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				VALIDATE_PRODUCT = NO;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		7097EA5115F7F82900C8F5C7 /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lori Hill";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C671FCB-E7AA-4B0E-8ACF-44F51A4FC267";
+				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = AppStore;
+		};
+		7097EA5215F7F82900C8F5C7 /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CroatiaFest/CroatiaFest-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1\"",
+					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1/TestFlightSDK1-1\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -608,7 +661,7 @@
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
-			name = Release;
+			name = AppStore;
 		};
 /* End XCBuildConfiguration section */
 
@@ -618,6 +671,7 @@
 			buildConfigurations = (
 				705B96D413A275D000346007 /* Debug */,
 				705B96D513A275D000346007 /* Release */,
+				7097EA5115F7F82900C8F5C7 /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -627,6 +681,7 @@
 			buildConfigurations = (
 				705B96D713A275D000346007 /* Debug */,
 				705B96D813A275D000346007 /* Release */,
+				7097EA5215F7F82900C8F5C7 /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
