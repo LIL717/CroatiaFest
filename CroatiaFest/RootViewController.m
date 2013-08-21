@@ -8,6 +8,8 @@
 
 #import "RootViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "WebViewController.h"
+
 
 @implementation RootViewController
 @synthesize savedAlert = savedAlert_;
@@ -44,10 +46,10 @@
     [[UIBarButtonItem appearance] setBackgroundImage:barButton forState:UIControlStateNormal 
                                           barMetrics:UIBarMetricsDefault];
     
-    UIBarButtonItem * button = [[UIBarButtonItem alloc] initWithTitle:@"Support" 
+    UIBarButtonItem * button = [[UIBarButtonItem alloc] initWithTitle:@"Donate" 
                                                                 style:(UIBarButtonItemStyleBordered) 
                                                                target:self 
-                                                               action:@selector(supportAlert)];
+                                                               action:@selector(donateLink)];
     [[self navigationItem] setRightBarButtonItem: button];
     [button release];
     
@@ -146,21 +148,34 @@
 }
 
 
-- (void)supportAlert
+//- (void)supportAlert
+//{
+//    NSLog (@"myAlert");
+//    UIAlertView* alertView =
+//    [[UIAlertView alloc] initWithTitle:@"Please Donate" 
+//                               message:@"CroatiaFest needs your donations.  Please remember to drop your contribution in the donation box at the information booth." 
+//                              delegate:self 
+//                     cancelButtonTitle:@"OK" 
+//                     otherButtonTitles: nil];
+//    self.savedAlert = alertView;
+//    [alertView show];
+//    [alertView release];
+//    
+//}
+
+- (void) donateLink
 {
-    NSLog (@"myAlert");
-    UIAlertView* alertView =
-    [[UIAlertView alloc] initWithTitle:@"Please Donate" 
-                               message:@"CroatiaFest needs your donations.  Please remember to drop your contribution in the donation box at the information booth." 
-                              delegate:self 
-                     cancelButtonTitle:@"OK" 
-                     otherButtonTitles: nil];
-    self.savedAlert = alertView;
-    [alertView show];
-    [alertView release];
+        
+    NSString* launchUrl = [[[NSString alloc] initWithString: [NSString stringWithFormat:@"http://www.croatiafest.org/donate.html"]] autorelease];
+    NSURL *url = [NSURL URLWithString: launchUrl];
+    
+    WebViewController *webViewController = [[[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil] autorelease];
+    
+    webViewController.urlObject = url;
+    
+    [self.navigationController pushViewController:webViewController animated:YES];
     
 }
-
 - (void) applicationWillResignActive: (NSNotification *) note
 {
 //    NSLog(@"in applicationWillResignActive in RootViewController");

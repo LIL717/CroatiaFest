@@ -17,7 +17,6 @@
 }
 @property (nonatomic, retain) IBOutlet UIAlertView *savedAlert;
 
-- (void) supportAlert;
 - (void) applicationWillResignActive: (NSNotification *) note;
 
 

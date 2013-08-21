@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
-		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">11D50</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1138.32</string>
-		<string key="IBDocument.HIToolboxVersion">568.00</string>
+		<int key="IBDocument.SystemTarget">1552</int>
+		<string key="IBDocument.SystemVersion">12E55</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1187.39</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">933</string>
+			<string key="NS.object.0">2083</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>IBUITextView</string>
-			<string>IBUIImageView</string>
-			<string>IBUIView</string>
 			<string>IBProxyObject</string>
+			<string>IBUIImageView</string>
+			<string>IBUITextView</string>
+			<string>IBUIView</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -70,17 +70,17 @@
 						<bool key="IBUIPagingEnabled">YES</bool>
 						<bool key="IBUIEditable">NO</bool>
 						<object class="NSMutableString" key="IBUIText">
-							<bytes key="NS.bytes">T2N0b2JlciA3LCAyMDEyICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENy
-b2F0aWFucyBpbiB0aGUgQnVpbGRpbmcgb2YgQW1lcmljYQoKU2VhdHRsZSBDZW50ZXIgSG91c2UgICAg
+							<bytes key="NS.bytes">T2N0b2JlciA1ICYgNiwgMjAxMyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IFdoYXQgaXMgQ3JvYXRpYT8gIENyb2F0aWEgaXMuLi4KClNlYXR0bGUgQ2VudGVyIEFybW9yeSAgICAg
 ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
 ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBBIENlbGVicmF0aW9uIG9mIENyb2F0aWFuIEN1bHR1cmUgJiBIZXJp
-dGFnZQoKQ3JvYXRpYUZlc3TigJlzIG1pc3Npb24gaXMgdG8gcHJvbW90ZSBhbmQgcHJlc2VydmUgQ3Jv
-YXRpYW4gY3VsdHVyZSBhbmQgdG8gZWR1Y2F0ZSBmdXR1cmUgZ2VuZXJhdGlvbnMgb2YgQ3JvYXRpYW4g
-QW1lcmljYW5zIGFuZCB0aGUgZ2VuZXJhbCBwdWJsaWMgd2l0aCB0aGUgcmljaG5lc3MgYW5kIGJlYXV0
-eSBvZiBDcm9hdGlhbiBDdWx0dXJlIGFuZCBDcm9hdGlhbiBBbWVyaWNhbiBjb250cmlidXRpb25zIHRv
-IHRoZSBidWlsZGluZyBvZiB0aGUgVW5pdGVkIFN0YXRlcyBvZiBBbWVyaWNhLg</bytes>
+ICAgICAgICAgICAgICAgICAgQSBDZWxlYnJhdGlvbiBvZiBDcm9hdGlhbiBDdWx0dXJlICYgSGVyaXRh
+Z2UKCkNyb2F0aWFGZXN04oCZcyBtaXNzaW9uIGlzIHRvIHByb21vdGUgYW5kIHByZXNlcnZlIENyb2F0
+aWFuIGN1bHR1cmUgYW5kIHRvIGVkdWNhdGUgZnV0dXJlIGdlbmVyYXRpb25zIG9mIENyb2F0aWFuIEFt
+ZXJpY2FucyBhbmQgdGhlIGdlbmVyYWwgcHVibGljIHdpdGggdGhlIHJpY2huZXNzIGFuZCBiZWF1dHkg
+b2YgQ3JvYXRpYW4gQ3VsdHVyZSBhbmQgQ3JvYXRpYW4gQW1lcmljYW4gY29udHJpYnV0aW9ucyB0byB0
+aGUgYnVpbGRpbmcgb2YgdGhlIFVuaXRlZCBTdGF0ZXMgb2YgQW1lcmljYS4</bytes>
 						</object>
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -184,7 +184,7 @@ IHRoZSBidWlsZGluZyBvZiB0aGUgVW5pdGVkIFN0YXRlcyBvZiBBbWVyaWNhLg</bytes>
 					<string>17.IBPluginDependency</string>
 					<string>19.IBPluginDependency</string>
 				</object>
-				<object class="NSMutableArray" key="dict.values">
+				<object class="NSArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>RootViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -212,10 +212,6 @@ IHRoZSBidWlsZGluZyBvZiB0aGUgVW5pdGVkIFN0YXRlcyBvZiBBbWVyaWNhLg</bytes>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1280" key="NS.object.0"/>
-		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
 			<integer value="3100" key="NS.object.0"/>
@@ -226,6 +222,6 @@ IHRoZSBidWlsZGluZyBvZiB0aGUgVW5pdGVkIFN0YXRlcyBvZiBBbWVyaWNhLg</bytes>
 			<string key="NS.key.0">cflogowhite 100x280.png</string>
 			<string key="NS.object.0">{280, 100}</string>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">933</string>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>
