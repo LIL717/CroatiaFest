@@ -21,7 +21,8 @@
 @synthesize schedule = schedule_;
 @synthesize eventTimes = eventTimes_;
 
-@synthesize scrollView = scrollView_;
+//@synthesize scrollView = scrollView_;
+
 @synthesize name = name_;
 @synthesize desc1 = desc1_;
 @synthesize desc2 = desc2_;
@@ -45,7 +46,7 @@
     [event_ release];
     [schedule_ release];
     [eventTimes_ release];
-    [scrollView_ release];
+//    [scrollView_ release];
     [name_ release];
     [desc1_ release];
     [desc2_ release];
@@ -61,7 +62,6 @@
     [webButton_ release];
     [managedObjectContext_ release];
 //    [persistentStoreCoordinator_ release];
-
     [super dealloc];
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -147,8 +147,8 @@
 //    LogMethod();
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.scrollView.delegate = self;
-    self.scrollView.scrollEnabled = YES;
+//    self.scrollView.delegate = self;
+//    self.scrollView.scrollEnabled = YES;
 
 }
 

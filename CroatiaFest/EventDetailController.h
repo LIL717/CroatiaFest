@@ -17,7 +17,7 @@
     Schedule *schedule_;
     NSArray *eventTimes_;
     
-    UIScrollView *scrollView_;
+//    UIScrollView *scrollView_;
     
     UITextField *name_;
     UITextField *desc1_;
@@ -41,7 +41,7 @@
 @property (nonatomic, retain) Schedule *schedule;
 @property (nonatomic, retain) NSArray *eventTimes;
 
-@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
+//@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic, retain) IBOutlet UITextField *name;
 @property (nonatomic, retain) IBOutlet UITextField *desc1;
