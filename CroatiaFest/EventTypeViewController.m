@@ -68,7 +68,7 @@
     [super viewDidLoad];
 //    self.title = @"Performers";
     self.title = self.eventType;
-    
+
 }
 
 - (void)viewDidUnload

@@ -149,6 +149,8 @@
     // Do any additional setup after loading the view from its nib.
 //    self.scrollView.delegate = self;
 //    self.scrollView.scrollEnabled = YES;
+//don't extend under nav bar and tab bar
+	self.edgesForExtendedLayout = UIRectEdgeNone;
 
 }
 

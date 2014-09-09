@@ -76,6 +76,7 @@
     [super viewDidLoad];
     
     self.marketArray = [[[NSArray alloc] initWithObjects:@"Vendor Booths", @"Food Booths", @"Advertisers", nil] autorelease];
+
 //    NSLog (@"marketArray is %@", marketArray);
 
     // Uncomment the following line to preserve selection between presentations.

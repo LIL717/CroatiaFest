@@ -79,6 +79,8 @@
 
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.urlObject]];
     [self updateButtons];
+		//don't extend under nav bar and tab bar
+	self.edgesForExtendedLayout = UIRectEdgeNone;
 
 }
 

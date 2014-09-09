@@ -98,6 +98,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+	//don't extend under nav bar and tab bar
+	self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 - (void)viewDidUnload

@@ -73,7 +73,7 @@
 {
 
     [super viewDidLoad];
-    self.title = @"Schedule";  
+    self.title = @"Schedule";
 
 }
 

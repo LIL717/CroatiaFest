@@ -41,11 +41,11 @@
     //Make a bar button for an alert
     
     
-    UIImage *barButton = [[UIImage imageNamed:@"small-button-red"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
-    
-    [[UIBarButtonItem appearance] setBackgroundImage:barButton forState:UIControlStateNormal 
-                                          barMetrics:UIBarMetricsDefault];
-    
+//    UIImage *barButton = [[UIImage imageNamed:@"small-button-red"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+//    
+//    [[UIBarButtonItem appearance] setBackgroundImage:barButton forState:UIControlStateNormal 
+//                                          barMetrics:UIBarMetricsDefault];
+
     UIBarButtonItem * button = [[UIBarButtonItem alloc] initWithTitle:@"Donate" 
                                                                 style:(UIBarButtonItemStyleBordered) 
                                                                target:self 
@@ -130,12 +130,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
     // autoresizing for autorotating
     self.view.autoresizesSubviews = YES;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     //code for CALayer
 //    self.view.layer.contents = (id) [UIImage imageNamed:@"RedandWhiteCheckered.jpg"].CGImage;
     self.view.backgroundColor = [UIColor whiteColor];
+		//don't extend under nav bar and tab bar
+	self.edgesForExtendedLayout = UIRectEdgeNone;
+
 }
 - (void)viewDidUnload
 {

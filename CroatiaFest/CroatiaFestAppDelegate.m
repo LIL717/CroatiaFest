@@ -135,7 +135,7 @@
 
     //Create the tabBarController
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar-button-red.png"]];
+//    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar-button-red.png"]];
 
 
 
@@ -171,18 +171,24 @@
     if ([[UINavigationBar class]respondsToSelector:@selector(appearance)]) {
 
 //        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBarPleter.png"] forBarMetrics:UIBarMetricsDefault];
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"menubar-red.png"] forBarMetrics:UIBarMetricsDefault];
+//        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"menubar-red.png"] forBarMetrics:UIBarMetricsDefault];
+		int red = 251;
+		int green = 26;
+		int blue = 4;
+		int alpha = 255;
+
+		UIColor *appColor = [UIColor colorWithRed:(red/255.0f) green:(green/255.0f) blue:(blue/255.0f) alpha:(alpha/255.0f)];
         [[UINavigationBar  appearance]setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
 //                                                 [UIFont fontWithName:@"Chalkduster" size:20.0f], UITextAttributeFont,
-                                                 [UIColor whiteColor], UITextAttributeTextColor,
-                                                 [UIColor grayColor], UITextAttributeTextShadowColor,
-                                                 [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.0f)], UITextAttributeTextShadowOffset,
+								appColor, NSForegroundColorAttributeName,
+//								[UIColor grayColor], NSShadowAttributeName,
+//								[NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.0f)], NSShadowAttributeName,
                                                  nil]];
 //        [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:-10.0f forBarMetrics:(UIBarMetrics)UIBarMetricsDefault];
-        UIImage *backButton = [[UIImage imageNamed:@"back-red.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
-                                  
-        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal 
-                                    barMetrics:UIBarMetricsDefault];
+//        UIImage *backButton = [[UIImage imageNamed:@"back-red.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
+//                                  
+//        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal 
+//                                    barMetrics:UIBarMetricsDefault];
 //        [[UIBarButtonItem appearance] setTintColor:[UIColor redColor]];
     }
 
@@ -276,7 +282,7 @@
     //
     LogMethod();
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-    NSLog (@"httpResponse is %d", httpResponse.statusCode);
+    NSLog (@"httpResponse is %ld", (long)httpResponse.statusCode);
     NSLog (@"response.MIMEType is %@", response.MIMEType);
 
     if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"text/xml"]) {
