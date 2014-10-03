@@ -16,19 +16,13 @@
 @synthesize marketArray = marketArray_;
 @synthesize managedObjectContext = managedObjectContext_;
 
-- (void)dealloc
-{
-    [marketArray_ release];
-    [managedObjectContext_ release];
-    [super dealloc];
-}
 
 -(id)init
 {
     self = [super init];
     //Call the superclass's designated initializer
-    [super initWithNibName: nil
-                    bundle:nil];
+    if (!(self = [super initWithNibName: nil
+                    bundle:nil])) return nil;
     //Get the tab bar item
     UITabBarItem *tbi = [self tabBarItem];
     
@@ -75,7 +69,7 @@
 {
     [super viewDidLoad];
     
-    self.marketArray = [[[NSArray alloc] initWithObjects:@"Vendor Booths", @"Food Booths", @"Advertisers", nil] autorelease];
+    self.marketArray = [[NSArray alloc] initWithObjects:@"Vendor Booths", @"Food Booths", @"Advertisers", nil];
 
 //    NSLog (@"marketArray is %@", marketArray);
 
@@ -133,7 +127,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
@@ -158,7 +152,6 @@
         
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:vendorViewController animated:YES];
-        [vendorViewController release];
     }
     
     if (indexPath.row == 1) {
@@ -168,7 +161,6 @@
 
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:foodViewController animated:YES];
-        [foodViewController release];
     }
     if (indexPath.row == 2) {
         
@@ -177,7 +169,6 @@
         
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:directoryViewController animated:YES];
-        [directoryViewController release];
         
     }
     

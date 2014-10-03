@@ -11,7 +11,6 @@
 
 @interface InsertSchedule : NSManagedObject
 
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 -(void) formatScheduleData: scheduleData;
 

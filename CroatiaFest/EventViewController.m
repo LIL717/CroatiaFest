@@ -17,18 +17,15 @@
 
 - (void)dealloc
 {
-    [eventArray_ release];
-    [managedObjectContext_ release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super dealloc];
 }
 
 -(id)init
 {
     self = [super init];
     //Call the superclass's designated initializer
-    [super initWithNibName: nil
-                    bundle:nil];
+    if (!(self = [super initWithNibName: nil
+                    bundle:nil])) return nil;
     //Get the tab bar item
     UITabBarItem *tbi = [self tabBarItem];
     
@@ -75,7 +72,7 @@
 {
     [super viewDidLoad];
 
-    self.eventArray = [[[NSArray alloc] initWithObjects:@"Performers", @"Workshops", @"Cooking Demos", @"Exhibits", @"Activities", nil] autorelease];
+    self.eventArray = [[NSArray alloc] initWithObjects:@"Performers", @"Workshops", @"Cooking Demos", @"Exhibits", @"Activities", nil];
 //    NSLog (@"eventArray is %@", self.eventArray);
     
 }
@@ -132,7 +129,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // configure cell contents
     //all the rows should show the disclosure indicator
@@ -154,7 +151,6 @@
         
          // Pass the selected object to the new view controller.
          [self.navigationController pushViewController:eventTypeViewController animated:YES];
-         [eventTypeViewController release];
 
 
     

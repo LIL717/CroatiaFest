@@ -25,11 +25,7 @@
 
 - (void)dealloc {
     
-    [vendor_ release];
-    [fetchedResultsController_ release];
-    [managedObjectContext_ release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super dealloc];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -121,7 +117,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
@@ -147,7 +143,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    VendorDetailController *vendorDetailController = [[[VendorDetailController alloc] initWithNibName:@"MarketplaceTypeDetailController" bundle:nil] autorelease];
+    VendorDetailController *vendorDetailController = [[VendorDetailController alloc] initWithNibName:@"MarketplaceTypeDetailController" bundle:nil];
     vendorDetailController.managedObjectContext = self.managedObjectContext;
     
     Vendor *selectedVendor = [[self fetchedResultsController] objectAtIndexPath:indexPath];
@@ -192,10 +188,6 @@
     self.fetchedResultsController = aFetchedResultsController;
     
     
-    [aFetchedResultsController release];
-    [fetchRequest release];
-    [sortDescriptor release];
-    [sortDescriptors release];
     
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error])
@@ -207,7 +199,6 @@
                          cancelButtonTitle:@"OK" 
                          otherButtonTitles: nil];
         [alertView show];
-        [alertView release];
 	}
     
     return fetchedResultsController_;

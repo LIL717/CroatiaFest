@@ -13,24 +13,28 @@
 
 extern NSString *kNotificationDestroyAllNSFetchedResultsControllers;
 
-@interface CroatiaFestAppDelegate : NSObject <UIApplicationDelegate, NSXMLParserDelegate, NSFetchedResultsControllerDelegate> {
-    
-@private    
+//@interface CroatiaFestAppDelegate : NSObject <UIApplicationDelegate, NSXMLParserDelegate, NSFetchedResultsControllerDelegate> {
+//@interface CroatiaFestAppDelegate : NSObject <UIApplicationDelegate,  NSFetchedResultsControllerDelegate> {
+//@interface CroatiaFestAppDelegate : UIResponder <UIApplicationDelegate,  NSFetchedResultsControllerDelegate> {
+@interface CroatiaFestAppDelegate : UIResponder <UIApplicationDelegate> {
+
+
+@private
     NSManagedObjectContext *managedObjectContext_;
     NSManagedObjectModel *managedObjectModel_;
 
     // for downloading the xml data
     NSURLConnection *webConnection;
-    NSMutableData *festivalData;
+    NSMutableData *__weak festivalData;
     NSOperationQueue *parseQueue; 
     
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
-@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, retain) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
+@property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
+//@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

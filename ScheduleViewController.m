@@ -27,19 +27,15 @@
 
 - (void)dealloc {
 
-    [schedule_ release];
-    [fetchedResultsController_ release];
-    [managedObjectContext_ release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super dealloc];
 }
 -(id)init
 {
 
     self = [super init];
     //Call the superclass's designated initializer
-    [super initWithNibName: nil
-                    bundle:nil];
+    if (!(self = [super initWithNibName: nil
+                    bundle:nil])) return nil;
     //Get the tab bar item
     UITabBarItem *tbi = [self tabBarItem];
     
@@ -145,7 +141,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
 //        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
 
     }
     
@@ -174,7 +170,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section { 
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
 
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss '+0000'"];
 
@@ -196,7 +192,7 @@
         return nil;
     }
     // Create label with section title
-    UILabel *label = [[[UILabel alloc] init] autorelease];
+    UILabel *label = [[UILabel alloc] init];
     label.frame = CGRectMake(15, 0, tableView.bounds.size.width, 25);
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
@@ -205,8 +201,8 @@
     label.font = [UIFont boldSystemFontOfSize:16];
     label.text = sectionTitle;
     
-    UIView *sectionHeaderView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 25)] autorelease];
-    UIImageView *backgroundView =[[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 25)] autorelease];
+    UIView *sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 25)];
+    UIImageView *backgroundView =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 25)];
 
     backgroundView.image = [UIImage imageNamed:@"section-header-red.png"];
 //    backgroundView.image = [UIImage imageNamed:@"menubar-red.png"];
@@ -221,7 +217,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Schedule *selectedEvent = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        EventDetailController *eventDetailController = [[[EventDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil] autorelease];
+        EventDetailController *eventDetailController = [[EventDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil];
         eventDetailController.managedObjectContext = self.managedObjectContext;
         
         eventDetailController.event = selectedEvent.event;
@@ -265,10 +261,6 @@
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
-    [aFetchedResultsController release];
-    [fetchRequest release];
-    [sortDescriptor release];
-    [sortDescriptors release];
     
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error])
@@ -280,7 +272,6 @@
                          cancelButtonTitle:@"OK" 
                          otherButtonTitles: nil];
         [alertView show];
-        [alertView release];
 	}
     
     return fetchedResultsController_;

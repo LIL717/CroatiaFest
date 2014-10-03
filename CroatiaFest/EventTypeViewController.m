@@ -28,12 +28,7 @@
 
 - (void)dealloc {
 
-    [event_ release];
-    [eventType_ release];
-    [fetchedResultsController_ release];
-    [managedObjectContext_ release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super dealloc];
 }
 //
 
@@ -42,7 +37,7 @@
     self = [super init];
     if (self) {
         // Custom initialization
-        self.eventType = [[[NSString alloc] initWithString: eventType] autorelease];;
+        self.eventType = [[NSString alloc] initWithString: eventType];;
         
     }
     return self;
@@ -149,7 +144,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
@@ -173,7 +168,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    EventDetailController *eventDetailController = [[[EventDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil] autorelease];
+    EventDetailController *eventDetailController = [[EventDetailController alloc] initWithNibName:@"EventTypeDetailController" bundle:nil];
     eventDetailController.managedObjectContext = self.managedObjectContext;
     
     Event *selectedEvent = [[self fetchedResultsController] objectAtIndexPath:indexPath];
@@ -219,10 +214,6 @@
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
-    [aFetchedResultsController release];
-    [fetchRequest release];
-    [sortDescriptor release];
-    [sortDescriptors release];
     
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error])
@@ -234,7 +225,6 @@
                          cancelButtonTitle:@"OK" 
                          otherButtonTitles: nil];
         [alertView show];
-        [alertView release];
 	}
     
     return fetchedResultsController_;

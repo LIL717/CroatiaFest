@@ -13,8 +13,8 @@
     Version *version_;
 }    
 
-@property (nonatomic, retain) Version *version;
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) Version *version;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 - (BOOL) compareVersion: (NSString *) newVersionString;
 - (void) insertVersion: (NSArray *) version;

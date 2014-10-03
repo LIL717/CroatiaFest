@@ -16,10 +16,10 @@
     NSURL *urlObject_;
 
 }
-@property (nonatomic, retain) IBOutlet UIWebView *webView;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *backButton;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *forwardButton;
-@property (nonatomic, retain) NSURL *urlObject;
+@property (nonatomic, strong) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *backButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *forwardButton;
+@property (nonatomic, strong) NSURL *urlObject;
 
 -(void) updateButtons;
 -(void) goForward;

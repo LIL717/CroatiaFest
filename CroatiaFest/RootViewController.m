@@ -17,15 +17,13 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [savedAlert_ release];
-    [super dealloc];
 }
 -(id)init
 {
     self = [super init];
     //Call the superclass's designated initializer
-    [super initWithNibName: nil
-                    bundle:nil];
+    if (!(self = [super initWithNibName: nil
+                    bundle:nil])) return nil;
     //Get the tab bar item
     UITabBarItem *tbi = [self tabBarItem];
     
@@ -51,7 +49,6 @@
                                                                target:self 
                                                                action:@selector(donateLink)];
     [[self navigationItem] setRightBarButtonItem: button];
-    [button release];
     
     [[self navigationItem] setTitle: @"Welcome"];
 //    [self setTitle: @"Welcome"];
@@ -170,10 +167,10 @@
 - (void) donateLink
 {
         
-    NSString* launchUrl = [[[NSString alloc] initWithString: [NSString stringWithFormat:@"http://www.croatiafest.org/donate.html"]] autorelease];
+    NSString* launchUrl = [[NSString alloc] initWithString: [NSString stringWithFormat:@"http://www.croatiafest.org/donate.html"]];
     NSURL *url = [NSURL URLWithString: launchUrl];
     
-    WebViewController *webViewController = [[[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil] autorelease];
+    WebViewController *webViewController = [[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil];
     
     webViewController.urlObject = url;
     

@@ -7,6 +7,7 @@
 //
 
 #import "Vendor.h"
+#import "CroatiaFestAppDelegate.h"
 
 @implementation Vendor
 
@@ -20,24 +21,17 @@
 @dynamic website;
 @dynamic email;
 
-
-@synthesize managedObjectContext = managedObjectContext_;
-- (void)dealloc {
-
-    [managedObjectContext_ release];
-    [super dealloc];
-    
-} 
-
 - (void)addVendorsToCoreData:(NSArray *)vendors {
     //LogMethod();
+	CroatiaFestAppDelegate *appDelegate = (CroatiaFestAppDelegate*)[[UIApplication sharedApplication] delegate];
+	NSManagedObjectContext *managedObjectContext = appDelegate.managedObjectContext;
     //this is an array of dictionaries
     
     NSError *error = nil;
     // insert the directory into Core Data
     for (id newVendor in vendors) {
         
-        NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Vendor" inManagedObjectContext:self.managedObjectContext];
+        NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Vendor" inManagedObjectContext:managedObjectContext];
         [newManagedObject setValue: [newVendor valueForKey: @"Name"] forKey:@"name"];
         [newManagedObject setValue: [newVendor valueForKey: @"Desc_1"] forKey:@"desc1"];
         [newManagedObject setValue: [newVendor valueForKey: @"Desc_2"] forKey:@"desc2"];
@@ -49,7 +43,7 @@
         [newManagedObject setValue: [newVendor valueForKey: @"Email"] forKey:@"email"];
         
 //        NSLog(@" newManagedObject is %@", newManagedObject);
-        if (![self.managedObjectContext save:&error]) {
+        if (![managedObjectContext save:&error]) {
             NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
         }
     }

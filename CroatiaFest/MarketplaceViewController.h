@@ -15,8 +15,8 @@
     NSArray *marketArray_; 
     NSManagedObjectContext *managedObjectContext_;
 }
-@property (nonatomic, retain) NSArray *marketArray; 
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSArray *marketArray; 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 
 @end

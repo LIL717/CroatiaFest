@@ -7,6 +7,7 @@
 //
 
 #import "Directory.h"
+#import "CroatiaFestAppDelegate.h"
 
 @implementation Directory
 
@@ -20,23 +21,18 @@
 @dynamic website;
 @dynamic email;
 
-@synthesize managedObjectContext = managedObjectContext_;
 
-- (void)dealloc {
-
-    [managedObjectContext_ release];
-    [super dealloc];
-    
-} 
 - (void)addDirectoryToCoreData:(NSArray *)directory {
     //LogMethod();
+	CroatiaFestAppDelegate *appDelegate = (CroatiaFestAppDelegate*)[[UIApplication sharedApplication] delegate];
+	NSManagedObjectContext *managedObjectContext = appDelegate.managedObjectContext;
     //this is an array of dictionaries
     
     NSError *error = nil;
     // insert the directory into Core Data
     for (id newDirectory in directory) {
         
-        NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Directory" inManagedObjectContext:self.managedObjectContext];
+        NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Directory" inManagedObjectContext:managedObjectContext];
         [newManagedObject setValue: [newDirectory valueForKey: @"Name"] forKey:@"name"];
         [newManagedObject setValue: [newDirectory valueForKey: @"Desc_1"] forKey:@"desc1"];
         [newManagedObject setValue: [newDirectory valueForKey: @"Desc_2"] forKey:@"desc2"];
@@ -48,7 +44,7 @@
         [newManagedObject setValue: [newDirectory valueForKey: @"Email"] forKey:@"email"];
         
 //        NSLog(@" newManagedObject is %@", newManagedObject);
-        if (![self.managedObjectContext save:&error]) {
+        if (![managedObjectContext save:&error]) {
             NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
         }
     }

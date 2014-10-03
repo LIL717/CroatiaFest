@@ -22,40 +22,17 @@ extern NSString *kFestivalMsgErrorKey;
 
 @class VersionController;
 
-@interface ParseOperation : NSOperation {
-    
-    NSData *parseData;
-    
-    NSSet *tableItemNames;
+@interface ParseOperation : NSOperation
 
-    NSMutableDictionary *tableTagsDictionary;
-    NSMutableDictionary *currentItemDictionary;
-    NSString *currentTableName;
-    NSString *currentElementName;
-    NSMutableDictionary *parsedTablesDictionary;
-
-
-@private
-    
-    // these variables are used during parsing
-    VersionController *versionController;
-
-    NSMutableArray *currentParseBatch;
-    NSMutableString *currentParsedCharacterData;
-    
-    
-    BOOL accumulatingParsedCharacterData;
-    BOOL didAbortParsing;
-    NSUInteger parsedRecordCounter;
-}
+@property (nonatomic, strong) NSSet *tableItemNames;
 
 @property (copy, readonly) NSData *parseData;
-@property (nonatomic, retain) NSMutableDictionary *tableTagsDictionary;
-@property (nonatomic, retain) NSMutableDictionary *currentItemDictionary;
-@property (nonatomic, retain) NSMutableDictionary *parsedTablesDictionary;
-@property (nonatomic, retain) NSString *currentElementName;
-@property (nonatomic, retain) NSString *currentTableName;
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSMutableDictionary *tableTagsDictionary;
+@property (nonatomic, strong) NSMutableDictionary *currentItemDictionary;
+@property (nonatomic, strong) NSMutableDictionary *parsedTablesDictionary;
+@property (nonatomic, strong) NSString *currentElementName;
+@property (nonatomic, strong) NSString *currentTableName;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 - (id)initWithData:(NSData *)data;
 

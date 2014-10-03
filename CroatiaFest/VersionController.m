@@ -8,6 +8,7 @@
 
 #import "VersionController.h"
 #import "Version.h"
+#import "CroatiaFestAppDelegate.h"
 
 #pragma mark -
 #pragma mark VersionController
@@ -17,12 +18,6 @@
 @synthesize version = version_; 
 @synthesize managedObjectContext = managedObjectContext_;
 
-- (void)dealloc {
-    
-    [version_ release];
-    [managedObjectContext_ release];
-    [super dealloc];
-}
 
 - (id)init
 {
@@ -37,13 +32,15 @@
 
 - (BOOL)compareVersion: (NSString *) newVersionString
 {
+	CroatiaFestAppDelegate *appDelegate = (CroatiaFestAppDelegate*)[[UIApplication sharedApplication] delegate];
+	NSManagedObjectContext *managedObjectContext = appDelegate.managedObjectContext;
     int savedVersion;
     BOOL versionChanged;
     NSLog (@"newVersionString is %@", newVersionString);
         
-    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Version"
-                                              inManagedObjectContext:self.managedObjectContext];
+                                              inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
     
 //    NSLog(@"entity retrieved is %@", entity);
@@ -106,7 +103,6 @@
     NSNumber *newVersionNumber = [myNumFormatter numberFromString:newVersionString];
     //    NSLog(@"string '%@' gives NSNumber '%@' with intValue '%i'", 
     //          newVersionString, newVersionNumber, [newVersionNumber intValue]);
-    [myNumFormatter release];
     
     return newVersionNumber;
 }

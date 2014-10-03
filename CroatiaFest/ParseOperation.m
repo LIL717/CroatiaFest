@@ -23,65 +23,47 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
 
 
 @interface ParseOperation () <NSXMLParserDelegate>
-@property (nonatomic, retain) VersionController *versionController;
-@property (nonatomic, retain) NSMutableArray *currentParseBatch;
-@property (nonatomic, retain) NSMutableString *currentParsedCharacterData;
+@property (nonatomic, strong) VersionController *versionController;
+@property (nonatomic) NSMutableArray *currentParseBatch;
+@property (nonatomic) NSMutableString *currentParsedCharacterData;
+
 @end
 
 @implementation ParseOperation
-
-@synthesize parseData;
-@synthesize versionController;
-@synthesize currentParsedCharacterData;
-@synthesize currentParseBatch;
-
-@synthesize tableTagsDictionary;
-@synthesize currentItemDictionary;
-@synthesize parsedTablesDictionary;
-@synthesize currentTableName;
-@synthesize currentElementName;
-@synthesize managedObjectContext = __managedObjectContext;
-
+{
+	BOOL _accumulatingParsedCharacterData;
+	BOOL _didAbortParsing;
+	NSUInteger _parsedRecordCounter;
+}
 
 
 - (id)initWithData:(NSData *)data
 
 {
-    LogMethod();
 
-    if ((self = [super init])) {   
-        tableItemNames = [[NSSet alloc] initWithObjects:TABLE_FEED_TAGS]; 
-        self.tableTagsDictionary = [[[NSMutableDictionary alloc] initWithCapacity: [tableItemNames count]] autorelease];
-        self.parsedTablesDictionary = [[[NSMutableDictionary alloc] initWithCapacity:[tableItemNames count]] autorelease];
+	self = [super init];
+	if (self) {
+		_tableItemNames = [[NSSet alloc] initWithObjects:TABLE_FEED_TAGS];
+        self.tableTagsDictionary = [[NSMutableDictionary alloc] initWithCapacity: [_tableItemNames count]];
+        self.parsedTablesDictionary = [[NSMutableDictionary alloc] initWithCapacity:[_tableItemNames count]];
 
 
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:APPCONTROL_FEED_TAGS] autorelease] forKey:@"appControl"];
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"cookingDemos"];
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:MARKETPLACE_FEED_TAGS] autorelease] forKey:@"directory"];  
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"exhibits"];
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"festivalActivities"];
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:MARKETPLACE_FEED_TAGS] autorelease] forKey:@"food"];
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"performers"];
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:MARKETPLACE_FEED_TAGS] autorelease] forKey:@"vendors"];
-        [self.tableTagsDictionary setValue:[[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] autorelease] forKey:@"workshops"];
+        [self.tableTagsDictionary setValue:[[NSSet alloc] initWithObjects:APPCONTROL_FEED_TAGS] forKey:@"appControl"];
+        [self.tableTagsDictionary setValue:[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] forKey:@"cookingDemos"];
+        [self.tableTagsDictionary setValue:[[NSSet alloc] initWithObjects:MARKETPLACE_FEED_TAGS] forKey:@"directory"];  
+        [self.tableTagsDictionary setValue:[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] forKey:@"exhibits"];
+        [self.tableTagsDictionary setValue:[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] forKey:@"festivalActivities"];
+        [self.tableTagsDictionary setValue:[[NSSet alloc] initWithObjects:MARKETPLACE_FEED_TAGS] forKey:@"food"];
+        [self.tableTagsDictionary setValue:[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] forKey:@"performers"];
+        [self.tableTagsDictionary setValue:[[NSSet alloc] initWithObjects:MARKETPLACE_FEED_TAGS] forKey:@"vendors"];
+        [self.tableTagsDictionary setValue:[[NSSet alloc] initWithObjects:EVENT_FEED_TAGS] forKey:@"workshops"];
 
-        parseData = [data copy];
+        _parseData = [data copy];
 
     }
     return self;
 }
-- (void)dealloc {
-    LogMethod();
-    
-    [parseData release];
-    [versionController release];
-    [currentParsedCharacterData release];
-    [currentParseBatch release];
-    [tableItemNames release];
-    [__managedObjectContext release];
 
-    [super dealloc];
-}
 - (void)distributeParsedData:(NSDictionary *)parsedData {
 
 //    LogMethod();
@@ -98,7 +80,7 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
 //    LogMethod();
     self.currentParseBatch = [NSMutableArray array];
     self.currentParsedCharacterData = [NSMutableString string];
-    self.currentItemDictionary = [[[NSMutableDictionary alloc] initWithCapacity: [tableItemNames count]] autorelease];
+    self.currentItemDictionary = [[NSMutableDictionary alloc] initWithCapacity: [_tableItemNames count]];
 
     
     // It's also possible to have NSXMLParser download the data, by passing it a URL, but this is
@@ -123,7 +105,6 @@ NSString *kFestivalMsgErrorKey = @"FestivalMsgErrorKey";
     self.currentParsedCharacterData = nil;
     self.currentParseBatch = nil;
     
-    [parser release];
 }
 
 #pragma mark -
@@ -167,11 +148,11 @@ static NSString * const kColumnName = @"column";
     // If the number of parsed records is greater than
     // kMaximumNumberOfRecordsToParse, abort the parse.
     //
-    if (parsedRecordCounter >= kMaximumNumberOfRecordsToParse) {
+    if (_parsedRecordCounter >= kMaximumNumberOfRecordsToParse) {
         // Use the flag didAbortParsing to distinguish between this deliberate stop
         // and other parser errors.
         //
-        didAbortParsing = YES;
+        _didAbortParsing = YES;
         [parser abortParsing];
     }
 //    NSLog (@"elementName is %@", elementName);
@@ -195,30 +176,30 @@ static NSString * const kColumnName = @"column";
                                           waitUntilDone:YES];
 
                     self.currentParseBatch = [NSMutableArray array];
-                    self.parsedTablesDictionary = [[[NSMutableDictionary alloc] initWithCapacity:[tableItemNames count]] autorelease];
+                    self.parsedTablesDictionary = [[NSMutableDictionary alloc] initWithCapacity:[_tableItemNames count]];
 
 
                 }
                 self.currentParseBatch = [NSMutableArray array];
             }
-        self.currentTableName = [[[NSString alloc] initWithString:[attributeDict valueForKey:@"name"]] autorelease];
+        self.currentTableName = [[NSString alloc] initWithString:[attributeDict valueForKey:@"name"]];
 
-        if ([tableItemNames containsObject:self.currentTableName ]) {
-            NSSet *itemNames = [[[NSSet alloc] initWithSet:[self.tableTagsDictionary valueForKey:self.currentTableName]] autorelease];
-            self.currentItemDictionary = [[[NSMutableDictionary alloc] initWithCapacity: [itemNames count]] autorelease];
+        if ([_tableItemNames containsObject:self.currentTableName ]) {
+            NSSet *itemNames = [[NSSet alloc] initWithSet:[self.tableTagsDictionary valueForKey:self.currentTableName]];
+            self.currentItemDictionary = [[NSMutableDictionary alloc] initWithCapacity: [itemNames count]];
         } else self.currentTableName = nil;
     } 
     if ([elementName isEqualToString:kColumnName]) {
-        self.currentElementName  = [[[NSString alloc] initWithString:[attributeDict valueForKey:@"name"]] autorelease];
+        self.currentElementName  = [[NSString alloc] initWithString:[attributeDict valueForKey:@"name"]];
 
         if ([[self.tableTagsDictionary valueForKey:self.currentTableName] containsObject:self.currentElementName]) {
 
                 // The mutable string needs to be reset to empty.
-                currentParsedCharacterData = [[NSMutableString alloc] init];
+                _currentParsedCharacterData = [[NSMutableString alloc] init];
 
                 // For the 'column' element begin accumulating parsed character data.
                 // The contents are collected in parser:foundCharacters:.
-                accumulatingParsedCharacterData = YES;
+                _accumulatingParsedCharacterData = YES;
         }
     }
 }
@@ -233,7 +214,7 @@ static NSString * const kColumnName = @"column";
 //    NSLog(@"end element %@", elementName);
     if ([self.currentTableName isEqualToString:@"appControl"]) {
         if ([elementName isEqualToString:kColumnName]) {
-            self.versionController = [[[VersionController alloc] init] autorelease];
+            self.versionController = [[VersionController alloc] init];
             self.versionController.managedObjectContext = self.managedObjectContext;
             if ([self.versionController compareVersion:self.currentParsedCharacterData]) {
                 NSLog(@"yes versionHasChanged continue with parsing");
@@ -244,7 +225,7 @@ static NSString * const kColumnName = @"column";
                 //Use the flag didAbortParsing to distinguish between this deliberate stop
                 // and other parser errors.
                 //
-                didAbortParsing = YES;
+                _didAbortParsing = YES;
                 [parser abortParsing];
             }
         }
@@ -253,9 +234,8 @@ static NSString * const kColumnName = @"column";
     if ([elementName isEqualToString:kColumnName]) {
 //        NSLog(@"currentElementName is %@", self.currentElementName);
 //        NSLog(@"currentParsedCharacterData is %@", self.currentParsedCharacterData);
-        [self.currentItemDictionary setValue:currentParsedCharacterData forKey:self.currentElementName];
-        [currentParsedCharacterData release];
-        currentParsedCharacterData = nil;
+        [self.currentItemDictionary setValue:_currentParsedCharacterData forKey:self.currentElementName];
+        _currentParsedCharacterData = nil;
 //        NSLog (@"currentItemDictionary is %@", self.currentItemDictionary);
 
     }
@@ -266,11 +246,11 @@ static NSString * const kColumnName = @"column";
 
 //        NSLog (@" currentParseBatch is %@", self.currentParseBatch);
                 
-        parsedRecordCounter++;
+        _parsedRecordCounter++;
         
     }
     // Stop accumulating parsed character data. We won't start again until specific elements begin.
-    accumulatingParsedCharacterData = NO;
+    _accumulatingParsedCharacterData = NO;
 }
 
 // This method is called by the parser when it finds parsed character data ("PCDATA") in an element.
@@ -279,7 +259,7 @@ static NSString * const kColumnName = @"column";
 //
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
 
-    if (accumulatingParsedCharacterData) {
+    if (_accumulatingParsedCharacterData) {
         // If the current element is one whose content we care about, append 'string'
         // to the property that holds the content of the current element.
         //
@@ -310,7 +290,7 @@ static NSString * const kColumnName = @"column";
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     LogMethod();
 
-    if ([parseError code] != NSXMLParserDelegateAbortedParseError && !didAbortParsing)
+    if ([parseError code] != NSXMLParserDelegateAbortedParseError && !_didAbortParsing)
     {
         [self performSelectorOnMainThread:@selector(handleParsedDataError:)
                                withObject:parseError

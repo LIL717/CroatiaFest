@@ -24,11 +24,7 @@
 
 - (void)dealloc {
     
-    [directory_ release];
-    [fetchedResultsController_ release];
-    [managedObjectContext_ release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super dealloc];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -120,7 +116,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
@@ -146,7 +142,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    DirectoryDetailController *directoryDetailController = [[[DirectoryDetailController alloc] initWithNibName:@"MarketplaceTypeDetailController" bundle:nil] autorelease];
+    DirectoryDetailController *directoryDetailController = [[DirectoryDetailController alloc] initWithNibName:@"MarketplaceTypeDetailController" bundle:nil];
     directoryDetailController.managedObjectContext = self.managedObjectContext;
     
     Directory *selectedDirectory = [[self fetchedResultsController] objectAtIndexPath:indexPath];
@@ -191,10 +187,6 @@
     self.fetchedResultsController = aFetchedResultsController;
     
     
-    [aFetchedResultsController release];
-    [fetchRequest release];
-    [sortDescriptor release];
-    [sortDescriptors release];
     
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error])
@@ -206,7 +198,6 @@
                          cancelButtonTitle:@"OK" 
                          otherButtonTitles: nil];
         [alertView show];
-        [alertView release];
 	}
     
     return fetchedResultsController_;

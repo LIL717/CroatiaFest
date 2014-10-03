@@ -42,28 +42,6 @@
 @synthesize managedObjectContext = managedObjectContext_;
 
 
-- (void) dealloc {
-    [event_ release];
-    [schedule_ release];
-    [eventTimes_ release];
-//    [scrollView_ release];
-    [name_ release];
-    [desc1_ release];
-    [desc2_ release];
-    [addr1_ release];
-    [addr2_ release];
-    [phone1_ release];
-    [phone2_ release];
-    [website_ release];
-    [email_ release];
-    [video_ release];
-    [time_ release];
-    [scheduleTableView_ release];
-    [webButton_ release];
-    [managedObjectContext_ release];
-//    [persistentStoreCoordinator_ release];
-    [super dealloc];
-}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -74,6 +52,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear: animated];
     self.name.text = self.event.name;
     self.desc1.text = self.event.desc1;
     self.desc2.text = self.event.desc2;
@@ -99,7 +78,6 @@
                                         target:self 
                                         action:@selector(watchVideo)];
         [[self navigationItem] setRightBarButtonItem:watchButton];
-        [watchButton release];
     }
     // Disable invisible webButton button if there is no website
     if (isEmpty(self.event.website)) {
@@ -111,10 +89,10 @@
 
 -(IBAction)launchWeb:(id)sender {
     
-    NSString* launchUrl = [[[NSString alloc] initWithString: [NSString stringWithFormat:@"http://%@",self.website.text]] autorelease];
+    NSString* launchUrl = [[NSString alloc] initWithString: [NSString stringWithFormat:@"http://%@",self.website.text]];
     NSURL *url = [NSURL URLWithString: launchUrl];
     
-    WebViewController *webViewController = [[[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil] autorelease];
+    WebViewController *webViewController = [[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil];
     
     webViewController.urlObject = url;
     
@@ -122,10 +100,10 @@
 }
 
 -(void)watchVideo {
-    NSString* videoUrl = [[[NSString alloc] initWithString: [NSString stringWithFormat:@"http://%@",self.event.video]] autorelease];
+    NSString* videoUrl = [[NSString alloc] initWithString: [NSString stringWithFormat:@"http://%@",self.event.video]];
     NSURL *url = [NSURL URLWithString: videoUrl];
 
-    WebViewController *webViewController = [[[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil] autorelease];
+    WebViewController *webViewController = [[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil];
     
     webViewController.urlObject = url;
 
@@ -201,7 +179,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
@@ -225,7 +203,6 @@
     [dateFormatter setDateFormat:@"h:mm a"];
     cell.textLabel.text = [dateFormatter stringFromDate:correctedBeginDate]; 
 
-    [dateFormatter release];
 
     cell.textLabel.adjustsFontSizeToFitWidth = YES; 
     cell.detailTextLabel.text = eventTime.location;

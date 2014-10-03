@@ -13,10 +13,10 @@
 
 @interface Schedule : NSManagedObject
 
-@property (nonatomic, retain) NSDate * endTime;
-@property (nonatomic, retain) NSDate * beginTime;
-@property (nonatomic, retain) NSString * location;
-@property (nonatomic, retain) Event *event;
+@property (nonatomic, strong) NSDate * endTime;
+@property (nonatomic, strong) NSDate * beginTime;
+@property (nonatomic, strong) NSString * location;
+@property (nonatomic, strong) Event *event;
 
 
 @end

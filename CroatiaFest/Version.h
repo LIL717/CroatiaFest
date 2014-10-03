@@ -11,6 +11,6 @@
 
 @interface Version : NSManagedObject 
 
-@property (nonatomic, retain) NSNumber *number;
+@property (nonatomic, strong) NSNumber *number;
 
 @end

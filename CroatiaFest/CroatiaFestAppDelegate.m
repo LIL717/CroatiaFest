@@ -22,23 +22,15 @@
 // this framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code
 #import <CFNetwork/CFNetwork.h>
 
-//// customize navBar for pre iOS5 devices
-//@implementation UINavigationBar (CustomImage)
-//- (void)drawRect:(CGRect)rect
-//{
-//    UIImage *image = [UIImage imageNamed: @"navigationBarImageMuted.png"];
-//    [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-//}
-//@end
 
 #pragma mark CroatiaFestAppDelegate () 
 
 // forward declarations
 @interface CroatiaFestAppDelegate ()
 
-@property (nonatomic, retain) NSURLConnection *webConnection;
-@property (nonatomic, retain) NSMutableData *festivalData;    // the data returned from the NSURLConnection
-@property (nonatomic, retain) NSOperationQueue *parseQueue;   // the queue that manages our NSOperation for parsing festival data
+@property (nonatomic, strong) NSURLConnection *webConnection;
+@property (weak, nonatomic) NSMutableData *festivalData;    // the data returned from the NSURLConnection
+@property (nonatomic) NSOperationQueue *parseQueue;   // the queue that manages our NSOperation for parsing festival data
 @property (nonatomic, assign) BOOL resetData;
 
 - (void) setUpViewControllers;
@@ -58,7 +50,6 @@
 @synthesize resetData;
 @synthesize managedObjectContext = managedObjectContext_;
 @synthesize managedObjectModel = managedObjectModel_;
-@synthesize fetchedResultsController = fetchedResultsController_;
 @synthesize persistentStoreCoordinator = persistentStoreCoordinator_;
 
 
@@ -67,20 +58,11 @@
 - (void)dealloc {
 
     LogMethod();
-    [window release];  
     [webConnection cancel];
-    [webConnection release];
-    [festivalData release];
-    [parseQueue release];
-    [managedObjectContext_ release];
-    [managedObjectModel_ release];
-    [fetchedResultsController_ release];
-    [persistentStoreCoordinator_ release];
     
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAddFestivalNotif object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kFestivalErrorNotif object:nil];
-    [super dealloc];
 }
 
 
@@ -90,10 +72,7 @@
     // Override point for customization after application launch.
 //    [TestFlight takeOff:@"edbbcf45a655f8286ea1810a5e350c09_OTE2NjEyMDEyLTA1LTE4IDE4OjE2OjEyLjMyODAxMA"];
 //    
-//#define TESTING 1
-//#ifdef TESTING
-//    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
-//#endif
+
     
     [self setUpURLConnection];
     
@@ -197,10 +176,6 @@
     NSArray *viewControllers = [NSArray arrayWithObjects: navController, navController2, navController3, navController4, nil];
 
     //The viewControllers array retains them so we can release our ownership of them in this method
-    [rootViewController release];
-    [scheduleViewController release];
-    [eventViewController release];
-    [marketplaceViewController release];
 
 
     //Attach them to the tab bar controller
@@ -210,12 +185,7 @@
     //    [self.window setRootViewController:tabBarController];
     self.window.rootViewController = tabBarController;
 
-    [tabBarController release];
 
-    [navController release];
-    [navController2 release];
-    [navController3 release];
-    [navController4 release];
 }
 - (void) setUpURLConnection { 
     LogMethod ();
@@ -228,23 +198,73 @@
     //
     static NSString *feedURLString = @"http://www.croatiafest.org/croatia4_tables.xml";
     NSURLRequest *festivalURLRequest =
-    [NSURLRequest requestWithURL:[NSURL URLWithString:feedURLString] cachePolicy: NSURLRequestReloadIgnoringLocalCacheData timeoutInterval: 60.0];
+//    [NSURLRequest requestWithURL:[NSURL URLWithString:feedURLString] cachePolicy: NSURLRequestReloadIgnoringLocalCacheData timeoutInterval: 60.0];
+    [NSURLRequest requestWithURL:[NSURL URLWithString:feedURLString]];
+//    self.webConnection = [[NSURLConnection alloc] initWithRequest:festivalURLRequest delegate:self];
+//    
+//    // Test the validity of the connection object. The most likely reason for the connection object
+//    // to be nil is a malformed URL, which is a programmatic error easily detected during development.
+//    // If the URL is more dynamic, then you should implement a more flexible validation technique,
+//    // and be able to both recover from errors and communicate problems to the user in an
+//    // unobtrusive manner.
+//    NSAssert(self.webConnection != nil, @"Failure to create URL connection.");
+//    
+//    // Start the status bar network activity indicator. We'll turn it off when the connection
+//    // finishes or experiences an error.
+//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+//    
+//    parseQueue = [NSOperationQueue new];
+// send the async request (note that the completion block will be called on the main thread)
+//
+// note: using the block-based "sendAsynchronousRequest" is preferred, and useful for
+// small data transfers that are likely to succeed. If you doing large data transfers,
+// consider using the NSURLConnectionDelegate-based APIs.
+//
+	[NSURLConnection sendAsynchronousRequest:festivalURLRequest
+	 // the NSOperationQueue upon which the handler block will be dispatched:
+									   queue:[NSOperationQueue mainQueue]
+						   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
 
-    self.webConnection = [[[NSURLConnection alloc] initWithRequest:festivalURLRequest delegate:self] autorelease];
-    
-    // Test the validity of the connection object. The most likely reason for the connection object
-    // to be nil is a malformed URL, which is a programmatic error easily detected during development.
-    // If the URL is more dynamic, then you should implement a more flexible validation technique,
-    // and be able to both recover from errors and communicate problems to the user in an
-    // unobtrusive manner.
-    NSAssert(self.webConnection != nil, @"Failure to create URL connection.");
-    
-    // Start the status bar network activity indicator. We'll turn it off when the connection
-    // finishes or experiences an error.
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    parseQueue = [NSOperationQueue new];
-    
+								   // back on the main thread, check for errors, if no errors start the parsing
+								   //
+							   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
+								   // here we check for any returned NSError from the server, "and" we also check for any http response errors
+							   if (error != nil) {
+								   [self handleError:error];
+							   }
+							   else {
+									   // check for any response errors
+								   NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+								   if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"text/xml"]) {
+										   //			if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"text/xml"]) {
+
+										   // Update the UI and start parsing the data,
+										   // Spawn an NSOperation to parse the earthquake data so that the UI is not
+										   // blocked while the application parses the XML data.
+										   //
+									   ParseOperation *parseOperation = [[ParseOperation alloc] initWithData:data];
+									   [self.parseQueue addOperation:parseOperation];
+								   }
+								   else {
+									   NSString *errorString =
+									   NSLocalizedString(@"HTTP Error", @"Error message displayed when receving a connection error.");
+									   NSDictionary *userInfo = @{NSLocalizedDescriptionKey : errorString};
+									   NSError *reportError = [NSError errorWithDomain:@"HTTP"
+																				  code:[httpResponse statusCode]
+																			  userInfo:userInfo];
+									   [self handleError:reportError];
+								   }
+							   }
+						   }];
+
+		// Start the status bar network activity indicator.
+		// We'll turn it off when the connection finishes or experiences an error.
+		//
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+
+	self.parseQueue = [NSOperationQueue new];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -267,95 +287,95 @@
             }
 }
 
-
-#pragma mark -
-#pragma mark NSURLConnection delegate methods
-
-// The following are delegate methods for NSURLConnection. Similar to callback functions, this is
-// how the connection object, which is working in the background, can asynchronously communicate back
-// to its delegate on the thread from which it was started - in this case, the main thread.
 //
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    // check for HTTP status code for proxy authentication failures
-    // anything in the 200 to 299 range is considered successful,
-    // also make sure the MIMEType is correct:
-    //
-    LogMethod();
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-    NSLog (@"httpResponse is %ld", (long)httpResponse.statusCode);
-    NSLog (@"response.MIMEType is %@", response.MIMEType);
-
-    if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"text/xml"]) {
-
-        self.festivalData = [NSMutableData data];
-//        self.festivalData = [[[NSMutableData alloc] init] autorelease];
-
-    } else {
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:
-                                  NSLocalizedString(@"HTTP Error",
-                                                    @"Connection Error.")
-                                                             forKey:NSLocalizedDescriptionKey];
-        NSError *error = [NSError errorWithDomain:@"HTTP" code:[httpResponse statusCode] userInfo:userInfo];
-        [self handleError:error];
-    }
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+//#pragma mark -
+//#pragma mark NSURLConnection delegate methods
+//
+//// The following are delegate methods for NSURLConnection. Similar to callback functions, this is
+//// how the connection object, which is working in the background, can asynchronously communicate back
+//// to its delegate on the thread from which it was started - in this case, the main thread.
+////
+//- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+//    // check for HTTP status code for proxy authentication failures
+//    // anything in the 200 to 299 range is considered successful,
+//    // also make sure the MIMEType is correct:
+//    //
 //    LogMethod();
-    
-    [festivalData appendData:data];
-//        the following statement just shows binary data    
-//        NSLog (@"(festivalData is %@", festivalData);
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    LogMethod();
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
-    if ([error code] == kCFURLErrorNotConnectedToInternet) {
-        // if we can identify the error, we can present a more precise message to the user.
-        NSDictionary *userInfo =
-        [NSDictionary dictionaryWithObject:
-         NSLocalizedString(@"Connection Error",
-                           @"Not connected to the Internet.")
-                                    forKey:NSLocalizedDescriptionKey];
-        NSError *noConnectionError = [NSError errorWithDomain:NSCocoaErrorDomain
-                                                         code:kCFURLErrorNotConnectedToInternet
-                                                     userInfo:userInfo];
-        [self handleError:noConnectionError];
-    } else {
-        // otherwise handle the error generically
-        [self handleError:error];
-    }
-    self.webConnection = nil;
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    LogMethod();
-    
-    self.webConnection = nil;
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
-    
-    // Spawn an NSOperation to parse the data so that the UI is not blocked while the
-    // application parses the XML data.
-    //
-    // IMPORTANT! - Don't access or affect UIKit objects on secondary threads.
-    //
-    //    DataModel *model = [[DataModel alloc] init];
-
-
-    ParseOperation *parseOperation = [[ParseOperation alloc] initWithData: self.festivalData];
-    //need to pass managedObjectContext because ParseOperation calls core data to check version number
-    parseOperation.managedObjectContext = self.managedObjectContext;
-
-    [self.parseQueue addOperation:parseOperation];
-    [parseOperation release];   // once added to the NSOperationQueue it's retained, we don't need it anymore
-    //    [model release];
-    
-    // festivalData will be retained by the NSOperation until it has finished executing,
-    // so we no longer need a reference to it in the main thread.
-    self.festivalData = nil;
-}
+//    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+//    NSLog (@"httpResponse is %ld", (long)httpResponse.statusCode);
+//    NSLog (@"response.MIMEType is %@", response.MIMEType);
+//
+//    if ((([httpResponse statusCode]/100) == 2) && [[response MIMEType] isEqual:@"text/xml"]) {
+//
+//        self.festivalData = [NSMutableData data];
+////        self.festivalData = [[[NSMutableData alloc] init] autorelease];
+//
+//    } else {
+//        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:
+//                                  NSLocalizedString(@"HTTP Error",
+//                                                    @"Connection Error.")
+//                                                             forKey:NSLocalizedDescriptionKey];
+//        NSError *error = [NSError errorWithDomain:@"HTTP" code:[httpResponse statusCode] userInfo:userInfo];
+//        [self handleError:error];
+//    }
+//}
+//
+//- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+////    LogMethod();
+//    
+//    [festivalData appendData:data];
+////        the following statement just shows binary data    
+////        NSLog (@"(festivalData is %@", festivalData);
+//}
+//
+//- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+//    LogMethod();
+//    
+//    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
+//    if ([error code] == kCFURLErrorNotConnectedToInternet) {
+//        // if we can identify the error, we can present a more precise message to the user.
+//        NSDictionary *userInfo =
+//        [NSDictionary dictionaryWithObject:
+//         NSLocalizedString(@"Connection Error",
+//                           @"Not connected to the Internet.")
+//                                    forKey:NSLocalizedDescriptionKey];
+//        NSError *noConnectionError = [NSError errorWithDomain:NSCocoaErrorDomain
+//                                                         code:kCFURLErrorNotConnectedToInternet
+//                                                     userInfo:userInfo];
+//        [self handleError:noConnectionError];
+//    } else {
+//        // otherwise handle the error generically
+//        [self handleError:error];
+//    }
+//    self.webConnection = nil;
+//}
+//
+//- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+//    LogMethod();
+//    
+//    self.webConnection = nil;
+//    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
+//    
+//    // Spawn an NSOperation to parse the data so that the UI is not blocked while the
+//    // application parses the XML data.
+//    //
+//    // IMPORTANT! - Don't access or affect UIKit objects on secondary threads.
+//    //
+//    //    DataModel *model = [[DataModel alloc] init];
+//
+//
+//    ParseOperation *parseOperation = [[ParseOperation alloc] initWithData: self.festivalData];
+//    //need to pass managedObjectContext because ParseOperation calls core data to check version number
+//    parseOperation.managedObjectContext = self.managedObjectContext;
+//
+//    [self.parseQueue addOperation:parseOperation];
+//       // once added to the NSOperationQueue it's retained, we don't need it anymore
+//    //    [model release];
+//    
+//    // festivalData will be retained by the NSOperation until it has finished executing,
+//    // so we no longer need a reference to it in the main thread.
+//    self.festivalData = nil;
+//}
 #pragma mark -
 #pragma mark handle data coming from URL
 
@@ -373,7 +393,6 @@
                      cancelButtonTitle:@"OK"
                      otherButtonTitles:nil];
     [alertView show];
-    [alertView release];
 }
 
 // Our NSNotification callback from the running NSOperation to add the parsed data
@@ -418,53 +437,45 @@
     while ((key = [enumerator nextObject])) {
         /* code that uses the returned key */
         NSLog (@"key is %@", key);
-        NSArray* passedArray = [[[NSArray alloc] initWithArray:[parsedData objectForKey:key]] autorelease];
+        NSArray* passedArray = [[NSArray alloc] initWithArray:[parsedData objectForKey:key]];
 
         if ([key isEqualToString: @"appControl"]) {
-            VersionController *versionController = [[VersionController alloc] autorelease];
+            VersionController *versionController = [VersionController alloc];
             versionController.managedObjectContext = self.managedObjectContext;
 
             [versionController insertVersion: passedArray];
         }
         if ([key isEqualToString: @"cookingDemos"]) {
-            InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
-            insertEvents.managedObjectContext = self.managedObjectContext;
+            InsertEvents *insertEvents = [InsertEvents alloc];
             [insertEvents addEventsToCoreData:passedArray forKey: @"Cooking Demos"];
         }
         if ([key isEqualToString: @"directory"]) {
-            Directory *directory = [[Directory alloc] autorelease];
-            directory.managedObjectContext = self.managedObjectContext;
+            Directory *directory = [Directory alloc];
             [directory addDirectoryToCoreData:passedArray];
         }
         if ([key isEqualToString: @"exhibits"]) {
-            InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
-            insertEvents.managedObjectContext = self.managedObjectContext;
+            InsertEvents *insertEvents = [InsertEvents alloc];
             [insertEvents addEventsToCoreData:passedArray forKey: @"Exhibits"];
         }
         if ([key isEqualToString: @"festivalActivities"]) {
-            InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
-            insertEvents.managedObjectContext = self.managedObjectContext;
+            InsertEvents *insertEvents = [InsertEvents alloc];
 
             [insertEvents addEventsToCoreData:passedArray forKey: @"Activities"];
         }
         if ([key isEqualToString: @"food"]) {
-            Food *food = [[Food alloc] autorelease];
-            food.managedObjectContext = self.managedObjectContext;
+            Food *food = [Food alloc];
             [food addFoodToCoreData:passedArray];
         }
         if ([key isEqualToString: @"performers"]) {
-            InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
-            insertEvents.managedObjectContext = self.managedObjectContext;
+            InsertEvents *insertEvents = [InsertEvents alloc];
             [insertEvents addEventsToCoreData:passedArray forKey: @"Performers"];
         }
         if ([key isEqualToString: @"vendors"]) {
-            Vendor *vendor = [[Vendor alloc] autorelease];
-            vendor.managedObjectContext = self.managedObjectContext;
+            Vendor *vendor = [Vendor alloc];
             [vendor addVendorsToCoreData:passedArray];
         }
         if ([key isEqualToString: @"workshops"]) {
-            InsertEvents *insertEvents = [[InsertEvents alloc] autorelease];
-            insertEvents.managedObjectContext = self.managedObjectContext;
+            InsertEvents *insertEvents = [InsertEvents alloc];
             [insertEvents addEventsToCoreData:passedArray forKey: @"Workshops"];
         }
     }
@@ -478,9 +489,7 @@
     [self.persistentStoreCoordinator removePersistentStore:store error:&error];
 
     // Release CoreData chain
-    [managedObjectContext_ release];
     managedObjectContext_ = nil;
-    [persistentStoreCoordinator_ release];
     persistentStoreCoordinator_ = nil;
 
 //    // Delete the sqlite file
@@ -508,7 +517,6 @@
                              cancelButtonTitle:@"OK" 
                              otherButtonTitles: nil];
             [alertView show];
-            [alertView release];
         } 
     }
 }
@@ -577,7 +585,6 @@
                          cancelButtonTitle:@"OK" 
                          otherButtonTitles: nil];
         [alertView show];
-        [alertView release];
         
     }    
     

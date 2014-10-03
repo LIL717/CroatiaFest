@@ -7,6 +7,7 @@
 //
 
 #import "Food.h"
+#import "CroatiaFestAppDelegate.h"
 
 @implementation Food
 @dynamic name;
@@ -19,23 +20,18 @@
 @dynamic website;
 @dynamic email;
 
-@synthesize managedObjectContext = managedObjectContext_;
 
-- (void)dealloc {
-    
-    [managedObjectContext_ release];
-    [super dealloc];
-    
-} 
 - (void)addFoodToCoreData:(NSArray *)food {
     //LogMethod();
+	CroatiaFestAppDelegate *appDelegate = (CroatiaFestAppDelegate*)[[UIApplication sharedApplication] delegate];
+	NSManagedObjectContext *managedObjectContext = appDelegate.managedObjectContext;
     //this is an array of dictionaries
     
     NSError *error = nil;
     // insert the directory into Core Data
     for (id newFood in food) {
         
-        NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:self.managedObjectContext];
+        NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:managedObjectContext];
         [newManagedObject setValue: [newFood valueForKey: @"Name"] forKey:@"name"];
         [newManagedObject setValue: [newFood valueForKey: @"Desc_1"] forKey:@"desc1"];
         [newManagedObject setValue: [newFood valueForKey: @"Desc_2"] forKey:@"desc2"];
@@ -48,7 +44,7 @@
 
         
         //        NSLog(@" newManagedObject is %@", newManagedObject);
-        if (![self.managedObjectContext save:&error]) {
+        if (![managedObjectContext save:&error]) {
             NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
         }
     }

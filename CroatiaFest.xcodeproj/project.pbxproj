@@ -12,14 +12,6 @@
 		7019A84015081EEE001C919C /* MarketplaceTypeDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7019A83F15081EEE001C919C /* MarketplaceTypeDetailController.xib */; };
 		70213F25143E522800E1C499 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 70213F24143E522800E1C499 /* Food.m */; };
 		70213F311442950800E1C499 /* Vendor.m in Sources */ = {isa = PBXBuildFile; fileRef = 70213F301442950800E1C499 /* Vendor.m */; };
-		70245AC215226F4F00470372 /* menubar-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245AC015226F4F00470372 /* menubar-red.png */; };
-		70245AC315226F4F00470372 /* menubar-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245AC115226F4F00470372 /* menubar-red@2x.png */; };
-		70245AC615226FB100470372 /* back-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245AC415226FB100470372 /* back-red.png */; };
-		70245AC715226FB100470372 /* back-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245AC515226FB100470372 /* back-red@2x.png */; };
-		70245ACA15226FED00470372 /* tabbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245AC815226FED00470372 /* tabbar-button-red.png */; };
-		70245ACB15226FED00470372 /* tabbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245AC915226FED00470372 /* tabbar-button-red@2x.png */; };
-		70245ACE1522754100470372 /* small-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245ACC1522754100470372 /* small-button-red.png */; };
-		70245ACF1522754100470372 /* small-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70245ACD1522754100470372 /* small-button-red@2x.png */; };
 		703139EF14C1498C008DDC53 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703139EE14C1498C008DDC53 /* QuartzCore.framework */; };
 		703139F914C245B1008DDC53 /* VendorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703139F814C245B1008DDC53 /* VendorViewController.m */; };
 		703139FE14C249B6008DDC53 /* VendorDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703139FD14C249B6008DDC53 /* VendorDetailController.m */; };
@@ -60,6 +52,19 @@
 		7086CEFA153C75CB00919C0F /* textview-back-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7086CEF8153C75CA00919C0F /* textview-back-blue@2x.png */; };
 		7087A6C51516D7D00015A2F3 /* InsertSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7087A6C41516D7D00015A2F3 /* InsertSchedule.m */; };
 		7090A4FE151E9C91006BA945 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 7090A4FD151E9C91006BA945 /* Event.m */; };
+		70A216DD19DE52ED002F87D7 /* calendar_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216DC19DE52ED002F87D7 /* calendar_24.png */; };
+		70A216E019DE5336002F87D7 /* forward-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216DE19DE5336002F87D7 /* forward-button.png */; };
+		70A216E119DE5336002F87D7 /* forward-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216DF19DE5336002F87D7 /* forward-button@2x.png */; };
+		70A216E419DE53CD002F87D7 /* back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216E219DE53CD002F87D7 /* back-button.png */; };
+		70A216E519DE53CD002F87D7 /* back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216E319DE53CD002F87D7 /* back-button@2x.png */; };
+		70A216E819DE542E002F87D7 /* small-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216E619DE542E002F87D7 /* small-button-red.png */; };
+		70A216E919DE542E002F87D7 /* small-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216E719DE542E002F87D7 /* small-button-red@2x.png */; };
+		70A216F019DE54D5002F87D7 /* menubar-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216EA19DE54D5002F87D7 /* menubar-red.png */; };
+		70A216F119DE54D5002F87D7 /* tabbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216EB19DE54D5002F87D7 /* tabbar-button-red.png */; };
+		70A216F219DE54D5002F87D7 /* back-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216EC19DE54D5002F87D7 /* back-red.png */; };
+		70A216F319DE54D5002F87D7 /* tabbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216ED19DE54D5002F87D7 /* tabbar-button-red@2x.png */; };
+		70A216F419DE54D5002F87D7 /* menubar-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216EE19DE54D5002F87D7 /* menubar-red@2x.png */; };
+		70A216F519DE54D5002F87D7 /* back-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A216EF19DE54D5002F87D7 /* back-red@2x.png */; };
 		70AE05D913C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */; };
 		70AE05DC13C77460005F8303 /* cart_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05DB13C77460005F8303 /* cart_24.png */; };
 		70AE05DE13C7746B005F8303 /* mic_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 70AE05DD13C7746B005F8303 /* mic_24.png */; };
@@ -67,15 +72,10 @@
 		70B0556414C26186008C07E3 /* FoodDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B0556314C26186008C07E3 /* FoodDetailController.m */; };
 		70B2AADD13CCDE09004C7D51 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70B2AADC13CCDE09004C7D51 /* CoreData.framework */; };
 		70B2AAE113CCF771004C7D51 /* CroatiaFest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70B2AADF13CCF771004C7D51 /* CroatiaFest.xcdatamodeld */; };
-		70B7013514C7708800407A11 /* calendar_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B7013414C7708800407A11 /* calendar_24.png */; };
 		70B7013D14C7719700407A11 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B7013C14C7719700407A11 /* ScheduleViewController.m */; };
 		70E0122614BD433F00E230CA /* DirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E0122514BD433F00E230CA /* DirectoryViewController.m */; };
 		70E0122914BD469A00E230CA /* DirectoryDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E0122814BD469A00E230CA /* DirectoryDetailController.m */; };
 		70E78C6714C7726000687947 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E78C6614C7726000687947 /* ScheduleViewController.xib */; };
-		70E7F6FB1580FA89009C88CF /* forward-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E7F6FA1580FA89009C88CF /* forward-button.png */; };
-		70E7F6FD1580FA94009C88CF /* back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E7F6FC1580FA94009C88CF /* back-button.png */; };
-		70E7F6FF1580FAA2009C88CF /* back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E7F6FE1580FAA2009C88CF /* back-button@2x.png */; };
-		70E7F7011580FAB6009C88CF /* forward-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E7F7001580FAB6009C88CF /* forward-button@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,14 +86,6 @@
 		70213F24143E522800E1C499 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		70213F2F1442950800E1C499 /* Vendor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vendor.h; sourceTree = "<group>"; };
 		70213F301442950800E1C499 /* Vendor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vendor.m; sourceTree = "<group>"; };
-		70245AC015226F4F00470372 /* menubar-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menubar-red.png"; path = "../../../prolific/sample-project/prolific/Resources/menubar-red.png"; sourceTree = "<group>"; };
-		70245AC115226F4F00470372 /* menubar-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menubar-red@2x.png"; path = "../../../prolific/sample-project/prolific/Resources/menubar-red@2x.png"; sourceTree = "<group>"; };
-		70245AC415226FB100470372 /* back-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-red.png"; path = "../../../prolific/sample-project/prolific/Resources/back-red.png"; sourceTree = "<group>"; };
-		70245AC515226FB100470372 /* back-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-red@2x.png"; path = "../../../prolific/sample-project/prolific/Resources/back-red@2x.png"; sourceTree = "<group>"; };
-		70245AC815226FED00470372 /* tabbar-button-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar-button-red.png"; path = "../../../prolific/sample-project/prolific/Resources/tabbar-button-red.png"; sourceTree = "<group>"; };
-		70245AC915226FED00470372 /* tabbar-button-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar-button-red@2x.png"; path = "../../../prolific/sample-project/prolific/Resources/tabbar-button-red@2x.png"; sourceTree = "<group>"; };
-		70245ACC1522754100470372 /* small-button-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small-button-red.png"; path = "../../../prolific/sample-project/prolific/Resources/small-button-red.png"; sourceTree = "<group>"; };
-		70245ACD1522754100470372 /* small-button-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small-button-red@2x.png"; path = "../../../prolific/sample-project/prolific/Resources/small-button-red@2x.png"; sourceTree = "<group>"; };
 		703139EE14C1498C008DDC53 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		703139F714C245B1008DDC53 /* VendorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VendorViewController.h; sourceTree = "<group>"; };
 		703139F814C245B1008DDC53 /* VendorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VendorViewController.m; sourceTree = "<group>"; };
@@ -154,6 +146,19 @@
 		7087A6C41516D7D00015A2F3 /* InsertSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertSchedule.m; sourceTree = "<group>"; };
 		7090A4FC151E9C91006BA945 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = ../Event.h; sourceTree = "<group>"; };
 		7090A4FD151E9C91006BA945 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Event.m; path = ../Event.m; sourceTree = "<group>"; };
+		70A216DC19DE52ED002F87D7 /* calendar_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_24.png; sourceTree = "<group>"; };
+		70A216DE19DE5336002F87D7 /* forward-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward-button.png"; sourceTree = "<group>"; };
+		70A216DF19DE5336002F87D7 /* forward-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward-button@2x.png"; sourceTree = "<group>"; };
+		70A216E219DE53CD002F87D7 /* back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button.png"; sourceTree = "<group>"; };
+		70A216E319DE53CD002F87D7 /* back-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button@2x.png"; sourceTree = "<group>"; };
+		70A216E619DE542E002F87D7 /* small-button-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-button-red.png"; sourceTree = "<group>"; };
+		70A216E719DE542E002F87D7 /* small-button-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-button-red@2x.png"; sourceTree = "<group>"; };
+		70A216EA19DE54D5002F87D7 /* menubar-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menubar-red.png"; sourceTree = "<group>"; };
+		70A216EB19DE54D5002F87D7 /* tabbar-button-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-button-red.png"; sourceTree = "<group>"; };
+		70A216EC19DE54D5002F87D7 /* back-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-red.png"; sourceTree = "<group>"; };
+		70A216ED19DE54D5002F87D7 /* tabbar-button-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-button-red@2x.png"; sourceTree = "<group>"; };
+		70A216EE19DE54D5002F87D7 /* menubar-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menubar-red@2x.png"; sourceTree = "<group>"; };
+		70A216EF19DE54D5002F87D7 /* back-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-red@2x.png"; sourceTree = "<group>"; };
 		70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20px-Coat_of_arms_of_Croatia.png"; sourceTree = "<group>"; };
 		70AE05DB13C77460005F8303 /* cart_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart_24.png; sourceTree = "<group>"; };
 		70AE05DD13C7746B005F8303 /* mic_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic_24.png; sourceTree = "<group>"; };
@@ -163,7 +168,6 @@
 		70B0556314C26186008C07E3 /* FoodDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodDetailController.m; sourceTree = "<group>"; };
 		70B2AADC13CCDE09004C7D51 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		70B2AAE013CCF771004C7D51 /* CroatiaFest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CroatiaFest.xcdatamodel; sourceTree = "<group>"; };
-		70B7013414C7708800407A11 /* calendar_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar_24.png; path = "../../../TWG Retina Icons/calendar_24.png"; sourceTree = "<group>"; };
 		70B7013B14C7719700407A11 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleViewController.h; path = ../ScheduleViewController.h; sourceTree = "<group>"; };
 		70B7013C14C7719700407A11 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleViewController.m; path = ../ScheduleViewController.m; sourceTree = "<group>"; };
 		70E0122414BD433F00E230CA /* DirectoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryViewController.h; sourceTree = "<group>"; };
@@ -171,10 +175,6 @@
 		70E0122714BD469A00E230CA /* DirectoryDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryDetailController.h; sourceTree = "<group>"; };
 		70E0122814BD469A00E230CA /* DirectoryDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryDetailController.m; sourceTree = "<group>"; };
 		70E78C6614C7726000687947 /* ScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
-		70E7F6FA1580FA89009C88CF /* forward-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forward-button.png"; path = "../../../Images/forward-button.png"; sourceTree = "<group>"; };
-		70E7F6FC1580FA94009C88CF /* back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-button.png"; path = "../../../Images/back-button.png"; sourceTree = "<group>"; };
-		70E7F6FE1580FAA2009C88CF /* back-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-button@2x.png"; path = "../../../Images/back-button@2x.png"; sourceTree = "<group>"; };
-		70E7F7001580FAB6009C88CF /* forward-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forward-button@2x.png"; path = "../../../Images/forward-button@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,29 +244,29 @@
 		705B96C013A275D000346007 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				70E7F6FA1580FA89009C88CF /* forward-button.png */,
-				70E7F7001580FAB6009C88CF /* forward-button@2x.png */,
-				70E7F6FE1580FAA2009C88CF /* back-button@2x.png */,
-				70E7F6FC1580FA94009C88CF /* back-button.png */,
+				70A216DE19DE5336002F87D7 /* forward-button.png */,
+				70A216DF19DE5336002F87D7 /* forward-button@2x.png */,
+				70A216E219DE53CD002F87D7 /* back-button.png */,
+				70A216E319DE53CD002F87D7 /* back-button@2x.png */,
 				7052228815669C2F0003AE9F /* section-header-red.png */,
 				7052228A15669C4E0003AE9F /* section-header-red@2x.png */,
 				7086CEF7153C75CA00919C0F /* textview-back-blue.png */,
 				7086CEF8153C75CA00919C0F /* textview-back-blue@2x.png */,
 				7086CEF015373C7300919C0F /* croatiafesticon114whitebkgd.png */,
 				7086CEEE15373C6B00919C0F /* croatiafesticon57whitebkgd.png */,
-				70245ACC1522754100470372 /* small-button-red.png */,
-				70245ACD1522754100470372 /* small-button-red@2x.png */,
-				70245AC815226FED00470372 /* tabbar-button-red.png */,
-				70245AC915226FED00470372 /* tabbar-button-red@2x.png */,
-				70245AC415226FB100470372 /* back-red.png */,
-				70245AC515226FB100470372 /* back-red@2x.png */,
-				70245AC015226F4F00470372 /* menubar-red.png */,
-				70245AC115226F4F00470372 /* menubar-red@2x.png */,
+				70A216E619DE542E002F87D7 /* small-button-red.png */,
+				70A216E719DE542E002F87D7 /* small-button-red@2x.png */,
+				70A216EA19DE54D5002F87D7 /* menubar-red.png */,
+				70A216EE19DE54D5002F87D7 /* menubar-red@2x.png */,
+				70A216EB19DE54D5002F87D7 /* tabbar-button-red.png */,
+				70A216ED19DE54D5002F87D7 /* tabbar-button-red@2x.png */,
+				70A216EC19DE54D5002F87D7 /* back-red.png */,
+				70A216EF19DE54D5002F87D7 /* back-red@2x.png */,
 				70515C16160BDC1900D96335 /* Default-568h@2x.png */,
 				707DD3BF150D630E002F354B /* Default.png */,
 				707DD3C1150D631B002F354B /* Default@2x.png */,
 				707DD3B9150D5158002F354B /* cflogowhite 100x280.png */,
-				70B7013414C7708800407A11 /* calendar_24.png */,
+				70A216DC19DE52ED002F87D7 /* calendar_24.png */,
 				70AE05D813C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png */,
 				70AE05DB13C77460005F8303 /* cart_24.png */,
 				70AE05DD13C7746B005F8303 /* mic_24.png */,
@@ -407,6 +407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70A216F219DE54D5002F87D7 /* back-red.png in Resources */,
 				705B96C413A275D000346007 /* InfoPlist.strings in Resources */,
 				705B96CD13A275D000346007 /* MainWindow.xib in Resources */,
 				705B96D313A275D000346007 /* RootViewController.xib in Resources */,
@@ -416,7 +417,7 @@
 				70AE05D913C77452005F8303 /* 20px-Coat_of_arms_of_Croatia.png in Resources */,
 				70AE05DC13C77460005F8303 /* cart_24.png in Resources */,
 				70AE05DE13C7746B005F8303 /* mic_24.png in Resources */,
-				70B7013514C7708800407A11 /* calendar_24.png in Resources */,
+				70A216E019DE5336002F87D7 /* forward-button.png in Resources */,
 				70E78C6714C7726000687947 /* ScheduleViewController.xib in Resources */,
 				7019A83C1506E6A4001C919C /* EventTypeViewController.xib in Resources */,
 				7019A83E1506E6C0001C919C /* EventTypeDetailController.xib in Resources */,
@@ -425,24 +426,23 @@
 				707DD3BA150D5159002F354B /* cflogowhite 100x280.png in Resources */,
 				707DD3C0150D630E002F354B /* Default.png in Resources */,
 				707DD3C2150D631B002F354B /* Default@2x.png in Resources */,
-				70245AC215226F4F00470372 /* menubar-red.png in Resources */,
-				70245AC315226F4F00470372 /* menubar-red@2x.png in Resources */,
-				70245AC615226FB100470372 /* back-red.png in Resources */,
-				70245AC715226FB100470372 /* back-red@2x.png in Resources */,
-				70245ACA15226FED00470372 /* tabbar-button-red.png in Resources */,
-				70245ACB15226FED00470372 /* tabbar-button-red@2x.png in Resources */,
-				70245ACE1522754100470372 /* small-button-red.png in Resources */,
-				70245ACF1522754100470372 /* small-button-red@2x.png in Resources */,
+				70A216E419DE53CD002F87D7 /* back-button.png in Resources */,
+				70A216F319DE54D5002F87D7 /* tabbar-button-red@2x.png in Resources */,
+				70A216F119DE54D5002F87D7 /* tabbar-button-red.png in Resources */,
+				70A216E519DE53CD002F87D7 /* back-button@2x.png in Resources */,
+				70A216DD19DE52ED002F87D7 /* calendar_24.png in Resources */,
+				70A216F019DE54D5002F87D7 /* menubar-red.png in Resources */,
+				70A216E819DE542E002F87D7 /* small-button-red.png in Resources */,
 				7086CEEF15373C6B00919C0F /* croatiafesticon57whitebkgd.png in Resources */,
+				70A216F519DE54D5002F87D7 /* back-red@2x.png in Resources */,
 				7086CEF115373C7300919C0F /* croatiafesticon114whitebkgd.png in Resources */,
+				70A216E119DE5336002F87D7 /* forward-button@2x.png in Resources */,
+				70A216F419DE54D5002F87D7 /* menubar-red@2x.png in Resources */,
 				7086CEF9153C75CB00919C0F /* textview-back-blue.png in Resources */,
+				70A216E919DE542E002F87D7 /* small-button-red@2x.png in Resources */,
 				7086CEFA153C75CB00919C0F /* textview-back-blue@2x.png in Resources */,
 				7052228915669C2F0003AE9F /* section-header-red.png in Resources */,
 				7052228B15669C4E0003AE9F /* section-header-red@2x.png in Resources */,
-				70E7F6FB1580FA89009C88CF /* forward-button.png in Resources */,
-				70E7F6FD1580FA94009C88CF /* back-button.png in Resources */,
-				70E7F6FF1580FAA2009C88CF /* back-button@2x.png in Resources */,
-				70E7F7011580FAB6009C88CF /* forward-button@2x.png in Resources */,
 				70515C17160BDC1900D96335 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,6 +559,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -568,11 +569,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1\"",
-					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1/TestFlightSDK1-1\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -586,19 +583,16 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CroatiaFest/CroatiaFest-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1\"",
-					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1/TestFlightSDK1-1\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -632,19 +626,16 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CroatiaFest/CroatiaFest-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CroatiaFest/CroatiaFest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1\"",
-					"\"$(SRCROOT)/CroatiaFest/TestFlightSDK1/TestFlightSDK1-1\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;

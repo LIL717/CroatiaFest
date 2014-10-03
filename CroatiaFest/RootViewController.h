@@ -15,7 +15,7 @@
 @private 
     
 }
-@property (nonatomic, retain) IBOutlet UIAlertView *savedAlert;
+@property (nonatomic, strong) IBOutlet UIAlertView *savedAlert;
 
 - (void) applicationWillResignActive: (NSNotification *) note;
 

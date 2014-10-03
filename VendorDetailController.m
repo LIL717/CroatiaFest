@@ -27,24 +27,6 @@
 @synthesize webButton = webButton_;
 
 
-- (void) dealloc {
-    [vendor_ release];
-    [managedObjectContext_ release];
-    
-    [name_ release];
-    [desc1_ release];
-    [desc2_ release];
-    [addr1_ release];
-    [addr2_ release];
-    [phone1_ release];
-    [phone2_ release];
-    [website_ release];
-    [email_ release];
-    [webButton_ release];
-    
-    
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,6 +39,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear: animated];
     self.name.text = self.vendor.name;
     self.desc1.text = self.vendor.desc1;
     self.desc2.text = self.vendor.desc2;
@@ -77,10 +60,10 @@
 // IBAction from touch on invisible button
 
 -(IBAction)launchWeb:(id)sender {
-    NSString* launchUrl = [[[NSString alloc] initWithString: [NSString stringWithFormat:@"http://%@",self.website.text]] autorelease];
+    NSString* launchUrl = [[NSString alloc] initWithString: [NSString stringWithFormat:@"http://%@",self.website.text]];
     NSURL *url = [NSURL URLWithString: launchUrl];
     
-    WebViewController *webViewController = [[[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil] autorelease];
+    WebViewController *webViewController = [[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil];
     
     webViewController.urlObject = url;
     

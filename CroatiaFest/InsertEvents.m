@@ -10,31 +10,25 @@
 #import "InsertSchedule.h"
 #import "Event.h"
 #import "Schedule.h"
+#import "CroatiaFestAppDelegate.h"
 
 @implementation InsertEvents
 
 @synthesize schedule = schedule_; 
 @synthesize event = event_;
-@synthesize managedObjectContext = managedObjectContext_;
 
 
-- (void)dealloc {
-    
-    [schedule_ release];
-    [event_ release];
-    [managedObjectContext_ release];
-    [super dealloc];
-
-}    
 - (void)addEventsToCoreData:(NSArray *)events forKey: (NSString *) eventType {
     //LogMethod();
+	CroatiaFestAppDelegate *appDelegate = (CroatiaFestAppDelegate*)[[UIApplication sharedApplication] delegate];
+	NSManagedObjectContext *managedObjectContext = appDelegate.managedObjectContext;
     //this is an array of dictionaries
     
     NSError *error = nil;
     // insert the events into Core Data
     for (id newEvent in events) {
 
-        Event *event = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:self.managedObjectContext];
+        Event *event = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:managedObjectContext];
         event.name = [newEvent valueForKey: @"Name"];
         event.desc1 = [newEvent valueForKey: @"Desc_1"];
         event.desc2 =[newEvent valueForKey: @"Desc_2"];
@@ -47,34 +41,32 @@
         event.video = [newEvent valueForKey: @"Video"];
         event.eventType = eventType;
         
-        if (![self.managedObjectContext save:&error]) {
+        if (![managedObjectContext save:&error]) {
             NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
         }
         if (![[newEvent valueForKey: @"Performance_Date_1"] isEqualToString: @"0000-00-00"]) {
-            NSDictionary *scheduleDataDictionary1 = [[[NSDictionary alloc] initWithObjectsAndKeys:
+            NSDictionary *scheduleDataDictionary1 = [[NSDictionary alloc] initWithObjectsAndKeys:
                   event, @"event",                    
                   [newEvent valueForKey: @"Performance_Location_1"], @"location",                     
                   [newEvent valueForKey: @"Performance_Date_1"], @"dateString",
                   [newEvent valueForKey: @"Performance_Begin_Time_1"], @"beginTimeString",
-                  [newEvent valueForKey: @"Performance_End_Time_1"], @"endTimeString", nil] autorelease];
+                  [newEvent valueForKey: @"Performance_End_Time_1"], @"endTimeString", nil];
             
-            InsertSchedule *scheduleDateFormatter1 = [[InsertSchedule alloc] autorelease];
-            scheduleDateFormatter1.managedObjectContext = self.managedObjectContext;
+            InsertSchedule *scheduleDateFormatter1 = [InsertSchedule alloc];
             [scheduleDateFormatter1 formatScheduleData: scheduleDataDictionary1];
             
         }            
         
         if (![[newEvent valueForKey: @"Performance_Date_2"] isEqualToString: @"0000-00-00"]) {
             
-            NSDictionary *scheduleDataDictionary2 = [[[NSDictionary alloc] initWithObjectsAndKeys:
+            NSDictionary *scheduleDataDictionary2 = [[NSDictionary alloc] initWithObjectsAndKeys:
                   event, @"event", 
                   [newEvent valueForKey: @"Performance_Location_2"], @"location",                     
                   [newEvent valueForKey: @"Performance_Date_2"], @"dateString",
                   [newEvent valueForKey: @"Performance_Begin_Time_2"], @"beginTimeString",
-                  [newEvent valueForKey: @"Performance_End_Time_2"], @"endTimeString", nil] autorelease];
+                  [newEvent valueForKey: @"Performance_End_Time_2"], @"endTimeString", nil];
             
-            InsertSchedule *scheduleDateFormatter2 = [[InsertSchedule alloc] autorelease];
-            scheduleDateFormatter2.managedObjectContext = self.managedObjectContext;
+            InsertSchedule *scheduleDateFormatter2 = [InsertSchedule alloc];
             [scheduleDateFormatter2 formatScheduleData: scheduleDataDictionary2];
         }  
         

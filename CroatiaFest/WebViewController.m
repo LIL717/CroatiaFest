@@ -15,14 +15,6 @@
 @synthesize forwardButton = forwardButton_;
 @synthesize urlObject = urlObject_;
 
-- (void)dealloc {
-//    LogMethod();
-    [webView_ release];
-    [backButton_ release];
-    [forwardButton_ release];
-    [urlObject_ release];
-    [super dealloc];
-}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
 //    LogMethod();
@@ -46,20 +38,21 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 //    LogMethod();
-    self.backButton = [[[UIBarButtonItem alloc] 
+	[super viewWillAppear: animated];
+    self.backButton = [[UIBarButtonItem alloc] 
                        initWithImage:[UIImage imageNamed:@"back-button.png"]
                         style:UIBarButtonItemStyleBordered
                         target:self 
-                        action:@selector(goBack)] autorelease];
+                        action:@selector(goBack)];
     
-    self.forwardButton = [[[UIBarButtonItem alloc]
+    self.forwardButton = [[UIBarButtonItem alloc]
                                     initWithImage:[UIImage imageNamed:@"forward-button.png"]
 //                                      initWithTitle:@"▶"  
                                    style:UIBarButtonItemStylePlain
                                    target:self 
-                                   action:@selector(goForward)]autorelease]; 
+                                   action:@selector(goForward)]; 
       
-    NSArray *navItems = [[[NSArray alloc] initWithObjects: self.forwardButton, self.backButton, nil] autorelease];
+    NSArray *navItems = [[NSArray alloc] initWithObjects: self.forwardButton, self.backButton, nil];
 
     [[self navigationItem] setRightBarButtonItems:navItems];
     [self updateButtons];
@@ -98,6 +91,7 @@
 - (void) viewWillDisappear:(BOOL)animated
 {
 //    LogMethod();
+	[super viewWillDisappear: animated];
     // hide the activity indicator in the status bar
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }

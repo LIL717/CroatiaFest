@@ -15,9 +15,8 @@
     Schedule *schedule_;
     Event *event_;
 }
-@property (nonatomic, retain) Schedule *schedule;
-@property (nonatomic, retain) Event *event;
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) Schedule *schedule;
+@property (nonatomic, strong) Event *event;
 
 - (void)addEventsToCoreData:(NSArray *)events forKey: (NSString *) eventType;
 

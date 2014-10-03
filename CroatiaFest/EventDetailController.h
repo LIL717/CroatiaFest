@@ -37,29 +37,29 @@
 
     
 }
-@property (nonatomic, retain) Event *event;
-@property (nonatomic, retain) Schedule *schedule;
-@property (nonatomic, retain) NSArray *eventTimes;
+@property (nonatomic, strong) Event *event;
+@property (nonatomic, strong) Schedule *schedule;
+@property (nonatomic, strong) NSArray *eventTimes;
 
 //@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
-@property (nonatomic, retain) IBOutlet UITextField *name;
-@property (nonatomic, retain) IBOutlet UITextField *desc1;
-@property (nonatomic, retain) IBOutlet UITextView  *desc2;
-@property (nonatomic, retain) IBOutlet UITextField *addr1;
-@property (nonatomic, retain) IBOutlet UITextField *addr2;
-@property (nonatomic, retain) IBOutlet UITextView *phone1;
-@property (nonatomic, retain) IBOutlet UITextField *phone2;
-@property (nonatomic, retain) IBOutlet UITextField *website;
-@property (nonatomic, retain) IBOutlet UITextField *email;
-@property (nonatomic, retain) IBOutlet UITextField *video;
-@property (nonatomic, retain) IBOutlet UITextField *time;
+@property (nonatomic, strong) IBOutlet UITextField *name;
+@property (nonatomic, strong) IBOutlet UITextField *desc1;
+@property (nonatomic, strong) IBOutlet UITextView  *desc2;
+@property (nonatomic, strong) IBOutlet UITextField *addr1;
+@property (nonatomic, strong) IBOutlet UITextField *addr2;
+@property (nonatomic, strong) IBOutlet UITextView *phone1;
+@property (nonatomic, strong) IBOutlet UITextField *phone2;
+@property (nonatomic, strong) IBOutlet UITextField *website;
+@property (nonatomic, strong) IBOutlet UITextField *email;
+@property (nonatomic, strong) IBOutlet UITextField *video;
+@property (nonatomic, strong) IBOutlet UITextField *time;
 
-@property (nonatomic, retain) IBOutlet UITableView *scheduleTableView;
-@property (nonatomic, retain) IBOutlet UIButton *webButton;
+@property (nonatomic, strong) IBOutlet UITableView *scheduleTableView;
+@property (nonatomic, strong) IBOutlet UIButton *webButton;
 
 
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 
 - (IBAction)launchWeb:(id)sender; 

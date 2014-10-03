@@ -8,28 +8,21 @@
 
 #import "InsertSchedule.h"
 #import "Schedule.h"
+#import "CroatiaFestAppDelegate.h"
 
 @implementation InsertSchedule
-
-@synthesize managedObjectContext = managedObjectContext_;
-
-- (void)dealloc {
-    
-    [managedObjectContext_ release];
-    [super dealloc];
-    
-} 
 
 -(void) formatScheduleData: scheduleData {
 
 //    LogMethod();
+	CroatiaFestAppDelegate *appDelegate = (CroatiaFestAppDelegate*)[[UIApplication sharedApplication] delegate];
+	NSManagedObjectContext *managedObjectContext = appDelegate.managedObjectContext;
     NSError *error = nil;
     
-//    NSManagedObjectContext *context = self.managedObjectContext;
     // Convert beginDate and BeginTime to an NSDate Object
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSLocale *usLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     [dateFormatter setLocale:usLocale];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"PDT"]];
 
@@ -58,7 +51,7 @@
     NSDate *correctedBeginTime = [beginTime dateByAddingTimeInterval:timeInterval];
     NSDate *correctedEndTime = [endTime dateByAddingTimeInterval:timeInterval];
     
-    Schedule *schedule = [NSEntityDescription insertNewObjectForEntityForName:@"Schedule" inManagedObjectContext:self.managedObjectContext];
+    Schedule *schedule = [NSEntityDescription insertNewObjectForEntityForName:@"Schedule" inManagedObjectContext:managedObjectContext];
 
     schedule.location = [scheduleData valueForKey: @"location"];
     schedule.beginTime = correctedBeginTime;
@@ -66,7 +59,7 @@
     schedule.event = [scheduleData valueForKey: @"event"];
 
     //            performer.performanceTime = schedule; ^^ OMG only need one of these - don't use both!!! 
-    if (![self.managedObjectContext save:&error]) {
+    if (![managedObjectContext save:&error]) {
         NSLog(@"%s: Problem saving: %@", __PRETTY_FUNCTION__, error);
     }
 
